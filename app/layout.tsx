@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hardwarify — Your Hardware Store",
+  title: "Hardwarify — your hardware store",
   description: "Buy mobile devices, consoles and more and more.",
 };
 

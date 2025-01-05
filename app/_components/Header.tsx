@@ -12,13 +12,13 @@ function Header() {
             <Link href="/">Home</Link>
           </li>
           <li className="text-stone-800 hover:text-stone-500">
-            <Link href="/">Products</Link>
+            <Link href="/products">Products</Link>
           </li>
           <li className="text-stone-800 hover:text-stone-500">
-            <Link href="/">Deals</Link>
+            <Link href="/deals">Deals</Link>
           </li>
           <li className="text-stone-800 hover:text-stone-500">
-            <Link href="/">About</Link>
+            <Link href="/about">About</Link>
           </li>
         </ul>
       </nav>

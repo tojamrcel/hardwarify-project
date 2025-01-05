@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IoCartOutline } from "react-icons/io5";
 
 function Header() {
   return (
@@ -6,8 +7,8 @@ function Header() {
       <div>
         <Link href="#">Hardwarify</Link>
       </div>
-      <nav>
-        <ul className="flex gap-8 text-lg">
+      <nav className="w-full">
+        <ul className="flex items-center gap-8 text-lg text-stone-800 transition-colors hover:text-stone-500">
           <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/">Home</Link>
           </li>
@@ -19,6 +20,11 @@ function Header() {
           </li>
           <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/about">About</Link>
+          </li>
+          <li className="ml-auto text-3xl hover:text-red-600">
+            <Link href="/cart">
+              <IoCartOutline />
+            </Link>
           </li>
         </ul>
       </nav>

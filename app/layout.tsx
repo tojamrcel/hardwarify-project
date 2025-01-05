@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={`${ralewaySans.variable} ${ralewaySans.variable} bg-white-bg antialiased`}
       >
-        <header className="bg-white-second flex h-[70px] items-center gap-8 px-12">
+        <header className="bg-white-second flex h-[70px] w-full items-center gap-8 px-12">
           <div>
             <Link href="#">Hardwarify</Link>
           </div>

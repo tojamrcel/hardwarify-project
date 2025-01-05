@@ -8,21 +8,21 @@ function Header() {
         <Link href="#">Hardwarify</Link>
       </div>
       <nav className="w-full">
-        <ul className="flex items-center gap-8 text-lg text-stone-800 transition-colors hover:text-stone-500">
-          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
+        <ul className="flex items-center gap-8 text-lg text-stone-800 duration-300">
+          <li className="transition-colors hover:text-stone-500">
             <Link href="/">Home</Link>
           </li>
-          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
+          <li className="transition-colors hover:text-stone-500">
             <Link href="/products">Products</Link>
           </li>
-          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
+          <li className="transition-colors hover:text-stone-500">
             <Link href="/deals">Deals</Link>
           </li>
-          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
+          <li className="transition-colors hover:text-stone-500">
             <Link href="/about">About</Link>
           </li>
-          <li className="ml-auto text-3xl hover:text-red-600">
-            <Link href="/cart">
+          <li className="ml-auto transition-colors hover:text-red-600">
+            <Link href="/cart" className="text-3xl">
               <IoCartOutline />
             </Link>
           </li>

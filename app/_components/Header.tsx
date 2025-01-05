@@ -8,16 +8,16 @@ function Header() {
       </div>
       <nav>
         <ul className="flex gap-8 text-lg">
-          <li className="text-stone-800 hover:text-stone-500">
+          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/">Home</Link>
           </li>
-          <li className="text-stone-800 hover:text-stone-500">
+          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/products">Products</Link>
           </li>
-          <li className="text-stone-800 hover:text-stone-500">
+          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/deals">Deals</Link>
           </li>
-          <li className="text-stone-800 hover:text-stone-500">
+          <li className="text-stone-800 transition-colors duration-300 hover:text-stone-500">
             <Link href="/about">About</Link>
           </li>
         </ul>

@@ -8,7 +8,10 @@ const ralewaySans = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Hardwarify — your hardware store",
+  title: {
+    default: "Hardwarify — your hardware store",
+    template: "%s | Hardwarify",
+  },
   description: "Buy mobile devices, consoles and more and more.",
 };
 

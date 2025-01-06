@@ -3,9 +3,14 @@ import { IoCartOutline } from "react-icons/io5";
 
 function Header() {
   return (
-    <header className="bg-white-second flex h-[70px] w-full items-center gap-8 px-12">
+    <header className="flex h-[70px] w-full items-center gap-8 bg-white-second px-12">
       <div>
-        <Link href="#">Hardwarify</Link>
+        <Link
+          className="text-xl font-semibold tracking-tight text-stone-700"
+          href="#"
+        >
+          hardwarify
+        </Link>
       </div>
       <nav className="w-full">
         <ul className="flex items-center gap-8 text-lg text-stone-800 duration-300">

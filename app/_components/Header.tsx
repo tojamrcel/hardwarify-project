@@ -7,7 +7,7 @@ function Header() {
       <div>
         <Link
           className="text-xl font-semibold tracking-tight text-stone-700"
-          href="#"
+          href="/"
         >
           hardwarify
         </Link>

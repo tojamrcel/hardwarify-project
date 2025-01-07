@@ -9,7 +9,7 @@ export default function Home() {
         <Link href="/">Buy now</Link>
       </div>
       <div>
-        <img src="telefon.png" alt="iphone" className="h-96" />
+        <img src="telefon.png" alt="iphone" className="max-h-96" />
       </div>
     </section>
   );

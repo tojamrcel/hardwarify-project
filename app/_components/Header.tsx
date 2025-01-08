@@ -26,7 +26,7 @@ function Header() {
           <li className="transition-colors hover:text-stone-500">
             <Link href="/about">About</Link>
           </li>
-          <li className="ml-auto transition-colors hover:text-red-600">
+          <li className="ml-auto transition-colors hover:text-stone-500">
             <Link href="/cart" className="text-3xl">
               <IoCartOutline />
             </Link>

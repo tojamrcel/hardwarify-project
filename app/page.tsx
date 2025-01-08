@@ -23,20 +23,41 @@ export default function Page() {
       <section className="mt-10 grid grid-cols-3 gap-8">
         <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
           <img src="xxx" alt="xxx" className="w-1/3" />
-          <div>
-            <h3>Product</h3>
+          <div className="flex flex-col items-start gap-1">
+            <h3 className="font-bold text-stone-800">Product</h3>
+            <span className="font-semibold">$300</span>
+            <a
+              href="#"
+              className="ml-auto mt-3 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+            >
+              Go to product
+            </a>
           </div>
         </div>
         <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
           <img src="xxx" alt="xxx" className="w-1/3" />
-          <div>
-            <h3>Product</h3>
+          <div className="flex flex-col items-start gap-1">
+            <h3 className="font-bold text-stone-800">Product</h3>
+            <span className="font-semibold">$300</span>
+            <a
+              href="#"
+              className="ml-auto mt-3 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+            >
+              Go to product
+            </a>
           </div>
         </div>
         <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
           <img src="xxx" alt="xxx" className="w-1/3" />
-          <div>
-            <h3>Product</h3>
+          <div className="flex flex-col items-start gap-1">
+            <h3 className="font-bold text-stone-800">Product</h3>
+            <span className="font-semibold">$300</span>
+            <a
+              href="#"
+              className="ml-auto mt-3 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+            >
+              Go to product
+            </a>
           </div>
         </div>
       </section>

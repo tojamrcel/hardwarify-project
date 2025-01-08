@@ -19,13 +19,13 @@ export default function Page() {
         </div>
       </section>
       <section className="mt-10 grid grid-cols-3 gap-8">
-        <div className="bg-white-second">
+        <div className="flex rounded-md bg-white-second px-4 py-2">
           <h2>Product</h2>
         </div>
-        <div className="bg-white-second">
+        <div className="flex rounded-md bg-white-second px-4 py-2">
           <h2>Product</h2>
         </div>
-        <div className="bg-white-second">
+        <div className="flex rounded-md bg-white-second px-4 py-2">
           <h2>Product</h2>
         </div>
       </section>

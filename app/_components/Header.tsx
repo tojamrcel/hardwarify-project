@@ -27,9 +27,16 @@ function Header() {
             <Link href="/about">About</Link>
           </li>
           <li className="ml-auto transition-colors hover:text-stone-500">
-            <Link href="/cart" className="text-3xl">
-              <IoCartOutline />
-            </Link>
+            <div className="relative">
+              <div className="absolute -top-2 left-6">
+                <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-3 text-xs font-semibold text-stone-200">
+                  2
+                </p>
+              </div>
+              <Link href="/cart" className="text-4xl">
+                <IoCartOutline />
+              </Link>
+            </div>
           </li>
         </ul>
       </nav>

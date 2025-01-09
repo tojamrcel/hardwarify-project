@@ -30,7 +30,7 @@ export default function Page() {
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+              className="mt-1 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>
@@ -45,7 +45,7 @@ export default function Page() {
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+              className="mt-1 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>
@@ -60,7 +60,7 @@ export default function Page() {
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+              className="mt-1 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>

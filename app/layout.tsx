@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${ralewaySans.variable} ${ralewaySans.variable} bg-white-bg antialiased`}
       >
         <Header />
-        <main className="mx-auto max-w-7xl py-8">{children}</main>
+        <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
       </body>
     </html>
   );

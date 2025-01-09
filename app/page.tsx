@@ -30,33 +30,37 @@ export default function Page() {
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="mt-1 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>
           </div>
         </div>
         <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
-          <img src="xxx" alt="xxx" className="w-1/3" />
-          <div className="flex flex-col items-start gap-1">
+          <div className="flex w-full items-center justify-center">
+            <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
+          </div>
+          <div className="flex flex-col items-center justify-center">
             <h3 className="font-bold text-stone-800">Product</h3>
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="ml-auto mt-3 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>
           </div>
         </div>
         <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
-          <img src="xxx" alt="xxx" className="w-1/3" />
-          <div className="flex flex-col items-start gap-1">
+          <div className="flex w-full items-center justify-center">
+            <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
+          </div>
+          <div className="flex flex-col items-center justify-center">
             <h3 className="font-bold text-stone-800">Product</h3>
             <span className="font-semibold">$300</span>
             <a
               href="#"
-              className="ml-auto mt-3 rounded-md bg-red-600 px-2 py-1 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
+              className="mt-1 border-b-2 border-transparent px-2 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
             >
               Go to product
             </a>

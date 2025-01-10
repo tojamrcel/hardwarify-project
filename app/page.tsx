@@ -1,4 +1,3 @@
-import Link from "next/link";
 import HomeSection from "./_components/HomeSection";
 
 export default function Page() {

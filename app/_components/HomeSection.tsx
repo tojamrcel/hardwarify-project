@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-type productData = {
+interface productData {
   name: string;
   description: string;
   regularPrice: number;
   discount: number;
   img: string;
-};
+}
 
 function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
   return (

@@ -1,5 +1,29 @@
 import HomeSection from "./_components/HomeSection";
 
+const sampleData = [
+  {
+    title: "iPhone 16 Pro Max",
+    description: "The best iPhone ever",
+    regularPrice: 1099,
+    discount: 0,
+    image: "telefon.png",
+  },
+  {
+    title: "Samsung Galaxy S24",
+    description: "The best Samsung phone",
+    regularPrice: 1199,
+    discount: 100,
+    image: "samsung.png",
+  },
+  {
+    title: "PlayStation 5 Pro",
+    description: "The best PlayStation console",
+    regularPrice: 699,
+    discount: 30,
+    image: "https://via.placeholder.com/300",
+  },
+];
+
 export default function Page() {
   return (
     <>

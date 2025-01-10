@@ -6,13 +6,7 @@ type productData = {
   img: string;
 };
 
-function HomeSection({
-  textPlace,
-  data,
-}: {
-  textPlace: "left" | "right";
-  data: productData;
-}) {
+function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
   return (
     <>
       <section className="grid w-full grid-cols-2 place-items-center justify-center rounded-lg bg-white-second px-4 py-8">

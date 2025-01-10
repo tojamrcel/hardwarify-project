@@ -7,6 +7,7 @@ const sampleData = [
     regularPrice: 1099,
     discount: 0,
     image: "telefon.png",
+    category: "smartphones",
   },
   {
     title: "Samsung Galaxy S24",
@@ -14,6 +15,7 @@ const sampleData = [
     regularPrice: 1199,
     discount: 100,
     image: "samsung.png",
+    category: "smartphones",
   },
   {
     title: "PlayStation 5 Pro",
@@ -21,6 +23,7 @@ const sampleData = [
     regularPrice: 699,
     discount: 30,
     image: "https://via.placeholder.com/300",
+    category: "gaming",
   },
 ];
 

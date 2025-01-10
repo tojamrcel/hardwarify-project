@@ -151,9 +151,6 @@ export default function Page() {
         SMARTPHONES
       </h2>
       <section className="grid w-full grid-cols-2 place-items-center justify-center rounded-lg bg-white-second px-4 py-8">
-        <div>
-          <img src="ps5pro.png" alt="PlayStation 5 Pro" className="max-h-96" />
-        </div>
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-center text-4xl font-bold text-stone-800">
             TEXT GOES THERE
@@ -165,6 +162,9 @@ export default function Page() {
           >
             Buy now
           </Link>
+        </div>
+        <div>
+          <img src="samsung.png" alt="Samsung" className="max-h-96" />
         </div>
       </section>
       <section className="mt-10 grid grid-cols-3 gap-8">

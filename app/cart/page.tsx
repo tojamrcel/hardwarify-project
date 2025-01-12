@@ -19,7 +19,7 @@ function Page() {
             <p className="text-lg font-semibold text-gray-700">AirPods Pro</p>
             <input
               type="number"
-              className="mt-1 w-8 rounded-lg px-1 py-0.5 text-center"
+              className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
               min="1"
               max="10"
             />

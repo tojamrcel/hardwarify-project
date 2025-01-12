@@ -17,12 +17,20 @@ function Page() {
           />
           <div>
             <p className="text-lg font-semibold text-gray-700">AirPods Pro</p>
-            <input
-              type="number"
-              className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
-              min="1"
-              max="10"
-            />
+            <div className="flex items-center gap-2 text-gray-700">
+              <button className="flex items-center justify-center font-bold">
+                -
+              </button>
+              <input
+                type="number"
+                className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
+                min="1"
+                max="10"
+              />
+              <button className="flex items-center justify-center font-bold">
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>

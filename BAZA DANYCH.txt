@@ -1,0 +1,13 @@
+BAZA DANYCH
+
+1. Products:
+	- id
+	- name
+	- price
+	- discount
+	- description
+	- category
+
+2. Bestsellers
+	- id
+	- product_id

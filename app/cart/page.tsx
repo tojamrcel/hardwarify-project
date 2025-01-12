@@ -35,6 +35,12 @@ function Page() {
               <button className="absolute right-2 top-0 text-2xl text-gray-700">
                 &times;
               </button>
+              <a
+                href="#"
+                className="absolute bottom-2 right-3 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+              >
+                Go to product
+              </a>
             </div>
           </div>
         </div>

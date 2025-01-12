@@ -9,8 +9,8 @@ function Page() {
     <section className="grid grid-cols-[1fr_20rem] gap-4">
       <div>
         <h2 className="text-4xl font-bold text-gray-700">Cart</h2>
-        <div className="p-4">
-          <div className="grid max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-4 rounded-lg bg-white-second px-4 py-2">
+        <div className="flex flex-col gap-4 p-4">
+          <div className="relative grid max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-4 rounded-lg bg-white-second px-4 py-2">
             <img
               src="airpods.png"
               alt="airpods"
@@ -32,6 +32,9 @@ function Page() {
                   +
                 </button>
               </div>
+              <button className="absolute right-2 top-0 text-2xl text-gray-700">
+                &times;
+              </button>
             </div>
           </div>
         </div>
@@ -48,7 +51,7 @@ function Page() {
           <p>
             <span className="font-semibold">Total:</span> xxx$
           </p>
-          <button className="my-2 w-32 rounded-lg bg-red-600 px-2 py-2 font-semibold text-stone-100 hover:bg-red-700">
+          <button className="my-2 w-32 rounded-lg bg-red-600 px-2 py-2 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700">
             Checkout
           </button>
         </div>

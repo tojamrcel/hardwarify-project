@@ -37,7 +37,7 @@ function Page() {
               </button>
               <a
                 href="#"
-                className="absolute bottom-2 right-3 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+                className="absolute bottom-2 right-2 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
               >
                 Go to product
               </a>

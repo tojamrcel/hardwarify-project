@@ -7,6 +7,7 @@ BAZA DANYCH
 	- discount
 	- description
 	- category
+	- zdjecie 
 
 2. Bestsellers
 	- id

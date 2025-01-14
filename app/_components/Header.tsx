@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
 
 function Header() {
   return (
@@ -37,6 +37,11 @@ function Header() {
                 <IoCartOutline />
               </Link>
             </div>
+          </li>
+          <li className="transition-colors hover:text-stone-500">
+            <Link href="/account" className="text-3xl">
+              <IoPersonOutline />
+            </Link>
           </li>
         </ul>
       </nav>

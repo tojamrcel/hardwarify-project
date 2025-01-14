@@ -2,7 +2,7 @@ function Page() {
   return (
     <section className="mt-8 flex flex-col gap-4">
       <div className="flex items-center justify-evenly gap-8 rounded-lg bg-white-second">
-        <div className="flex items-center justify-center px-4 py-2">
+        <div className="flex items-center justify-center px-4 py-4">
           <img src="../telefon.png" alt="Iphone 16 Pro" className="w-96" />
         </div>
         <div className="flex w-96 flex-col gap-4 p-4">

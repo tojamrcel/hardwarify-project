@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RecommendedProducts from "./RecommendedProducts";
+import Button from "./Button";
 
 function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
   return (
@@ -12,12 +13,9 @@ function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
                 TEXT GOES THERE
               </h2>
               <span className="w-full text-center font-semibold">xx% off</span>
-              <Link
-                href="/"
-                className="rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
-              >
+              <Button type="primary" link="/">
                 Buy now
-              </Link>
+              </Button>
             </div>
             <div>
               <img src="telefon.png" alt="iphone" className="max-h-96" />
@@ -34,12 +32,9 @@ function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
                 TEXT GOES THERE
               </h2>
               <span className="w-full text-center font-semibold">xx% off</span>
-              <Link
-                href="/"
-                className="rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700"
-              >
+              <Button type="primary" link="/">
                 Buy now
-              </Link>
+              </Button>
             </div>
           </>
         )}

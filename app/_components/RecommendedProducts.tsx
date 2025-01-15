@@ -1,7 +1,7 @@
 function RecommendedProducts() {
   return (
     <section className="mt-10 grid grid-cols-3 gap-8">
-      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
+      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
           <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
         </div>
@@ -16,7 +16,7 @@ function RecommendedProducts() {
           </a>
         </div>
       </div>
-      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
+      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
           <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
         </div>
@@ -31,7 +31,7 @@ function RecommendedProducts() {
           </a>
         </div>
       </div>
-      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2">
+      <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
           <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
         </div>

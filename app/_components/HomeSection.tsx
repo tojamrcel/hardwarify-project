@@ -4,7 +4,7 @@ import RecommendedProducts from "./RecommendedProducts";
 function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
   return (
     <>
-      <section className="grid w-full grid-cols-2 place-items-center justify-center rounded-lg bg-white-second px-4 py-8">
+      <section className="grid w-full grid-cols-2 place-items-center justify-center rounded-lg bg-white-second px-4 py-8 shadow-md">
         {textPlace === "left" && (
           <>
             <div className="flex flex-col items-center gap-2">

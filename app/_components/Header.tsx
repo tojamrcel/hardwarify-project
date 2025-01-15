@@ -3,7 +3,7 @@ import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
 
 function Header() {
   return (
-    <header className="flex h-[70px] w-full items-center gap-10 bg-white-second px-12">
+    <header className="flex h-[70px] w-full items-center gap-10 bg-white-second px-12 shadow-sm">
       <div>
         <Link
           className="text-xl font-semibold tracking-tight text-stone-700"

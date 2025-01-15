@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 function Page() {
   return (
     <section className="flex justify-center gap-24">
-      <section className="rounded-md bg-white-second p-8 px-10">
+      <section className="rounded-md bg-white-second p-8 px-10 shadow-md">
         <h2 className="text-xl font-bold text-gray-700">Filters</h2>
         <label
           htmlFor="category"

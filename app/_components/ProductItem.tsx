@@ -1,7 +1,7 @@
 function ProductItem() {
   return (
     <a href="#">
-      <div className="group relative flex h-36 w-36 flex-col items-center justify-center overflow-hidden rounded-md bg-white-second transition-transform duration-300 hover:scale-105">
+      <div className="group relative flex h-36 w-36 flex-col items-center justify-center overflow-hidden rounded-md bg-white-second shadow-sm transition-transform duration-300 hover:scale-105">
         <div className="flex items-center justify-center">
           <img className="w-20" src="airpods.png" alt="airpods" />
         </div>

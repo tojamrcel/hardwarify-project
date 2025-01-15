@@ -1,6 +1,5 @@
-import Link from "next/link";
-import RecommendedProducts from "./RecommendedProducts";
 import Button from "./Button";
+import RecommendedProducts from "./RecommendedProducts";
 
 function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
   return (

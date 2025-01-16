@@ -43,7 +43,7 @@ function CartItem() {
       <img
         src="airpodspro.jpg"
         alt="airpods"
-        className="h-24 w-24 self-center justify-self-center rounded-md"
+        className="h-24 w-24 self-center justify-self-center rounded-md shadow-sm"
       />
       <div>
         <p className="text-lg font-semibold text-gray-700">AirPods Pro</p>

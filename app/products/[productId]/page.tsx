@@ -3,7 +3,11 @@ function Page() {
     <section className="mt-8 flex flex-col gap-4">
       <div className="flex items-center justify-evenly gap-8 rounded-lg bg-white-second shadow-md">
         <div className="flex items-center justify-center px-4 py-4">
-          <img src="../telefon.png" alt="Iphone 16 Pro" className="w-96" />
+          <img
+            src="../iphone16pro.jpg"
+            alt="Iphone 16 Pro"
+            className="w-96 rounded-lg shadow-md"
+          />
         </div>
         <div className="flex w-96 flex-col gap-6 p-4">
           <h2 className="text-4xl font-bold text-gray-700">PRODUCT NAME</h2>

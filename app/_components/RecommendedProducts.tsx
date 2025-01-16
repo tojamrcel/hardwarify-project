@@ -6,7 +6,7 @@ function RecommendedProducts() {
           <img
             src="airpodspro.jpg"
             alt="xxx"
-            className="max-h-48 w-1/2 rounded-md"
+            className="max-h-48 w-1/2 rounded-md shadow-md"
           />
         </div>
         <div className="flex flex-col items-center justify-center">
@@ -25,7 +25,7 @@ function RecommendedProducts() {
           <img
             src="playstation5pro.jpg"
             alt="xxx"
-            className="max-h-48 w-1/2 rounded-md"
+            className="max-h-48 w-1/2 rounded-md shadow-md"
           />
         </div>
         <div className="flex flex-col items-center justify-center">
@@ -44,7 +44,7 @@ function RecommendedProducts() {
           <img
             src="iphone16pro.jpg"
             alt="xxx"
-            className="max-h-48 w-1/2 rounded-md"
+            className="max-h-48 w-1/2 rounded-md shadow-md"
           />
         </div>
         <div className="flex flex-col items-center justify-center">

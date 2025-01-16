@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Image from "next/image";
 import RecommendedProducts from "./RecommendedProducts";
 
 function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
@@ -17,10 +18,13 @@ function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
               </Button>
             </div>
             <div>
-              <img
-                src="iphone16pro.jpg"
+              <Image
+                src="/iphone16pro.jpg"
+                width={384}
+                height={384}
+                quality={100}
                 alt="iphone"
-                className="max-h-96 rounded-lg shadow-md"
+                className="rounded-lg shadow-md"
               />
             </div>
           </>
@@ -28,10 +32,13 @@ function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
         {textPlace === "right" && (
           <>
             <div>
-              <img
-                src="playstation5pro.jpg"
+              <Image
+                src="/playstation5pro.jpg"
+                width={384}
+                height={384}
+                quality={100}
                 alt="iphone"
-                className="max-h-96 rounded-lg shadow-md"
+                className="rounded-lg shadow-md"
               />
             </div>
             <div className="flex flex-col items-center gap-2">

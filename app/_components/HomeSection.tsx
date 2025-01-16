@@ -17,14 +17,22 @@ function HomeSection({ textPlace }: { textPlace: "left" | "right" }) {
               </Button>
             </div>
             <div>
-              <img src="telefon.png" alt="iphone" className="max-h-96" />
+              <img
+                src="iphone16pro.jpg"
+                alt="iphone"
+                className="max-h-96 rounded-lg shadow-md"
+              />
             </div>
           </>
         )}
         {textPlace === "right" && (
           <>
             <div>
-              <img src="telefon.png" alt="iphone" className="max-h-96" />
+              <img
+                src="playstation5pro.jpg"
+                alt="iphone"
+                className="max-h-96 rounded-lg shadow-md"
+              />
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-center text-4xl font-bold text-stone-800">

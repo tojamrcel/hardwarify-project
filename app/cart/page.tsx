@@ -41,9 +41,9 @@ function CartItem() {
   return (
     <div className="relative grid max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-4 rounded-lg bg-white-second px-4 py-2">
       <img
-        src="airpods.png"
+        src="airpodspro.jpg"
         alt="airpods"
-        className="h-24 w-24 self-center justify-self-center"
+        className="h-24 w-24 self-center justify-self-center rounded-md"
       />
       <div>
         <p className="text-lg font-semibold text-gray-700">AirPods Pro</p>

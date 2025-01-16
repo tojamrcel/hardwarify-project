@@ -14,7 +14,7 @@ function Page() {
       </h2>
       <section className="flex flex-col items-center rounded-lg bg-white-second py-4">
         <h3 className="text-3xl font-bold text-gray-700">PRODUCT NAME</h3>
-        <img src="samsung.png" alt="Samsung" className="w-96" />
+        <img src="s24.jpg" alt="Samsung" className="my-4 w-96 rounded-full" />
         <div className="mb-4 flex gap-2 text-xl">
           <span className="italic text-gray-700 line-through">499$</span>
           <span className="text-red-600">399$</span>

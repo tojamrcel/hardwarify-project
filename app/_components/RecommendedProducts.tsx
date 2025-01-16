@@ -3,7 +3,11 @@ function RecommendedProducts() {
     <section className="mt-10 grid grid-cols-3 gap-8">
       <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
-          <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
+          <img
+            src="airpodspro.jpg"
+            alt="xxx"
+            className="max-h-48 w-1/2 rounded-md"
+          />
         </div>
         <div className="flex flex-col items-center justify-center">
           <h3 className="font-bold text-stone-800">Product</h3>
@@ -18,7 +22,11 @@ function RecommendedProducts() {
       </div>
       <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
-          <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
+          <img
+            src="playstation5pro.jpg"
+            alt="xxx"
+            className="max-h-48 w-1/2 rounded-md"
+          />
         </div>
         <div className="flex flex-col items-center justify-center">
           <h3 className="font-bold text-stone-800">Product</h3>
@@ -33,7 +41,11 @@ function RecommendedProducts() {
       </div>
       <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
         <div className="flex w-full items-center justify-center">
-          <img src="airpods.png" alt="xxx" className="max-h-48 w-1/2" />
+          <img
+            src="iphone16pro.jpg"
+            alt="xxx"
+            className="max-h-48 w-1/2 rounded-md"
+          />
         </div>
         <div className="flex flex-col items-center justify-center">
           <h3 className="font-bold text-stone-800">Product</h3>

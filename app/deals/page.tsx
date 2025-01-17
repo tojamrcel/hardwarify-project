@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 function Page() {
   return (
     <>
-      <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase tracking-wider text-red-600">
+      <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase tracking-wider text-red-600 underline">
         BEST DEALS
       </h2>
       <section className="flex flex-col items-center rounded-lg bg-white-second py-4">

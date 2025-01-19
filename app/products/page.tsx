@@ -39,8 +39,8 @@ async function Page() {
         </div>
       </section>
       <section className="grid grid-cols-5 gap-x-32 gap-y-8">
-        {products.map((p) => (
-          <ProductItem key={p.id} />
+        {products.map((product) => (
+          <ProductItem key={product.id} product={product} />
         ))}
       </section>
     </section>

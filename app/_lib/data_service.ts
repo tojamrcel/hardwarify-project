@@ -1,14 +1,5 @@
 import { supabase } from "./supabase";
-
-interface Product {
-  id: number;
-  product_name: string;
-  regular_price: number;
-  discount: number | null;
-  description: string;
-  category: string;
-  image: string;
-}
+import { Product } from "../_types/types";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");

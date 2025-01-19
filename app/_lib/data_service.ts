@@ -1,6 +1,6 @@
 import { supabase } from "./supabase";
 
-interface Products {
+interface Products extends Array<Products> {
   id: number;
   product_name: string;
   regular_price: number;
@@ -10,9 +10,8 @@ interface Products {
   image: string;
 }
 
-export async function getProducts(): Promise<Products> {
-  const { data, error } = await supabase.from("products").select("*").single();
-
+export async function getProducts(): Promise<Products[]> {
+  const { data, error } = await supabase.from("products").select("*");
   if (error) console.error(error);
 
   return data;

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import ProductItem from "../_components/ProductItem";
+import { getProducts } from "../_lib/data_service";
 
 export const metadata: Metadata = {
   title: "Products",
 };
 
-function Page() {
+async function Page() {
+  const products = await getProducts();
+  console.log(products);
+
   return (
     <section className="flex justify-center gap-24">
       <section className="rounded-md bg-white-second p-8 px-10 shadow-md">
@@ -36,16 +40,9 @@ function Page() {
         </div>
       </section>
       <section className="grid grid-cols-5 gap-x-32 gap-y-8">
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
+        {products.map((p) => (
+          <ProductItem key={p.id} />
+        ))}
       </section>
     </section>
   );

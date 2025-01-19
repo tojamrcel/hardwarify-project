@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
 async function Page() {
   const products = await getProducts();
-  console.log(products);
 
   return (
     <section className="flex justify-center gap-24">

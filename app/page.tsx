@@ -3,7 +3,17 @@ import { getBestsellers } from "./_lib/data_service";
 
 export default async function Page() {
   const bestsellers = await getBestsellers();
-  const sortedProducts = bestsellers.sort((a, b) => +a.discount - +b.discount);
+  const bestsellersWithDiscount = bestsellers.map((prod) => {
+    return {
+      ...prod,
+      discountPercent: Math.round(
+        (Number(prod.discount) / prod.regular_price) * 100,
+      ),
+    };
+  });
+  const sortedProducts = bestsellersWithDiscount.sort(
+    (a, b) => b.discountPercent - a.discountPercent,
+  );
 
   return (
     <>

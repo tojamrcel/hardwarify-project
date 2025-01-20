@@ -27,7 +27,6 @@ export async function getBestsellers() {
     .from("bestsellers")
     .select(`products(*)`);
 
-  console.log(data);
   if (error) console.error(error);
 
   if (!data) return [];

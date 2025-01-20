@@ -21,3 +21,16 @@ export async function getProductById(id: number): Promise<Product> {
 
   return data;
 }
+
+export async function getBestsellers() {
+  const { data, error } = await supabase
+    .from("bestsellers")
+    .select(`products(*)`);
+
+  console.log(data);
+  if (error) console.error(error);
+
+  if (!data) return [];
+
+  return data;
+}

@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Product } from "../_types/types";
-import Image from "next/image";
 
 function ProductItem({ product }: { product: Product }) {
   const { id, product_name: name, image } = product;

@@ -9,3 +9,15 @@ export async function getProducts(): Promise<Product[]> {
 
   return data;
 }
+
+export async function getProductById(id: number): Promise<Product> {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) console.error(error);
+
+  return data;
+}

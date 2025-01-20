@@ -22,14 +22,14 @@ export async function getProductById(id: number): Promise<Product> {
   return data;
 }
 
-export async function getBestsellers() {
+export async function getBestsellers(): Promise<{ products: Product[] }> {
   const { data, error } = await supabase
     .from("bestsellers")
-    .select(`products(*)`);
+    .select(`products(*)`)
+    .single();
 
   if (error) console.error(error);
-
-  if (!data) return [];
+  if (!data) return { products: [] };
 
   return data;
 }

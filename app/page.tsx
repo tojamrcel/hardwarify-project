@@ -1,9 +1,6 @@
 import HomeSection from "./_components/HomeSection";
-import { getBestsellers } from "./_lib/data_service";
 
-export default async function Page() {
-  const bestsellers = await getBestsellers();
-
+export default function Page() {
   return (
     <>
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase tracking-wider text-gray-700 underline">

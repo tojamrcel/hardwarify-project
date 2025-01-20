@@ -22,12 +22,13 @@ export async function getProductById(id: number): Promise<Product> {
   return data;
 }
 
-export async function getBestsellers(): Promise<object[]> {
+export async function getBestsellers(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("bestsellers")
     .select(`products(*)`);
 
   if (error) console.error(error);
-  if (!data) return [{}];
-  return data;
+  if (!data) throw new Error("There are not any bestsellers.");
+
+  return data.flatMap((prod) => prod.products);
 }

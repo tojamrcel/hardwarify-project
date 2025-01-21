@@ -26,7 +26,7 @@ function HomeSection({
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center text-4xl font-bold uppercase text-stone-800">
+            <h2 className="text-center text-4xl font-bold text-stone-800">
               {name}
             </h2>
             <span className="w-full text-center font-semibold">

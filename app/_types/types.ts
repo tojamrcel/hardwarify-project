@@ -7,3 +7,7 @@ export interface Product {
   category: string;
   image: string;
 }
+
+export interface ProductWithDiscount extends Product {
+  discountPercent: number | null;
+}

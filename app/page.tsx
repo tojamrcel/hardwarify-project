@@ -1,5 +1,6 @@
 import HomeSection from "./_components/HomeSection";
 import { getBestsellers } from "./_lib/data_service";
+import { ProductWithDiscount } from "./_types/types";
 
 export default async function Page() {
   const bestsellers = await getBestsellers();
@@ -11,7 +12,7 @@ export default async function Page() {
       ),
     };
   });
-  const sortedBestsellers = bestsellersWithDiscount
+  const sortedBestsellers: ProductWithDiscount[] = bestsellersWithDiscount
     .sort((a, b) => b.discountPercent - a.discountPercent)
     .slice(0, 4);
 
@@ -21,7 +22,7 @@ export default async function Page() {
         BESTSELLERS
       </h2>
       <section className="mb-16">
-        <HomeSection product={sortedBestsellers.at(0)} textPlace="left" />
+        <HomeSection product={sortedBestsellers[0]} textPlace="left" />
       </section>
 
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase text-gray-700">

@@ -1,11 +1,7 @@
 import Button from "./Button";
 import Image from "next/image";
 import RecommendedProducts from "./RecommendedProducts";
-import { Product } from "../_types/types";
-
-interface ProductWithDiscount extends Product {
-  discountPercent: number | null;
-}
+import { ProductWithDiscount } from "../_types/types";
 
 function HomeSection({
   textPlace,

@@ -31,14 +31,14 @@ export default async function Page() {
         Gaming
       </h2>
       <section className="mb-16">
-        <HomeSection textPlace="right" />
+        {/* <HomeSection textPlace="right" /> */}
       </section>
 
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase text-gray-700">
         Smartphones
       </h2>
       <section className="mb-16">
-        <HomeSection textPlace="left" />
+        {/* <HomeSection textPlace="left" /> */}
       </section>
     </>
   );

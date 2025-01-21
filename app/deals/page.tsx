@@ -23,7 +23,7 @@ function Page() {
           Buy now
         </Button>
       </section>
-      <RecommendedProducts />
+      {/* <RecommendedProducts /> */}
     </>
   );
 }

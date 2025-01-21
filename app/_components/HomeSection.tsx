@@ -30,7 +30,8 @@ function HomeSection({
               {name}
             </h2>
             <span className="w-full text-center font-semibold">
-              ${finalPrice} &mdash; {discountPercent}% off
+              ${finalPrice}
+              {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
             <Button type="primary" link={`/products/${id}`}>
               Buy now
@@ -65,7 +66,8 @@ function HomeSection({
               {name}
             </h2>
             <span className="w-full text-center font-semibold">
-              ${finalPrice} &mdash; {discountPercent}% off
+              ${finalPrice}
+              {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
             <Button type="primary" link={`/products/${id}`}>
               Buy now

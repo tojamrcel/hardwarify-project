@@ -15,7 +15,16 @@ function HomeSection({
   product: ProductWithDiscount;
 }) {
   if (!product) return;
-  const { id, product_name: name, discountPercent, image } = product;
+  const {
+    id,
+    product_name: name,
+    discountPercent,
+    image,
+    discount,
+    regular_price: regularPrice,
+  } = product;
+
+  const finalPrice = regularPrice - Number(discount);
 
   return (
     <>
@@ -27,7 +36,7 @@ function HomeSection({
                 {name}
               </h2>
               <span className="w-full text-center font-semibold">
-                {discountPercent}% off
+                ${finalPrice} &mdash; {discountPercent}% off
               </span>
               <Button type="primary" link={`/products/${id}`}>
                 Buy now
@@ -62,7 +71,7 @@ function HomeSection({
                 {name}
               </h2>
               <span className="w-full text-center font-semibold">
-                {discountPercent}% off
+                ${finalPrice} &mdash; {discountPercent}% off
               </span>
               <Button type="primary" link={`/products/${id}`}>
                 Buy now

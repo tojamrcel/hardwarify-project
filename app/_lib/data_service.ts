@@ -33,15 +33,13 @@ export async function getBestsellers(): Promise<Product[]> {
   return data.flatMap((prod) => prod.products);
 }
 
-export async function getLimitedProductsByCategory(
-  limit: number,
+export async function getProductsByCategory(
   category: string,
-) {
+): Promise<Product[]> {
   const { data, error } = await supabase
     .from("products")
     .select("*")
-    .eq("category", category)
-    .limit(limit);
+    .eq("category", category);
 
   if (error) console.error(error);
   if (!data || !data.length) throw new Error("No products in this category :(");

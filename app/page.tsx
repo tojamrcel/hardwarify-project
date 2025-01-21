@@ -13,9 +13,9 @@ export default async function Page() {
       ),
     };
   });
-  const sortedBestsellers: ProductWithDiscount[] = bestsellersWithDiscount
-    .sort((a, b) => b.discountPercent - a.discountPercent)
-    .slice(0, 4);
+  const sortedBestsellers: ProductWithDiscount[] = bestsellersWithDiscount.sort(
+    (a, b) => b.discountPercent - a.discountPercent,
+  );
 
   return (
     <>
@@ -24,7 +24,7 @@ export default async function Page() {
       </h2>
       <section className="mb-16">
         <HomeSection product={sortedBestsellers[0]} textPlace="left" />
-        <RecommendedProducts products={sortedBestsellers.slice(1, -1)} />
+        <RecommendedProducts products={sortedBestsellers.slice(1, 4)} />
       </section>
 
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase text-gray-700">

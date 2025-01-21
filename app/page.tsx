@@ -11,9 +11,9 @@ export default async function Page() {
       ),
     };
   });
-  const sortedProducts = bestsellersWithDiscount.sort(
-    (a, b) => b.discountPercent - a.discountPercent,
-  );
+  const sortedBestsellers = bestsellersWithDiscount
+    .sort((a, b) => b.discountPercent - a.discountPercent)
+    .slice(0, 4);
 
   return (
     <>
@@ -21,7 +21,7 @@ export default async function Page() {
         BESTSELLERS
       </h2>
       <section className="mb-16">
-        <HomeSection textPlace="left" />
+        <HomeSection product={sortedBestsellers.at(0)} textPlace="left" />
       </section>
 
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase text-gray-700">
@@ -32,7 +32,7 @@ export default async function Page() {
       </section>
 
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase text-gray-700">
-        SMARTPHONES
+        Smartphones
       </h2>
       <section className="mb-16">
         <HomeSection textPlace="left" />

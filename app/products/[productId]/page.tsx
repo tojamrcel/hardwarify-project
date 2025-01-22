@@ -38,7 +38,7 @@ async function Page({ params }: { params: { productId: string } }) {
           />
         </div>
         <div className="flex w-96 flex-col gap-6 p-4">
-          <h2 className="text-4xl font-bold text-gray-700">{name}</h2>
+          <h2 className="text-4xl font-bold uppercase text-gray-700">{name}</h2>
           <p className="text-gray-700">{description}</p>
           <span className="text-xl font-bold text-gray-700">
             {regularPrice - Number(discount)}$

@@ -1,6 +1,19 @@
 import { getProductById } from "@/app/_lib/data_service";
 import Image from "next/image";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { productId: string };
+}) {
+  const { productId } = await params;
+  const { product_name: name } = await getProductById(Number(productId));
+
+  return {
+    title: `${name}`,
+  };
+}
+
 async function Page({ params }: { params: { productId: string } }) {
   const { productId } = await params;
   const {

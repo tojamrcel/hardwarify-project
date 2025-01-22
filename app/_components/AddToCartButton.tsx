@@ -7,8 +7,23 @@ function AddToCartButton({ product }: { product: Product }) {
   const { setCart } = useCart();
 
   function handleAddToCart() {
-    setCart((state) => [...state, product]);
+    const cartProductItem = { ...product, quantity: 1 };
+
+    setCart((state) => {
+      const alreadyInCart = state.find(
+        (prod) => prod.id === cartProductItem.id,
+      );
+
+      if (alreadyInCart)
+        return [
+          ...state.filter((prod) => prod.id !== product.id),
+          { ...cartProductItem, quantity: alreadyInCart.quantity + 1 },
+        ];
+
+      return [...state, cartProductItem];
+    });
   }
+
   return (
     <button
       onClick={handleAddToCart}

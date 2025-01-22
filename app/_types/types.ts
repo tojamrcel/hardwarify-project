@@ -11,3 +11,7 @@ export interface Product {
 export interface ProductWithDiscount extends Product {
   discountPercent: number | null;
 }
+
+export interface CartProduct extends Product {
+  quantity: number;
+}

@@ -35,7 +35,7 @@ function Header() {
               <div className="absolute -top-2 left-6">
                 {cart.length ? (
                   <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-3 text-xs font-semibold text-stone-200">
-                    cart.length
+                    {cart.length}
                   </p>
                 ) : null}
               </div>

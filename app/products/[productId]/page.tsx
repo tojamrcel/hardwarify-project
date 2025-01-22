@@ -1,3 +1,4 @@
+import AddToCartButton from "@/app/_components/AddToCartButton";
 import { getProductById } from "@/app/_lib/data_service";
 import Image from "next/image";
 
@@ -16,20 +17,14 @@ export async function generateMetadata({
 
 async function Page({ params }: { params: { productId: string } }) {
   const { productId } = await params;
-  const {
-    product_name: name,
-    description,
-    regular_price: regularPrice,
-    discount,
-    image,
-  } = await getProductById(Number(productId));
+  const product = await getProductById(Number(productId));
 
   return (
     <section className="mt-8 flex max-h-[120rem] flex-col gap-4">
       <div className="flex items-center justify-evenly gap-8 rounded-lg bg-white-second shadow-md">
         <div className="flex items-center justify-center px-4 py-4">
           <Image
-            src={image}
+            src={product.image}
             alt="Iphone 16 Pro"
             width={384}
             height={384}
@@ -38,15 +33,15 @@ async function Page({ params }: { params: { productId: string } }) {
           />
         </div>
         <div className="flex w-96 flex-col gap-6 p-4">
-          <h2 className="text-4xl font-bold uppercase text-gray-700">{name}</h2>
-          <p className="text-gray-700">{description}</p>
+          <h2 className="text-4xl font-bold uppercase text-gray-700">
+            {product.product_name}
+          </h2>
+          <p className="text-gray-700">{product.description}</p>
           <span className="text-xl font-bold text-gray-700">
-            {regularPrice - Number(discount)}$
+            {product.regular_price - Number(product.discount)}$
           </span>
           <div className="flex items-center gap-2">
-            <button className="rounded-md bg-red-600 px-3 py-1 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700">
-              Add to cart
-            </button>
+            <AddToCartButton product={product} />
           </div>
         </div>
       </div>

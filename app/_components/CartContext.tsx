@@ -9,7 +9,11 @@ interface CartContextType {
   clearCart(): void;
 }
 
-const CartContext = createContext<CartContextType | []>([]);
+const CartContext = createContext<CartContextType>({
+  cart: [],
+  setCart: () => {},
+  clearCart: () => {},
+});
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Product[]>([]);

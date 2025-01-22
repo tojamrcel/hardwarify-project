@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
+import { useCart } from "./CartContext";
 
 function Header() {
+  const { cart } = useCart();
   return (
     <header className="flex h-[70px] w-full items-center gap-10 bg-white-second px-12 shadow-sm">
       <div>
@@ -29,9 +33,11 @@ function Header() {
           <li className="ml-auto transition-colors hover:text-stone-500">
             <div className="relative">
               <div className="absolute -top-2 left-6">
-                <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-3 text-xs font-semibold text-stone-200">
-                  2
-                </p>
+                {cart.length ? (
+                  <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-3 text-xs font-semibold text-stone-200">
+                    cart.length
+                  </p>
+                ) : null}
               </div>
               <Link href="/cart" className="text-4xl">
                 <IoCartOutline />

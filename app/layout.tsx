@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./_styles/globals.css";
 import Header from "./_components/Header";
+import { CartProvider } from "./_components/CartContext";
 
 const ralewaySans = Raleway({
   variable: "--font-raleway-sans",
@@ -26,8 +27,10 @@ export default function RootLayout({
       <body
         className={`${ralewaySans.variable} ${ralewaySans.variable} bg-white-bg antialiased`}
       >
-        <Header />
-        <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+        <CartProvider>
+          <Header />
+          <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+        </CartProvider>
       </body>
     </html>
   );

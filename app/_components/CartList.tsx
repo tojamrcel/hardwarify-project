@@ -13,7 +13,7 @@ function CartList() {
       {cart.length > 0 &&
         cart.map((prod) => <CartItem product={prod} key={prod.id} />)}
       {cart.length === 0 && (
-        <p className="text-center text-xl leading-6 text-gray-800">
+        <p className="text-center text-2xl leading-6 text-gray-800">
           The cart is empty :(
         </p>
       )}

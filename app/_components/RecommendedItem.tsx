@@ -23,7 +23,7 @@ function RecommendedItem({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h3 className="font-bold text-stone-800">{name}</h3>
+        <h3 className="text-center font-bold text-stone-800">{name}</h3>
         {discount ? (
           <>
             <div className="flex gap-2 font-semibold">

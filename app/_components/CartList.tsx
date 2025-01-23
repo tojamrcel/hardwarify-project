@@ -72,7 +72,7 @@ function CartItem({
           <button className="flex items-center justify-center font-bold">
             +
           </button>
-          {product.discount ? (
+          {discount ? (
             <>
               <div className="flex gap-2">
                 <p className="ml-2 italic line-through">

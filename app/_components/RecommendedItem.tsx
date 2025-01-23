@@ -24,9 +24,20 @@ function RecommendedItem({ product }: { product: Product }) {
       </div>
       <div className="flex flex-col items-center justify-center">
         <h3 className="font-bold text-stone-800">{name}</h3>
-        <span className="font-semibold">
-          ${regularPrice - Number(discount)}
-        </span>
+        {discount ? (
+          <>
+            <div className="flex gap-2 font-semibold">
+              <span className="italic line-through">${regularPrice}</span>
+              <span className="text-red-600">
+                ${regularPrice - Number(discount)}
+              </span>
+            </div>
+          </>
+        ) : (
+          <span className="font-semibold">
+            ${regularPrice - Number(discount)}
+          </span>
+        )}
         <Link
           href={`/products/${id}`}
           className="mt-1 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"

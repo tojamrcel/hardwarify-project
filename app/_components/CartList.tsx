@@ -1,17 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { useCart } from "./CartContext";
-import { CartProduct } from "../_types/types";
 import Link from "next/link";
+import { CartProduct } from "../_types/types";
+import { useCart } from "./CartContext";
 
 function CartList() {
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
+
+  function handleRemoveItem(productId: number) {
+    setCart(() => cart.filter((product) => product.id !== productId));
+  }
 
   return (
     <div className="mt-4 flex flex-col gap-8 p-4">
       {cart.length > 0 &&
-        cart.map((prod) => <CartItem product={prod} key={prod.id} />)}
+        cart.map((prod) => (
+          <CartItem
+            handleRemove={handleRemoveItem}
+            product={prod}
+            key={prod.id}
+          />
+        ))}
       {cart.length === 0 && (
         <p className="text-center text-2xl leading-6 text-gray-800">
           The cart is empty :(
@@ -21,7 +31,13 @@ function CartList() {
   );
 }
 
-function CartItem({ product }: { product: CartProduct }) {
+function CartItem({
+  product,
+  handleRemove,
+}: {
+  product: CartProduct;
+  handleRemove: (productId: number) => void;
+}) {
   const {
     id,
     product_name: name,
@@ -60,7 +76,10 @@ function CartItem({ product }: { product: CartProduct }) {
             ${(regularPrice - Number(discount)) * quantity}
           </p>
         </div>
-        <button className="absolute right-2 top-0 text-2xl text-gray-700">
+        <button
+          onClick={() => handleRemove(id)}
+          className="absolute right-2 top-0 text-2xl text-gray-700"
+        >
           &times;
         </button>
         <Link

@@ -37,9 +37,23 @@ async function Page({ params }: { params: { productId: string } }) {
             {product.product_name}
           </h2>
           <p className="text-gray-700">{product.description}</p>
-          <span className="text-xl font-bold text-gray-700">
-            {product.regular_price - Number(product.discount)}$
-          </span>
+          {product.discount ? (
+            <>
+              <div className="flex gap-2 text-xl">
+                <span className="italic text-gray-700 line-through">
+                  {product.regular_price}$
+                </span>
+                <span className="text-red-600">
+                  {product.regular_price - Number(product.discount)}$
+                </span>
+              </div>
+            </>
+          ) : (
+            <span className="text-xl font-bold text-gray-700">
+              {product.regular_price - Number(product.discount)}$
+            </span>
+          )}
+
           <div className="flex items-center gap-2">
             <AddToCartButton product={product} />
           </div>

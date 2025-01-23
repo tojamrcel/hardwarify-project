@@ -72,9 +72,20 @@ function CartItem({
           <button className="flex items-center justify-center font-bold">
             +
           </button>
-          <p className="ml-2">
-            ${(regularPrice - Number(discount)) * quantity}
-          </p>
+          {product.discount ? (
+            <>
+              <div className="flex gap-2">
+                <p className="ml-2 italic line-through">
+                  ${regularPrice * quantity}
+                </p>
+                <span className="text-red-600">
+                  ${(regularPrice - Number(discount)) * quantity}
+                </span>
+              </div>
+            </>
+          ) : (
+            <p className="ml-2">${regularPrice * quantity}</p>
+          )}
         </div>
         <button
           onClick={() => handleRemove(id)}

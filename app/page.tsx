@@ -1,41 +1,7 @@
 import HomeSection from "./_components/HomeSection";
 import RecommendedProducts from "./_components/RecommendedProducts";
 import { getBestsellers, getProductsByCategory } from "./_lib/data_service";
-import { Product, ProductWithDiscount } from "./_types/types";
-
-function sortByDiscount(products: Product[]): ProductWithDiscount[] | [] {
-  if (!products.length) return [];
-
-  const productsWithDiscount = products.map((prod) => {
-    return {
-      ...prod,
-      discountPercent: Math.round(
-        (Number(prod.discount) / prod.regular_price) * 100,
-      ),
-    };
-  });
-
-  return productsWithDiscount.sort(
-    (a, b) => b.discountPercent - a.discountPercent,
-  );
-}
-
-function removeRepeatingProducts(
-  category: ProductWithDiscount[],
-  bestsellers: ProductWithDiscount[],
-): ProductWithDiscount[] | [] {
-  if (!category || !bestsellers) return [];
-
-  return category
-    .map((product) => {
-      const isBestseller = Boolean(
-        bestsellers.find((bestseller) => bestseller.id === product.id),
-      );
-      if (isBestseller) return null;
-      return product;
-    })
-    .filter((product) => product !== null);
-}
+import { sortByDiscount, removeRepeatingProducts } from "./_lib/helpers";
 
 export default async function Page() {
   const bestsellers = await getBestsellers();

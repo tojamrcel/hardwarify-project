@@ -6,6 +6,7 @@ export interface Product {
   description: string;
   category: string;
   image: string;
+  availability: number;
 }
 
 export interface ProductWithDiscount extends Product {

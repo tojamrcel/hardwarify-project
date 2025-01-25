@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CartProduct } from "../_types/types";
 import { useCart } from "./CartContext";
+import { useState } from "react";
 
 function CartList() {
   const { cart, setCart } = useCart();
@@ -19,6 +20,7 @@ function CartList() {
           <CartItem
             handleRemove={handleRemoveItem}
             product={prod}
+            setCart={setCart}
             key={prod.id}
           />
         ))}
@@ -34,9 +36,11 @@ function CartList() {
 function CartItem({
   product,
   handleRemove,
+  setCart,
 }: {
   product: CartProduct;
   handleRemove: (productId: number) => void;
+  setCart(callback: (prevCart: CartProduct[]) => CartProduct[]): void;
 }) {
   const {
     id,
@@ -46,6 +50,16 @@ function CartItem({
     image,
     quantity,
   } = product;
+
+  function handleIncreaseQuantity() {
+    setCart((cart) => {
+      const increasedCart = cart.map((prod) => {
+        if (prod.id !== id) return prod;
+        return { ...prod, quantity: prod.quantity + 1 };
+      });
+      return increasedCart;
+    });
+  }
 
   return (
     <div className="relative grid max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-4 rounded-lg bg-white-second px-4 py-2">
@@ -65,11 +79,13 @@ function CartItem({
           <input
             type="number"
             className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
-            min="1"
-            max="10"
-            defaultValue={quantity}
+            value={quantity}
+            readOnly
           />
-          <button className="flex items-center justify-center font-bold">
+          <button
+            onClick={() => handleIncreaseQuantity()}
+            className="flex items-center justify-center font-bold"
+          >
             +
           </button>
           {discount ? (

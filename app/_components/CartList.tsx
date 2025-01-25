@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { CartProduct } from "../_types/types";
 import { useCart } from "./CartContext";
-import { useState } from "react";
 
 function CartList() {
   const { cart, setCart } = useCart();

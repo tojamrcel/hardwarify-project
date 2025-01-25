@@ -61,6 +61,19 @@ function CartItem({
     });
   }
 
+  function handleDecreaseQuantity() {
+    setCart((cart) => {
+      const decreasedCart = cart.map((prod) => {
+        if (prod.id !== id) return prod;
+        return {
+          ...prod,
+          quantity: prod.quantity === 1 ? prod.quantity : prod.quantity - 1,
+        };
+      });
+      return decreasedCart;
+    });
+  }
+
   return (
     <div className="relative grid max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-4 rounded-lg bg-white-second px-4 py-2">
       <Image
@@ -73,7 +86,10 @@ function CartItem({
       <div>
         <p className="text-lg font-semibold text-gray-700">{name}</p>
         <div className="flex items-center gap-2 text-gray-700">
-          <button className="flex items-center justify-center font-bold">
+          <button
+            onClick={() => handleDecreaseQuantity()}
+            className="flex items-center justify-center font-bold"
+          >
             -
           </button>
           <input

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ProductItem from "../_components/ProductItem";
 import { getProducts } from "../_lib/data_service";
+import FilterCategory from "../_components/FilterCategory";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -22,10 +23,7 @@ async function Page() {
         </label>
         <div className="ml-3 mt-1 flex w-full flex-col gap-2">
           {categories.map((cat) => (
-            <div className="flex items-center gap-3" key={cat}>
-              <input type="checkbox" name="category" value={cat} />
-              <p className="text-md text-gray-700">{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</p>
-            </div>
+            <FilterCategory cat={cat} key={cat} />
           ))}
         </div>
       </section>

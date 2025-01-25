@@ -2,8 +2,20 @@
 
 import { useCart } from "./CartContext";
 
+const SHIPPING_COST = 15;
+
 function CartSummary() {
   const { cart } = useCart();
+
+  const productsPrice = cart.reduce(
+    (acc, cur) => acc + cur.regular_price * cur.quantity,
+    0,
+  );
+
+  const discount = cart.reduce(
+    (acc, cur) => acc + Number(cur.discount) * cur.quantity,
+    0,
+  );
 
   return (
     <>
@@ -11,15 +23,19 @@ function CartSummary() {
       <div className="my-4 flex flex-col gap-2 px-4 text-gray-500">
         <p>
           <span className="font-semibold">Products:</span>{" "}
-          {cart.length ? `$xxx` : "—"}
+          {cart.length ? `$${productsPrice}` : "—"}
         </p>
         <p>
           <span className="font-semibold">Shipping cost:</span>{" "}
-          {cart.length ? `$xxx` : "—"}
+          {cart.length ? `$${SHIPPING_COST}` : "—"}
+        </p>
+        <p>
+          <span className="font-semibold">Discounts:</span>{" "}
+          {cart.length ? `$${discount}` : "—"}
         </p>
         <p>
           <span className="font-semibold">Total:</span>{" "}
-          {cart.length ? `$xxx` : "—"}
+          {cart.length ? `$${productsPrice - discount + SHIPPING_COST}` : "—"}
         </p>
         <button
           disabled={Boolean(!cart.length)}

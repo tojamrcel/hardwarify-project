@@ -12,9 +12,10 @@ async function Page({
 }: {
   searchParams: { filter: string } | undefined;
 }) {
+  const params = await searchParams;
   const products = await getProducts();
   const categories = Array.from(new Set(products.map((prod) => prod.category)));
-  const filter = searchParams?.filter?.split(",") ?? "all";
+  const filter = params?.filter?.split(",") ?? "all";
 
   return (
     <section className="flex justify-center gap-24">

@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
-import ProductItem from "../_components/ProductItem";
-import { getProducts } from "../_lib/data_service";
 import FilterCategory from "../_components/FilterCategory";
+import ProductsList from "../_components/ProductsList";
+import { getProducts } from "../_lib/data_service";
 
 export const metadata: Metadata = {
   title: "Products",
 };
 
-async function Page() {
+async function Page({
+  searchparams,
+}: {
+  searchparams: { filter: string } | undefined;
+}) {
   const products = await getProducts();
   const categories = Array.from(new Set(products.map((prod) => prod.category)));
+  const filter = searchparams?.filter ?? "all";
 
   return (
     <section className="flex justify-center gap-24">
@@ -27,11 +32,7 @@ async function Page() {
           ))}
         </div>
       </section>
-      <section className="grid grid-cols-5 gap-x-32 gap-y-8">
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </section>
+      <ProductsList products={products} />
     </section>
   );
 }

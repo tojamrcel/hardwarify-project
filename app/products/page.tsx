@@ -14,7 +14,7 @@ async function Page({
 }) {
   const products = await getProducts();
   const categories = Array.from(new Set(products.map((prod) => prod.category)));
-  const filter = searchParams?.filter ?? "all";
+  const filter = searchParams?.filter?.split(",") ?? "all";
 
   return (
     <section className="flex justify-center gap-24">
@@ -28,7 +28,7 @@ async function Page({
         </label>
         <Filters categories={categories} />
       </section>
-      <ProductsList products={products} />
+      <ProductsList products={products} filter={filter} />
     </section>
   );
 }

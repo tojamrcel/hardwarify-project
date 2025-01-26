@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Filters from "../_components/Filters";
 import ProductsList from "../_components/ProductsList";
 import { getProducts } from "../_lib/data_service";
-import Filters from "../_components/Filters";
 
 export const metadata: Metadata = {
   title: "Products",

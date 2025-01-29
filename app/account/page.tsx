@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AccountMenu from "../_components/AccountMenu";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -11,24 +12,7 @@ function Page() {
       <section className="grid grid-cols-[1fr_2.5fr] items-center gap-16">
         <div className="flex h-full flex-col">
           <div className="h-auto rounded-lg bg-white-second">
-            <nav className="p-4">
-              <ul className="flex flex-col gap-4 text-xl text-gray-700">
-                <li className="rounded-lg bg-gray-300 p-2 hover:bg-gray-300">
-                  <a href="#" className="font-semibold">
-                    General
-                  </a>
-                </li>
-                <li className="rounded-lg p-2 hover:bg-gray-300">
-                  <a href="#">My orders</a>
-                </li>
-                <li className="rounded-lg p-2 hover:bg-gray-300">
-                  <a href="#">Previous orders</a>
-                </li>
-                <li className="rounded-lg p-2 hover:bg-gray-300">
-                  <a href="#">Settings</a>
-                </li>
-              </ul>
-            </nav>
+            <AccountMenu />
           </div>
         </div>
         <div>

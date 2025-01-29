@@ -25,7 +25,7 @@ async function Page() {
   return (
     <>
       <h2 className="mb-2 py-2 text-center text-5xl font-bold uppercase tracking-wider text-red-600 underline">
-        BEST DEALS
+        HOT DEALS
       </h2>
       <section className="flex flex-col items-center rounded-lg bg-white-second py-4">
         <h3 className="text-3xl font-bold text-gray-700">{name}</h3>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Button from "../_components/Button";
 import RecommendedProducts from "../_components/RecommendedProducts";
 import { getProducts } from "../_lib/data_service";
 import { sortByDiscount } from "../_lib/helpers";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Deals",

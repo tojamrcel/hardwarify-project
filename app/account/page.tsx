@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 function Page() {
   return (
-    <>
+    <div className="flex h-full flex-col justify-center">
       <div className="grid grid-cols-[auto_1fr] gap-8">
         <img
           src="person.jpg"
@@ -21,7 +21,7 @@ function Page() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

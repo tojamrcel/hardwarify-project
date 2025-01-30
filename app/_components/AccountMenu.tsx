@@ -1,29 +1,46 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const links = [
+  {
+    name: "General",
+    href: "/account",
+  },
+  {
+    name: "My orders",
+    href: "/account/orders",
+  },
+  {
+    name: "Previous orders",
+    href: "/account/pastorders",
+  },
+  {
+    name: "Settings",
+    href: "/account/settings",
+  },
+];
 
 function AccountMenu() {
+  const pathname = usePathname();
+
   return (
     <nav className="p-4">
       <ul className="flex flex-col gap-4 text-xl text-gray-700">
-        <li className="rounded-lg bg-gray-300 p-2 text-gray-700 hover:bg-gray-300">
-          <Link href="/account" className="block font-semibold">
-            General
-          </Link>
-        </li>
-        <li className="rounded-lg p-2 hover:bg-gray-300">
-          <Link href="/account/orders" className="block">
-            My orders
-          </Link>
-        </li>
-        <li className="rounded-lg p-2 hover:bg-gray-300">
-          <Link href="/account/pastorders" className="block">
-            Previous orders
-          </Link>
-        </li>
-        <li className="rounded-lg p-2 hover:bg-gray-300">
-          <Link href="/account/settings" className="block">
-            Settings
-          </Link>
-        </li>
+        {links.map((link) => (
+          <li
+            className={`rounded-lg p-2 text-gray-700 hover:bg-gray-300 ${link.href === pathname ? "bg-gray-300" : ""}`}
+            key={link.href}
+          >
+            <Link
+              href={link.href}
+              className={`block ${link.href === pathname ? "font-semibold" : ""}`}
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

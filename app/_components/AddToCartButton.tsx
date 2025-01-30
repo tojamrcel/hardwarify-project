@@ -3,10 +3,18 @@
 import { Product } from "../_types/types";
 import { useCart } from "./CartContext";
 
-function AddToCartButton({ product }: { product: Product }) {
+function AddToCartButton({
+  product,
+  disabled,
+}: {
+  product: Product;
+  disabled: boolean;
+}) {
   const { setCart } = useCart();
 
   function handleAddToCart() {
+    if (disabled) return;
+
     const cartProductItem = { ...product, quantity: 1 };
 
     setCart((state) => {
@@ -27,7 +35,8 @@ function AddToCartButton({ product }: { product: Product }) {
   return (
     <button
       onClick={handleAddToCart}
-      className="rounded-md bg-red-600 px-3 py-1 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700"
+      disabled={disabled}
+      className="rounded-md bg-red-600 px-3 py-1 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700 disabled:bg-slate-300"
     >
       Add to cart
     </button>

@@ -68,7 +68,10 @@ async function Page({ params }: { params: { productId: string } }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <AddToCartButton product={product} />
+            <AddToCartButton
+              product={product}
+              disabled={!Boolean(product.availability)}
+            />
           </div>
         </div>
       </div>

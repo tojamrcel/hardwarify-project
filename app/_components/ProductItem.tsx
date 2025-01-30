@@ -3,14 +3,14 @@ import Link from "next/link";
 import { Product } from "../_types/types";
 
 function ProductItem({ product }: { product: Product }) {
-  const { id, product_name: name, image } = product;
+  const { id, product_name: name, image, availability } = product;
 
   return (
     <Link href={`/products/${id}`}>
       <div className="group relative flex h-36 w-36 flex-col items-center justify-center overflow-hidden rounded-md bg-white-second shadow-sm transition-transform duration-300 hover:scale-105">
         <div className="flex items-center justify-center">
           <Image
-            className="w-24 rounded-full"
+            className={`w-24 rounded-full ${availability === 0 ? "opacity-50 grayscale" : ""}`}
             src={image}
             width={96}
             height={96}

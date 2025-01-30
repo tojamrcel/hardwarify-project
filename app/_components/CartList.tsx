@@ -53,7 +53,8 @@ function CartItem({
   function handleIncreaseQuantity() {
     setCart((cart) => {
       const increasedCart = cart.map((prod) => {
-        if (prod.id !== id) return prod;
+        if (prod.id !== id || prod.availability < prod.quantity + 1)
+          return prod;
         return { ...prod, quantity: prod.quantity + 1 };
       });
       return increasedCart;

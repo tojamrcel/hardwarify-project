@@ -22,13 +22,17 @@ function AddToCartButton({
         (prod) => prod.id === cartProductItem.id,
       );
 
-      if (alreadyInCart)
+      if (alreadyInCart && product.availability >= alreadyInCart.quantity + 1)
         return [
           ...state.filter((prod) => prod.id !== product.id),
           { ...cartProductItem, quantity: alreadyInCart.quantity + 1 },
         ];
-
-      return [...state, cartProductItem];
+      else if (
+        alreadyInCart &&
+        product.availability < alreadyInCart.quantity + 1
+      ) {
+        return [...state];
+      } else return [...state, cartProductItem];
     });
   }
 

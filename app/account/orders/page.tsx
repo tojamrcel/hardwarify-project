@@ -1,7 +1,7 @@
 function Page() {
   return (
     <ul className="flex flex-col gap-4">
-      <li className="relative rounded-lg bg-white-second p-4 shadow-md transition-transform duration-300 hover:scale-[1.01]">
+      <li className="relative cursor-default rounded-lg bg-white-second p-4 shadow-md transition-transform duration-300 hover:scale-[1.01]">
         <div className="flex items-center gap-4">
           <h3 className="text-lg font-semibold text-gray-700">
             Order #xxxxxxxxxx

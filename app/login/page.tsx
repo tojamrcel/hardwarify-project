@@ -37,7 +37,7 @@ function Page() {
             href="/register"
             className="underline-offset-3 border-gray-500 text-sm font-semibold text-gray-500 hover:underline"
           >
-            I don't have an account yet
+            I don&apos;t have an account yet
           </Link>
 
           <button className="ml-auto mt-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700">

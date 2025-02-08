@@ -4,7 +4,7 @@ import { signUpAction } from "../_lib/actions";
 function Page() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="text-4xl font-bold text-gray-700">Registration</h2>
+      <h2 className="text-4xl font-bold text-gray-700">Sign Up</h2>
       <form className="flex flex-col items-center gap-2" action={signUpAction}>
         <div className="flex flex-col gap-1">
           <label
@@ -58,7 +58,7 @@ function Page() {
           </Link>
 
           <button className="ml-auto mt-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700">
-            Register
+            Sign Up
           </button>
         </div>
       </form>

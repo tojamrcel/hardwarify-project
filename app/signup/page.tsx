@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { signUpAction } from "../_lib/actions";
 
 function Page() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="text-4xl font-bold text-gray-700">Sign Up</h2>
+      <h2 className="text-4xl font-bold text-gray-700">Create new account</h2>
       <form className="flex flex-col items-center gap-2" action={signUpAction}>
         <div className="flex flex-col gap-1">
           <label

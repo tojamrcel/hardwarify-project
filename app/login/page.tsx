@@ -1,10 +1,29 @@
+"use client";
+
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 function Page() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const result = await signIn("credentials", {
+      email: "marcel-gala@wp.pl",
+      password: "test1234",
+      redirect: false,
+    });
+
+    redirect("/account");
+  }
+
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-4xl font-bold text-gray-700">Login</h2>
-      <form className="flex flex-col items-center gap-2">
+      <form
+        className="flex flex-col items-center gap-2"
+        onSubmit={handleSubmit}
+      >
         <div className="flex flex-col gap-1">
           <label
             htmlFor="email"

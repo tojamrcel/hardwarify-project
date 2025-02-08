@@ -1,3 +1,5 @@
+import { HiPencil } from "react-icons/hi";
+
 function Page() {
   return (
     <div className="flex flex-col gap-6">
@@ -24,7 +26,8 @@ function Page() {
           placeholder="jankowalski@mail.com"
           readOnly
         />
-        <button className="transition-color rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">
+        <button className="transition-color flex items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">
+          <HiPencil className="text-xl" />
           Edit
         </button>
       </div>
@@ -36,7 +39,8 @@ function Page() {
           value="password"
           readOnly
         />
-        <button className="transition-color rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">
+        <button className="transition-color flex items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">
+          <HiPencil className="text-xl" />
           Change password
         </button>
       </div>

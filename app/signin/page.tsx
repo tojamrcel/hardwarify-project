@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { signUpAction } from "../_lib/actions";
 
 function Page() {
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-4xl font-bold text-gray-700">Registration</h2>
-      <form className="flex flex-col items-center gap-2">
+      <form className="flex flex-col items-center gap-2" action={signUpAction}>
         <div className="flex flex-col gap-1">
           <label
             htmlFor="email"
@@ -17,6 +18,7 @@ function Page() {
             name="email"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
+            required
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -28,8 +30,9 @@ function Page() {
           </label>
           <input
             type="password"
-            name="confirmpassword"
+            name="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            required
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -43,6 +46,7 @@ function Page() {
             type="password"
             name="confirmpassword"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            required
           />
         </div>
         <div className="flex w-full items-center justify-between">

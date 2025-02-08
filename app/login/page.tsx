@@ -34,7 +34,7 @@ function Page() {
         </div>
         <div className="flex w-full items-center justify-between">
           <Link
-            href="/register"
+            href="/signup"
             className="underline-offset-3 border-gray-500 text-sm font-semibold text-gray-500 hover:underline"
           >
             I don&apos;t have an account yet

@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import InputRow from "../_components/InputRow";
 
 function Page() {
   async function handleSubmit(e) {
@@ -24,7 +25,7 @@ function Page() {
         className="flex flex-col items-center gap-2"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col gap-1">
+        <InputRow>
           <label
             htmlFor="email"
             className="text-md font-semibold text-gray-500"
@@ -37,8 +38,8 @@ function Page() {
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
           />
-        </div>
-        <div className="flex flex-col gap-1">
+        </InputRow>
+        <InputRow>
           <label
             htmlFor="email"
             className="text-md font-semibold text-gray-500"
@@ -50,7 +51,7 @@ function Page() {
             name="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
           />
-        </div>
+        </InputRow>
         <div className="flex w-full items-center justify-between">
           <Link
             href="/signup"

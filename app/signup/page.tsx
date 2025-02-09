@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { signUpAction } from "../_lib/actions";
+import InputRow from "../_components/InputRow";
 
 function Page() {
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-4xl font-bold text-gray-700">Create new account</h2>
       <form className="flex flex-col items-center gap-2" action={signUpAction}>
-        <div className="flex flex-col gap-1">
+        <InputRow>
           <label
             htmlFor="email"
             className="text-md font-semibold text-gray-500"
@@ -22,8 +23,8 @@ function Page() {
             placeholder="jankowalski@mail.com"
             required
           />
-        </div>
-        <div className="flex flex-col gap-1">
+        </InputRow>
+        <InputRow>
           <label
             htmlFor="password"
             className="text-md font-semibold text-gray-500"
@@ -36,8 +37,8 @@ function Page() {
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             required
           />
-        </div>
-        <div className="flex flex-col gap-1">
+        </InputRow>
+        <InputRow>
           <label
             htmlFor="confirmpassword"
             className="text-md font-semibold text-gray-500"
@@ -50,7 +51,7 @@ function Page() {
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             required
           />
-        </div>
+        </InputRow>
         <div className="flex w-full items-center justify-between">
           <Link
             href="/login"

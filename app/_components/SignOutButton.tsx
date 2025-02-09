@@ -13,7 +13,7 @@ function SignOutButton() {
       onClick={handleSignOut}
     >
       <IoLogOutOutline />
-      Sign out
+      <span>Sign out</span>
     </button>
   );
 }

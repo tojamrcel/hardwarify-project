@@ -6,7 +6,7 @@ function Page() {
       <h2 className="text-4xl font-bold text-gray-700">
         Shipping and payment details
       </h2>
-      <div className="mt-4 grid w-full grid-cols-2 px-4">
+      <div className="mt-4 grid w-full grid-cols-[2fr_1.5fr] px-4">
         <form className="flex flex-col gap-2">
           <InputRow>
             <label
@@ -18,7 +18,7 @@ function Page() {
             <input
               type="text"
               name="first_name"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
               placeholder="John"
             />
           </InputRow>
@@ -32,7 +32,7 @@ function Page() {
             <input
               type="text"
               name="last_name"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
               placeholder="Kowalski"
             />
           </InputRow>
@@ -46,7 +46,7 @@ function Page() {
             <input
               type="email"
               name="email"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
               placeholder="jankowalski@mail.com"
             />
           </InputRow>
@@ -60,7 +60,7 @@ function Page() {
             <input
               type="text"
               name="city"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             />
           </InputRow>
           <InputRow>
@@ -73,7 +73,7 @@ function Page() {
             <input
               type="text"
               name="postal_code"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             />
           </InputRow>
           <InputRow>
@@ -86,13 +86,32 @@ function Page() {
             <input
               type="text"
               name="address"
-              className="text-md h-10 w-96 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             />
           </InputRow>
           <button className="mt-2 self-start rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700">
             Order
           </button>
         </form>
+        <div>
+          <div className="flex max-h-[65%] w-full flex-col items-start justify-start gap-2 overflow-auto py-4">
+            <div className="grid w-full flex-shrink-0 grid-cols-[8rem_3fr] overflow-hidden rounded-lg bg-white-second">
+              <img
+                src="/person.jpg"
+                width="96"
+                height="96"
+                alt=""
+                className=""
+              />
+              <div className="flex h-full w-full flex-col justify-center">
+                TEXT
+              </div>
+            </div>
+          </div>
+          <p className="text-lg font-bold text-gray-600">
+            TOTAL: <span className="font-semibold">xxx$</span>
+          </p>
+        </div>
       </div>
     </>
   );

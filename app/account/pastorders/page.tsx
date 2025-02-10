@@ -7,7 +7,7 @@ function Page() {
             Order #xxxxxxxxxx
           </h3>
           <span className="text-md flex rounded-full bg-red-500 p-0.5 px-1.5 font-semibold uppercase tracking-tight text-stone-100">
-            COMPLETED
+            delivered
           </span>
         </div>
         <div className="mt-2 flex gap-3">

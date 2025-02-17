@@ -22,7 +22,7 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (error || !data.user) {
-          throw new Error("Invalid credentials");
+          throw new Error("Invalid username or password.");
         }
 
         return {

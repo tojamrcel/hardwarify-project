@@ -1,5 +1,6 @@
 import InputRow from "@/app/_components/InputRow";
 import SummaryProductItem from "@/app/_components/SummaryProductItem";
+import SummaryProducts from "@/app/_components/SummaryProducts";
 
 function Page() {
   return (
@@ -95,9 +96,7 @@ function Page() {
           </button>
         </form>
         <div>
-          <div className="flex max-h-[65%] w-full flex-col items-start justify-start gap-2 overflow-auto px-4 py-4">
-            <SummaryProductItem />
-          </div>
+          <SummaryProducts />
           <p className="text-lg font-bold text-gray-600">
             TOTAL: <span className="font-semibold">xxx$</span>
           </p>

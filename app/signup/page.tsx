@@ -10,6 +10,7 @@ function Page() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<SignUpFormValues>();
 
@@ -35,7 +36,7 @@ function Page() {
             type="email"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
-            {...register("email", { required: "This field is required." })}
+            {...register("email", { required: "Email is required." })}
           />
           {errors.email && (
             <span className="text-sm text-red-600">{errors.email.message}</span>
@@ -51,7 +52,13 @@ function Page() {
           <input
             type="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-            {...register("password", { required: "This field is required" })}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters.",
+              },
+            })}
           />
           {errors.password && (
             <span className="text-sm text-red-600">
@@ -70,7 +77,13 @@ function Page() {
             type="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             {...register("confirmPassword", {
-              required: "This field is required",
+              required: "Please confirm your password.",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters.",
+              },
+              validate: (val) =>
+                val === watch("password") || "Passwords have to be the same.",
             })}
           />
           {errors.confirmPassword && (

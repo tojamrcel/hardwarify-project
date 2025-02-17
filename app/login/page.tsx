@@ -5,6 +5,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import InputRow from "../_components/InputRow";
+import { useState } from "react";
 
 interface LoginData {
   email: string;
@@ -18,6 +19,8 @@ function Page() {
     formState: { errors },
   } = useForm<LoginData>();
 
+  const [error, setError] = useState("");
+
   async function onSubmit(data: LoginData) {
     const { email, password } = data;
     const login = await signIn("credentials", {
@@ -25,6 +28,8 @@ function Page() {
       password,
       redirect: false,
     });
+
+    if (login && login.error) setError(login.error);
 
     redirect("/account");
   }
@@ -71,6 +76,7 @@ function Page() {
             </span>
           )}
         </InputRow>
+        {error && <span className="text-sm text-red-600">{error}</span>}
         <div className="flex w-full items-center justify-between">
           <Link
             href="/signup"

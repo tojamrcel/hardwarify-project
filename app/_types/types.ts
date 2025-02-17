@@ -22,3 +22,8 @@ export interface SignUpFormValues {
   password: string;
   confirmPassword: string;
 }
+
+export interface Profile {
+  email: string;
+  image: string;
+}

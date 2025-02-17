@@ -1,5 +1,5 @@
+import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
-import { Product } from "../_types/types";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
@@ -43,6 +43,17 @@ export async function getProductsByCategory(
 
   if (error) console.error(error);
   if (!data || !data.length) throw new Error("No products in this category :(");
+
+  return data;
+}
+
+export async function createProfile(newProfile: Profile) {
+  const { data, error } = await supabase.from("profiles").insert([newProfile]);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Profile could not be created");
+  }
 
   return data;
 }

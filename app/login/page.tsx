@@ -4,13 +4,19 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import InputRow from "../_components/InputRow";
+import { useForm } from "react-hook-form";
+
+interface LoginData {
+  email: string;
+  password: string;
+}
 
 function Page() {
   async function handleSubmit(e) {
     e.preventDefault();
 
     const result = await signIn("credentials", {
-      email: "marcel-gala@wp.pl",
+      email: "test@test.com",
       password: "test1234",
       redirect: false,
     });

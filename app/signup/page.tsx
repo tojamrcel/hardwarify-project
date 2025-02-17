@@ -1,14 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { signUpAction } from "../_lib/actions";
+import { useForm } from "react-hook-form";
 import InputRow from "../_components/InputRow";
+import { signUpAction } from "../_lib/actions";
+import { SignUpFormValues } from "../_types/types";
 
 function Page() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpFormValues>();
+
+  async function onSubmit(data: SignUpFormValues) {
+    const signup = await signUpAction(data);
+  }
+
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-4xl font-bold text-gray-700">Create new account</h2>
-      <form className="flex flex-col items-center gap-2" action={signUpAction}>
+      <form
+        className="flex flex-col items-center gap-2"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <InputRow>
           <label
             htmlFor="email"
@@ -18,11 +33,13 @@ function Page() {
           </label>
           <input
             type="email"
-            name="email"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
-            required
+            {...register("email", { required: "This field is required." })}
           />
+          {errors.email && (
+            <span className="text-sm text-red-600">{errors.email.message}</span>
+          )}
         </InputRow>
         <InputRow>
           <label
@@ -33,10 +50,14 @@ function Page() {
           </label>
           <input
             type="password"
-            name="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-            required
+            {...register("password", { required: "This field is required" })}
           />
+          {errors.password && (
+            <span className="text-sm text-red-600">
+              {errors.password.message}
+            </span>
+          )}
         </InputRow>
         <InputRow>
           <label
@@ -47,10 +68,16 @@ function Page() {
           </label>
           <input
             type="password"
-            name="confirmpassword"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-            required
+            {...register("confirmPassword", {
+              required: "This field is required",
+            })}
           />
+          {errors.confirmPassword && (
+            <span className="text-sm text-red-600">
+              {errors.confirmPassword.message}
+            </span>
+          )}
         </InputRow>
         <div className="flex w-full items-center justify-between">
           <Link

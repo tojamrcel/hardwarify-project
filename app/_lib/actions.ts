@@ -2,11 +2,12 @@
 
 import { redirect } from "next/navigation";
 import { supabase } from "./supabase";
+import { SignUpFormValues } from "../_types/types";
 
-export async function signUpAction(formData: FormData) {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const { data, error } = await supabase.auth.signUp({ email, password });
+export async function signUpAction(data: SignUpFormValues) {
+  const { email, password } = data;
+
+  const { error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
     console.error("error");

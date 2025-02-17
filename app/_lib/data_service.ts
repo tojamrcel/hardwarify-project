@@ -47,13 +47,11 @@ export async function getProductsByCategory(
   return data;
 }
 
-export async function createProfile(newProfile: Profile) {
-  const { data, error } = await supabase.from("profiles").insert([newProfile]);
+export async function createProfile(newProfile: Profile): Promise<void> {
+  const { error } = await supabase.from("profiles").insert([newProfile]);
 
   if (error) {
     console.error(error);
     throw new Error("Profile could not be created");
   }
-
-  return data;
 }

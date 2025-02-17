@@ -1,10 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 
 const SHIPPING_COST = 15;
 
 function CartSummary() {
+  const router = useRouter();
+
   const { cart } = useCart();
 
   const productsPrice = cart.reduce(
@@ -39,6 +42,7 @@ function CartSummary() {
         </p>
         <button
           disabled={Boolean(!cart.length)}
+          onClick={() => router.push("/cart/checkout")}
           className="my-2 w-32 rounded-lg bg-red-600 px-2 py-2 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700 disabled:bg-slate-300 disabled:hover:bg-slate-300"
         >
           Checkout

@@ -1,8 +1,16 @@
+"use client";
+
+import { useCart } from "@/app/_components/CartContext";
 import InputRow from "@/app/_components/InputRow";
-import SummaryProductItem from "@/app/_components/SummaryProductItem";
 import SummaryProducts from "@/app/_components/SummaryProducts";
+import { useRouter } from "next/navigation";
 
 function Page() {
+  const { cart } = useCart();
+  const router = useRouter();
+
+  if (!cart.length) return router.push("/cart");
+
   return (
     <>
       <h2 className="text-4xl font-bold text-gray-700">

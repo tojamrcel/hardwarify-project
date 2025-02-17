@@ -13,9 +13,13 @@ export async function middleware(req: NextRequest) {
     (pathname.startsWith("/login") || pathname.startsWith("/signup"))
   )
     return NextResponse.redirect(new URL("/account", req.url));
+
+  if (!token && pathname.startsWith("/cart/checkout"))
+    return NextResponse.redirect(new URL("/login", req.url));
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/login", "/signup"],
+  matcher: ["/account/:path*", "/login", "/signup", "/cart/checkout"],
 };

@@ -12,12 +12,17 @@ interface LoginData {
 }
 
 function Page() {
-  async function handleSubmit(e) {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginData>();
 
-    const result = await signIn("credentials", {
-      email: "test@test.com",
-      password: "test1234",
+  async function onSubmit(data: LoginData) {
+    const { email, password } = data;
+    const login = await signIn("credentials", {
+      email,
+      password,
       redirect: false,
     });
 
@@ -29,7 +34,7 @@ function Page() {
       <h2 className="text-4xl font-bold text-gray-700">Login</h2>
       <form
         className="flex flex-col items-center gap-2"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <InputRow>
           <label
@@ -40,22 +45,22 @@ function Page() {
           </label>
           <input
             type="email"
-            name="email"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
+            {...register("email")}
           />
         </InputRow>
         <InputRow>
           <label
-            htmlFor="email"
+            htmlFor="password"
             className="text-md font-semibold text-gray-500"
           >
             Password
           </label>
           <input
             type="password"
-            name="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            {...register("password")}
           />
         </InputRow>
         <div className="flex w-full items-center justify-between">

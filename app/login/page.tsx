@@ -3,8 +3,8 @@
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import InputRow from "../_components/InputRow";
 import { useForm } from "react-hook-form";
+import InputRow from "../_components/InputRow";
 
 interface LoginData {
   email: string;
@@ -47,8 +47,11 @@ function Page() {
             type="email"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
-            {...register("email")}
+            {...register("email", { required: "Email is required." })}
           />
+          {errors.email && (
+            <span className="text-sm text-red-600">{errors.email.message}</span>
+          )}
         </InputRow>
         <InputRow>
           <label
@@ -60,8 +63,13 @@ function Page() {
           <input
             type="password"
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-            {...register("password")}
+            {...register("password", { required: "Password is required." })}
           />
+          {errors.password && (
+            <span className="text-sm text-red-600">
+              {errors.password.message}
+            </span>
+          )}
         </InputRow>
         <div className="flex w-full items-center justify-between">
           <Link

@@ -1,4 +1,5 @@
 import InputRow from "@/app/_components/InputRow";
+import SummaryProductItem from "@/app/_components/SummaryProductItem";
 
 function Page() {
   return (
@@ -94,19 +95,8 @@ function Page() {
           </button>
         </form>
         <div>
-          <div className="flex max-h-[65%] w-full flex-col items-start justify-start gap-2 overflow-auto py-4">
-            <div className="grid w-full flex-shrink-0 grid-cols-[8rem_3fr] overflow-hidden rounded-lg bg-white-second">
-              <img
-                src="/person.jpg"
-                width="96"
-                height="96"
-                alt=""
-                className=""
-              />
-              <div className="flex h-full w-full flex-col justify-center">
-                TEXT
-              </div>
-            </div>
+          <div className="flex max-h-[65%] w-full flex-col items-start justify-start gap-2 overflow-auto px-4 py-4">
+            <SummaryProductItem />
           </div>
           <p className="text-lg font-bold text-gray-600">
             TOTAL: <span className="font-semibold">xxx$</span>

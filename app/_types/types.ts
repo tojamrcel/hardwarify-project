@@ -26,4 +26,6 @@ export interface SignUpFormValues {
 export interface Profile {
   email: string;
   image: string;
+  firstName: string;
+  lastName: string;
 }

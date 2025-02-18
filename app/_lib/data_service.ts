@@ -47,6 +47,19 @@ export async function getProductsByCategory(
   return data;
 }
 
+export async function getProfile(email: string): Promise<Profile> {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("email, image, firstName, lastName")
+    .eq("email", email)
+    .single();
+
+  if (error) console.error(error);
+  if (!data) throw new Error("Profile not found.");
+
+  return data;
+}
+
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);
 

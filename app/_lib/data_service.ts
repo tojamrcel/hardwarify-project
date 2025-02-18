@@ -56,7 +56,6 @@ export async function getProfile(email: string): Promise<Profile> {
 
   if (error) console.error(error);
   if (!data) throw new Error("Profile not found.");
-
   return data;
 }
 

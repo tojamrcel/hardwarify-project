@@ -12,7 +12,7 @@ export async function signUpAction(data: SignUpFormValues) {
     password,
   });
 
-  const profile = { email, image: "" };
+  const profile = { firstName: "", lastName: "", email, image: "" };
 
   if (error) {
     console.error(error);

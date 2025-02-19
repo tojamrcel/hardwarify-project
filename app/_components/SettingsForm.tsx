@@ -30,8 +30,9 @@ function SettingsForm({ email }: { email: string }) {
           type="password"
           name="password"
           className="text-md h-10 w-2/3 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg read-only:focus:shadow-sm"
-          value="password"
-          readOnly
+          defaultValue={isEditing ? "" : "password"}
+          placeholder="Password"
+          readOnly={!isEditing}
         />
         {!isEditing && (
           <button
@@ -51,7 +52,6 @@ function SettingsForm({ email }: { email: string }) {
               name="confirmpassword"
               className="text-md h-10 w-2/3 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg read-only:focus:shadow-sm"
               placeholder="Confirm your password"
-              readOnly
             />
           </div>
           <button className="transition-color flex w-2/3 items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">

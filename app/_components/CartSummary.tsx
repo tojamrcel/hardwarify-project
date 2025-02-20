@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
-
-const SHIPPING_COST = 15;
+import { SHIPPING_COST } from "../_lib/constants";
 
 function CartSummary() {
   const router = useRouter();

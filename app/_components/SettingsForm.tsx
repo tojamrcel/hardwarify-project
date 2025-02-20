@@ -30,7 +30,7 @@ function SettingsForm({ email }: { email: string }) {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <input
             type="email"
             className="text-md h-10 w-2/3 rounded-md p-2 text-center text-gray-400 shadow-sm outline-none transition-all duration-200"
@@ -38,7 +38,7 @@ function SettingsForm({ email }: { email: string }) {
             readOnly
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <input
             type="password"
             className="text-md h-10 w-2/3 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg read-only:focus:shadow-sm"
@@ -69,7 +69,7 @@ function SettingsForm({ email }: { email: string }) {
         </div>
         {isEditing && (
           <>
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
               <input
                 type="password"
                 className="text-md h-10 w-2/3 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg read-only:focus:shadow-sm"

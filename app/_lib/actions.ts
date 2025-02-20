@@ -6,13 +6,13 @@ import { SignUpFormValues } from "../_types/types";
 import { createProfile } from "./data_service";
 
 export async function signUpAction(data: SignUpFormValues) {
-  const { email, password } = data;
+  const { email, password, firstName, lastName } = data;
   const { error } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  const profile = { firstName: "", lastName: "", email, image: "" };
+  const profile = { firstName, lastName, email, image: "" };
 
   if (error) {
     console.error(error);

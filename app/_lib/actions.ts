@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { supabase } from "./supabase";
-import { SignUpFormValues, UpdatePassword } from "../_types/types";
+import { SignUpFormValues } from "../_types/types";
 import { createProfile } from "./data_service";
 
 export async function signUpAction(data: SignUpFormValues) {

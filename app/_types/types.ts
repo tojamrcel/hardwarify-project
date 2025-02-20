@@ -29,8 +29,3 @@ export interface Profile {
   firstName: string;
   lastName: string;
 }
-
-export interface UpdatePassword {
-  password: string;
-  confirmPassword: string;
-}

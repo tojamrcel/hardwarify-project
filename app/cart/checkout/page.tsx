@@ -3,12 +3,13 @@
 import { useCart } from "@/app/_components/CartContext";
 import InputRow from "@/app/_components/InputRow";
 import SummaryProducts from "@/app/_components/SummaryProducts";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 function Page() {
+  const { data } = useSession();
   const { cart } = useCart();
   const router = useRouter();
-
   if (!cart.length) return router.push("/cart");
 
   return (
@@ -56,8 +57,8 @@ function Page() {
             <input
               type="email"
               name="email"
-              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-              placeholder="jankowalski@mail.com"
+              className="text-md h-10 w-2/3 rounded-md p-2 text-gray-700 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+              defaultValue={data?.user?.email ? data.user.email : ""}
             />
           </InputRow>
           <InputRow>

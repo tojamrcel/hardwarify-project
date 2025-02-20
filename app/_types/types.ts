@@ -30,7 +30,7 @@ export interface Profile {
   lastName: string;
 }
 
-export interface UpdateProfile {
+export interface UpdatePassword {
   password: string;
   confirmPassword: string;
 }

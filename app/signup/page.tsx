@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import InputRow from "../_components/InputRow";
 import { signUpAction } from "../_lib/actions";
 import { SignUpFormValues } from "../_types/types";
+import InputErrorMessage from "../_components/InputErrorMessage";
 
 function Page() {
   const {
@@ -39,7 +40,7 @@ function Page() {
             {...register("email", { required: "Email is required." })}
           />
           {errors.email && (
-            <span className="text-sm text-red-600">{errors.email.message}</span>
+            <InputErrorMessage>{errors.email.message}</InputErrorMessage>
           )}
         </InputRow>
         <InputRow>
@@ -61,9 +62,7 @@ function Page() {
             })}
           />
           {errors.password && (
-            <span className="text-sm text-red-600">
-              {errors.password.message}
-            </span>
+            <InputErrorMessage>{errors.password.message}</InputErrorMessage>
           )}
         </InputRow>
         <InputRow>
@@ -78,18 +77,14 @@ function Page() {
             className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
             {...register("confirmPassword", {
               required: "Please confirm your password.",
-              minLength: {
-                value: 8,
-                message: "Password must be at least 8 characters.",
-              },
               validate: (val) =>
                 val === watch("password") || "Passwords have to be the same.",
             })}
           />
           {errors.confirmPassword && (
-            <span className="text-sm text-red-600">
+            <InputErrorMessage>
               {errors.confirmPassword.message}
-            </span>
+            </InputErrorMessage>
           )}
         </InputRow>
         <div className="flex w-full items-center justify-between">

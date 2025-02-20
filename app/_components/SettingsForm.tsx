@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiPencil } from "react-icons/hi";
-import { UpdateProfile } from "../_types/types";
+import { UpdatePassword } from "../_types/types";
 
 function SettingsForm({ email }: { email: string }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -12,7 +12,7 @@ function SettingsForm({ email }: { email: string }) {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<UpdateProfile>();
+  } = useForm<UpdatePassword>();
 
   function handleChange() {
     setIsEditing(true);
@@ -22,7 +22,7 @@ function SettingsForm({ email }: { email: string }) {
     setIsEditing(false);
   }
 
-  function onSubmit(data: UpdateProfile) {
+  function onSubmit(data: UpdatePassword) {
     console.log(data);
   }
 
@@ -52,6 +52,7 @@ function SettingsForm({ email }: { email: string }) {
               },
             })}
           />
+          span
           {!isEditing && (
             <button
               onClick={handleChange}

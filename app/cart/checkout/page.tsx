@@ -5,12 +5,25 @@ import InputRow from "@/app/_components/InputRow";
 import SummaryProducts from "@/app/_components/SummaryProducts";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { SHIPPING_COST } from "@/app/_lib/constants";
 
 function Page() {
   const { data } = useSession();
   const { cart } = useCart();
   const router = useRouter();
   if (!cart.length) return router.push("/cart");
+
+  const productsPrice = cart.reduce(
+    (acc, cur) => acc + cur.regular_price * cur.quantity,
+    0,
+  );
+
+  const discount = cart.reduce(
+    (acc, cur) => acc + Number(cur.discount) * cur.quantity,
+    0,
+  );
+
+  const totalPrice = productsPrice - discount;
 
   return (
     <>
@@ -107,7 +120,8 @@ function Page() {
         <div>
           <SummaryProducts />
           <p className="text-lg font-bold text-gray-600">
-            TOTAL: <span className="font-semibold">xxx$</span>
+            TOTAL:{" "}
+            <span className="font-semibold">{totalPrice + SHIPPING_COST}$</span>
           </p>
         </div>
       </div>

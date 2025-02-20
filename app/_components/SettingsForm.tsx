@@ -10,6 +10,7 @@ function SettingsForm({ email }: { email: string }) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<UpdateProfile>();
 
@@ -45,6 +46,10 @@ function SettingsForm({ email }: { email: string }) {
             readOnly={!isEditing}
             {...register("password", {
               required: "Password is required.",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters.",
+              },
             })}
           />
           {!isEditing && (
@@ -66,6 +71,9 @@ function SettingsForm({ email }: { email: string }) {
                 placeholder="Confirm your password"
                 {...register("confirmPassword", {
                   required: "Please confirm your password.",
+                  validate: (val) =>
+                    watch("password") === val ||
+                    "Password have to be the same.",
                 })}
               />
             </div>
@@ -75,7 +83,7 @@ function SettingsForm({ email }: { email: string }) {
             <button
               type="button"
               onClick={handleClose}
-              className="-mt-2 w-2/3 text-gray-600 hover:text-gray-800"
+              className="-mt-2 w-2/3 text-gray-600 transition-all duration-300 hover:text-gray-800"
             >
               CLOSE
             </button>

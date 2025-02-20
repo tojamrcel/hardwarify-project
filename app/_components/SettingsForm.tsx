@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiPencil } from "react-icons/hi";
 import { UpdatePassword } from "../_types/types";
+import InputErrorMessage from "./InputErrorMessage";
 
 function SettingsForm({ email }: { email: string }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -52,7 +53,10 @@ function SettingsForm({ email }: { email: string }) {
               },
             })}
           />
-          span
+          {errors.password && (
+            <InputErrorMessage>{errors.password.message}</InputErrorMessage>
+          )}
+
           {!isEditing && (
             <button
               onClick={handleChange}
@@ -77,6 +81,11 @@ function SettingsForm({ email }: { email: string }) {
                     "Password have to be the same.",
                 })}
               />
+              {errors.confirmPassword && (
+                <InputErrorMessage>
+                  {errors.confirmPassword.message}
+                </InputErrorMessage>
+              )}
             </div>
             <button className="transition-color flex w-2/3 items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 duration-300 hover:bg-red-700">
               CHANGE

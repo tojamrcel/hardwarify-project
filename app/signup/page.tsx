@@ -45,6 +45,52 @@ function Page() {
         </InputRow>
         <InputRow>
           <label
+            htmlFor="firstName"
+            className="text-md font-semibold text-gray-500"
+          >
+            First name
+          </label>
+          <input
+            type="text"
+            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            placeholder="John"
+            {...register("firstName", {
+              required: "First name is required.",
+              minLength: {
+                value: 3,
+                message: "First name should be at least 3 characters.",
+              },
+            })}
+          />
+          {errors.firstName && (
+            <InputErrorMessage>{errors.firstName.message}</InputErrorMessage>
+          )}
+        </InputRow>
+        <InputRow>
+          <label
+            htmlFor="lastName"
+            className="text-md font-semibold text-gray-500"
+          >
+            Last name
+          </label>
+          <input
+            type="text"
+            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            placeholder="Kowalski"
+            {...register("lastName", {
+              required: "Last name is required.",
+              minLength: {
+                value: 3,
+                message: "Last name should be at least 3 characters.",
+              },
+            })}
+          />
+          {errors.lastName && (
+            <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
+          )}
+        </InputRow>
+        <InputRow>
+          <label
             htmlFor="password"
             className="text-md font-semibold text-gray-500"
           >

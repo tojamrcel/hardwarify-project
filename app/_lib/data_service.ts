@@ -1,5 +1,5 @@
 import { Product, Profile } from "../_types/types";
-import { supabase } from "./supabase";
+import { supabase, supabaseUrl } from "./supabase";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
@@ -65,5 +65,33 @@ export async function createProfile(newProfile: Profile): Promise<void> {
   if (error) {
     console.error(error);
     throw new Error("Profile could not be created");
+  }
+}
+
+export async function updateProfileImage(image: File, email: string) {
+  const imageName = `${Math.random()}-${email}`;
+  const imagePath = `${supabaseUrl}/storage/v1/object/public/profile_images/${imageName}`;
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({ image: imagePath })
+    .eq("email", email);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Image couldn't be uploaded.");
+  }
+
+  const { error: storageErr } = await supabase.storage
+    .from("profile-images")
+    .upload(imageName, image, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+
+  if (storageErr) {
+    await supabase.from("profiles").update({ image: "" }).eq("email", email);
+    console.error(error);
+    throw new Error("Cabin could not be created");
   }
 }

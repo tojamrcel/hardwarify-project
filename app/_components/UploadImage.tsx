@@ -8,7 +8,7 @@ function UploadImage() {
   const { register, handleSubmit } = useForm<UploadImageType>();
 
   async function onSubmit(data: UploadImageType) {
-    const upload = await updateProfileImageAction(data);
+    await updateProfileImageAction(data);
   }
 
   return (

@@ -1,4 +1,5 @@
 import SettingsForm from "@/app/_components/SettingsForm";
+import UploadImage from "@/app/_components/UploadImage";
 import { getProfile } from "@/app/_lib/data_service";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -25,9 +26,7 @@ async function Page() {
             {firstName} {lastName}
           </h2>
           <div className="text-md flex flex-col items-start">
-            <button className="font-semibold text-gray-500 underline-offset-[6px] hover:underline">
-              Upload new image
-            </button>
+            <UploadImage />
           </div>
         </div>
       </div>

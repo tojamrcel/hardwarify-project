@@ -31,3 +31,7 @@ export interface Profile {
   firstName: string;
   lastName: string;
 }
+
+export interface UploadImage {
+  image: File;
+}

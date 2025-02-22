@@ -21,7 +21,7 @@ export async function signUpAction(data: SignUpFormValues) {
     return;
   }
 
-  const newProfile = await createProfile(profile);
+  await createProfile(profile);
   redirect("/login");
 }
 export async function updateProfileImageAction(data: UploadImage) {

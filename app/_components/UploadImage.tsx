@@ -23,7 +23,7 @@ function UploadImage() {
           required: true,
         })}
       />
-      <button className="font-semibold text-gray-500 underline-offset-[6px] hover:underline">
+      <button className="font-semibold text-gray-500 decoration-2 underline-offset-[6px] hover:underline">
         Upload new image
       </button>
     </form>

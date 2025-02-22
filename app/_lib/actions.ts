@@ -5,6 +5,7 @@ import { supabase, supabaseUrl } from "./supabase";
 import { SignUpFormValues, UploadImage } from "../_types/types";
 import { createProfile } from "./data_service";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 
 export async function signUpAction(data: SignUpFormValues) {
   const { email, password, firstName, lastName } = data;
@@ -59,4 +60,6 @@ export async function updateProfileImageAction(data: UploadImage) {
     console.error(error);
     throw new Error("Image could not be uploaded.");
   }
+
+  revalidatePath("/account/*");
 }

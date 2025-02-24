@@ -1,34 +1,28 @@
 "use client";
 
 import { useCart } from "@/app/_components/CartContext";
+import InputErrorMessage from "@/app/_components/InputErrorMessage";
 import InputRow from "@/app/_components/InputRow";
 import SummaryProducts from "@/app/_components/SummaryProducts";
+import { createOrderAction } from "@/app/_lib/actions";
+import { SHIPPING_COST } from "@/app/_lib/constants";
+import { OrderForm } from "@/app/_types/types";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { SHIPPING_COST } from "@/app/_lib/constants";
-import { useForm } from "react-hook-form";
-import InputErrorMessage from "@/app/_components/InputErrorMessage";
 import { useEffect } from "react";
-
-interface OrderForm {
-  first_name: string;
-  last_name: string;
-  email: string;
-  city: string;
-  postal_code: string;
-  address: string;
-}
+import { useForm } from "react-hook-form";
 
 function Page() {
+  const { data } = useSession();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<OrderForm>();
-  const { data } = useSession();
+  } = useForm<OrderForm>({
+    defaultValues: { email: data?.user?.email ? data.user.email : undefined },
+  });
   const { cart } = useCart();
   const router = useRouter();
-
   const productsPrice = cart.reduce(
     (acc, cur) => acc + cur.regular_price * cur.quantity,
     0,
@@ -40,8 +34,8 @@ function Page() {
 
   const totalPrice = productsPrice - discount;
 
-  function onSubmit(data: OrderForm) {
-    console.log(data);
+  async function onSubmit(data: OrderForm) {
+    await createOrderAction({ ...data, products: cart });
   }
 
   useEffect(() => {
@@ -111,7 +105,6 @@ function Page() {
             <input
               type="email"
               className="text-md h-10 w-2/3 rounded-md p-2 text-gray-700 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
-              defaultValue={data?.user?.email ? data.user.email : ""}
               {...register("email", {
                 required: "Email is required.",
               })}

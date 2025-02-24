@@ -35,3 +35,13 @@ export interface Profile {
 export interface UploadImage {
   image: File;
 }
+
+export interface OrderForm {
+  first_name: string;
+  last_name: string;
+  email: string;
+  city: string;
+  postal_code: string;
+  address: string;
+  products: CartProduct[];
+}

@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { supabase, supabaseUrl } from "./supabase";
-import { SignUpFormValues, UploadImage } from "../_types/types";
+import { OrderForm, SignUpFormValues, UploadImage } from "../_types/types";
 import { createProfile } from "./data_service";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -62,4 +62,8 @@ export async function updateProfileImageAction(data: UploadImage) {
   }
 
   revalidatePath("/account/*");
+}
+
+export async function createOrderAction(data: OrderForm) {
+  console.log(data);
 }

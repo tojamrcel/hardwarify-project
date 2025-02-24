@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { SHIPPING_COST } from "@/app/_lib/constants";
 import { useForm } from "react-hook-form";
 import InputErrorMessage from "@/app/_components/InputErrorMessage";
+import { useEffect } from "react";
 
 interface OrderForm {
   first_name: string;
@@ -24,17 +25,14 @@ function Page() {
     handleSubmit,
     formState: { errors },
   } = useForm<OrderForm>();
-
   const { data } = useSession();
   const { cart } = useCart();
   const router = useRouter();
-  if (!cart.length) return router.push("/cart");
 
   const productsPrice = cart.reduce(
     (acc, cur) => acc + cur.regular_price * cur.quantity,
     0,
   );
-
   const discount = cart.reduce(
     (acc, cur) => acc + Number(cur.discount) * cur.quantity,
     0,
@@ -45,6 +43,10 @@ function Page() {
   function onSubmit(data: OrderForm) {
     console.log(data);
   }
+
+  useEffect(() => {
+    if (!cart.length) router.push("/cart");
+  }, [router, cart.length]);
 
   return (
     <>

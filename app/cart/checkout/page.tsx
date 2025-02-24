@@ -18,9 +18,8 @@ function Page() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<OrderForm>({
-    defaultValues: { email: data?.user?.email ? data.user.email : undefined },
-  });
+    setValue,
+  } = useForm<OrderForm>();
   const { cart } = useCart();
   const router = useRouter();
   const productsPrice = cart.reduce(
@@ -40,7 +39,8 @@ function Page() {
 
   useEffect(() => {
     if (!cart.length) router.push("/cart");
-  }, [router, cart.length]);
+    if (data?.user?.email) setValue("email", data.user.email);
+  }, [router, cart.length, data?.user?.email, setValue]);
 
   return (
     <>

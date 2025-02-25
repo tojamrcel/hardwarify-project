@@ -7,8 +7,8 @@ function Page() {
         Thank you!
       </h1>
       <p className="mb-2 text-xl text-gray-600">
-        Thank you for placing the order in our shop. You can track your order
-        <span className="font-semibold"> #XXX</span> in account page!
+        Thank you for placing the order in our shop. You can track your order in
+        account page!
       </p>
       <Button type="primary" link="/">
         Go to shop

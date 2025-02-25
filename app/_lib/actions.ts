@@ -71,6 +71,9 @@ export async function updateProfileImageAction(data: UploadImage) {
 }
 
 export async function createOrderAction(orderData: OrderForm) {
+  const session = await getServerSession();
+  if (!session?.user)
+    throw new Error("You have to be signed in to place the order.");
   const ids = orderData.products.map((prod) => prod.id);
 
   // double checking prices with database
@@ -78,8 +81,6 @@ export async function createOrderAction(orderData: OrderForm) {
     .from("products")
     .select("id, regular_price, discount")
     .in("id", ids);
-
-  console.log(data);
 
   const products = data?.map((prod) => {
     const { quantity } = orderData.products.find(
@@ -90,7 +91,7 @@ export async function createOrderAction(orderData: OrderForm) {
   });
 
   if (error) {
-    console.log(error);
+    console.error(error);
   }
 
   const price = products?.reduce((acc, cur) => {
@@ -101,5 +102,42 @@ export async function createOrderAction(orderData: OrderForm) {
   }, 0);
 
   const totalPrice = Number(price) + SHIPPING_COST;
-  console.log(totalPrice);
+
+  const orderID = Date.now();
+
+  const finalOrder = {
+    id: orderID,
+    total_price: totalPrice,
+    status: "pending",
+    email: session.user.email,
+    address: `${orderData.postal_code} ${orderData.city} ${orderData.address}`,
+  };
+
+  console.log(finalOrder);
+  const finalProducts = products?.map((prod) => {
+    return {
+      product_id: prod.id,
+      quantity: prod.quantity,
+      order_id: orderID,
+    };
+  });
+
+  const { error: finalOrderError } = await supabase
+    .from("orders")
+    .insert(finalOrder);
+
+  if (finalOrderError) {
+    throw new Error("There is a problem with creating new order.");
+  }
+
+  const { error: productsError } = await supabase
+    .from("order_items")
+    .insert(finalProducts);
+
+  if (productsError) {
+    console.error(productsError);
+    throw new Error("There is a problem with creating new order.");
+  }
+
+  redirect("/thankyou");
 }

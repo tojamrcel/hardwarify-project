@@ -56,8 +56,11 @@ export async function getProfile(email: string): Promise<Profile> {
 
   if (error) console.error(error);
   if (!data) throw new Error("Profile not found.");
+
   return data;
 }
+
+export async function getOrdersByEmail(email: string) {}
 
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);

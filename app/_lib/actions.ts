@@ -2,12 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { supabase, supabaseUrl } from "./supabase";
-import {
-  CartProduct,
-  OrderForm,
-  SignUpFormValues,
-  UploadImage,
-} from "../_types/types";
+import { OrderForm, SignUpFormValues, UploadImage } from "../_types/types";
 import { createProfile } from "./data_service";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -26,13 +21,12 @@ export async function signUpAction(data: SignUpFormValues) {
     console.error(error);
     return;
   }
-
   await createProfile(profile);
   redirect("/login");
 }
+
 export async function updateProfileImageAction(data: UploadImage) {
   const session = await getServerSession();
-  console.log(data);
   const { image } = data;
   const img = Array.isArray(image) ? image.at(0) : image;
 
@@ -113,7 +107,6 @@ export async function createOrderAction(orderData: OrderForm) {
     address: `${orderData.postal_code} ${orderData.city} ${orderData.address}`,
   };
 
-  console.log(finalOrder);
   const finalProducts = products?.map((prod) => {
     return {
       product_id: prod.id,

@@ -142,6 +142,10 @@ function Page() {
               className="text-md h-10 w-2/3 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
               {...register("postal_code", {
                 required: "Postal code is required.",
+                pattern: {
+                  value: /^\d{2}-\d{3}$/,
+                  message: "Invalid postal code.",
+                },
               })}
             />
             {errors.postal_code && (

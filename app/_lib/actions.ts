@@ -2,10 +2,16 @@
 
 import { redirect } from "next/navigation";
 import { supabase, supabaseUrl } from "./supabase";
-import { OrderForm, SignUpFormValues, UploadImage } from "../_types/types";
+import {
+  CartProduct,
+  OrderForm,
+  SignUpFormValues,
+  UploadImage,
+} from "../_types/types";
 import { createProfile } from "./data_service";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { SHIPPING_COST } from "./constants";
 
 export async function signUpAction(data: SignUpFormValues) {
   const { email, password, firstName, lastName } = data;
@@ -64,6 +70,36 @@ export async function updateProfileImageAction(data: UploadImage) {
   revalidatePath("/account/*");
 }
 
-export async function createOrderAction(data: OrderForm) {
+export async function createOrderAction(orderData: OrderForm) {
+  const ids = orderData.products.map((prod) => prod.id);
+
+  // double checking prices with database
+  const { data, error } = await supabase
+    .from("products")
+    .select("id, regular_price, discount")
+    .in("id", ids);
+
   console.log(data);
+
+  const products = data?.map((prod) => {
+    const { quantity } = orderData.products.find(
+      (cartProd) => cartProd.id === prod.id,
+    )!;
+
+    return { ...prod, quantity };
+  });
+
+  if (error) {
+    console.log(error);
+  }
+
+  const price = products?.reduce((acc, cur) => {
+    const regularPrice = cur.regular_price * cur.quantity;
+    const discounts = Number(cur.discount) * cur.quantity;
+
+    return (acc += regularPrice - discounts);
+  }, 0);
+
+  const totalPrice = Number(price) + SHIPPING_COST;
+  console.log(totalPrice);
 }

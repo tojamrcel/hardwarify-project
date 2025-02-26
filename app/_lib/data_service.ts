@@ -1,3 +1,4 @@
+import { getServerSession } from "next-auth";
 import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
 
@@ -60,7 +61,26 @@ export async function getProfile(email: string): Promise<Profile> {
   return data;
 }
 
-export async function getOrdersByEmail(email: string) {}
+export async function getUserOrders() {
+  const session = await getServerSession();
+  if (!session?.user?.email) throw new Error("You must be logged in.");
+
+  const { data: ordersData, error: orderError } = await supabase
+    .from("orders")
+    .select("id, total_price, status, address")
+    .eq("email", session.user.email);
+
+  if (orderError) throw new Error(orderError.message);
+
+  const orderIds = data.map((order) => order.id);
+
+  const { data: orderItemsData, error: itemsError } = await supabase
+    .from("order_items")
+    .select("product_id, quantity")
+    .in("order_id", orderIds);
+
+  if (itemsError) throw new Error(itemsError.message);
+}
 
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);

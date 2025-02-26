@@ -1,4 +1,8 @@
-function Page() {
+import { getUserOrders } from "@/app/_lib/data_service";
+
+async function Page() {
+  const orders = await getUserOrders();
+
   return (
     <ul className="flex flex-col gap-4">
       <li className="relative cursor-default rounded-lg bg-white-second p-4 shadow-md transition-transform duration-300 hover:scale-[1.01]">

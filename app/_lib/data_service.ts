@@ -72,7 +72,7 @@ export async function getUserOrders() {
 
   if (orderError) throw new Error(orderError.message);
 
-  const orderIds = data.map((order) => order.id);
+  const orderIds = ordersData.map((order) => order.id);
 
   const { data: orderItemsData, error: itemsError } = await supabase
     .from("order_items")

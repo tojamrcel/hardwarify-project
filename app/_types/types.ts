@@ -56,5 +56,7 @@ export interface Order {
   total_price: number;
   status: "pending" | "sent" | "delivered";
   address: string;
+  first_name: string;
+  last_name: string;
   items: OrderItem[];
 }

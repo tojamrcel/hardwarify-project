@@ -78,7 +78,7 @@ export async function getUserOrders(): Promise<Order[]> {
 
   const { data: ordersData, error: orderError } = await supabase
     .from("orders")
-    .select("id, total_price, status, address")
+    .select("id, total_price, status, address, first_name, last_name")
     .eq("email", session.user.email);
 
   if (orderError) throw new Error(orderError.message);

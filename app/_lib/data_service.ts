@@ -76,10 +76,17 @@ export async function getUserOrders() {
 
   const { data: orderItemsData, error: itemsError } = await supabase
     .from("order_items")
-    .select("product_id, quantity")
+    .select("product_id, quantity, order_id")
     .in("order_id", orderIds);
 
   if (itemsError) throw new Error(itemsError.message);
+
+  const finalOrders = ordersData.map((o) => {
+    const items = orderItemsData.filter((item) => item.order_id === o.id);
+    return { ...o, items };
+  });
+
+  return finalOrders;
 }
 
 export async function createProfile(newProfile: Profile): Promise<void> {

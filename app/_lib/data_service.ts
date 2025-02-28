@@ -6,7 +6,7 @@ import { Order } from "../_types/types";
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
 
-  if (error) console.error(error);
+  if (error) throw new Error(error.message);
   if (!data) return [];
 
   return data;
@@ -19,7 +19,7 @@ export async function getProductById(id: number): Promise<Product> {
     .eq("id", id)
     .single();
 
-  if (error) console.error(error);
+  if (error) throw new Error(error.message);
 
   return data;
 }
@@ -39,7 +39,7 @@ export async function getBestsellers(): Promise<Product[]> {
     .from("bestsellers")
     .select(`products(*)`);
 
-  if (error) console.error(error);
+  if (error) throw new Error(error.message);
   if (!data) throw new Error("There are not any bestsellers.");
 
   return data.flatMap((prod) => prod.products);
@@ -53,7 +53,7 @@ export async function getProductsByCategory(
     .select("*")
     .eq("category", category);
 
-  if (error) console.error(error);
+  if (error) throw new Error(error.message);
   if (!data || !data.length) throw new Error("No products in this category :(");
 
   return data;
@@ -66,7 +66,7 @@ export async function getProfile(email: string): Promise<Profile> {
     .eq("email", email)
     .single();
 
-  if (error) console.error(error);
+  if (error) throw new Error(error.message);
   if (!data) throw new Error("Profile not found.");
 
   return data;
@@ -108,8 +108,5 @@ export async function getUserOrders(): Promise<Order[]> {
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);
 
-  if (error) {
-    console.error(error);
-    throw new Error("Profile could not be created");
-  }
+  if (error) throw new Error("Profile could not be created");
 }

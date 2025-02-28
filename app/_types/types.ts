@@ -45,3 +45,16 @@ export interface OrderForm {
   address: string;
   products: CartProduct[];
 }
+
+export interface OrderItem {
+  product_id: number;
+  quantity: number;
+}
+
+export interface Order {
+  id: number;
+  total_price: number;
+  status: "pending" | "sent" | "delivered";
+  address: string;
+  items: OrderItem[];
+}

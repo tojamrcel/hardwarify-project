@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
+import { Order } from "../_types/types";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
@@ -61,7 +62,7 @@ export async function getProfile(email: string): Promise<Profile> {
   return data;
 }
 
-export async function getUserOrders() {
+export async function getUserOrders(): Promise<Order[]> {
   const session = await getServerSession();
   if (!session?.user?.email) throw new Error("You must be logged in.");
 
@@ -82,7 +83,12 @@ export async function getUserOrders() {
   if (itemsError) throw new Error(itemsError.message);
 
   const finalOrders = ordersData.map((o) => {
-    const items = orderItemsData.filter((item) => item.order_id === o.id);
+    const items = orderItemsData
+      .filter((item) => item.order_id === o.id)
+      .map((item) => {
+        return { product_id: item.product_id, quantity: item.quantity };
+      });
+
     return { ...o, items };
   });
 

@@ -24,27 +24,16 @@ function OrderItem({ orderItem }: { orderItem: Order }) {
           </span> */}
       </div>
       <div className="mt-2 flex gap-3">
-        <Image
-          src="/person.jpg"
-          alt=""
-          width={80}
-          height={80}
-          className="rounded-md"
-        />
-        <Image
-          src="/person.jpg"
-          alt=""
-          width={80}
-          height={80}
-          className="rounded-md"
-        />
-        <Image
-          src="/person.jpg"
-          alt=""
-          width={80}
-          height={80}
-          className="rounded-md"
-        />
+        {orderItem.items.map((item) => (
+          <Image
+            src="/person.jpg"
+            alt=""
+            width={80}
+            height={80}
+            className="rounded-md"
+            key={item.product_id}
+          />
+        ))}
       </div>
       <button className="absolute bottom-3 right-5 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-300 hover:border-stone-500">
         Go to order

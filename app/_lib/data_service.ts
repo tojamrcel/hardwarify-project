@@ -24,6 +24,16 @@ export async function getProductById(id: number): Promise<Product> {
   return data;
 }
 
+export async function getProductsByIds(ids: number[]): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .in("id", ids);
+
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 export async function getBestsellers(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("bestsellers")

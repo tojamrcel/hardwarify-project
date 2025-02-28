@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { Order } from "../_types/types";
+import { getProductsByIds } from "../_lib/data_service";
 
-function OrderItem({ orderItem }: { orderItem: Order }) {
+async function OrderItem({ orderItem }: { orderItem: Order }) {
+  const productsIds = orderItem.items.map((item) => item.product_id);
+  const products = await getProductsByIds(productsIds);
+
   return (
     <li className="relative cursor-default rounded-lg bg-white-second p-4 shadow-md transition-transform duration-300 hover:scale-[1.01]">
       <div className="flex items-center gap-4">
@@ -18,16 +22,17 @@ function OrderItem({ orderItem }: { orderItem: Order }) {
             sent
           </span>
         )}
-
-        {/*  <span className="text-md flex rounded-full bg-red-500 p-0.5 px-1.5 font-semibold uppercase tracking-tight text-stone-100">
+        {orderItem.status === "delivered" && (
+          <span className="text-md flex rounded-full bg-red-500 p-0.5 px-1.5 font-semibold uppercase tracking-tight text-stone-100">
             delivered
-          </span> */}
+          </span>
+        )}
       </div>
       <div className="mt-2 flex gap-3">
         {orderItem.items.map((item) => (
           <Image
-            src="/person.jpg"
-            alt=""
+            src={products.find((p) => p.id === item.product_id)!.image}
+            alt={products.find((p) => p.id === item.product_id)!.product_name}
             width={80}
             height={80}
             className="rounded-md"

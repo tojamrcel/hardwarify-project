@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CartProduct } from "../_types/types";
 
-function SummaryProductItem({ item }: { item: CartProduct }) {
+function ProductOverview({ item }: { item: CartProduct }) {
   return (
     <div className="grid w-full flex-shrink-0 grid-cols-[8rem_3fr] overflow-hidden rounded-lg bg-white-second">
       <Image src={item.image} width="96" height="96" alt={item.product_name} />
@@ -20,4 +20,4 @@ function SummaryProductItem({ item }: { item: CartProduct }) {
   );
 }
 
-export default SummaryProductItem;
+export default ProductOverview;

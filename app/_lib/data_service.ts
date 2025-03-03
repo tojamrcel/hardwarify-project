@@ -105,7 +105,28 @@ export async function getUserOrders(): Promise<Order[]> {
   return finalOrders;
 }
 
-export async function getOrderDetails() {}
+export async function getOrderDetails({ id }: { id: string }): Promise<Order> {
+  const session = await getServerSession();
+  if (!session?.user?.email) throw new Error("You must be logged in.");
+
+  const { data: ordersData, error: orderError } = await supabase
+    .from("orders")
+    .select("id, total_price, status, address, first_name, last_name")
+    .eq("email", session.user.email)
+    .single();
+
+  if (orderError) throw new Error(orderError.message);
+
+  const { data: orderItemsData, error: itemsError } = await supabase
+    .from("order_items")
+    .select("product_id, quantity, order_id")
+    .eq("order_id", id);
+
+  if (itemsError) throw new Error(itemsError.message);
+  const finalOrder = { ...ordersData, items: orderItemsData };
+
+  return finalOrder;
+}
 
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);

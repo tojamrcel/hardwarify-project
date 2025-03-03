@@ -1,5 +1,5 @@
-function Page({ params }: { params: { orderId: string } }) {
-  const { orderId } = params;
+async function Page({ params }: { params: { orderId: string } }) {
+  const { orderId } = await params;
 
   return (
     <div className="flex flex-col gap-4">

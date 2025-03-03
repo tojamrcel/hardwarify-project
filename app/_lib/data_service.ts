@@ -105,6 +105,8 @@ export async function getUserOrders(): Promise<Order[]> {
   return finalOrders;
 }
 
+export async function getOrderDetails() {}
+
 export async function createProfile(newProfile: Profile): Promise<void> {
   const { error } = await supabase.from("profiles").insert([newProfile]);
 

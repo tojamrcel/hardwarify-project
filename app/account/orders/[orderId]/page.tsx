@@ -1,5 +1,9 @@
+import { getOrderDetails } from "@/app/_lib/data_service";
+
 async function Page({ params }: { params: { orderId: string } }) {
   const { orderId } = await params;
+  const order = await getOrderDetails(orderId);
+  console.log(order);
 
   return (
     <div className="flex flex-col gap-4">

@@ -27,7 +27,7 @@ async function Page({ params }: { params: { orderId: string } }) {
         </h1>
         <OrderStatusBadge status={status} />
       </div>
-      <div className="grid w-full grid-cols-[3fr_2fr] gap-8">
+      <div className="grid w-full grid-cols-[3fr_2fr] items-center gap-8">
         <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
           {productItems.map((item) => (
             <li key={item.id}>
@@ -39,8 +39,8 @@ async function Page({ params }: { params: { orderId: string } }) {
           <h2 className="text-center text-lg font-semibold text-gray-700">
             Order info
           </h2>
-          <p>
-            Total price: <span>{totalPrice}$</span>
+          <p className="font-semibold text-gray-600">
+            Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
           <button className="transition-color mt-2 h-12 w-28 rounded-md bg-red-600 font-semibold text-stone-100 duration-300 hover:bg-red-700">
             Cancel order

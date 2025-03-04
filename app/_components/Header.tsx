@@ -76,17 +76,17 @@ function Header() {
                 Home
               </Link>
             </li>
-            <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
               <Link className="block py-2 text-center" href="/products">
                 Products
               </Link>
             </li>
-            <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
               <Link className="block py-2 text-center" href="/deals">
                 Deals
               </Link>
             </li>
-            <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
               <Link className="block py-2 text-center" href="/about">
                 About
               </Link>

@@ -1,4 +1,4 @@
-function Loader() {
+function ContentLoader() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-row gap-2">
@@ -10,4 +10,4 @@ function Loader() {
   );
 }
 
-export default Loader;
+export default ContentLoader;

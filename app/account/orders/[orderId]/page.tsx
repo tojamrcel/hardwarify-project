@@ -42,9 +42,11 @@ async function Page({ params }: { params: { orderId: string } }) {
           <p className="font-semibold text-gray-600">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
-          <button className="transition-color mt-2 h-12 w-28 rounded-md bg-red-600 font-semibold text-stone-100 duration-300 hover:bg-red-700">
-            Cancel order
-          </button>
+          {status === "pending" && (
+            <button className="transition-color mt-2 h-12 w-28 rounded-md bg-red-600 font-semibold text-stone-100 duration-300 hover:bg-red-700">
+              Cancel order
+            </button>
+          )}
         </div>
       </div>
     </div>

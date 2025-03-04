@@ -1,6 +1,7 @@
 import CancelOrderBtn from "@/app/_components/CancelOrderBtn";
 import OrderStatusBadge from "@/app/_components/OrderStatusBadge";
 import ProductOverview from "@/app/_components/ProductOverview";
+import { SHIPPING_COST } from "@/app/_lib/constants";
 import { getOrderDetails, getProductsByIds } from "@/app/_lib/data_service";
 import { CartProduct } from "@/app/_types/types";
 
@@ -40,6 +41,13 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <h2 className="text-center text-lg font-semibold text-gray-700">
             Order info
           </h2>
+          <p className="font-semibold text-gray-600">
+            Products:{" "}
+            <span className="font-normal">{totalPrice - SHIPPING_COST}$</span>
+          </p>
+          <p className="font-semibold text-gray-600">
+            Shipping cost: <span className="font-normal">{SHIPPING_COST}$</span>
+          </p>
           <p className="font-semibold text-gray-600">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>

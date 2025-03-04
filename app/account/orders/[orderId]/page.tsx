@@ -3,7 +3,7 @@ import ProductOverview from "@/app/_components/ProductOverview";
 import { getOrderDetails, getProductsByIds } from "@/app/_lib/data_service";
 import { CartProduct } from "@/app/_types/types";
 
-async function Page({ params }: { params: { orderId: string } }) {
+async function Page({ params }: { params: Promise<{ orderId: string }> }) {
   const { orderId } = await params;
   const {
     total_price: totalPrice,

@@ -1,5 +1,11 @@
+import Loader from "../_components/Loader";
+
 function Loading() {
-  return <div>Loading profile...</div>;
+  return (
+    <div className="flex h-full items-center justify-center">
+      <Loader />
+    </div>
+  );
 }
 
 export default Loading;

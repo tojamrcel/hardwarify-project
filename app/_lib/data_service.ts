@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
 import { Order } from "../_types/types";
+import { revalidatePath } from "next/cache";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
@@ -126,6 +127,25 @@ export async function getOrderDetails(id: string): Promise<Order> {
   const finalOrder = { ...ordersData, items: orderItemsData };
 
   return finalOrder;
+}
+
+export async function cancelOrder(id: string) {
+  const { error: orderError } = await supabase
+    .from("orders")
+    .delete()
+    .eq("id", id);
+
+  if (orderError) throw new Error(orderError.message);
+
+  const { error: itemsError } = await supabase
+    .from("order_items")
+    .delete()
+    .eq("order_id", id);
+
+  if (itemsError) throw new Error(itemsError.message);
+
+  revalidatePath("/account/orders");
+  revalidatePath("/account/pastorders");
 }
 
 export async function createProfile(newProfile: Profile): Promise<void> {

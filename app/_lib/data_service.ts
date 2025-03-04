@@ -2,8 +2,6 @@ import { getServerSession } from "next-auth";
 import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
 import { Order } from "../_types/types";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");

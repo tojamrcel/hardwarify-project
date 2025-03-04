@@ -134,3 +134,21 @@ export async function createOrderAction(orderData: OrderForm) {
 
   redirect("/thankyou");
 }
+
+export async function cancelOrderAction(id: string) {
+  const { error: itemsError } = await supabase
+    .from("order_items")
+    .delete()
+    .eq("order_id", id);
+  if (itemsError) throw new Error(itemsError.message);
+
+  const { error: orderError } = await supabase
+    .from("orders")
+    .delete()
+    .eq("id", id);
+  if (orderError) throw new Error(orderError.message);
+
+  revalidatePath("/account/orders");
+  revalidatePath("/account/pastorders");
+  redirect("/account/orders");
+}

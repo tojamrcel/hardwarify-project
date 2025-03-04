@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
+import { IoCartOutline, IoMenuOutline, IoPersonOutline } from "react-icons/io5";
 import { useCart } from "./CartContext";
+import { useState } from "react";
 
 function Header() {
   const { cart } = useCart();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="flex h-[70px] w-full items-center gap-10 bg-white-second px-12 shadow-sm">
-      <div>
+      <div className="z-10">
         <Link
           className="text-xl font-semibold tracking-tight text-stone-700"
           href="/"
@@ -16,18 +19,24 @@ function Header() {
           hardwarify
         </Link>
       </div>
-      <nav className="w-full">
+      <button
+        onClick={() => setIsMenuOpen((open) => !open)}
+        className="transition-color z-10 block text-3xl duration-150 hover:text-stone-500 lg:hidden"
+      >
+        <IoMenuOutline />
+      </button>
+      <nav className="z-10 w-full">
         <ul className="flex items-center gap-8 text-lg text-stone-800 duration-300">
-          <li className="transition-colors hover:text-stone-500">
+          <li className="hidden transition-colors hover:text-stone-500 lg:block">
             <Link href="/">Home</Link>
           </li>
-          <li className="transition-colors hover:text-stone-500">
+          <li className="hidden transition-colors hover:text-stone-500 lg:block">
             <Link href="/products">Products</Link>
           </li>
-          <li className="transition-colors hover:text-stone-500">
+          <li className="hidden transition-colors hover:text-stone-500 lg:block">
             <Link href="/deals">Deals</Link>
           </li>
-          <li className="transition-colors hover:text-stone-500">
+          <li className="hidden transition-colors hover:text-stone-500 lg:block">
             <Link href="/about">About</Link>
           </li>
           <li className="ml-auto transition-colors hover:text-stone-500">
@@ -47,6 +56,33 @@ function Header() {
           <li className="transition-colors hover:text-stone-500">
             <Link href="/account" className="text-3xl">
               <IoPersonOutline />
+            </Link>
+          </li>
+        </ul>
+      </nav>
+
+      <nav
+        className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-white-second transition-transform lg:hidden`}
+      >
+        <ul className="flex w-full flex-col gap-2 py-2 text-stone-800 shadow-md">
+          <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <Link className="block py-2 text-center" href="/">
+              Home
+            </Link>
+          </li>
+          <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <Link className="block py-2 text-center" href="/products">
+              Products
+            </Link>
+          </li>
+          <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <Link className="block py-2 text-center" href="/deals">
+              Deals
+            </Link>
+          </li>
+          <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+            <Link className="block py-2 text-center" href="/about">
+              About
             </Link>
           </li>
         </ul>

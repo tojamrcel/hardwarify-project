@@ -8,12 +8,14 @@ export const metadata: Metadata = {
 
 function Page() {
   return (
-    <section className="grid grid-cols-[1fr_20rem] gap-4">
-      <div>
-        <h2 className="text-4xl font-bold text-gray-700">Cart</h2>
+    <section className="grid gap-4 md:grid-cols-[1fr_20rem]">
+      <div className="flex flex-col items-center md:block">
+        <h2 className="text-center text-3xl font-bold text-gray-700 md:text-left md:text-4xl">
+          Cart
+        </h2>
         <CartList />
       </div>
-      <div>
+      <div className="flex flex-col items-center md:block">
         <CartSummary />
       </div>
     </section>

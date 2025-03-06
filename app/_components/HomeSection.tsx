@@ -22,11 +22,11 @@ function HomeSection({
   const finalPrice = regularPrice - Number(discount);
 
   return (
-    <section className="grid w-full grid-cols-2 place-items-center justify-center rounded-lg bg-white-second px-4 py-8 shadow-md">
+    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-white-second px-4 py-8 shadow-md md:grid-cols-2">
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center text-4xl font-bold text-stone-800">
+            <h2 className="text-center text-3xl font-bold text-stone-800 md:text-4xl">
               {name}
             </h2>
             <span className="w-full text-center font-semibold">
@@ -37,31 +37,31 @@ function HomeSection({
               Buy now
             </Button>
           </div>
-          <div>
+          <div className="mt-4 md:mt-0">
             <Image
               src={image}
               width={384}
               height={384}
               quality={100}
               alt={name}
-              className="rounded-lg shadow-md"
+              className="w-72 rounded-lg shadow-md md:w-auto"
             />
           </div>
         </>
       )}
       {textPlace === "right" && (
         <>
-          <div>
+          <div className="mt-4 md:mt-0">
             <Image
               src={image}
               width={384}
               height={384}
               quality={100}
               alt={name}
-              className="rounded-lg shadow-md"
+              className="w-72 rounded-lg shadow-md md:w-auto"
             />
           </div>
-          <div className="flex flex-col items-center gap-2">
+          <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto">
             <h2 className="text-center text-4xl font-bold text-stone-800">
               {name}
             </h2>

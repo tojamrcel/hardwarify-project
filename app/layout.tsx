@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./_styles/globals.css";
 import Header from "./_components/Header";
 import { CartProvider } from "./_components/CartContext";
+import { Toaster } from "react-hot-toast";
 
 const ralewaySans = Raleway({
   variable: "--font-raleway-sans",
@@ -30,6 +31,15 @@ export default function RootLayout({
         <CartProvider>
           <Header />
           <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                padding: "16px 32px",
+              },
+              duration: 2000,
+            }}
+          />
         </CartProvider>
       </body>
     </html>

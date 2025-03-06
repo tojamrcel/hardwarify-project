@@ -13,7 +13,7 @@ function CartList() {
   }
 
   return (
-    <div className="flex flex-col gap-4 p-4 md:mt-4 md:gap-8">
+    <div className="flex w-full flex-col gap-4 p-4 md:mt-4 md:w-auto md:gap-8">
       {cart.length > 0 &&
         cart.map((prod) => (
           <CartItem
@@ -75,7 +75,7 @@ function CartItem({
   }
 
   return (
-    <div className="relative grid h-28 max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg bg-white-second px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
+    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg bg-white-second px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
       <Image
         src={image}
         alt={name}
@@ -85,25 +85,27 @@ function CartItem({
       />
       <div>
         <p className="font-semibold text-gray-700 md:text-lg">{name}</p>
-        <div className="flex items-center gap-2 text-gray-700">
-          <button
-            onClick={() => handleDecreaseQuantity()}
-            className="flex items-center justify-center font-bold"
-          >
-            -
-          </button>
-          <input
-            type="number"
-            className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
-            value={quantity}
-            readOnly
-          />
-          <button
-            onClick={() => handleIncreaseQuantity()}
-            className="flex items-center justify-center font-bold"
-          >
-            +
-          </button>
+        <div className="flex flex-col gap-2 text-gray-700 md:flex-row md:items-center">
+          <div className="flex gap-2">
+            <button
+              onClick={() => handleDecreaseQuantity()}
+              className="flex items-center justify-center font-bold"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              className="mt-1 h-6 w-6 rounded-lg px-1 py-0.5 text-center font-semibold text-gray-700 focus:outline-none"
+              value={quantity}
+              readOnly
+            />
+            <button
+              onClick={() => handleIncreaseQuantity()}
+              className="flex items-center justify-center font-bold"
+            >
+              +
+            </button>
+          </div>
           {discount ? (
             <>
               <div className="flex gap-2">
@@ -127,7 +129,7 @@ function CartItem({
         </button>
         <Link
           href={`/products/${id}`}
-          className="absolute bottom-2 right-2 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+          className="bottom-2 right-2 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500 lg:absolute"
         >
           Go to product
         </Link>

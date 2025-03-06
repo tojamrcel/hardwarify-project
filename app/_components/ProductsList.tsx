@@ -11,7 +11,7 @@ function ProductsList({
   filter: string[] | "all";
 }) {
   return (
-    <section className="grid grid-cols-5 gap-x-32 gap-y-8">
+    <section className="grid w-full gap-4 gap-y-4 sm:w-3/4 md:grid-cols-2 lg:w-auto lg:grid-cols-4 lg:gap-x-12 xl:grid-cols-6 xl:gap-x-24">
       {filter === "all"
         ? products.map((product) => (
             <ProductItem key={product.id} product={product} />

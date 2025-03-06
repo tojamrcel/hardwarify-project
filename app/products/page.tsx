@@ -18,9 +18,11 @@ async function Page({
   const filter = params?.filter?.split(",") ?? "all";
 
   return (
-    <section className="flex justify-center gap-24">
-      <section className="w-1/4 rounded-md bg-white-second p-6 px-6 shadow-md">
-        <h2 className="text-xl font-bold text-gray-700">Filters</h2>
+    <section className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:gap-16 xl:gap-24">
+      <section className="flex h-auto w-full flex-col items-center rounded-md bg-white-second p-2 px-6 shadow-md sm:w-3/4 lg:block lg:w-1/4 lg:p-6">
+        <h2 className="text-center text-xl font-bold text-gray-700 lg:text-left">
+          Filters
+        </h2>
         <label
           htmlFor="category"
           className="ml-2 text-lg font-semibold text-gray-700"

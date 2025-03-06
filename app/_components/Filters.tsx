@@ -3,7 +3,6 @@
 import { useState } from "react";
 import FilterCategory from "./FilterCategory";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { IoIosArrowDown } from "react-icons/io";
 
 function Filters({ categories }: { categories: string[] }) {
   const searchParams = useSearchParams();

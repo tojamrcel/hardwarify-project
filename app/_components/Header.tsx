@@ -97,7 +97,7 @@ function Header() {
       {isMenuOpen && (
         <div
           ref={overlay}
-          className="absolute z-[4] h-screen w-screen max-w-full backdrop-blur-[2px] lg:hidden"
+          className="fixed z-[4] h-screen max-h-full w-screen max-w-full backdrop-blur-[2px] lg:hidden"
         ></div>
       )}
     </>

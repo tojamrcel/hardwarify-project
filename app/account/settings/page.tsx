@@ -12,7 +12,7 @@ async function Page() {
   const { email, firstName, lastName, image } = await getProfile(userEmail);
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center justify-center gap-6 md:mt-8">
       <div className="grid gap-8 md:grid-cols-[auto_1fr]">
         <Image
           src={image ? image : "/noimage.jpg"}

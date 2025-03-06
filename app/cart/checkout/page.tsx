@@ -52,7 +52,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="first_name"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               First name
             </label>
@@ -75,7 +75,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="last_name"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               Last name
             </label>
@@ -98,7 +98,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="email"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               E-mail
             </label>
@@ -116,7 +116,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="city"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               City
             </label>
@@ -133,7 +133,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="postal_code"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               Postal Code
             </label>
@@ -158,7 +158,7 @@ function Page() {
           <InputRow>
             <label
               htmlFor="address"
-              className="text-md block text-center font-semibold text-gray-500"
+              className="text-md block text-center font-semibold text-gray-500 md:text-left"
             >
               Address
             </label>
@@ -171,7 +171,7 @@ function Page() {
               <InputErrorMessage>{errors.address.message}</InputErrorMessage>
             )}
           </InputRow>
-          <button className="mt-2 w-full self-start rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700">
+          <button className="mt-2 w-full self-start rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700 md:w-auto">
             Order
           </button>
         </form>

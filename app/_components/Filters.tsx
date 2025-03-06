@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FilterCategory from "./FilterCategory";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { IoIosArrowDown } from "react-icons/io";
 
 function Filters({ categories }: { categories: string[] }) {
   const searchParams = useSearchParams();
@@ -38,16 +39,26 @@ function Filters({ categories }: { categories: string[] }) {
   }
 
   return (
-    <div className="ml-3 mt-1 flex w-full flex-col items-center gap-2 lg:items-start">
-      {categories.map((cat) => (
-        <FilterCategory
-          cat={cat}
-          key={cat}
-          filters={filters}
-          handleFilters={handleFilters}
-        />
-      ))}
-    </div>
+    <>
+      <div className="flex items-center gap-2">
+        <label
+          htmlFor="category"
+          className="ml-2 text-lg font-semibold text-gray-700"
+        >
+          Category
+        </label>
+      </div>
+      <div className="ml-3 mt-1 flex w-full flex-col items-center gap-2 lg:items-start">
+        {categories.map((cat) => (
+          <FilterCategory
+            cat={cat}
+            key={cat}
+            filters={filters}
+            handleFilters={handleFilters}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 

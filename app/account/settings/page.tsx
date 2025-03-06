@@ -12,8 +12,8 @@ async function Page() {
   const { email, firstName, lastName, image } = await getProfile(userEmail);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-[auto_1fr] gap-8">
+    <div className="flex flex-col items-center gap-6">
+      <div className="grid gap-8 md:grid-cols-[auto_1fr]">
         <Image
           src={image ? image : "/noimage.jpg"}
           width={144}

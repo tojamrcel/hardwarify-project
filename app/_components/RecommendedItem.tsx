@@ -12,7 +12,7 @@ function RecommendedItem({ product }: { product: Product }) {
   } = product;
 
   return (
-    <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm">
+    <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm md:grid-cols-1 lg:grid-cols-2">
       <div className="flex w-full items-center justify-center">
         <Image
           src={image}
@@ -23,7 +23,9 @@ function RecommendedItem({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-center font-bold text-stone-800">{name}</h3>
+        <h3 className="text-center font-bold text-stone-800 md:mt-2 lg:mt-0">
+          {name}
+        </h3>
         {discount ? (
           <>
             <div className="flex gap-2 font-semibold">

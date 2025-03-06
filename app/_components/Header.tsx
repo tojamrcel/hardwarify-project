@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <>
-      <header className="flex h-[70px] w-full items-center gap-4 bg-white-second px-4 shadow-sm sm:gap-10 sm:px-12">
+      <header className="flex h-[70px] w-full items-center gap-4 bg-white-second px-6 shadow-sm sm:gap-10 sm:px-12">
         <div className="z-10">
           <Link
             className="text-xl font-semibold tracking-tight text-stone-700"
@@ -54,13 +54,13 @@ function Header() {
                     </p>
                   ) : null}
                 </div>
-                <Link href="/cart" className="text-2xl sm:text-3xl">
+                <Link href="/cart" className="text-4xl">
                   <IoCartOutline />
                 </Link>
               </div>
             </li>
             <li className="transition-colors hover:text-stone-500">
-              <Link href="/account" className="text-2xl font-bold sm:text-3xl">
+              <Link href="/account" className="text-3xl">
                 <IoPersonOutline />
               </Link>
             </li>

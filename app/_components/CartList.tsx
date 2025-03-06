@@ -24,7 +24,7 @@ function CartList() {
           />
         ))}
       {cart.length === 0 && (
-        <p className="text-2xl leading-6 text-gray-800 md:text-center">
+        <p className="text-center text-2xl leading-6 text-gray-800">
           The cart is empty :(
         </p>
       )}

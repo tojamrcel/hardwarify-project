@@ -21,7 +21,7 @@ async function Page({ params }: { params: { productId: string } }) {
 
   return (
     <section className="mt-2 flex flex-col gap-4 md:mt-8 md:max-h-[120rem]">
-      <div className="flex flex-col items-center justify-evenly gap-8 rounded-lg bg-white-second shadow-md md:flex-row">
+      <div className="flex flex-col items-center justify-evenly gap-8 rounded-lg bg-white-second shadow-md md:flex-row md:gap-2">
         <div className="flex items-center justify-center px-4 py-4">
           <Image
             src={product.image}

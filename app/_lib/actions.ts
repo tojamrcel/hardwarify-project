@@ -7,6 +7,7 @@ import { createProfile } from "./data_service";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { SHIPPING_COST } from "./constants";
+import { authOptions } from "./auth";
 
 export async function signUpAction(data: SignUpFormValues) {
   const { email, password, firstName, lastName } = data;
@@ -65,9 +66,11 @@ export async function updateProfileImageAction(data: UploadImage) {
 }
 
 export async function createOrderAction(orderData: OrderForm) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
+  console.log(session);
   if (!session?.user)
     throw new Error("You have to be signed in to place the order.");
+
   const ids = orderData.products.map((prod) => prod.id);
 
   // double checking prices with database
@@ -84,9 +87,10 @@ export async function createOrderAction(orderData: OrderForm) {
     return { ...prod, quantity };
   });
 
-  if (error) {
-    console.error(error);
-  }
+  if (error)
+    throw new Error(
+      "There was a problem with getting products prices. Try again later.",
+    );
 
   const price = products?.reduce((acc, cur) => {
     const regularPrice = cur.regular_price * cur.quantity;
@@ -105,6 +109,7 @@ export async function createOrderAction(orderData: OrderForm) {
     status: "pending",
     email: session.user.email,
     address: `${orderData.postal_code} ${orderData.city} ${orderData.address}`,
+    user_id: session.user.id,
   };
 
   const finalProducts = products?.map((prod) => {
@@ -112,6 +117,7 @@ export async function createOrderAction(orderData: OrderForm) {
       product_id: prod.id,
       quantity: prod.quantity,
       order_id: orderID,
+      user_id: session.user.id,
     };
   });
 

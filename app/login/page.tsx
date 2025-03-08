@@ -17,7 +17,9 @@ function Page() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>();
+  } = useForm<LoginData>({
+    defaultValues: { email: "test@test.com", password: "test1234" }, // default values set for users to test app
+  });
 
   const [error, setError] = useState("");
 

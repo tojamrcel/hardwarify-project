@@ -1,4 +1,9 @@
 import Button from "./_components/Button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+};
 
 function Error() {
   return (

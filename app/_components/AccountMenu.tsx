@@ -31,7 +31,10 @@ function AccountMenu() {
       <nav className="p-4">
         <ul className="flex-col gap-4 text-xl text-gray-700 lg:flex">
           {links.map((link) => (
-            <li className={`rounded-lg text-gray-700`} key={link.href}>
+            <li
+              className={`mt-2 rounded-lg text-gray-700 lg:mt-0`}
+              key={link.href}
+            >
               <Link
                 href={link.href}
                 className={`block h-full rounded-lg p-2 hover:bg-gray-300 ${link.href === pathname ? "bg-gray-300 font-semibold" : ""}`}

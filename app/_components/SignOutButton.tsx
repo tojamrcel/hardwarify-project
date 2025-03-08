@@ -9,7 +9,7 @@ function SignOutButton() {
 
   return (
     <button
-      className="justify-left flex items-center gap-2 rounded-lg p-2 text-red-600 hover:bg-gray-300"
+      className="justify-left flex w-full items-center gap-2 rounded-lg p-2 text-red-600 hover:bg-gray-300"
       onClick={handleSignOut}
     >
       <IoLogOutOutline />

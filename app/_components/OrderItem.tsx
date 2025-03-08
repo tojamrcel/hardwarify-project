@@ -29,17 +29,19 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
           </span>
         )}
       </div>
-      <div className="mt-2 flex gap-3">
-        {orderItem.items.map((item) => (
-          <Image
-            src={products.find((p) => p.id === item.product_id)!.image}
-            alt={products.find((p) => p.id === item.product_id)!.product_name}
-            width={80}
-            height={80}
-            className="rounded-md"
-            key={item.product_id}
-          />
-        ))}
+      <div className="mt-2 flex w-2/3 gap-3 overflow-clip">
+        {orderItem.items.map((item, i) => {
+          return (
+            <Image
+              src={products.find((p) => p.id === item.product_id)!.image}
+              alt={products.find((p) => p.id === item.product_id)!.product_name}
+              width={80}
+              height={80}
+              className={`rounded-md`}
+              key={item.product_id}
+            />
+          );
+        })}
       </div>
       <Link
         href={`/account/orders/${orderItem.id}`}

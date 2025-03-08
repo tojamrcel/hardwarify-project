@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
 function Button({
   type,
@@ -7,7 +8,7 @@ function Button({
 }: {
   type: "primary" | "secondary";
   link?: string;
-  children: string;
+  children: ReactNode;
 }) {
   if (type === "primary" && link)
     return (

@@ -30,7 +30,7 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
         )}
       </div>
       <div className="mt-2 flex w-2/3 gap-3 overflow-clip">
-        {orderItem.items.map((item, i) => {
+        {orderItem.items.map((item) => {
           return (
             <Image
               src={products.find((p) => p.id === item.product_id)!.image}

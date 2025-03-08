@@ -15,10 +15,10 @@ async function Page() {
   const { email, firstName, image } = await getProfile(userEmail);
 
   return (
-    <div className="flex h-full flex-col justify-center">
+    <div className="flex h-full w-full flex-col items-center justify-center lg:mt-8 lg:w-auto lg:items-start lg:justify-start">
       <div className="grid grid-cols-[auto_1fr] gap-8">
         <Image
-          src={image ? image : "/noimage.jpg"}
+          src={image ? image : "/noimage.jpg"}2 
           width={192}
           height={192}
           alt="Profile image"

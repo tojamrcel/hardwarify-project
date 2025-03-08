@@ -32,9 +32,10 @@ export default function RootLayout({
           <Header />
           <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
           <Toaster
-            position="top-right"
+            position="top-center"
             toastOptions={{
               style: {
+                marginTop: "64px",
                 padding: "16px 32px",
               },
               duration: 2000,

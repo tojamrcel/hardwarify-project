@@ -5,6 +5,7 @@ async function Page() {
   const orders = (await getUserOrders()).filter(
     (order) => order.status === "delivered",
   );
+  if (orders.length === 0) throw new Error("No past orders found.");
 
   return (
     <ul className="flex flex-col gap-4">

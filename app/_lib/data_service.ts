@@ -102,6 +102,8 @@ export async function getUserOrders(): Promise<Order[]> {
     return { ...o, items };
   });
 
+  if (finalOrders.length === 0) throw new Error("No orders found.");
+
   return finalOrders;
 }
 

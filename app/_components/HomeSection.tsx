@@ -26,7 +26,7 @@ function HomeSection({
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center text-3xl font-bold text-stone-800 md:text-4xl">
+            <h2 className="text-center text-4xl font-bold text-gray-700">
               {name}
             </h2>
             <span className="w-full text-center font-semibold">
@@ -62,7 +62,7 @@ function HomeSection({
             />
           </div>
           <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto">
-            <h2 className="text-center text-4xl font-bold text-stone-800">
+            <h2 className="text-center text-4xl font-bold text-gray-700">
               {name}
             </h2>
             <span className="w-full text-center font-semibold">

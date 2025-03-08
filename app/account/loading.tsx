@@ -1,9 +1,9 @@
-import ContentLoader from "../_components/ContentLoader";
+import Loader from "../_components/Loader";
 
 function Loading() {
   return (
     <div className="flex h-full items-center justify-center">
-      <ContentLoader />
+      <Loader />
     </div>
   );
 }

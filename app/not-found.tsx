@@ -2,11 +2,11 @@ import Button from "./_components/Button";
 
 function Error() {
   return (
-    <div className="flex flex-col gap-6 p-24">
-      <h1 className="text-center text-5xl font-bold uppercase tracking-wider text-red-600">
+    <div className="flex flex-col gap-6 py-24">
+      <h1 className="text-center text-4xl font-bold uppercase tracking-wider text-red-600 sm:text-5xl">
         Ooops...
       </h1>
-      <p className="text-center text-2xl text-gray-700">
+      <p className="text-center text-xl text-gray-700 sm:text-2xl">
         This page could not be found :(
       </p>
       <div className="flex justify-center">

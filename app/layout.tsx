@@ -32,7 +32,7 @@ export default function RootLayout({
           <Header />
           <div className="w-full py-2">
             <p className="-mt-2 bg-slate-200 text-center text-lg font-semibold text-gray-600">
-              👋 FOR DEMO VERSION OF APP SOME FEATURES HAVE BEEN DISABLED
+              👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
             </p>
           </div>
           <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>

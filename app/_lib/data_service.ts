@@ -123,14 +123,14 @@ export async function getOrderDetails(id: string): Promise<Order> {
     .eq("id", id)
     .single();
 
-  if (orderError) throw new Error(orderError.message);
+  if (orderError) throw new Error("Order not found.");
 
   const { data: orderItemsData, error: itemsError } = await supabaseServer
     .from("order_items")
     .select("product_id, quantity, order_id")
     .eq("order_id", id);
 
-  if (itemsError) throw new Error(itemsError.message);
+  if (itemsError) throw new Error("Order not found.");
   const finalOrder = { ...ordersData, items: orderItemsData };
 
   return finalOrder;

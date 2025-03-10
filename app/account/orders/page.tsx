@@ -6,6 +6,8 @@ async function Page() {
     (order) => order.status === "pending" || order.status === "sent",
   );
 
+  if (!orders.length) throw new Error("No orders found.");
+
   return (
     <ul className="flex flex-col gap-4">
       {orders.map((order) => (

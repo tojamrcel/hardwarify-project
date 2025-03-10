@@ -7,7 +7,12 @@ import { useState } from "react";
 
 function UploadImage() {
   const [error, setError] = useState<string | null>(null);
-  const { register, handleSubmit, reset } = useForm<UploadImageType>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<UploadImageType>();
 
   async function onSubmit(data: UploadImageType) {
     try {
@@ -28,13 +33,16 @@ function UploadImage() {
         type="file"
         accept="image/*"
         {...register("image", {
-          required: true,
+          required: "Please import an image.",
         })}
       />
       <button className="font-semibold text-gray-500 decoration-2 underline-offset-[6px] hover:underline">
         Upload new image
       </button>
       {error && <p className="text-sm text-red-600">{error}</p>}
+      {errors.image && !error && (
+        <p className="text-sm text-red-600">{errors.image.message}</p>
+      )}
     </form>
   );
 }

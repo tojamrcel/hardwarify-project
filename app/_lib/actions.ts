@@ -1,5 +1,4 @@
 "use server";
-
 import { redirect } from "next/navigation";
 import { supabase, supabaseUrl } from "./supabase";
 import { OrderForm, SignUpFormValues, UploadImage } from "../_types/types";
@@ -8,25 +7,30 @@ import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { SHIPPING_COST } from "./constants";
 import { authOptions } from "./auth";
+import { createClient } from "./supabase-server";
 
 export async function signUpAction(data: SignUpFormValues) {
   const { email, password, firstName, lastName } = data;
-  const { error } = await supabase.auth.signUp({
+  const { data: userData, error } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  const profile = { firstName, lastName, email, image: "" };
+  const profile = {
+    firstName,
+    lastName,
+    email,
+    image: "",
+    user_id: userData.user?.id,
+  };
 
-  if (error) {
-    console.error(error);
-    return;
-  }
+  if (error) throw new Error("User probably already exists.");
   await createProfile(profile);
   redirect("/login");
 }
 
 export async function updateProfileImageAction(data: UploadImage) {
+  const supabaseServer = await createClient();
   const session = await getServerSession();
   const { image } = data;
   const img = Array.isArray(image) ? image.at(0) : image;
@@ -36,17 +40,14 @@ export async function updateProfileImageAction(data: UploadImage) {
   const imageName = `${Math.random()}-${session.user.email}-${img.name}`;
   const imagePath = `${supabaseUrl}/storage/v1/object/public/profile_images/${imageName}`;
 
-  const { error } = await supabase
+  const { error } = await supabaseServer
     .from("profiles")
     .update({ image: imagePath })
     .eq("email", session.user.email);
 
-  if (error) {
-    console.error(error);
-    throw new Error("Image couldn't be uploaded.");
-  }
+  if (error) throw new Error("Image couldn't be uploaded.");
 
-  const { error: storageErr } = await supabase.storage
+  const { error: storageErr } = await supabaseServer.storage
     .from("profile_images")
     .upload(imageName, img, {
       cacheControl: "3600",
@@ -54,11 +55,10 @@ export async function updateProfileImageAction(data: UploadImage) {
     });
 
   if (storageErr) {
-    await supabase
+    await supabaseServer
       .from("profiles")
       .update({ image: "" })
       .eq("email", session.user.email);
-    console.error(error);
     throw new Error("Image could not be uploaded.");
   }
 
@@ -66,8 +66,9 @@ export async function updateProfileImageAction(data: UploadImage) {
 }
 
 export async function createOrderAction(orderData: OrderForm) {
+  const supabaseServer = await createClient();
   const session = await getServerSession(authOptions);
-  console.log(session);
+
   if (!session?.user)
     throw new Error("You have to be signed in to place the order.");
 
@@ -121,7 +122,7 @@ export async function createOrderAction(orderData: OrderForm) {
     };
   });
 
-  const { error: finalOrderError } = await supabase
+  const { error: finalOrderError } = await supabaseServer
     .from("orders")
     .insert(finalOrder);
 
@@ -129,14 +130,12 @@ export async function createOrderAction(orderData: OrderForm) {
     throw new Error("There is a problem with creating new order.");
   }
 
-  const { error: productsError } = await supabase
+  const { error: productsError } = await supabaseServer
     .from("order_items")
     .insert(finalProducts);
 
-  if (productsError) {
-    console.error(productsError);
+  if (productsError)
     throw new Error("There is a problem with creating new order.");
-  }
 
   redirect("/thankyou");
 }

@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { Product, Profile } from "../_types/types";
 import { supabase } from "./supabase";
 import { Order } from "../_types/types";
+import { createClient } from "./supabase-server";
 
 export async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase.from("products").select("*");
@@ -60,7 +61,8 @@ export async function getProductsByCategory(
 }
 
 export async function getProfile(email: string): Promise<Profile> {
-  const { data, error } = await supabase
+  const supabaseServer = await createClient();
+  const { data, error } = await supabaseServer
     .from("profiles")
     .select("email, image, firstName, lastName")
     .eq("email", email)
@@ -73,10 +75,12 @@ export async function getProfile(email: string): Promise<Profile> {
 }
 
 export async function getUserOrders(): Promise<Order[]> {
+  const supabaseServer = await createClient();
+
   const session = await getServerSession();
   if (!session?.user?.email) throw new Error("You must be logged in.");
 
-  const { data: ordersData, error: orderError } = await supabase
+  const { data: ordersData, error: orderError } = await supabaseServer
     .from("orders")
     .select("id, total_price, status, address, first_name, last_name")
     .eq("email", session.user.email);
@@ -85,7 +89,7 @@ export async function getUserOrders(): Promise<Order[]> {
 
   const orderIds = ordersData.map((order) => order.id);
 
-  const { data: orderItemsData, error: itemsError } = await supabase
+  const { data: orderItemsData, error: itemsError } = await supabaseServer
     .from("order_items")
     .select("product_id, quantity, order_id")
     .in("order_id", orderIds);
@@ -111,7 +115,9 @@ export async function getOrderDetails(id: string): Promise<Order> {
   const session = await getServerSession();
   if (!session?.user?.email) throw new Error("You must be logged in.");
 
-  const { data: ordersData, error: orderError } = await supabase
+  const supabaseServer = await createClient();
+
+  const { data: ordersData, error: orderError } = await supabaseServer
     .from("orders")
     .select("id, total_price, status, address, first_name, last_name")
     .eq("id", id)
@@ -119,7 +125,7 @@ export async function getOrderDetails(id: string): Promise<Order> {
 
   if (orderError) throw new Error(orderError.message);
 
-  const { data: orderItemsData, error: itemsError } = await supabase
+  const { data: orderItemsData, error: itemsError } = await supabaseServer
     .from("order_items")
     .select("product_id, quantity, order_id")
     .eq("order_id", id);
@@ -131,7 +137,10 @@ export async function getOrderDetails(id: string): Promise<Order> {
 }
 
 export async function createProfile(newProfile: Profile): Promise<void> {
-  const { error } = await supabase.from("profiles").insert([newProfile]);
+  const supabaseServer = await createClient();
+  const { error } = await supabaseServer
+    .from("profiles")
+    .insert([{ ...newProfile }]);
 
   if (error) throw new Error("Profile could not be created");
 }

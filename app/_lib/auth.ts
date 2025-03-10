@@ -1,7 +1,6 @@
-import { supabase } from "@/app/_lib/supabase";
 import NextAuth, { NextAuthOptions, Session, TokenSet, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { revalidatePath } from "next/cache";
+import { createClient } from "./supabase-server";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,7 +16,9 @@ export const authOptions: NextAuthOptions = {
         }
 
         // Authenticate with Supabase
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const supabaseServer = await createClient();
+
+        const { data, error } = await supabaseServer.auth.signInWithPassword({
           email: credentials.email,
           password: credentials.password,
         });
@@ -25,8 +26,6 @@ export const authOptions: NextAuthOptions = {
         if (error || !data.user) {
           throw new Error("Invalid username or password.");
         }
-
-        revalidatePath("/account/**");
 
         return {
           id: data.user.id,

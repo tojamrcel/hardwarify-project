@@ -141,17 +141,22 @@ export async function createOrderAction(orderData: OrderForm) {
 }
 
 export async function cancelOrderAction(id: string) {
-  const { error: itemsError } = await supabase
+  const supabaseServer = await createClient();
+
+  const { data: itemsData, error: itemsError } = await supabaseServer
     .from("order_items")
     .delete()
-    .eq("order_id", id);
-  if (itemsError) throw new Error(itemsError.message);
-
-  const { error: orderError } = await supabase
+    .eq("order_id", id)
+    .select();
+  if (itemsError || !itemsData.length)
+    throw new Error("Order couldn't be canceled.");
+  const { data: orderData, error: orderError } = await supabaseServer
     .from("orders")
     .delete()
-    .eq("id", id);
-  if (orderError) throw new Error(orderError.message);
+    .eq("id", id)
+    .select();
+  if (orderError || !orderData.length)
+    throw new Error("Order couldn't be canceled.");
 
   revalidatePath("/account/orders");
   revalidatePath("/account/pastorders");

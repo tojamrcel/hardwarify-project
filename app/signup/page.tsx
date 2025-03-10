@@ -16,7 +16,7 @@ function Page() {
   } = useForm<SignUpFormValues>();
 
   async function onSubmit(data: SignUpFormValues) {
-    const signup = await signUpAction(data);
+    await signUpAction(data);
   }
 
   return (

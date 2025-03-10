@@ -6,7 +6,7 @@ import { useCart } from "./CartContext";
 
 function ThankYou({ orderId }: { orderId: string }) {
   const { clearCart } = useCart();
-  useEffect(() => clearCart(), []);
+  useEffect(() => clearCart());
 
   return (
     <div className="mt-16 flex w-full flex-col items-center justify-center gap-4">

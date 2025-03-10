@@ -5,7 +5,7 @@ import Image from "next/image";
 export async function generateMetadata({
   params,
 }: {
-  params: { productId: string };
+  params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
   const { product_name: name } = await getProductById(Number(productId));
@@ -15,7 +15,7 @@ export async function generateMetadata({
   };
 }
 
-async function Page({ params }: { params: { productId: string } }) {
+async function Page({ params }: { params: Promise<{ productId: string }> }) {
   const { productId } = await params;
   const product = await getProductById(Number(productId));
 

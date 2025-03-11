@@ -6,8 +6,10 @@ import InputRow from "../_components/InputRow";
 import { signUpAction } from "../_lib/actions";
 import { SignUpFormValues } from "../_types/types";
 import InputErrorMessage from "../_components/InputErrorMessage";
+import { useState } from "react";
 
 function Page() {
+  const [error, setError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -16,7 +18,11 @@ function Page() {
   } = useForm<SignUpFormValues>();
 
   async function onSubmit(data: SignUpFormValues) {
-    await signUpAction(data);
+    try {
+      await signUpAction(data);
+    } catch (err) {
+      if (err instanceof Error) setError(err.message);
+    }
   }
 
   return (
@@ -145,6 +151,7 @@ function Page() {
             Sign Up
           </button>
         </div>
+        {error && <p className="text-sm text-red-600">{error}</p>}
       </form>
     </div>
   );

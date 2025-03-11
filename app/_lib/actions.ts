@@ -24,7 +24,7 @@ export async function signUpAction(data: SignUpFormValues) {
     user_id: userData.user?.id,
   };
 
-  if (error) throw new Error("User probably already exists.");
+  if (error) throw new Error(error.message);
   await createProfile(profile);
   redirect("/login");
 }

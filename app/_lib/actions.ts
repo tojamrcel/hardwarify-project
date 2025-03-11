@@ -137,7 +137,7 @@ export async function createOrderAction(orderData: OrderForm) {
   if (productsError)
     throw new Error("There is a problem with creating new order.");
 
-  redirect(`/thankyou/${orderID}`);
+  redirect(`/thankyou`);
 }
 
 export async function cancelOrderAction(id: string) {

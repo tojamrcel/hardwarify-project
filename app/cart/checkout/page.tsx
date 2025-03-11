@@ -9,7 +9,7 @@ import { SHIPPING_COST } from "@/app/_lib/constants";
 import { OrderForm } from "@/app/_types/types";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 function Page() {
@@ -20,7 +20,7 @@ function Page() {
     formState: { errors },
     setValue,
   } = useForm<OrderForm>();
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const router = useRouter();
   const productsPrice = cart.reduce(
     (acc, cur) => acc + cur.regular_price * cur.quantity,
@@ -30,15 +30,23 @@ function Page() {
     (acc, cur) => acc + Number(cur.discount) * cur.quantity,
     0,
   );
-
   const totalPrice = productsPrice - discount;
+  const isSubmitting = useRef(false);
 
   async function onSubmit(data: OrderForm) {
-    await createOrderAction({ ...data, products: cart });
+    try {
+      isSubmitting.current = true;
+      await createOrderAction({ ...data, products: cart });
+    } catch (err) {
+      if (err instanceof Error && !(err.message === "NEXT_REDIRECT"))
+        throw new Error(err.message);
+    } finally {
+      clearCart();
+    }
   }
 
   useEffect(() => {
-    if (!cart.length) router.push("/cart");
+    if (!cart.length && !isSubmitting.current) router.push("/cart");
     if (data?.user?.email) setValue("email", data.user.email);
   }, [router, cart.length, data?.user?.email, setValue]);
 

@@ -36,7 +36,25 @@ function Button({
       </button>
     );
 
-  if (type === "secondary") return <button></button>;
+  if (type === "secondary" && link)
+    return (
+      <Link
+        href={link}
+        className="border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
+      >
+        {children}
+      </Link>
+    );
+  if (type === "secondary" && !link)
+    return (
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className="border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500 lg:absolute"
+      >
+        {children}
+      </button>
+    );
 }
 
 export default Button;

@@ -19,7 +19,7 @@ function Header() {
       <header className="flex h-[70px] w-full items-center gap-4 bg-white-second px-6 shadow-sm sm:gap-10 sm:px-12">
         <div className="z-10">
           <Link
-            className="text-xl font-semibold tracking-tight text-stone-700"
+            className="text-xl font-semibold tracking-tight text-stone-700 transition-all duration-200 hover:text-[1.35rem]"
             href="/"
           >
             hardwarify

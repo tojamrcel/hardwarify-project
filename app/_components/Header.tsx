@@ -11,7 +11,14 @@ function Header() {
   const overlay = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    overlay?.current?.addEventListener("click", () => setIsMenuOpen(false));
+    const overlayEl = overlay?.current;
+    function handleCloseMenu() {
+      setIsMenuOpen(false);
+    }
+    if (overlayEl) {
+      overlayEl.addEventListener("click", handleCloseMenu);
+      return () => overlayEl.removeEventListener("click", handleCloseMenu);
+    }
   }, [isMenuOpen]);
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { Product } from "../_types/types";
+import Button from "./Button";
 import { useCart } from "./CartContext";
 import toast from "react-hot-toast";
 
@@ -45,13 +46,9 @@ function AddToCartButton({
   }
 
   return (
-    <button
-      onClick={handleAddToCart}
-      disabled={disabled}
-      className="rounded-md bg-red-600 px-5 py-3 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700 disabled:bg-slate-300 md:px-3 md:py-1"
-    >
+    <Button type="primary" onClick={handleAddToCart}>
       Add to cart
-    </button>
+    </Button>
   );
 }
 

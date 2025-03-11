@@ -7,6 +7,7 @@ import { signUpAction } from "../_lib/actions";
 import { SignUpFormValues } from "../_types/types";
 import InputErrorMessage from "../_components/InputErrorMessage";
 import { useState } from "react";
+import Button from "../_components/Button";
 
 function Page() {
   const [error, setError] = useState<string | null>(null);
@@ -146,10 +147,9 @@ function Page() {
           >
             I already have an account
           </Link>
-
-          <button className="ml-auto mt-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700">
-            Sign Up
-          </button>
+          <div>
+            <Button type="primary">Sign Up</Button>
+          </div>
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
       </form>

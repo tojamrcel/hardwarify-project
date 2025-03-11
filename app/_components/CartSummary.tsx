@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 import { SHIPPING_COST } from "../_lib/constants";
+import Button from "./Button";
 
 function CartSummary() {
   const router = useRouter();
@@ -39,13 +40,15 @@ function CartSummary() {
           <span className="font-semibold">Total:</span>{" "}
           {cart.length ? `$${productsPrice - discount + SHIPPING_COST}` : "—"}
         </p>
-        <button
-          disabled={Boolean(!cart.length)}
-          onClick={() => router.push("/cart/checkout")}
-          className="my-2 w-32 rounded-lg bg-red-600 px-2 py-2 font-semibold text-stone-100 transition-colors duration-300 hover:bg-red-700 disabled:bg-slate-300 disabled:hover:bg-slate-300"
-        >
-          Checkout
-        </button>
+        <div className="mt-2 flex justify-center md:justify-normal">
+          <Button
+            type="primary"
+            disabled={Boolean(!cart.length)}
+            onClick={() => router.push("/cart/checkout")}
+          >
+            Checkout
+          </Button>
+        </div>
       </div>
     </>
   );

@@ -1,15 +1,17 @@
 import SettingsForm from "@/app/_components/SettingsForm";
 import UploadImage from "@/app/_components/UploadImage";
 import { getProfile } from "@/app/_lib/data_service";
-import { getServerSession } from "next-auth";
+import { createClient } from "@/app/_lib/supabase/server";
 import Image from "next/image";
 
 async function Page() {
-  const session = await getServerSession();
-  const userEmail = session?.user?.email;
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (!session || !userEmail) return;
-  const { email, firstName, lastName, image } = await getProfile(userEmail);
+  if (!user || !user.email) throw new Error("There is no user logged in.");
+  const { email, firstName, lastName, image } = await getProfile(user.email);
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 md:mt-8">

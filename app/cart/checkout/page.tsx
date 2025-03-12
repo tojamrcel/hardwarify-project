@@ -6,15 +6,17 @@ import InputRow from "@/app/_components/InputRow";
 import SummaryProducts from "@/app/_components/SummaryProducts";
 import { createOrderAction } from "@/app/_lib/actions";
 import { SHIPPING_COST } from "@/app/_lib/constants";
+import { createClient } from "@/app/_lib/supabase/client";
 import { OrderForm } from "@/app/_types/types";
-import { useSession } from "next-auth/react";
+import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 function Page() {
+  const [user, setUser] = useState<User | null>(null);
+
   const [error, setError] = useState<string | null>(null);
-  const { data } = useSession();
   const {
     register,
     handleSubmit,
@@ -47,9 +49,21 @@ function Page() {
   }
 
   useEffect(() => {
+    async function fetchUser() {
+      const supabase = createClient();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+    }
+
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
     if (!cart.length && !isSubmitting.current) router.push("/cart");
-    if (data?.user?.email) setValue("email", data.user.email);
-  }, [router, cart.length, data?.user?.email, setValue]);
+    if (user?.email) setValue("email", user?.email);
+  }, [router, cart.length, user?.email, setValue]);
 
   return (
     <>

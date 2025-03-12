@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import { getProfile } from "../_lib/data_service";
 import Image from "next/image";
+import { createClient } from "../_lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Account",
 };
 
 async function Page() {
-  const session = await getServerSession();
-  const userEmail = session?.user?.email;
+  const supabase = await createClient();
 
-  if (!session || !userEmail) return;
-  const { email, firstName, image } = await getProfile(userEmail);
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user || !user.email) throw new Error("There is no user logged in.");
+  const { email, firstName, image } = await getProfile(user.email);
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center lg:mt-8 lg:w-auto lg:items-start lg:justify-start">

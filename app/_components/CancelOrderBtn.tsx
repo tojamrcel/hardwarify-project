@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { cancelOrderAction } from "../_lib/actions";
 import Button from "./Button";
 
 function CancelOrderBtn({ orderId }: { orderId: string }) {
   const [error, setError] = useState<string | null>(null);
 
-  async function handleCancelOrder() {
+  async function handleCancelOrder(e: FormEvent) {
+    e.preventDefault();
     try {
       await cancelOrderAction(orderId);
     } catch (error) {
@@ -18,12 +19,10 @@ function CancelOrderBtn({ orderId }: { orderId: string }) {
   }
 
   return (
-    <>
-      <Button type="primary" onClick={handleCancelOrder}>
-        Cancel order
-      </Button>
+    <form onSubmit={handleCancelOrder}>
+      <Button type="primary">Cancel order</Button>
       {error && <p className="text-sm text-red-600">{error}</p>}
-    </>
+    </form>
   );
 }
 

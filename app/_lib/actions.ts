@@ -1,15 +1,35 @@
 "use server";
 import { redirect } from "next/navigation";
-import { supabase, supabaseUrl } from "./supabase";
-import { OrderForm, SignUpFormValues, UploadImage } from "../_types/types";
+import {
+  OrderForm,
+  SignUpFormValues,
+  UploadImage,
+  LoginFormValues,
+} from "../_types/types";
 import { createProfile } from "./data_service";
-import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { SHIPPING_COST } from "./constants";
-import { authOptions } from "./auth";
-import { createClient } from "./supabase-server";
+import { SHIPPING_COST, SUPABASE_URL } from "./constants";
+import { createClient } from "./supabase/server";
+
+export async function loginAction(data: LoginFormValues) {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signInWithPassword(data);
+
+  if (error) throw new Error(error.message);
+
+  revalidatePath("/account/*");
+}
+
+export async function signOutAction() {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signOut();
+
+  if (error) throw new Error(error.message);
+  redirect("/login");
+}
 
 export async function signUpAction(data: SignUpFormValues) {
+  const supabase = await createClient();
   const { email, password, firstName, lastName } = data;
   const { data: userData, error } = await supabase.auth.signUp({
     email,
@@ -30,24 +50,27 @@ export async function signUpAction(data: SignUpFormValues) {
 }
 
 export async function updateProfileImageAction(data: UploadImage) {
-  const supabaseServer = await createClient();
-  const session = await getServerSession();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const { image } = data;
   const img = Array.isArray(image) ? image.at(0) : image;
 
-  if (!session || !session.user?.email) return;
+  if (!user || !user.email) throw new Error("There is no user logged in.");
 
-  const imageName = `${Math.random()}-${session.user.email}-${img.name}`;
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/profile_images/${imageName}`;
+  const imageName = `${Math.random()}-${user.email}-${img.name}`;
+  const imagePath = `${SUPABASE_URL}/storage/v1/object/public/profile_images/${imageName}`;
 
-  const { error } = await supabaseServer
+  const { error } = await supabase
     .from("profiles")
     .update({ image: imagePath })
-    .eq("email", session.user.email);
+    .eq("email", user.email);
 
-  if (error) throw new Error("Image couldn't be uploaded.");
+  if (error) throw new Error("Image could not be uploaded.");
 
-  const { error: storageErr } = await supabaseServer.storage
+  const { error: storageErr } = await supabase.storage
     .from("profile_images")
     .upload(imageName, img, {
       cacheControl: "3600",
@@ -55,10 +78,10 @@ export async function updateProfileImageAction(data: UploadImage) {
     });
 
   if (storageErr) {
-    await supabaseServer
+    await supabase
       .from("profiles")
       .update({ image: "" })
-      .eq("email", session.user.email);
+      .eq("email", user.email);
     throw new Error("Image could not be uploaded.");
   }
 
@@ -66,10 +89,12 @@ export async function updateProfileImageAction(data: UploadImage) {
 }
 
 export async function createOrderAction(orderData: OrderForm) {
-  const supabaseServer = await createClient();
-  const session = await getServerSession(authOptions);
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (!session?.user)
+  if (!user || !user?.email)
     throw new Error("You have to be signed in to place the order.");
 
   const ids = orderData.products.map((prod) => prod.id);
@@ -108,9 +133,9 @@ export async function createOrderAction(orderData: OrderForm) {
     id: orderID,
     total_price: totalPrice,
     status: "pending",
-    email: session.user.email,
+    email: user.email,
     address: `${orderData.postal_code} ${orderData.city} ${orderData.address}`,
-    user_id: session.user.id,
+    user_id: user.id,
   };
 
   const finalProducts = products?.map((prod) => {
@@ -118,11 +143,11 @@ export async function createOrderAction(orderData: OrderForm) {
       product_id: prod.id,
       quantity: prod.quantity,
       order_id: orderID,
-      user_id: session.user.id,
+      user_id: user.id,
     };
   });
 
-  const { error: finalOrderError } = await supabaseServer
+  const { error: finalOrderError } = await supabase
     .from("orders")
     .insert(finalOrder);
 
@@ -130,7 +155,7 @@ export async function createOrderAction(orderData: OrderForm) {
     throw new Error("There is a problem with creating new order.");
   }
 
-  const { error: productsError } = await supabaseServer
+  const { error: productsError } = await supabase
     .from("order_items")
     .insert(finalProducts);
 
@@ -141,16 +166,22 @@ export async function createOrderAction(orderData: OrderForm) {
 }
 
 export async function cancelOrderAction(id: string) {
-  const supabaseServer = await createClient();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  const { data: itemsData, error: itemsError } = await supabaseServer
+  if (!user) throw new Error("There is no user logged in.");
+
+  const { data: itemsData, error: itemsError } = await supabase
     .from("order_items")
     .delete()
     .eq("order_id", id)
     .select();
   if (itemsError || !itemsData.length)
     throw new Error("Order couldn't be canceled.");
-  const { data: orderData, error: orderError } = await supabaseServer
+
+  const { data: orderData, error: orderError } = await supabase
     .from("orders")
     .delete()
     .eq("id", id)
@@ -159,6 +190,5 @@ export async function cancelOrderAction(id: string) {
     throw new Error("Order couldn't be canceled.");
 
   revalidatePath("/account/orders");
-  revalidatePath("/account/pastorders");
   redirect("/account/orders");
 }

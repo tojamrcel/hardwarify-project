@@ -6,7 +6,7 @@ import { getProducts } from "../_lib/data_service";
 export const metadata: Metadata = {
   title: "Products",
 };
-// { filter: string } | undefined;
+
 async function Page({
   searchParams,
 }: {

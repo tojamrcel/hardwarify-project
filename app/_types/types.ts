@@ -17,6 +17,11 @@ export interface CartProduct extends Product {
   quantity: number;
 }
 
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
 export interface SignUpFormValues {
   email: string;
   password: string;

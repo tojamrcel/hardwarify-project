@@ -1,12 +1,13 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import InputRow from "../_components/InputRow";
 import { useState } from "react";
 import Button from "../_components/Button";
+import { loginAction } from "../_lib/actions";
 
 interface LoginData {
   email: string;
@@ -25,15 +26,14 @@ function Page() {
   const [error, setError] = useState("");
 
   async function onSubmit(data: LoginData) {
-    const { email, password } = data;
-    const login = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (login && login.error) setError(login.error);
-
+    try {
+      const { email, password } = data;
+      await loginAction({ email, password });
+    } catch (err) {
+      if (err instanceof Error) {
+        setError("Username or password is incorrect.");
+      }
+    }
     redirect("/account");
   }
 

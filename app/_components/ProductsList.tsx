@@ -1,5 +1,3 @@
-"use client";
-
 import { Product } from "../_types/types";
 import ProductItem from "./ProductItem";
 

@@ -28,7 +28,9 @@ function Page() {
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="text-4xl font-bold text-gray-700">Create new account</h2>
+      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl">
+        Create new account
+      </h2>
       <form
         className="flex flex-col items-center gap-2"
         onSubmit={handleSubmit(onSubmit)}
@@ -42,7 +44,7 @@ function Page() {
           </label>
           <input
             type="email"
-            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
             placeholder="jankowalski@mail.com"
             {...register("email", { required: "Email is required." })}
           />
@@ -59,7 +61,7 @@ function Page() {
           </label>
           <input
             type="text"
-            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
             placeholder="John"
             {...register("firstName", {
               required: "First name is required.",
@@ -82,7 +84,7 @@ function Page() {
           </label>
           <input
             type="text"
-            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
             placeholder="Kowalski"
             {...register("lastName", {
               required: "Last name is required.",
@@ -105,7 +107,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
             {...register("password", {
               required: "Password is required",
               minLength: {
@@ -127,7 +129,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-96 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
             {...register("confirmPassword", {
               required: "Please confirm your password.",
               validate: (val) =>

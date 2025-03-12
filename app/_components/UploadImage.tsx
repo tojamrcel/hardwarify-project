@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { updateProfileImageAction } from "../_lib/actions";
 import { UploadImage as UploadImageType } from "../_types/types";
 import { useState } from "react";
+import Button from "./Button";
 
 function UploadImage() {
   const [error, setError] = useState<string | null>(null);
@@ -36,9 +37,7 @@ function UploadImage() {
           required: "Please import an image.",
         })}
       />
-      <button className="font-semibold text-gray-500 decoration-2 underline-offset-[6px] hover:underline">
-        Upload new image
-      </button>
+      <Button type="secondary">Upload new image</Button>
       {error && <p className="text-sm text-red-600">{error}</p>}
       {errors.image && !error && (
         <p className="text-sm text-red-600">{errors.image.message}</p>

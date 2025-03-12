@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Product } from "../_types/types";
-import Link from "next/link";
+import Button from "./Button";
 
 function RecommendedItem({ product }: { product: Product }) {
   const {
@@ -40,12 +40,11 @@ function RecommendedItem({ product }: { product: Product }) {
             ${regularPrice - Number(discount)}
           </span>
         )}
-        <Link
-          href={`/products/${id}`}
-          className="mt-1 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500"
-        >
-          Go to product
-        </Link>
+        <div className="mt-1">
+          <Button type="secondary" link={`/products/${id}`}>
+            Go to product
+          </Button>
+        </div>
       </div>
     </div>
   );

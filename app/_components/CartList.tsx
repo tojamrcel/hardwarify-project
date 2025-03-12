@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { CartProduct } from "../_types/types";
+import Button from "./Button";
 import { useCart } from "./CartContext";
 
 function CartList() {
@@ -85,7 +85,7 @@ function CartItem({
       />
       <div>
         <p className="font-semibold text-gray-700 md:text-lg">{name}</p>
-        <div className="flex flex-col gap-2 text-gray-700 md:flex-row md:items-center">
+        <div className="flex flex-col gap-2 text-gray-700 sm:flex-row sm:items-center">
           <div className="flex gap-2">
             <button
               onClick={() => handleDecreaseQuantity()}
@@ -127,12 +127,11 @@ function CartItem({
         >
           &times;
         </button>
-        <Link
-          href={`/products/${id}`}
-          className="bottom-2 right-2 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-100 hover:border-stone-500 lg:absolute"
-        >
-          Go to product
-        </Link>
+        <div className="bottom-2 right-2 lg:absolute">
+          <Button type="secondary" link={`/products/${id}`}>
+            Go to product
+          </Button>
+        </div>
       </div>
     </div>
   );

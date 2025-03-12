@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Order } from "../_types/types";
 import { getProductsByIds } from "../_lib/data_service";
-import Link from "next/link";
+import { Order } from "../_types/types";
+import Button from "./Button";
 
 async function OrderItem({ orderItem }: { orderItem: Order }) {
   const productsIds = orderItem.items.map((item) => item.product_id);
@@ -43,12 +43,11 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
           );
         })}
       </div>
-      <Link
-        href={`/account/orders/${orderItem.id}`}
-        className="absolute bottom-3 right-5 border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-stone-500 transition-colors duration-300 hover:border-stone-500"
-      >
-        Go to order
-      </Link>
+      <div className="absolute bottom-3 right-5">
+        <Button type="secondary" link={`/account/orders/${orderItem.id}`}>
+          Go to order
+        </Button>
+      </div>
     </li>
   );
 }

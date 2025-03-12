@@ -87,12 +87,12 @@ export async function getUserOrders(): Promise<Order[]> {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user?.email) throw new Error("There is no user logged in.");
+  if (!user) throw new Error("There is no user logged in.");
 
   const { data: ordersData, error: orderError } = await supabase
     .from("orders")
     .select("id, total_price, status, address, first_name, last_name")
-    .eq("email", user.email);
+    .eq("user_id", user.id);
 
   if (orderError) throw new Error("No orders found.");
 

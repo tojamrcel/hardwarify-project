@@ -4,6 +4,8 @@ Hardwarify is e-commerce website project created with React and it's libraries.
 
 ## DEMO
 
+https://hardwarify-project.vercel.app/
+
 ## Technologies
 
 - React with TypeScript

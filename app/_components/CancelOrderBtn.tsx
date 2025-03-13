@@ -12,8 +12,8 @@ function CancelOrderBtn({ orderId }: { orderId: string }) {
     try {
       await cancelOrderAction(orderId);
     } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
+      if (error instanceof Error && error.message !== "NEXT_REDIRECT") {
+        setError("Order could not be canceled.");
       }
     }
   }

@@ -19,7 +19,7 @@ function UploadImage() {
     try {
       await updateProfileImageAction(data);
     } catch (error) {
-      if (error instanceof Error) setError(error.message);
+      if (error instanceof Error) setError("Image could not be uploaded.");
     } finally {
       reset();
     }

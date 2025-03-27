@@ -22,7 +22,7 @@ function Page() {
     try {
       await signUpAction(data);
     } catch (err) {
-      if (err instanceof Error) setError(err.message);
+      if (err instanceof Error) setError("This feature is disabled.");
     }
   }
 

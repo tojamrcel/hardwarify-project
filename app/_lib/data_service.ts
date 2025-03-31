@@ -94,7 +94,7 @@ export async function getUserOrders(): Promise<Order[]> {
     .select("id, total_price, status, address, first_name, last_name")
     .eq("user_id", user.id);
 
-  if (orderError) throw new Error("No orders found.");
+  if (orderError) return [];
 
   const orderIds = ordersData.map((order) => order.id);
 
@@ -115,7 +115,7 @@ export async function getUserOrders(): Promise<Order[]> {
     return { ...o, items };
   });
 
-  if (finalOrders.length === 0) throw new Error("No orders found.");
+  if (finalOrders.length === 0) return [];
 
   return finalOrders;
 }

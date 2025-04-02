@@ -12,6 +12,7 @@ https://hardwarify-project.vercel.app/
 - Next.js
 - tailwindcss
 - Supabase with authentication
+- React Hook Forms
 
 ## CMDs
 

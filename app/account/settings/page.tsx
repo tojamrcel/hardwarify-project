@@ -15,7 +15,7 @@ async function Page() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 md:mt-8">
-      <div className="grid gap-8 md:grid-cols-[auto_1fr]">
+      <div className="flex flex-col items-center gap-8 md:grid md:grid-cols-[auto_1fr]">
         <Image
           src={image ? image : "/noimage.jpg"}
           width={144}
@@ -23,7 +23,7 @@ async function Page() {
           className="rounded-full"
           alt="Profile image"
         />
-        <div className="flex flex-col justify-center gap-2 text-gray-600">
+        <div className="flex flex-col items-center justify-center gap-2 text-gray-600 md:items-start">
           <h2 className="text-2xl font-semibold">
             {firstName} {lastName}
           </h2>

@@ -27,7 +27,7 @@ function UploadImage() {
 
   return (
     <form
-      className="flex flex-col items-start gap-2"
+      className="flex flex-col items-center gap-2 md:items-start"
       onSubmit={handleSubmit(onSubmit)}
     >
       <input

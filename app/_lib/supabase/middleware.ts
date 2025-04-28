@@ -32,6 +32,16 @@ export async function updateSession(request: NextRequest) {
   );
 
   const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session && pathname.startsWith("/account"))
+    return NextResponse.redirect(new URL("/login", request.url));
+
+  if (!session && pathname.startsWith("/cart/checkout"))
+    return NextResponse.redirect(new URL("/login", request.url));
+
+  const {
     data: { user },
   } = await supabase.auth.getUser();
 

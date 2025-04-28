@@ -9,7 +9,7 @@ function ProductsList({
   filter: string[] | "all";
 }) {
   return (
-    <section className="grid w-full gap-4 gap-y-4 sm:w-3/4 md:grid-cols-2 lg:w-auto lg:grid-cols-4 lg:gap-x-12 xl:grid-cols-6 xl:gap-x-24">
+    <ul className="flex w-full flex-col gap-4 md:w-3/4">
       {filter === "all"
         ? products.map((product) => (
             <ProductItem key={product.id} product={product} />
@@ -19,7 +19,7 @@ function ProductsList({
             .map((product) => (
               <ProductItem key={product.id} product={product} />
             ))}
-    </section>
+    </ul>
   );
 }
 

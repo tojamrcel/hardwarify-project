@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IoCartOutline, IoMenuOutline, IoPersonOutline } from "react-icons/io5";
 import { useCart } from "./CartContext";
 import { useEffect, useRef, useState } from "react";
+import { Badge } from "@mui/material";
 
 function Header() {
   const { cart } = useCart();
@@ -24,7 +25,7 @@ function Header() {
   return (
     <>
       <header className="flex h-[70px] w-full items-center gap-4 bg-gray-100 px-6 font-semibold text-gray-700 shadow-sm sm:gap-10 sm:px-12">
-        <div className="z-10">
+        <div className="z-10 lg:w-64">
           <Link
             className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200"
             href="/"
@@ -34,7 +35,7 @@ function Header() {
         </div>
         <button
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="transition-color z-10 block text-3xl duration-150 hover:text-stone-500 lg:hidden"
+          className="transition-color z-10 block text-3xl duration-150 hover:text-gray-500 lg:hidden"
         >
           <IoMenuOutline />
         </button>
@@ -54,28 +55,26 @@ function Header() {
                 <Link href="/about">About</Link>
               </li>
             </div>
-            <li className="ml-auto transition-colors hover:text-gray-500">
-              <div className="relative">
-                <div className="absolute -top-2 left-6">
-                  {cart.length ? (
-                    <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-3 text-xs font-semibold text-stone-200">
-                      {cart.length}
-                    </p>
-                  ) : null}
+            <div className="flex w-64 items-center gap-8">
+              <li className="ml-auto transition-colors hover:text-gray-500">
+                <div className="relative">
+                  <Badge color="error" badgeContent={cart.length}>
+                    <Link href="/cart" className="text-4xl">
+                      <IoCartOutline />
+                    </Link>
+                  </Badge>
                 </div>
-                <Link href="/cart" className="text-4xl">
-                  <IoCartOutline />
+              </li>
+              <li className="transition-colors hover:text-gray-500">
+                <Link href="/account" className="text-3xl">
+                  <IoPersonOutline />
                 </Link>
-              </div>
-            </li>
-            <li className="transition-colors hover:text-stone-500">
-              <Link href="/account" className="text-3xl">
-                <IoPersonOutline />
-              </Link>
-            </li>
+              </li>
+            </div>
           </ul>
         </nav>
 
+        {/* MOBILE */}
         <nav
           className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-white-second transition-transform lg:hidden`}
         >

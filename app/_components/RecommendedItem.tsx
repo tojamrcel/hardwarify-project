@@ -12,7 +12,7 @@ function RecommendedItem({ product }: { product: Product }) {
   } = product;
 
   return (
-    <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm md:grid-cols-1 lg:grid-cols-2">
+    <div className="grid grid-cols-2 rounded-md bg-gray-200 px-4 py-2 shadow-sm md:grid-cols-1 lg:grid-cols-2">
       <div className="flex w-full items-center justify-center">
         <Image
           src={image}

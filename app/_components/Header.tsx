@@ -58,7 +58,11 @@ function Header() {
             <div className="flex w-64 items-center gap-8">
               <li className="ml-auto transition-colors hover:text-gray-500">
                 <div className="relative">
-                  <Badge color="error" badgeContent={cart.length}>
+                  <Badge
+                    color="error"
+                    badgeContent={cart.length}
+                    overlap="circular"
+                  >
                     <Link href="/cart" className="text-4xl">
                       <IoCartOutline />
                     </Link>

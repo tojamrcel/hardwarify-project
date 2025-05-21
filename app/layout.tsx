@@ -25,14 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${latoSans.className} bg-white-bg antialiased`}>
+      <body className={`${latoSans.className} bg-gray-50 antialiased`}>
         <CartProvider>
-          <Header />
-          <div className="w-full">
-            {/* <p className="-mt-2 bg-slate-200 text-center text-lg font-semibold text-gray-600">
+          {/* <div className="w-full">
+            <p className="bg-gray-200 text-center text-lg font-semibold text-gray-600">
               👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
-            </p> */}
-          </div>
+            </p>
+          </div> */}
+          <Header />
           <main className="mx-auto">{children}</main>
           <Toaster
             position="top-center"

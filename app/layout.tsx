@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./_styles/globals.css";
 import Header from "./_components/Header";
 import { CartProvider } from "./_components/CartContext";
 import { Toaster } from "react-hot-toast";
 
-const ralewaySans = Raleway({
-  variable: "--font-raleway-sans",
+const latoSans = Lato({
   subsets: ["latin"],
+  weight: "700",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ralewaySans.variable} ${ralewaySans.variable} bg-white-bg antialiased`}
-      >
+      <body className={`${latoSans.className} bg-white-bg antialiased`}>
         <CartProvider>
           <Header />
           <div className="w-full py-2">

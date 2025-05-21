@@ -20,12 +20,11 @@ export default async function Page() {
   );
   return (
     <>
-      <h2 className="mb-2 py-2 text-center text-3xl font-bold uppercase tracking-wider text-gray-700 underline md:text-4xl lg:text-5xl">
-        BESTSELLERS
-      </h2>
       <section className="mb-16">
         <HomeSection product={sortedBestsellers[0]} textPlace="left" />
-        <RecommendedProducts products={sortedBestsellers.slice(1, 4)} />
+        <div className="px-8">
+          <RecommendedProducts products={sortedBestsellers.slice(1, 4)} />
+        </div>
       </section>
 
       <h2 className="mb-2 py-2 text-center text-3xl font-bold uppercase text-gray-700 md:text-4xl lg:text-5xl">

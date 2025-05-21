@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 
 const latoSans = Lato({
   subsets: ["latin"],
-  weight: "700",
+  weight: ["100", "300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -28,18 +28,19 @@ export default function RootLayout({
       <body className={`${latoSans.className} bg-white-bg antialiased`}>
         <CartProvider>
           <Header />
-          <div className="w-full py-2">
-            <p className="-mt-2 bg-slate-200 text-center text-lg font-semibold text-gray-600">
+          <div className="w-full">
+            {/* <p className="-mt-2 bg-slate-200 text-center text-lg font-semibold text-gray-600">
               👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
-            </p>
+            </p> */}
           </div>
-          <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+          <main className="mx-auto">{children}</main>
           <Toaster
             position="top-center"
             toastOptions={{
               style: {
                 marginTop: "64px",
                 padding: "16px 32px",
+                fontWeight: "700",
               },
               duration: 2000,
             }}

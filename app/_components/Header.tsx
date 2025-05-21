@@ -23,10 +23,10 @@ function Header() {
 
   return (
     <>
-      <header className="flex h-[70px] w-full items-center gap-4 bg-gray-100 px-6 text-gray-700 shadow-sm sm:gap-10 sm:px-12">
+      <header className="flex h-[70px] w-full items-center gap-4 bg-gray-100 px-6 font-semibold text-gray-700 shadow-sm sm:gap-10 sm:px-12">
         <div className="z-10">
           <Link
-            className="text-xl font-semibold tracking-tight text-gray-700 transition-all duration-200 hover:text-[1.35rem]"
+            className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200"
             href="/"
           >
             hardwarify
@@ -40,18 +40,20 @@ function Header() {
         </button>
         <nav className="z-10 w-full">
           <ul className="flex items-center gap-8 text-lg duration-300">
-            <li className="hidden transition-colors hover:text-gray-500 lg:block">
-              <Link href="/">Home</Link>
-            </li>
-            <li className="hidden transition-colors hover:text-gray-500 lg:block">
-              <Link href="/products">Products</Link>
-            </li>
-            <li className="hidden transition-colors hover:text-gray-500 lg:block">
-              <Link href="/deals">Deals</Link>
-            </li>
-            <li className="hidden transition-colors hover:text-gray-500 lg:block">
-              <Link href="/about">About</Link>
-            </li>
+            <div className="flex w-full justify-center gap-12">
+              <li className="hidden transition-colors hover:text-gray-500 lg:block">
+                <Link href="/">Home</Link>
+              </li>
+              <li className="hidden transition-colors hover:text-gray-500 lg:block">
+                <Link href="/products">Products</Link>
+              </li>
+              <li className="hidden transition-colors hover:text-gray-500 lg:block">
+                <Link href="/deals">Deals</Link>
+              </li>
+              <li className="hidden transition-colors hover:text-gray-500 lg:block">
+                <Link href="/about">About</Link>
+              </li>
+            </div>
             <li className="ml-auto transition-colors hover:text-gray-500">
               <div className="relative">
                 <div className="absolute -top-2 left-6">

@@ -8,6 +8,7 @@ interface ButtonComponentProps {
   onClick?: () => void;
   children: ReactNode;
   disabled?: boolean;
+  size?: "small" | "medium" | "large";
 }
 
 function Button({
@@ -16,11 +17,12 @@ function Button({
   onClick,
   children,
   disabled,
+  size,
 }: ButtonComponentProps) {
   if (type === "primary" && link)
     return (
       <Link href={link}>
-        <ButtonMUI variant="contained" color="error">
+        <ButtonMUI variant="contained" color="error" size={size}>
           <span className="font-semibold">{children}</span>
         </ButtonMUI>
       </Link>

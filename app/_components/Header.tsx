@@ -5,8 +5,10 @@ import { IoCartOutline, IoMenuOutline, IoPersonOutline } from "react-icons/io5";
 import { useCart } from "./CartContext";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 function Header() {
+  const pathname = usePathname();
   const { cart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const overlay = useRef<HTMLDivElement>(null);
@@ -42,21 +44,41 @@ function Header() {
         <nav className="z-10 w-full">
           <ul className="flex items-center gap-8 text-lg duration-300">
             <div className="flex w-full justify-center gap-12">
-              <li className="hidden transition-colors hover:text-gray-500 lg:block">
-                <Link href="/">Home</Link>
+              <li className="hidden transition-colors hover:text-gray-600 lg:block">
+                <Link
+                  href="/"
+                  className={`${pathname === "/" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
+                >
+                  Home
+                </Link>
               </li>
-              <li className="hidden transition-colors hover:text-gray-500 lg:block">
-                <Link href="/products">Products</Link>
+              <li className="hidden transition-colors hover:text-gray-600 lg:block">
+                <Link
+                  href="/products"
+                  className={`${pathname === "/products" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
+                >
+                  Products
+                </Link>
               </li>
-              <li className="hidden transition-colors hover:text-gray-500 lg:block">
-                <Link href="/deals">Deals</Link>
+              <li className="hidden transition-colors hover:text-gray-600 lg:block">
+                <Link
+                  href="/deals"
+                  className={`${pathname === "/deals" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
+                >
+                  Deals
+                </Link>
               </li>
-              <li className="hidden transition-colors hover:text-gray-500 lg:block">
-                <Link href="/about">About</Link>
+              <li className="hidden transition-colors hover:text-gray-600 lg:block">
+                <Link
+                  href="/about"
+                  className={`${pathname === "/about" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
+                >
+                  About
+                </Link>
               </li>
             </div>
             <div className="flex w-64 items-center gap-8">
-              <li className="ml-auto transition-colors hover:text-gray-500">
+              <li className="ml-auto transition-colors hover:text-gray-600">
                 <div className="relative">
                   <Badge
                     color="error"

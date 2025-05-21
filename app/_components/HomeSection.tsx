@@ -1,7 +1,7 @@
-import Button from "./Button";
 import Image from "next/image";
 import { ProductWithDiscount } from "../_types/types";
-
+import Link from "next/link";
+import Button from "./Button";
 function HomeSection({
   textPlace,
   product,
@@ -69,6 +69,7 @@ function HomeSection({
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
+
             <Button type="primary" link={`/products/${id}`}>
               Buy now
             </Button>

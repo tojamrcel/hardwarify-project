@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { Button as ButtonMUI } from "@mui/material";
 
 interface ButtonComponentProps {
   type: "primary" | "secondary";
@@ -18,29 +19,29 @@ function Button({
 }: ButtonComponentProps) {
   if (type === "primary" && link)
     return (
-      <Link
-        href={link}
-        className="rounded-md bg-red-600 px-5 py-3 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700 disabled:bg-slate-300 md:px-3 md:py-1"
-      >
-        {children}
+      <Link href={link}>
+        <ButtonMUI variant="contained" color="error">
+          <span className="font-semibold">{children}</span>
+        </ButtonMUI>
       </Link>
     );
   if (type === "primary" && !link)
     return (
-      <button
+      <ButtonMUI
+        variant="contained"
+        color="error"
         onClick={onClick}
         disabled={disabled}
-        className="rounded-md bg-red-600 px-5 py-3 font-semibold text-stone-100 transition-colors duration-150 hover:bg-red-700 disabled:bg-slate-300 md:px-3 md:py-1"
       >
-        {children}
-      </button>
+        <span className="font-semibold">{children}</span>
+      </ButtonMUI>
     );
 
   if (type === "secondary" && link)
     return (
       <Link
         href={link}
-        className="border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
+        className="border-b-2 border-transparent px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
       >
         {children}
       </Link>
@@ -50,7 +51,7 @@ function Button({
       <button
         onClick={onClick}
         disabled={disabled}
-        className="border-b-2 border-transparent px-0.5 pb-[-0.25rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
+        className="border-b-2 border-transparent px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
       >
         {children}
       </button>

@@ -1,3 +1,5 @@
+import { Checkbox } from "@mui/material";
+
 function FilterCategory({
   cat,
   filters,
@@ -9,16 +11,15 @@ function FilterCategory({
 }) {
   return (
     <div
-      className="grid w-32 grid-cols-[auto_1fr] items-center gap-3"
+      className="grid w-full grid-cols-[auto_1fr] items-center gap-2"
       key={cat}
     >
-      <input
-        type="checkbox"
-        name="category"
+      <Checkbox
+        color="error"
         value={cat}
-        onChange={() => handleFilters(cat)}
+        name="category"
         checked={filters.includes(cat)}
-        className="h-4 w-4"
+        onChange={() => handleFilters(cat)}
       />
       <p className="text-left text-lg text-gray-700">{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</p>
     </div>

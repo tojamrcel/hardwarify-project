@@ -47,7 +47,7 @@ function Filters({ categories }: { categories: string[] }) {
           Category
         </label>
       </div>
-      <div className="ml-3 mt-2 flex w-full flex-col items-center gap-3 lg:items-start">
+      <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
         {categories.map((cat) => (
           <FilterCategory
             cat={cat}

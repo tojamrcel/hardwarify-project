@@ -91,7 +91,7 @@ function Header() {
                   </Badge>
                 </div>
               </li>
-              <li className="transition-colors hover:text-gray-500">
+              <li className="transition-colors hover:text-gray-600">
                 <Link href="/account" className="text-3xl">
                   <IoPersonOutline />
                 </Link>

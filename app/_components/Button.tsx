@@ -34,6 +34,7 @@ function Button({
         color="error"
         onClick={onClick}
         disabled={disabled}
+        type={onClick ? "button" : "submit"}
       >
         <span className="font-semibold">{children}</span>
       </ButtonMUI>
@@ -43,7 +44,7 @@ function Button({
     return (
       <Link
         href={link}
-        className="border-b-2 border-transparent px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
+        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100"
       >
         {children}
       </Link>
@@ -53,7 +54,7 @@ function Button({
       <button
         onClick={onClick}
         disabled={disabled}
-        className="border-b-2 border-transparent px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 hover:border-gray-500"
+        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100"
       >
         {children}
       </button>

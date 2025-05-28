@@ -27,7 +27,7 @@ async function Page() {
       <h2 className="mb-2 mt-8 py-2 text-center text-3xl font-bold uppercase tracking-wider text-red-600 underline md:text-4xl lg:text-5xl">
         HOT DEALS
       </h2>
-      <section className="flex flex-col items-center rounded-lg bg-white-second py-4">
+      <section className="flex flex-col items-center rounded-lg bg-gray-200 py-4">
         <h3 className="text-2xl font-bold text-gray-700 md:text-3xl">{name}</h3>
         <Image
           src={image}

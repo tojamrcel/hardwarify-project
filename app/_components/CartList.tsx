@@ -75,7 +75,7 @@ function CartItem({
   }
 
   return (
-    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg bg-white-second px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
+    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg border-2 px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
       <Image
         src={image}
         alt={name}

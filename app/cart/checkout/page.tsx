@@ -8,6 +8,7 @@ import { createOrderAction } from "@/app/_lib/actions";
 import { SHIPPING_COST } from "@/app/_lib/constants";
 import { createClient } from "@/app/_lib/supabase/client";
 import { OrderForm } from "@/app/_types/types";
+import Button from "@/app/_components/Button";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -194,9 +195,9 @@ function Page() {
               <InputErrorMessage>{errors.address.message}</InputErrorMessage>
             )}
           </InputRow>
-          <button className="mt-2 w-full self-start rounded-md bg-red-600 px-4 py-2 font-semibold text-stone-100 transition-all duration-300 hover:bg-red-700 md:w-auto">
-            Order
-          </button>
+          <div>
+            <Button type="primary">Order</Button>
+          </div>
           {error && <p className="text-md text-red-600">{error}</p>}
         </form>
         <div className="row-start-1 md:row-auto">

@@ -46,7 +46,12 @@ function AddToCartButton({
   }
 
   return (
-    <Button disabled={disabled} type="primary" onClick={handleAddToCart}>
+    <Button
+      disabled={disabled}
+      type="primary"
+      onClick={handleAddToCart}
+      size="large"
+    >
       Add to cart
     </Button>
   );

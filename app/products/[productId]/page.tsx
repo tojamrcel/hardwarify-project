@@ -1,4 +1,5 @@
 import AddToCartButton from "@/app/_components/AddToCartButton";
+import Button from "@/app/_components/Button";
 import { getProductById } from "@/app/_lib/data_service";
 import Image from "next/image";
 
@@ -20,59 +21,50 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
   const product = await getProductById(Number(productId));
 
   return (
-    <section className="mt-2 flex flex-col gap-4 md:mt-8 md:max-h-[120rem]">
-      <div className="flex flex-col items-center justify-evenly gap-8 rounded-lg bg-white-second shadow-md md:flex-row md:gap-2">
-        <div className="flex items-center justify-center px-4 py-4">
+    <section className="mx-auto mt-24 grid max-w-[1300px] grid-cols-2 px-8">
+      <div className="flex flex-col gap-4">
+        <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[120%] before:w-[120%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-200">
           <Image
             src={product.image}
-            alt="Iphone 16 Pro"
-            width={384}
-            height={384}
-            className="rounded-lg shadow-md"
-            quality={95}
+            alt={product.product_name}
+            width={400}
+            height={400}
+            className="rounded-lg"
           />
         </div>
-        <div className="flex flex-col gap-6 p-4 md:w-96">
-          <h2 className="text-center text-3xl font-bold uppercase text-gray-700 md:text-4xl">
-            {product.product_name}
-          </h2>
-          <p className="text-gray-700">{product.description}</p>
-          <div className="flex flex-col items-center md:items-start">
-            {product.availability > 3 && (
-              <p className="text-green-700">Available</p>
-            )}
-            {product.availability === 0 && (
-              <p className="text-red-600">Unavailable</p>
-            )}
-            {product.availability > 0 && product.availability <= 3 && (
-              <p className="text-yellow-700">
-                Only {product.availability} in stock
-              </p>
-            )}
-            {product.discount ? (
-              <>
-                <div className="flex justify-center gap-2 text-xl md:justify-start">
-                  <span className="italic text-gray-700 line-through">
-                    {product.regular_price}$
-                  </span>
-                  <span className="text-red-600">
-                    {product.regular_price - Number(product.discount)}$
-                  </span>
-                </div>
-              </>
-            ) : (
-              <span className="text-xl font-bold text-gray-700">
-                {product.regular_price - Number(product.discount)}$
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center justify-center gap-2 md:justify-normal">
-            <AddToCartButton
-              product={product}
-              disabled={!Boolean(product.availability)}
-            />
-          </div>
+      </div>
+      <div className="flex h-full flex-col justify-center gap-4">
+        <h2 className="text-4xl font-semibold text-gray-800">
+          {product.product_name}
+        </h2>
+        <div>
+          <p className="text-lg text-gray-700">
+            {product.description.split(".")[0]}.
+          </p>
+        </div>
+        <div>
+          {product.discount ? (
+            <>
+              <div className="flex justify-center gap-4 text-xl md:justify-start">
+                <span className="text-3xl italic text-gray-700 line-through">
+                  {product.regular_price}$
+                </span>
+                <span className="text-3xl text-red-600">
+                  {product.regular_price - Number(product.discount)}$
+                </span>
+              </div>
+            </>
+          ) : (
+            <span className="text-3xl font-bold text-gray-700">
+              {product.regular_price - Number(product.discount)}$
+            </span>
+          )}
+        </div>
+        <div>
+          <AddToCartButton
+            product={product}
+            disabled={!Boolean(product.availability)}
+          />
         </div>
       </div>
     </section>

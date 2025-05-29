@@ -1,9 +1,9 @@
 "use client";
 
+import toast from "react-hot-toast";
 import { Product } from "../_types/types";
 import Button from "./Button";
 import { useCart } from "./CartContext";
-import toast from "react-hot-toast";
 
 function AddToCartButton({
   product,

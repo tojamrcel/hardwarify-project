@@ -45,7 +45,7 @@ async function Page() {
             {regularPrice - Number(discount)}$
           </span>
         </div>
-        <Button type="primary" link={`/products/${id}`}>
+        <Button type="primary" link={`/products/${id}`} size="large">
           Buy now
         </Button>
       </section>

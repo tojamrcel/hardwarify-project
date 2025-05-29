@@ -82,7 +82,7 @@ function Page() {
             </label>
             <input
               type="text"
-              className="text-md h-10 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               placeholder="John"
               {...register("first_name", {
                 required: "First name is required.",
@@ -105,7 +105,7 @@ function Page() {
             </label>
             <input
               type="text"
-              className="text-md h-10 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               placeholder="Kowalski"
               {...register("last_name", {
                 required: "Last name is required.",
@@ -128,7 +128,7 @@ function Page() {
             </label>
             <input
               type="email"
-              className="text-md h-10 rounded-md p-2 text-gray-700 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-700 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               {...register("email", {
                 required: "Email is required.",
               })}
@@ -146,7 +146,7 @@ function Page() {
             </label>
             <input
               type="text"
-              className="text-md h-10 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               {...register("city", { required: "City is required." })}
             />
             {errors.city && (
@@ -163,7 +163,7 @@ function Page() {
             </label>
             <input
               type="text"
-              className="text-md h-10 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               {...register("postal_code", {
                 required: "Postal code is required.",
                 pattern: {
@@ -188,7 +188,7 @@ function Page() {
             </label>
             <input
               type="text"
-              className="text-md h-10 rounded-md p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg md:w-2/3"
+              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg md:w-2/3"
               {...register("address", { required: "Address is required." })}
             />
             {errors.address && (

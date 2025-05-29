@@ -13,7 +13,7 @@ function CartList() {
   }
 
   return (
-    <div className="flex w-full flex-col gap-4 p-4 md:mt-4 md:w-auto md:gap-2">
+    <div className="flex w-full flex-col gap-4 p-4 md:mt-4 md:w-auto md:gap-4">
       {cart.length > 0 &&
         cart.map((prod) => (
           <CartItem

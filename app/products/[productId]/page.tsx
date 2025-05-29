@@ -20,7 +20,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
   const product = await getProductById(Number(productId));
 
   return (
-    <section className="mt-24 flex flex-col gap-40">
+    <section className="mt-32 flex flex-col gap-40">
       <section className="mx-auto grid max-w-[1300px] grid-cols-2 gap-32 px-8">
         <div className="flex flex-col gap-4 justify-self-center">
           <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[120%] before:w-[120%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-200 after:absolute after:left-1/2 after:top-1/2 after:-z-20 after:h-[140%] after:w-[140%] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-gray-300 after:opacity-70">

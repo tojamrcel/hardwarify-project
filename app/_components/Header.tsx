@@ -55,7 +55,7 @@ function Header() {
               <li className="hidden transition-colors hover:text-gray-600 lg:block">
                 <Link
                   href="/products"
-                  className={`${pathname === "/products" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
+                  className={`${pathname.startsWith("/products") ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100`}
                 >
                   Products
                 </Link>

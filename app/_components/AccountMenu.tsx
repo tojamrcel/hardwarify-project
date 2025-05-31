@@ -37,7 +37,7 @@ function AccountMenu() {
             >
               <Link
                 href={link.href}
-                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-300 md:text-left ${link.href === pathname ? "bg-gray-300 font-semibold" : ""}`}
+                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-200 md:text-left ${link.href === pathname ? "bg-gray-200 font-semibold" : ""}`}
               >
                 {link.name}
               </Link>

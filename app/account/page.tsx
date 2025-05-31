@@ -22,14 +22,14 @@ async function Page() {
       <div className="grid grid-cols-[auto_1fr] gap-8">
         <Image
           src={image ? image : "/noimage.jpg"}
-          width={192}
-          height={192}
+          width={196}
+          height={196}
           alt="Profile image"
           className="rounded-full"
         />
         <div className="flex flex-col justify-center gap-2 text-gray-600">
-          <h2 className="text-2xl font-semibold">Hello {firstName}!</h2>
-          <div className="flex flex-col text-lg">
+          <h2 className="text-4xl font-semibold">Hello {firstName}!</h2>
+          <div className="flex flex-col text-xl">
             <p>{email}</p>
           </div>
         </div>

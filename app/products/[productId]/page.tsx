@@ -1,6 +1,8 @@
 import AddToCartButton from "@/app/_components/AddToCartButton";
 import { getProductById } from "@/app/_lib/data_service";
 import Image from "next/image";
+import { FaLock, FaSmile } from "react-icons/fa";
+import { FaHandshake } from "react-icons/fa6";
 
 export async function generateMetadata({
   params,
@@ -79,10 +81,54 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
           </div>
         </div>
       </section>
-      <section>
+      <section className="mx-auto flex max-w-[1300px] flex-col gap-8">
         <h2 className="text-center text-5xl font-semibold text-gray-700">
           Why us?
         </h2>
+        <div className="grid grid-cols-3 gap-64 py-8">
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex h-64 w-64 items-center justify-center rounded-full bg-gray-200">
+              <FaHandshake size={128} className="text-gray-700" />
+            </div>
+            <h3 className="text-center text-4xl font-semibold text-gray-700">
+              Warranty
+            </h3>
+            <p className="text-center leading-6 text-gray-600">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
+              ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
+              assumenda esse perspiciatis tempora voluptates rerum facere
+              dolorum vel perferendis explicabo doloribus.
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex h-64 w-64 items-center justify-center rounded-full bg-gray-200">
+              <FaSmile size={128} className="text-gray-700" />
+            </div>
+            <h3 className="text-center text-4xl font-semibold text-gray-700">
+              Satisfaction
+            </h3>
+            <p className="text-center leading-6 text-gray-600">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
+              ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
+              assumenda esse perspiciatis tempora voluptates rerum facere
+              dolorum vel perferendis explicabo doloribus.
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex h-64 w-64 items-center justify-center rounded-full bg-gray-200">
+              <FaLock size={128} className="text-gray-700" />
+            </div>
+            <h3 className="text-center text-4xl font-semibold text-gray-700">
+              Security
+            </h3>
+            <p className="text-center leading-6 text-gray-600">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
+              ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
+              assumenda esse perspiciatis tempora voluptates rerum facere
+              dolorum vel perferendis explicabo doloribus.
+            </p>
+          </div>
+        </div>
       </section>
     </section>
   );

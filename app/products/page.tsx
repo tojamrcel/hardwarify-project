@@ -20,7 +20,7 @@ async function Page({
 
   return (
     <>
-      <div className="mt-8 flex w-full justify-center">
+      <div className="mt-8 hidden w-full justify-center">
         <div className="relative flex h-10 w-1/2 items-center justify-center">
           <input
             type="text"

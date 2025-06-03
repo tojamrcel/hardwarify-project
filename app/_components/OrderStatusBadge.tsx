@@ -16,7 +16,7 @@ function OrderStatusBadge({
         </span>
       )}
       {status === "delivered" && (
-        <span className="text-md flex w-20 justify-center rounded-full bg-red-500 p-0.5 font-semibold uppercase tracking-tight text-stone-100">
+        <span className="text-md flex w-24 justify-center rounded-full bg-red-500 p-0.5 font-semibold uppercase tracking-tight text-stone-100">
           delivered
         </span>
       )}

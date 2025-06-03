@@ -37,7 +37,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
             </li>
           ))}
         </ul>
-        <div className="ml-8 flex flex-col items-center gap-2">
+        <div className="ml-8 flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-2">
           <h2 className="text-center text-lg font-semibold text-gray-700">
             Order info
           </h2>

@@ -38,7 +38,7 @@ function Page() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="mt-32 flex flex-col items-center gap-8">
       <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl">Login</h2>
       <form
         className="flex flex-col items-center gap-2"
@@ -53,7 +53,7 @@ function Page() {
           </label>
           <input
             type="email"
-            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
             placeholder="jankowalski@mail.com"
             {...register("email", { required: "Email is required." })}
           />
@@ -70,7 +70,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-80 rounded-md p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:shadow-lg sm:w-96"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
             {...register("password", { required: "Password is required." })}
           />
           {errors.password && (

@@ -32,6 +32,7 @@ function Button({
         color="error"
         onClick={onClick}
         disabled={disabled}
+        type={onClick ? "button" : "submit"}
       >
         <span className="font-semibold">{children}</span>
       </ButtonMUI>

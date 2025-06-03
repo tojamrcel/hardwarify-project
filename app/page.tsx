@@ -22,27 +22,27 @@ export default async function Page() {
     <>
       <section className="mb-16">
         <HomeSection product={sortedBestsellers[0]} textPlace="left" />
-        <div className="px-8">
+        <div className="px-2">
           <RecommendedProducts products={sortedBestsellers.slice(1, 4)} />
         </div>
       </section>
 
-      <h2 className="mb-2 py-2 text-center text-3xl font-bold uppercase text-gray-700 md:text-4xl lg:text-5xl">
+      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl">
         Gaming
       </h2>
       <section className="mb-16">
         <HomeSection product={sortedGaming[0]} textPlace="right" />
-        <div className="px-8">
+        <div className="px-2">
           <RecommendedProducts products={sortedGaming.slice(1, 4)} />
         </div>
       </section>
 
-      <h2 className="mb-2 py-2 text-center text-3xl font-bold uppercase text-gray-700 md:text-4xl lg:text-5xl">
+      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl">
         Mobile devices
       </h2>
       <section className="mb-16">
         <HomeSection product={sortedMobile[0]} textPlace="left" />
-        <div className="px-8">
+        <div className="px-2">
           <RecommendedProducts products={sortedMobile.slice(1, 4)} />
         </div>
       </section>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 function Page() {
   return (
-    <section className="m-auto flex max-w-5xl flex-col items-center justify-center gap-4 py-16">
+    <section className="m-auto flex max-w-5xl flex-col items-center justify-center gap-4 px-2 py-16">
       <h2 className="border-b-[3px] border-gray-700 px-2 py-2 text-center text-3xl font-bold uppercase text-gray-700 lg:text-4xl">
         About us
       </h2>

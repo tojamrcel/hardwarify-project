@@ -37,7 +37,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
             </li>
           ))}
         </ul>
-        <div className="ml-8 flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-2">
+        <div className="ml-8 flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-4">
           <h2 className="text-center text-lg font-semibold text-gray-700">
             Order info
           </h2>
@@ -51,7 +51,11 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <p className="font-semibold text-gray-600">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
-          {status === "pending" && <CancelOrderBtn orderId={orderId} />}
+          {status === "pending" && (
+            <div className="mt-2">
+              <CancelOrderBtn orderId={orderId} />
+            </div>
+          )}
         </div>
       </div>
     </div>

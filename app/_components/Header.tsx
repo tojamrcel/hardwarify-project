@@ -77,7 +77,7 @@ function Header() {
                 </Link>
               </li>
             </div>
-            <div className="flex w-64 items-center gap-8">
+            <div className="flex items-center gap-8 sm:w-64">
               <li className="ml-auto transition-colors hover:text-gray-600">
                 <div className="relative">
                   <Badge
@@ -102,25 +102,25 @@ function Header() {
 
         {/* MOBILE */}
         <nav
-          className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-white-second transition-transform lg:hidden`}
+          className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-gray-100 transition-transform lg:hidden`}
         >
-          <ul className="flex w-full flex-col gap-2 py-2 text-stone-800 shadow-md">
-            <li className="w-full text-xl transition-colors duration-100 hover:text-stone-500">
+          <ul className="flex w-full flex-col gap-2 py-2 text-gray-700 shadow-md">
+            <li className="w-full text-xl transition-colors duration-100 hover:text-gray-500">
               <Link className="block py-2 text-center" href="/">
                 Home
               </Link>
             </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500">
               <Link className="block py-2 text-center" href="/products">
                 Products
               </Link>
             </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500">
               <Link className="block py-2 text-center" href="/deals">
                 Deals
               </Link>
             </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-stone-500">
+            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500">
               <Link className="block py-2 text-center" href="/about">
                 About
               </Link>

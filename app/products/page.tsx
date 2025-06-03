@@ -32,7 +32,7 @@ async function Page({
           </div>
         </div>
       </div>
-      <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col gap-8 px-4 py-8 lg:flex-row lg:gap-16 xl:gap-24">
+      <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 px-4 py-8 lg:flex-row lg:gap-16 xl:gap-24">
         <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6">
           <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left">
             Filters

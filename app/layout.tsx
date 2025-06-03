@@ -4,6 +4,7 @@ import "./_styles/globals.css";
 import Header from "./_components/Header";
 import { CartProvider } from "./_components/CartContext";
 import { Toaster } from "react-hot-toast";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 const latoSans = Lato({
   subsets: ["latin"],
@@ -26,26 +27,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${latoSans.className} bg-gray-50 antialiased`}>
-        <CartProvider>
-          {/* <div className="w-full">
+        <AppRouterCacheProvider>
+          <CartProvider>
+            {/* <div className="w-full">
             <p className="bg-gray-200 text-center text-lg font-semibold text-gray-600">
-              👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
+            👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
             </p>
-          </div> */}
-          <Header />
-          <main className="mx-auto">{children}</main>
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              style: {
-                marginTop: "64px",
-                padding: "16px 32px",
-                fontWeight: "700",
-              },
-              duration: 2000,
-            }}
-          />
-        </CartProvider>
+            </div> */}
+            <Header />
+            <main className="mx-auto">{children}</main>
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                style: {
+                  marginTop: "64px",
+                  padding: "16px 32px",
+                  fontWeight: "700",
+                },
+                duration: 2000,
+              }}
+            />
+          </CartProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

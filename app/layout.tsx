@@ -35,7 +35,7 @@ export default function RootLayout({
             </p>
             </div> */}
             <Header />
-            <main className="mx-auto">{children}</main>
+            <main className="mx-auto pt-[70px]">{children}</main>
             <Toaster
               position="top-center"
               toastOptions={{

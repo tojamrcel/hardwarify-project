@@ -27,8 +27,8 @@ function AccountMenu() {
   const pathname = usePathname();
 
   return (
-    <>
-      <nav className="p-4">
+    <div className="border-y-2 md:border-y-0 md:border-r-2">
+      <nav className="md:p-4">
         <ul className="flex-col gap-4 text-xl text-gray-700 lg:flex">
           {links.map((link) => (
             <li
@@ -46,7 +46,7 @@ function AccountMenu() {
           <SignOutButton />
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
 

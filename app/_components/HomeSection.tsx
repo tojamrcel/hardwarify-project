@@ -29,7 +29,7 @@ function HomeSection({
             <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
               {name}
             </h2>
-            <span className="w-full text-center text-lg font-semibold">
+            <span className="w-full text-center text-xl font-semibold">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
@@ -65,7 +65,7 @@ function HomeSection({
             <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
               {name}
             </h2>
-            <span className="w-full text-center text-lg font-semibold">
+            <span className="w-full text-center text-xl font-semibold">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>

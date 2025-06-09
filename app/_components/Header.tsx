@@ -26,7 +26,7 @@ function Header() {
 
   return (
     <>
-      <header className="fixed z-50 flex h-[70px] w-full items-center gap-4 bg-gray-100 px-6 font-semibold text-gray-700 shadow-sm sm:gap-10 sm:px-12">
+      <header className="fixed z-50 flex h-[70px] w-full items-center gap-4 bg-gray-100/90 px-6 font-semibold text-gray-700 shadow-sm backdrop-blur-lg sm:gap-10 sm:px-12">
         <div className="z-10 lg:w-64">
           <Link
             className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200"

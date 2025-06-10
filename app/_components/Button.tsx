@@ -22,7 +22,16 @@ function Button({
   if (type === "primary" && link)
     return (
       <Link href={link}>
-        <ButtonMUI variant="contained" color="error" size={size}>
+        <ButtonMUI
+          variant="contained"
+          color="primary"
+          size={size}
+          sx={{
+            ":hover": {
+              bgcolor: "primary.dark",
+            },
+          }}
+        >
           <span className="font-semibold">{children}</span>
         </ButtonMUI>
       </Link>
@@ -31,11 +40,16 @@ function Button({
     return (
       <ButtonMUI
         variant="contained"
-        color="error"
+        color="primary"
         onClick={onClick}
         disabled={disabled}
         type={onClick ? "button" : "submit"}
         size={size}
+        sx={{
+          ":hover": {
+            bgcolor: "primary.dark",
+          },
+        }}
       >
         <span className="font-semibold">{children}</span>
       </ButtonMUI>

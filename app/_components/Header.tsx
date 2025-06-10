@@ -81,7 +81,7 @@ function Header() {
               <li className="ml-auto transition-colors hover:text-gray-600">
                 <div className="relative">
                   <Badge
-                    color="error"
+                    color="primary"
                     badgeContent={cart.length}
                     overlap="circular"
                   >

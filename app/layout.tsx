@@ -32,11 +32,6 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CartProvider>
-              {/* <div className="w-full">
-            <p className="bg-gray-200 text-center text-lg font-semibold text-gray-600">
-            👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
-            </p>
-            </div> */}
               <Header />
               <main className="mx-auto pt-[70px]">{children}</main>
               <Toaster

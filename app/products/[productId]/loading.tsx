@@ -2,7 +2,7 @@ import Loader from "@/app/_components/Loader";
 
 function Loading() {
   return (
-    <div className="flex h-96 items-center justify-center">
+    <div className="flex h-screen max-h-full items-center justify-center pb-24">
       <Loader />
     </div>
   );

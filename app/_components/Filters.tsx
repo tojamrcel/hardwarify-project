@@ -38,7 +38,7 @@ function Filters({ categories }: { categories: string[] }) {
   }
 
   return (
-    <>
+    <form>
       <div className="flex items-center gap-2">
         <label
           htmlFor="category"
@@ -57,7 +57,7 @@ function Filters({ categories }: { categories: string[] }) {
           />
         ))}
       </div>
-    </>
+    </form>
   );
 }
 

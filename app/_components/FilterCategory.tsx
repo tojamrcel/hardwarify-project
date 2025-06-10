@@ -17,11 +17,15 @@ function FilterCategory({
       <Checkbox
         color="error"
         value={cat}
+        id={cat}
         name="category"
         checked={filters.includes(cat)}
         onChange={() => handleFilters(cat)}
       />
-      <p className="text-left text-lg text-gray-700">{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</p>
+      <label
+        htmlFor={cat}
+        className="cursor-pointer text-left text-lg text-gray-700"
+      >{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</label>
     </div>
   );
 }

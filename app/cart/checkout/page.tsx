@@ -195,7 +195,7 @@ function Page() {
               <InputErrorMessage>{errors.address.message}</InputErrorMessage>
             )}
           </InputRow>
-          <div>
+          <div className="mb-4">
             <Button type="primary">Order</Button>
           </div>
           {error && <p className="text-md text-red-600">{error}</p>}

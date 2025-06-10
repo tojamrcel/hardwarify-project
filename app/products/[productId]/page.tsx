@@ -23,15 +23,15 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
 
   return (
     <section className="mt-8 flex flex-col items-center gap-24 py-4 md:mt-24 md:gap-32 md:px-4 lg:mt-32 lg:gap-40">
-      <section className="mx-auto grid grid-cols-1 gap-16 px-8 md:max-w-[1300px] md:grid-cols-2 lg:gap-32">
+      <section className="mx-auto grid grid-cols-1 gap-16 px-8 md:max-w-[1300px] md:grid-cols-2 lg:gap-32 xl:gap-48">
         <div className="flex flex-col gap-4 justify-self-center">
-          <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[110%] before:w-[110%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-200 after:absolute after:left-1/2 after:top-1/2 after:-z-20 after:h-[120%] after:w-[120%] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-gray-300 after:opacity-70 lg:before:h-[120%] lg:before:w-[120%] lg:after:h-[140%] lg:after:w-[140%]">
+          <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[110%] before:w-[110%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-200 after:absolute after:left-1/2 after:top-1/2 after:-z-20 after:h-[120%] after:w-[120%] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-gray-300 after:opacity-70 xl:before:h-[120%] xl:before:w-[120%] xl:after:h-[140%] xl:after:w-[140%]">
             <Image
               src={product.image}
               alt={product.product_name}
               width={370}
               height={370}
-              className="rounded-lg shadow-sm md:w-80 lg:w-auto"
+              className="rounded-lg shadow-sm md:w-80 xl:w-auto"
             />
           </div>
         </div>

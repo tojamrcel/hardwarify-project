@@ -28,7 +28,7 @@ function RecommendedItem({ product }: { product: Product }) {
         </h3>
         {discount ? (
           <>
-            <div className="flex gap-2 font-semibold 2xl:gap-3">
+            <div className="flex gap-2 font-semibold xl:text-lg 2xl:gap-3">
               <span className="italic line-through">${regularPrice}</span>
               <span className="text-red-600">
                 ${regularPrice - Number(discount)}
@@ -36,7 +36,7 @@ function RecommendedItem({ product }: { product: Product }) {
             </div>
           </>
         ) : (
-          <span className="font-semibold">
+          <span className="font-semibold xl:text-lg">
             ${regularPrice - Number(discount)}
           </span>
         )}

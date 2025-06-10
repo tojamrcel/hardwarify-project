@@ -29,7 +29,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
         </h1>
         <OrderStatusBadge status={status} />
       </div>
-      <div className="grid w-full items-center gap-8 md:grid-cols-[3fr_2fr]">
+      <div className="grid w-full items-center gap-4 md:grid-cols-[3fr_2fr] md:gap-0 lg:gap-8">
         <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
           {productItems.map((item) => (
             <li key={item.id}>
@@ -37,7 +37,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
             </li>
           ))}
         </ul>
-        <div className="ml-8 flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-4">
           <h2 className="text-center text-lg font-semibold text-gray-700">
             Order info
           </h2>
@@ -51,7 +51,11 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <p className="font-semibold text-gray-600">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
-          {status === "pending" && <CancelOrderBtn orderId={orderId} />}
+          {status === "pending" && (
+            <div className="mt-2">
+              <CancelOrderBtn orderId={orderId} />
+            </div>
+          )}
         </div>
       </div>
     </div>

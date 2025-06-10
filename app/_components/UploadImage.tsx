@@ -30,14 +30,19 @@ function UploadImage() {
       className="flex flex-col items-center gap-2 md:items-start"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input
-        type="file"
-        accept="image/*"
-        {...register("image", {
-          required: "Please import an image.",
-        })}
-      />
-      <Button type="secondary">Upload new image</Button>
+      <div className="flex w-48 justify-center md:block md:w-auto">
+        <input
+          type="file"
+          accept="image/*"
+          {...register("image", {
+            required: "Please import an image.",
+          })}
+          className="w-full"
+        />
+      </div>
+      <div className="flex w-full justify-center md:block md:w-auto">
+        <Button type="secondary">Upload new image</Button>
+      </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
       {errors.image && !error && (
         <p className="text-sm text-red-600">{errors.image.message}</p>

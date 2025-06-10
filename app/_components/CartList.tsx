@@ -13,7 +13,7 @@ function CartList() {
   }
 
   return (
-    <div className="flex w-full flex-col gap-4 p-4 md:mt-4 md:w-auto md:gap-2">
+    <div className="flex w-full flex-col gap-4 p-4 md:mt-4 md:w-auto md:gap-4">
       {cart.length > 0 &&
         cart.map((prod) => (
           <CartItem
@@ -75,7 +75,7 @@ function CartItem({
   }
 
   return (
-    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg bg-white-second px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
+    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg border-2 px-2 py-2 md:gap-4 md:px-4 lg:h-auto">
       <Image
         src={image}
         alt={name}

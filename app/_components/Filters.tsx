@@ -38,7 +38,7 @@ function Filters({ categories }: { categories: string[] }) {
   }
 
   return (
-    <>
+    <form>
       <div className="flex items-center gap-2">
         <label
           htmlFor="category"
@@ -47,7 +47,7 @@ function Filters({ categories }: { categories: string[] }) {
           Category
         </label>
       </div>
-      <div className="ml-3 mt-2 flex w-full flex-col items-center gap-3 lg:items-start">
+      <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
         {categories.map((cat) => (
           <FilterCategory
             cat={cat}
@@ -57,7 +57,7 @@ function Filters({ categories }: { categories: string[] }) {
           />
         ))}
       </div>
-    </>
+    </form>
   );
 }
 

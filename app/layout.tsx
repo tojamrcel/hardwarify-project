@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./_styles/globals.css";
 import Header from "./_components/Header";
 import { CartProvider } from "./_components/CartContext";
 import { Toaster } from "react-hot-toast";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./_styles/theme";
 
-const ralewaySans = Raleway({
-  variable: "--font-raleway-sans",
+const latoSans = Lato({
   subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -25,28 +28,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ralewaySans.variable} ${ralewaySans.variable} bg-white-bg antialiased`}
-      >
-        <CartProvider>
-          <Header />
-          <div className="w-full py-2">
-            <p className="-mt-2 bg-slate-200 text-center text-lg font-semibold text-gray-600">
-              👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
+      <body className={`${latoSans.className} bg-gray-50 antialiased`}>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <CartProvider>
+              {/* <div className="w-full">
+            <p className="bg-gray-200 text-center text-lg font-semibold text-gray-600">
+            👋 FOR DEMO VERSION OF APP SOME API FEATURES HAVE BEEN DISABLED
             </p>
-          </div>
-          <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              style: {
-                marginTop: "64px",
-                padding: "16px 32px",
-              },
-              duration: 2000,
-            }}
-          />
-        </CartProvider>
+            </div> */}
+              <Header />
+              <main className="mx-auto pt-[70px]">{children}</main>
+              <Toaster
+                position="top-center"
+                toastOptions={{
+                  style: {
+                    marginTop: "64px",
+                    padding: "16px 32px",
+                    fontWeight: "700",
+                  },
+                  duration: 2000,
+                }}
+              />
+            </CartProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

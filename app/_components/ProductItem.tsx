@@ -13,12 +13,12 @@ function ProductItem({ product }: { product: Product }) {
   } = product;
 
   return (
-    <div className="relative grid grid-cols-[auto_1fr] items-center gap-4 bg-white-second shadow-sm">
+    <div className="relative grid h-32 grid-cols-[auto_1fr] items-center gap-4 rounded-md border-2">
       <Image
-        className={`w-24 rounded-md ${availability === 0 ? "opacity-50 grayscale" : ""}`}
+        className={`h-full rounded-md ${availability === 0 ? "opacity-50 grayscale" : ""}`}
         src={image}
-        width={96}
-        height={96}
+        width={125}
+        height={125}
         alt={name}
       />
       <div className="flex flex-col gap-2">

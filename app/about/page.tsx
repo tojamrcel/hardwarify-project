@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 function Page() {
   return (
-    <section className="m-auto flex max-w-5xl flex-col items-center justify-center gap-4">
+    <section className="m-auto mt-2 flex max-w-5xl flex-col items-center justify-center gap-4 px-2 md:mt-16">
       <h2 className="border-b-[3px] border-gray-700 px-2 py-2 text-center text-3xl font-bold uppercase text-gray-700 lg:text-4xl">
         About us
       </h2>
@@ -31,16 +31,16 @@ function Page() {
         productive, and entertained.
       </p>
       <div className="mt-4 flex items-center justify-center gap-4 md:gap-8 lg:mt-8 lg:gap-10">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white-second text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoPhonePortraitOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white-second text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoGameControllerOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white-second text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoLaptopOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white-second text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoHeadsetOutline />
         </div>
       </div>

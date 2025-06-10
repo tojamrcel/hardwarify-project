@@ -1,4 +1,3 @@
-import SettingsForm from "@/app/_components/SettingsForm";
 import UploadImage from "@/app/_components/UploadImage";
 import { getProfile } from "@/app/_lib/data_service";
 import { createClient } from "@/app/_lib/supabase/server";
@@ -11,28 +10,27 @@ async function Page() {
   } = await supabase.auth.getUser();
 
   if (!user || !user.email) throw new Error("There is no user logged in.");
-  const { email, firstName, lastName, image } = await getProfile(user.email);
+  const { firstName, lastName, image } = await getProfile(user.email);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 md:mt-8">
-      <div className="flex flex-col items-center gap-8 md:grid md:grid-cols-[auto_1fr]">
+    <div className="flex h-full w-full flex-col items-center justify-center py-8 lg:mt-8 lg:w-auto lg:items-start lg:justify-start">
+      <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-[auto_1fr]">
         <Image
           src={image ? image : "/noimage.jpg"}
-          width={144}
-          height={144}
-          className="rounded-full"
+          width={196}
+          height={196}
+          className="w-36 rounded-full"
           alt="Profile image"
         />
-        <div className="flex flex-col items-center justify-center gap-2 text-gray-600 md:items-start">
-          <h2 className="text-2xl font-semibold">
+        <div className="flex flex-col justify-center gap-2 text-gray-600">
+          <h2 className="text-center text-3xl font-semibold md:text-left">
             {firstName} {lastName}
           </h2>
-          <div className="text-md flex flex-col items-start">
+          <div className="flex justify-center">
             <UploadImage />
           </div>
         </div>
       </div>
-      <SettingsForm email={email} />
     </div>
   );
 }

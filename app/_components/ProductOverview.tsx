@@ -3,7 +3,7 @@ import { CartProduct } from "../_types/types";
 
 function ProductOverview({ item }: { item: CartProduct }) {
   return (
-    <div className="grid w-full flex-shrink-0 grid-cols-[8rem_3fr] overflow-hidden rounded-lg bg-white-second">
+    <div className="grid w-full flex-shrink-0 grid-cols-[7rem_3fr] overflow-hidden rounded-lg border-2">
       <Image src={item.image} width="96" height="96" alt={item.product_name} />
       <div className="flex h-full w-full items-center justify-between pr-4">
         <p className="font-semibold uppercase tracking-tighter text-gray-600">

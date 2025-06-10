@@ -12,7 +12,7 @@ function RecommendedItem({ product }: { product: Product }) {
   } = product;
 
   return (
-    <div className="grid grid-cols-2 rounded-md bg-white-second px-4 py-2 shadow-sm md:grid-cols-1 lg:grid-cols-2">
+    <div className="grid grid-cols-2 rounded-md bg-gray-200 px-4 py-2 shadow-sm md:grid-cols-1 lg:grid-cols-2">
       <div className="flex w-full items-center justify-center">
         <Image
           src={image}
@@ -23,12 +23,12 @@ function RecommendedItem({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-center font-bold text-stone-800 md:mt-2 lg:mt-0">
+        <h3 className="text-center font-bold text-gray-800 md:mt-2 lg:mt-0 2xl:text-xl">
           {name}
         </h3>
         {discount ? (
           <>
-            <div className="flex gap-2 font-semibold">
+            <div className="flex gap-2 font-semibold xl:text-lg 2xl:gap-3">
               <span className="italic line-through">${regularPrice}</span>
               <span className="text-red-600">
                 ${regularPrice - Number(discount)}
@@ -36,12 +36,12 @@ function RecommendedItem({ product }: { product: Product }) {
             </div>
           </>
         ) : (
-          <span className="font-semibold">
+          <span className="font-semibold xl:text-lg">
             ${regularPrice - Number(discount)}
           </span>
         )}
         <div className="mt-1">
-          <Button type="secondary" link={`/products/${id}`}>
+          <Button type="secondary" link={`/products/${id}`} size="large">
             Go to product
           </Button>
         </div>

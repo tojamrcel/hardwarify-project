@@ -27,8 +27,8 @@ function AccountMenu() {
   const pathname = usePathname();
 
   return (
-    <>
-      <nav className="p-4">
+    <div className="border-y-2 md:border-y-0 md:border-r-2">
+      <nav className="md:p-4">
         <ul className="flex-col gap-4 text-xl text-gray-700 lg:flex">
           {links.map((link) => (
             <li
@@ -37,7 +37,7 @@ function AccountMenu() {
             >
               <Link
                 href={link.href}
-                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-300 md:text-left ${link.href === pathname ? "bg-gray-300 font-semibold" : ""}`}
+                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-200 md:text-left ${link.href === pathname ? "bg-gray-200 font-semibold" : ""}`}
               >
                 {link.name}
               </Link>
@@ -46,7 +46,7 @@ function AccountMenu() {
           <SignOutButton />
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
 

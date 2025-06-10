@@ -22,22 +22,22 @@ function HomeSection({
   const finalPrice = regularPrice - Number(discount);
 
   return (
-    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-white-second px-4 py-8 shadow-md md:grid-cols-2">
+    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-gray-200 py-16 shadow-md md:grid-cols-2 md:gap-32 lg:gap-64">
       {textPlace === "left" && (
         <>
-          <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center text-4xl font-bold text-gray-700">
+          <div className="flex flex-col items-center gap-2 md:justify-self-end">
+            <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
               {name}
             </h2>
-            <span className="w-full text-center font-semibold">
+            <span className="w-full text-center text-xl font-semibold">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
-            <Button type="primary" link={`/products/${id}`}>
+            <Button type="primary" link={`/products/${id}`} size="large">
               Buy now
             </Button>
           </div>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 md:justify-self-start">
             <Image
               src={image}
               width={384}
@@ -51,7 +51,7 @@ function HomeSection({
       )}
       {textPlace === "right" && (
         <>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 md:justify-self-end">
             <Image
               src={image}
               width={384}
@@ -61,16 +61,16 @@ function HomeSection({
               className="w-72 rounded-lg shadow-md md:w-auto"
             />
           </div>
-          <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto">
-            <h2 className="text-center text-4xl font-bold text-gray-700">
+          <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto md:justify-self-start">
+            <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
               {name}
             </h2>
-            <span className="w-full text-center font-semibold">
+            <span className="w-full text-center text-xl font-semibold">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
 
-            <Button type="primary" link={`/products/${id}`}>
+            <Button type="primary" link={`/products/${id}`} size="large">
               Buy now
             </Button>
           </div>

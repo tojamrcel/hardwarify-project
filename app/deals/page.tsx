@@ -23,12 +23,12 @@ async function Page() {
   } = bestDeal || {};
 
   return (
-    <>
-      <h2 className="mb-2 py-2 text-center text-3xl font-bold uppercase tracking-wider text-red-600 underline md:text-4xl lg:text-5xl">
+    <section className="py-2">
+      <h2 className="mb-2 py-2 text-center text-4xl font-extrabold uppercase tracking-wider text-red-600 underline md:mt-8 md:text-5xl">
         HOT DEALS
       </h2>
-      <section className="flex flex-col items-center rounded-lg bg-white-second py-4">
-        <h3 className="text-2xl font-bold text-gray-700 md:text-3xl">{name}</h3>
+      <section className="flex flex-col items-center rounded-lg bg-gray-200 py-4">
+        <h3 className="text-4xl font-bold text-gray-700">{name}</h3>
         <Image
           src={image}
           alt="Samsung"
@@ -37,7 +37,7 @@ async function Page() {
           quality={95}
           className="my-4 w-64 rounded-full md:w-72 lg:w-auto"
         />
-        <div className="mb-4 flex gap-2 text-xl">
+        <div className="mb-4 flex gap-2 text-3xl">
           <span className="italic text-gray-700 line-through">
             {regularPrice}$
           </span>
@@ -45,12 +45,14 @@ async function Page() {
             {regularPrice - Number(discount)}$
           </span>
         </div>
-        <Button type="primary" link={`/products/${id}`}>
+        <Button type="primary" link={`/products/${id}`} size="large">
           Buy now
         </Button>
       </section>
-      <RecommendedProducts products={sortedProducts.slice(1, 4)} />
-    </>
+      <div className="px-2">
+        <RecommendedProducts products={sortedProducts.slice(1, 4)} />
+      </div>
+    </section>
   );
 }
 

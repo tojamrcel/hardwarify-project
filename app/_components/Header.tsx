@@ -6,6 +6,7 @@ import { useCart } from "./CartContext";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@mui/material";
 import { usePathname } from "next/navigation";
+import ToggleDarkMode from "./ToggleDarkMode";
 
 function Header() {
   const pathname = usePathname();
@@ -77,8 +78,11 @@ function Header() {
                 </Link>
               </li>
             </div>
-            <div className="flex items-center gap-8 sm:w-64">
+            <div className="flex items-center gap-4 sm:w-64 sm:gap-8">
               <li className="ml-auto transition-colors hover:text-gray-600">
+                <ToggleDarkMode />
+              </li>
+              <li className="transition-colors hover:text-gray-600">
                 <div className="relative">
                   <Badge
                     color="primary"

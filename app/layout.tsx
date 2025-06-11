@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./_styles/theme";
+import { DarkModeProvider } from "./_components/DarkModeContext";
 
 const latoSans = Lato({
   subsets: ["latin"],
@@ -30,23 +31,25 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${latoSans.className} bg-gray-50 antialiased`}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CartProvider>
-              <Header />
-              <main className="mx-auto pt-[70px]">{children}</main>
-              <Toaster
-                position="top-center"
-                toastOptions={{
-                  style: {
-                    marginTop: "64px",
-                    padding: "16px 32px",
-                    fontWeight: "700",
-                  },
-                  duration: 2000,
-                }}
-              />
-            </CartProvider>
-          </ThemeProvider>
+          <DarkModeProvider>
+            <ThemeProvider theme={theme}>
+              <CartProvider>
+                <Header />
+                <main className="mx-auto pt-[70px]">{children}</main>
+                <Toaster
+                  position="top-center"
+                  toastOptions={{
+                    style: {
+                      marginTop: "64px",
+                      padding: "16px 32px",
+                      fontWeight: "700",
+                    },
+                    duration: 2000,
+                  }}
+                />
+              </CartProvider>
+            </ThemeProvider>
+          </DarkModeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

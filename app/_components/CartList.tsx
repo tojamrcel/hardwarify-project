@@ -84,7 +84,7 @@ function CartItem({
         className="w-20 self-center justify-self-center rounded-md shadow-sm"
       />
       <div>
-        <p className="font-semibold text-gray-700 md:text-lg dark:text-gray-200">
+        <p className="font-semibold text-gray-700 md:text-lg dark:text-gray-300">
           {name}
         </p>
         <div className="flex flex-col gap-2 text-gray-700 sm:flex-row sm:items-center dark:text-gray-600">

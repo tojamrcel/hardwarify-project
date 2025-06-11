@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Button as ButtonMUI } from "@mui/material";
+import colors from "tailwindcss/colors";
 
 interface ButtonComponentProps {
   type: "primary" | "secondary";
@@ -48,6 +49,9 @@ function Button({
         sx={{
           ":hover": {
             bgcolor: "primary.dark",
+          },
+          ".dark &:disabled": {
+            bgcolor: colors.gray[700],
           },
         }}
       >

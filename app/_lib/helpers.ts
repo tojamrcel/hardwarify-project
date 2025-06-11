@@ -42,9 +42,3 @@ export function getFromLocalStorage(key: string) {
     if (item) return item;
   }
 }
-
-export function setToLocalStorage<T>(key: string, value: T) {
-  if (window !== undefined) {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-}

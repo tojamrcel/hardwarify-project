@@ -24,11 +24,13 @@ async function Page() {
 
   return (
     <section className="py-2">
-      <h2 className="mb-2 py-2 text-center text-4xl font-extrabold uppercase tracking-wider text-red-600 underline md:mt-8 md:text-5xl">
+      <h2 className="mb-2 py-2 text-center text-4xl font-extrabold uppercase tracking-wider text-red-600 underline md:mt-8 md:text-5xl dark:text-red-700">
         HOT DEALS
       </h2>
-      <section className="flex flex-col items-center rounded-lg bg-gray-200 py-4">
-        <h3 className="text-4xl font-bold text-gray-700">{name}</h3>
+      <section className="flex flex-col items-center rounded-lg bg-gray-200 py-4 dark:bg-gray-800">
+        <h3 className="text-4xl font-bold text-gray-700 dark:text-gray-200">
+          {name}
+        </h3>
         <Image
           src={image}
           alt="Samsung"
@@ -38,10 +40,10 @@ async function Page() {
           className="my-4 w-64 rounded-full md:w-72 lg:w-auto"
         />
         <div className="mb-4 flex gap-2 text-3xl">
-          <span className="italic text-gray-700 line-through">
+          <span className="italic text-gray-700 line-through dark:text-gray-600">
             {regularPrice}$
           </span>
-          <span className="text-red-600">
+          <span className="text-red-600 dark:text-red-700">
             {regularPrice - Number(discount)}$
           </span>
         </div>

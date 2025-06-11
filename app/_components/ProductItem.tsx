@@ -28,10 +28,14 @@ function ProductItem({ product }: { product: Product }) {
         {discount ? (
           <div className="flex gap-2 font-semibold text-gray-500 dark:text-gray-600">
             <p className="italic line-through">${price}</p>
-            <span className="text-red-600">${price - Number(discount)}</span>
+            <span className="text-red-600 dark:text-red-700">
+              ${price - Number(discount)}
+            </span>
           </div>
         ) : (
-          <span className="py-2 font-semibold text-gray-500">{price}$</span>
+          <span className="py-2 font-semibold text-gray-500 dark:text-gray-600">
+            {price}$
+          </span>
         )}
       </div>
       <div className="absolute bottom-2 right-2 hidden md:block">

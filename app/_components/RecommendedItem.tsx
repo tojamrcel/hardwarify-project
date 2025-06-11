@@ -23,14 +23,16 @@ function RecommendedItem({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-center font-bold text-gray-800 md:mt-2 lg:mt-0 2xl:text-xl">
+        <h3 className="text-center font-bold text-gray-800 md:mt-2 lg:mt-0 2xl:text-xl dark:text-gray-200">
           {name}
         </h3>
         {discount ? (
           <>
             <div className="flex gap-2 font-semibold xl:text-lg 2xl:gap-3">
-              <span className="italic line-through">${regularPrice}</span>
-              <span className="text-red-600">
+              <span className="italic text-gray-600 line-through">
+                ${regularPrice}
+              </span>
+              <span className="text-red-600 dark:text-red-700">
                 ${regularPrice - Number(discount)}
               </span>
             </div>

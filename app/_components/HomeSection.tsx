@@ -26,10 +26,10 @@ function HomeSection({
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2 md:justify-self-end">
-            <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
+            <h2 className="px-2 text-center text-5xl font-bold text-gray-700 dark:text-gray-200">
               {name}
             </h2>
-            <span className="w-full text-center text-xl font-semibold">
+            <span className="w-full text-center text-xl font-semibold dark:text-gray-200">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
@@ -62,10 +62,10 @@ function HomeSection({
             />
           </div>
           <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto md:justify-self-start">
-            <h2 className="px-2 text-center text-5xl font-bold text-gray-700">
+            <h2 className="px-2 text-center text-5xl font-bold text-gray-700 dark:text-gray-200">
               {name}
             </h2>
-            <span className="w-full text-center text-xl font-semibold">
+            <span className="w-full text-center text-xl font-semibold dark:text-gray-200">
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>

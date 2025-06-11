@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { Lato } from "next/font/google";
-import "./_styles/globals.css";
-import Header from "./_components/Header";
-import { CartProvider } from "./_components/CartContext";
-import { Toaster } from "react-hot-toast";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "./_styles/theme";
+import type { Metadata } from "next";
+import { Lato } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import { CartProvider } from "./_components/CartContext";
 import { DarkModeProvider } from "./_components/DarkModeContext";
+import Header from "./_components/Header";
+import "./_styles/globals.css";
+import theme from "./_styles/theme";
 
 const latoSans = Lato({
   subsets: ["latin"],
@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${latoSans.className} bg-gray-50 antialiased`}>
+      <body
+        className={`${latoSans.className} bg-gray-50 antialiased dark:bg-gray-900`}
+      >
         <AppRouterCacheProvider>
           <DarkModeProvider>
             <ThemeProvider theme={theme}>

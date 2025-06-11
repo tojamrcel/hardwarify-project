@@ -22,7 +22,7 @@ function HomeSection({
   const finalPrice = regularPrice - Number(discount);
 
   return (
-    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-gray-200 py-16 shadow-md md:grid-cols-2 md:gap-32 lg:gap-64">
+    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-gray-200 py-16 shadow-md md:grid-cols-2 md:gap-32 lg:gap-64 dark:bg-gray-800">
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2 md:justify-self-end">

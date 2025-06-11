@@ -27,17 +27,14 @@ function AccountMenu() {
   const pathname = usePathname();
 
   return (
-    <div className="border-y-2 md:border-y-0 md:border-r-2">
+    <div className="border-y-2 md:border-y-0 md:border-r-2 dark:border-gray-600">
       <nav className="md:p-4">
-        <ul className="flex-col gap-4 text-xl text-gray-700 lg:flex">
+        <ul className="flex-col gap-4 text-xl text-gray-700 lg:flex dark:text-gray-300">
           {links.map((link) => (
-            <li
-              className={`mt-2 rounded-lg text-gray-700 lg:mt-0`}
-              key={link.href}
-            >
+            <li className={`mt-2 rounded-lg lg:mt-0`} key={link.href}>
               <Link
                 href={link.href}
-                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-200 md:text-left ${link.href === pathname ? "bg-gray-200 font-semibold" : ""}`}
+                className={`block h-full rounded-lg p-2 text-center hover:bg-gray-200 md:text-left dark:hover:bg-gray-800 ${link.href === pathname ? "bg-gray-200 font-semibold dark:bg-gray-800" : ""}`}
               >
                 {link.name}
               </Link>

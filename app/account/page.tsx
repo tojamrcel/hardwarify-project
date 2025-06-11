@@ -27,7 +27,7 @@ async function Page() {
           alt="Profile image"
           className="rounded-full"
         />
-        <div className="flex flex-col justify-center gap-2 text-gray-600">
+        <div className="flex flex-col justify-center gap-2 text-gray-600 dark:text-gray-300">
           <h2 className="text-center text-4xl font-semibold md:text-left">
             Hello {firstName}!
           </h2>

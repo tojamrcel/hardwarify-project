@@ -24,7 +24,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
-        <h1 className="text-2xl font-semibold text-gray-700">
+        <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Order #{orderId}
         </h1>
         <OrderStatusBadge status={status} />
@@ -37,8 +37,8 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
             </li>
           ))}
         </ul>
-        <div className="flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-4">
-          <h2 className="text-center text-lg font-semibold text-gray-700">
+        <div className="flex flex-col items-center justify-center gap-2 rounded-lg border-2 py-4 dark:border-gray-600">
+          <h2 className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
             Order info
           </h2>
           <p className="font-semibold text-gray-600">

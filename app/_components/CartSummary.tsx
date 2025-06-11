@@ -22,7 +22,9 @@ function CartSummary() {
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-gray-700">Summary</h2>
+      <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-300">
+        Summary
+      </h2>
       <div className="my-3 flex flex-col gap-2 px-4 text-gray-500 md:my-4">
         <p>
           <span className="font-semibold">Products:</span>{" "}

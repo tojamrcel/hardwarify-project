@@ -1,3 +1,5 @@
+"use client";
+
 import { useDarkMode } from "./DarkModeContext";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 

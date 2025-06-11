@@ -9,7 +9,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getFromLocalStorage } from "../_lib/helpers";
+import { getFromLocalStorage, setToLocalStorage } from "../_lib/helpers";
 
 interface DarkModeContextType {
   isDarkMode: boolean;
@@ -19,19 +19,24 @@ interface DarkModeContextType {
 const DarkModeContext = createContext<DarkModeContextType | null>(null);
 
 export function DarkModeProvider({ children }: { children: ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    getFromLocalStorage("darkMode")
-      ? JSON.parse(getFromLocalStorage("darkMode")!)
-      : window.matchMedia("(prefers-color-scheme: dark)").matches,
-  );
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (getFromLocalStorage("darkMode")) {
+      setIsDarkMode(JSON.parse(getFromLocalStorage("darkMode")!));
+    } else {
+      setIsDarkMode(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("darkMode", JSON.stringify(true));
+      setToLocalStorage("darkMode", true);
+      console.log(getFromLocalStorage("darkMode"));
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("darkMode", JSON.stringify(false));
+      setToLocalStorage("darkMode", false);
     }
   }, [isDarkMode]);
 

@@ -15,7 +15,7 @@ function ProductItem({ product }: { product: Product }) {
   return (
     <div className="relative grid h-32 grid-cols-[auto_1fr] items-center gap-4 rounded-md border-2 dark:border-gray-600">
       <Image
-        className={`h-full rounded-md ${availability === 0 ? "opacity-50 grayscale" : ""}`}
+        className={`h-full rounded-md ${availability === 0 ? "opacity-50 grayscale-[100%]" : "dark:grayscale-[30%]"}`}
         src={image}
         width={125}
         height={125}

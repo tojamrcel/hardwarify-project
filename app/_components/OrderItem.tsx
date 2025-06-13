@@ -37,7 +37,7 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
               alt={products.find((p) => p.id === item.product_id)!.product_name}
               width={80}
               height={80}
-              className={`rounded-md`}
+              className={`rounded-md dark:grayscale-[30%]`}
               key={item.product_id}
             />
           );

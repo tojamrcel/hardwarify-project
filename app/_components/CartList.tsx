@@ -81,7 +81,7 @@ function CartItem({
         alt={name}
         height={96}
         width={96}
-        className="w-20 self-center justify-self-center rounded-md shadow-sm"
+        className="w-20 self-center justify-self-center rounded-md shadow-sm dark:grayscale-[30%]"
       />
       <div>
         <p className="font-semibold text-gray-700 md:text-lg dark:text-gray-300">

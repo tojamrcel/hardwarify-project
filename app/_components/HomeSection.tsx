@@ -44,7 +44,7 @@ function HomeSection({
               height={384}
               quality={100}
               alt={name}
-              className="w-72 rounded-lg shadow-md md:w-auto"
+              className="w-72 rounded-lg shadow-md md:w-auto dark:grayscale-[40%]"
             />
           </div>
         </>
@@ -58,7 +58,7 @@ function HomeSection({
               height={384}
               quality={100}
               alt={name}
-              className="w-72 rounded-lg shadow-md md:w-auto"
+              className="w-72 rounded-lg shadow-md md:w-auto dark:grayscale-[40%]"
             />
           </div>
           <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto md:justify-self-start">

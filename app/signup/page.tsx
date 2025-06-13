@@ -28,7 +28,7 @@ function Page() {
 
   return (
     <div className="mt-8 flex flex-col items-center gap-4 md:gap-8 lg:mt-16">
-      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl">
+      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl dark:text-gray-300">
         Create new account
       </h2>
       <form
@@ -44,7 +44,7 @@ function Page() {
           </label>
           <input
             type="email"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             placeholder="jankowalski@mail.com"
             {...register("email", { required: "Email is required." })}
           />
@@ -61,7 +61,7 @@ function Page() {
           </label>
           <input
             type="text"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             placeholder="John"
             {...register("firstName", {
               required: "First name is required.",
@@ -84,7 +84,7 @@ function Page() {
           </label>
           <input
             type="text"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             placeholder="Kowalski"
             {...register("lastName", {
               required: "Last name is required.",
@@ -107,7 +107,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             {...register("password", {
               required: "Password is required",
               minLength: {
@@ -129,7 +129,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             {...register("confirmPassword", {
               required: "Please confirm your password.",
               validate: (val) =>

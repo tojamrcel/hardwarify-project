@@ -39,7 +39,9 @@ function Page() {
 
   return (
     <div className="mt-8 flex flex-col items-center gap-8 lg:mt-16">
-      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl">Login</h2>
+      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl dark:text-gray-300">
+        Login
+      </h2>
       <form
         className="flex flex-col items-center gap-2"
         onSubmit={handleSubmit(onSubmit)}
@@ -53,7 +55,7 @@ function Page() {
           </label>
           <input
             type="email"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             placeholder="jankowalski@mail.com"
             {...register("email", { required: "Email is required." })}
           />
@@ -70,7 +72,7 @@ function Page() {
           </label>
           <input
             type="password"
-            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg"
+            className="text-md h-10 w-80 rounded-md border-2 border-transparent p-2 text-center text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200"
             {...register("password", { required: "Password is required." })}
           />
           {errors.password && (

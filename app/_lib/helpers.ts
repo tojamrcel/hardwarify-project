@@ -35,3 +35,16 @@ export function removeRepeatingProducts(
     })
     .filter((product) => product !== null);
 }
+
+export function getFromLocalStorage(key: string) {
+  if (typeof window !== "undefined") {
+    const item = localStorage.getItem(key);
+    if (item) return item;
+  }
+}
+
+export function setToLocalStorage<T>(key: string, value: T) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+}

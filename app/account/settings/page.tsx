@@ -22,7 +22,7 @@ async function Page() {
           className="w-36 rounded-full"
           alt="Profile image"
         />
-        <div className="flex flex-col justify-center gap-2 text-gray-600">
+        <div className="flex flex-col justify-center gap-2 text-gray-600 dark:text-gray-300">
           <h2 className="text-center text-3xl font-semibold md:text-left">
             {firstName} {lastName}
           </h2>

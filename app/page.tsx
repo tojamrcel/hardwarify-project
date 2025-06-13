@@ -27,7 +27,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl">
+      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl dark:text-gray-200">
         Gaming
       </h2>
       <section className="mb-16">
@@ -37,7 +37,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl">
+      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl dark:text-gray-200">
         Mobile devices
       </h2>
       <section className="mb-16">

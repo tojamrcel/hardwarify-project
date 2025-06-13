@@ -1,4 +1,6 @@
 import { Checkbox } from "@mui/material";
+import colors from "tailwindcss/colors";
+import { red } from "@mui/material/colors";
 
 function FilterCategory({
   cat,
@@ -15,16 +17,22 @@ function FilterCategory({
       key={cat}
     >
       <Checkbox
-        color="error"
+        color="primary"
         value={cat}
         id={cat}
         name="category"
         checked={filters.includes(cat)}
         onChange={() => handleFilters(cat)}
+        sx={{
+          ".dark &": { color: colors.gray["600"] },
+          ".dark &.Mui-checked": {
+            color: red[700],
+          },
+        }}
       />
       <label
         htmlFor={cat}
-        className="cursor-pointer text-left text-lg text-gray-700"
+        className="cursor-pointer text-left text-lg text-gray-700 dark:text-gray-200"
       >{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</label>
     </div>
   );

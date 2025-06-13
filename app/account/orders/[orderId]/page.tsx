@@ -41,14 +41,14 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <h2 className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
             Order info
           </h2>
-          <p className="font-semibold text-gray-600">
+          <p className="font-semibold text-gray-600 dark:text-gray-500">
             Products:{" "}
             <span className="font-normal">{totalPrice - SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600">
+          <p className="font-semibold text-gray-600 dark:text-gray-500">
             Shipping cost: <span className="font-normal">{SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600">
+          <p className="font-semibold text-gray-600 dark:text-gray-500">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
           {status === "pending" && (

@@ -37,10 +37,10 @@ function SearchField() {
 
   return (
     <div className="mt-8 flex w-full justify-center">
-      <div className="relative flex h-10 w-1/2 items-center justify-center">
+      <div className="relative flex h-10 w-full items-center justify-center">
         <input
           type="text"
-          className="h-10 w-full rounded-full border-2 border-transparent bg-gray-100 px-4 pl-10 text-gray-600 shadow-md duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
+          className="h-10 w-full rounded-md border-2 bg-gray-100 px-4 pl-10 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:shadow-md"
           placeholder="Search for products..."
           onChange={onChange}
           value={searchValue}

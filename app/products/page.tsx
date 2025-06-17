@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Filters from "../_components/Filters";
 import ProductsList from "../_components/ProductsList";
 import { getProducts } from "../_lib/data_service";
-import { HiSearch } from "react-icons/hi";
+import SearchField from "../_components/SearchField";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -11,37 +11,36 @@ export const metadata: Metadata = {
 async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ filter: string } | undefined>;
+  searchParams: Promise<{ filter: string; search: string } | undefined>;
 }) {
   const params = await searchParams;
-  const products = await getProducts();
+  const products = await getProducts(params?.search);
   const categories = Array.from(new Set(products.map((prod) => prod.category)));
   const filter = params?.filter?.split(",") ?? "all";
 
   return (
-    <>
-      <div className="mt-8 hidden w-full justify-center">
-        <div className="relative flex h-10 w-1/2 items-center justify-center">
-          <input
-            type="text"
-            className="transition-full h-10 w-full rounded-full border-2 border-transparent bg-gray-100 px-4 pl-10 text-gray-600 shadow-md duration-200 placeholder:italic focus:border-red-700 focus:outline-none"
-            placeholder="Search for products..."
-          />
-          <div className="absolute left-4 text-gray-500">
-            <HiSearch />
-          </div>
-        </div>
-      </div>
-      <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 px-4 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
-        <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
-          <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
-            Filters
-          </h2>
-          <Filters categories={categories} />
+    <div className="mx-auto max-w-[1300px] px-4">
+      <SearchField />
+      {products.length > 0 && (
+        <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
+          <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
+            <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
+              Filters
+            </h2>
+            <Filters categories={categories} />
+          </section>
+          <ProductsList products={products} filter={filter} />
         </section>
-        <ProductsList products={products} filter={filter} />
-      </section>
-    </>
+      )}
+      {products.length === 0 && (
+        <div className="mt-16 flex w-full justify-center text-2xl">
+          <p className="text-gray-600 dark:text-gray-300">
+            Unfortunately, we don&apos;t have the products you&apos;re looking
+            for.
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
 

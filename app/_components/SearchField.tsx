@@ -13,7 +13,7 @@ function SearchField() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const debouncedSearchValue = useDebounce(searchValue);
+  const debouncedSearchValue = useDebounce(searchValue.trimEnd());
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value.trimEnd());

@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { HiSearch } from "react-icons/hi";
+import { useDebounce } from "../_hooks/useDebounce";
 
 function SearchField() {
   const params = useSearchParams();
@@ -12,14 +13,16 @@ function SearchField() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const debouncedSearchValue = useDebounce(searchValue);
+
   function onChange(e: ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value.trimEnd());
   }
 
   useEffect(() => {
-    if (searchValue.length > 0) {
+    if (debouncedSearchValue.length > 0) {
       const searchParams = new URLSearchParams(params);
-      searchParams.set("search", searchValue);
+      searchParams.set("search", debouncedSearchValue);
       router.replace(`${pathname}?${searchParams.toString()}`, {
         scroll: false,
       });
@@ -30,7 +33,7 @@ function SearchField() {
         scroll: false,
       });
     }
-  }, [searchValue, pathname, router, params]);
+  }, [debouncedSearchValue, pathname, router, params]);
 
   return (
     <div className="mt-8 flex w-full justify-center">

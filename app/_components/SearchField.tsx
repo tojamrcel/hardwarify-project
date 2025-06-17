@@ -16,7 +16,7 @@ function SearchField() {
   const debouncedSearchValue = useDebounce(searchValue.trimEnd());
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
-    setSearchValue(e.target.value.trimEnd());
+    setSearchValue(e.target.value);
   }
 
   useEffect(() => {

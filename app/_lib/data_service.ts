@@ -2,10 +2,16 @@ import { Product, Profile } from "../_types/types";
 import { Order } from "../_types/types";
 import { createClient } from "./supabase/server";
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts(
+  searchValue: string | undefined,
+): Promise<Product[]> {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.from("products").select("*");
+  let query = supabase.from("products").select("*");
+
+  if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
+
+  const { data, error } = await query;
 
   if (error) throw new Error(error.message);
   if (!data) return [];

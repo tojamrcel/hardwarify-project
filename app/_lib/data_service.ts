@@ -3,7 +3,7 @@ import { Order } from "../_types/types";
 import { createClient } from "./supabase/server";
 
 export async function getProducts(
-  searchValue: string | undefined,
+  searchValue?: string | undefined,
 ): Promise<Product[]> {
   const supabase = await createClient();
 

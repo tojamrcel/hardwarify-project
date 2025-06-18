@@ -17,7 +17,7 @@ export async function getProducts(
     const from = (page - 1) * PRODUCTS_PER_PAGE;
     const to = from + PRODUCTS_PER_PAGE - 1;
 
-    query.range(from, to);
+    query = query.range(from, to);
   }
 
   const { data, error, count } = await query;

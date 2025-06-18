@@ -3,6 +3,7 @@ import Filters from "../_components/Filters";
 import ProductsList from "../_components/ProductsList";
 import { getProducts } from "../_lib/data_service";
 import SearchField from "../_components/SearchField";
+import ClientPagination from "../_components/ClientPagination";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -11,10 +12,16 @@ export const metadata: Metadata = {
 async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ filter: string; search: string } | undefined>;
+  searchParams: Promise<
+    { filter: string; search: string; page: string } | undefined
+  >;
 }) {
   const params = await searchParams;
-  const products = await getProducts(params?.search);
+  const page = params?.page ?? 1;
+  const { data: products, count } = await getProducts(
+    params?.search,
+    Number(page),
+  );
   const categories = Array.from(new Set(products.map((prod) => prod.category)));
   const filter = params?.filter?.split(",") ?? "all";
 
@@ -22,15 +29,18 @@ async function Page({
     <div className="mx-auto max-w-[1300px] px-4">
       <SearchField />
       {products.length > 0 && (
-        <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
-          <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
-            <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
-              Filters
-            </h2>
-            <Filters categories={categories} />
+        <>
+          <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
+            <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
+              <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
+                Filters
+              </h2>
+              <Filters categories={categories} />
+            </section>
+            <ProductsList products={products} filter={filter} />
           </section>
-          <ProductsList products={products} filter={filter} />
-        </section>
+          <ClientPagination productsCount={count} />
+        </>
       )}
       {products.length === 0 && (
         <div className="mt-16 flex w-full justify-center text-2xl">

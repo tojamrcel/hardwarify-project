@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
-  const products = await getProducts();
+  const { data: products } = await getProducts();
   const sortedProducts = sortByDiscount(products);
   const bestDeal = sortedProducts?.at(0);
 

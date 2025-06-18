@@ -31,32 +31,29 @@ async function Page({
   return (
     <div className="mx-auto max-w-[1300px] px-4">
       <SearchField />
-      {products.length > 0 && (
-        <>
-          <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
-            <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
-              <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
-                Filters
-              </h2>
-              <Suspense fallback={<Loader />}>
-                <Filters categories={categories} />
-              </Suspense>
-            </section>
-            <Suspense fallback={<Loader />}>
-              <ProductsList products={products} />
-            </Suspense>
-          </section>
-          <ClientPagination productsCount={count} />
-        </>
-      )}
-      {products.length === 0 && (
-        <div className="mt-16 flex w-full justify-center text-2xl">
-          <p className="text-gray-600 dark:text-gray-300">
-            Unfortunately, we don&apos;t have the products you&apos;re looking
-            for.
-          </p>
-        </div>
-      )}
+      <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
+        <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6 dark:border-gray-700">
+          <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
+            Filters
+          </h2>
+          <Suspense fallback={<Loader />}>
+            <Filters categories={categories} />
+          </Suspense>
+        </section>
+        <Suspense fallback={<Loader />}>
+          {products.length > 0 ? (
+            <ProductsList products={products} />
+          ) : (
+            <div className="mt-16 flex w-full justify-center text-2xl md:w-3/4">
+              <p className="text-gray-600 dark:text-gray-300">
+                Unfortunately, we don&apos;t have the products you&apos;re
+                looking for.
+              </p>
+            </div>
+          )}
+        </Suspense>
+      </section>
+      <ClientPagination productsCount={count} />
     </div>
   );
 }

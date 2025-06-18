@@ -10,27 +10,36 @@ export async function getProducts(
 ): Promise<{ data: Product[]; count: number }> {
   const supabase = await createClient();
 
-  let query = supabase.from("products").select("*", { count: "exact" });
+  let query = supabase.from("products").select("*");
+  let countQuery = supabase
+    .from("products")
+    .select("*", { count: "exact", head: true });
 
-  if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
+  if (searchValue) {
+    query = query.ilike("product_name", `%${searchValue}%`);
+    countQuery = countQuery.ilike("product_name", `%${searchValue}%`);
+  }
 
   if (filters) {
     query = query.in("category", filters);
+    countQuery = countQuery.in("category", filters);
   }
+
+  const { count } = await countQuery;
 
   if (page) {
     const from = (page - 1) * PRODUCTS_PER_PAGE;
     const to = from + PRODUCTS_PER_PAGE - 1;
 
-    query = query.range(from, to);
+    if (from > Number(count) - 1) query = query.range(0, PRODUCTS_PER_PAGE - 1);
+    else query = query.range(from, to);
   }
 
-  const { data, error, count } = await query;
+  const { data, error } = await query;
 
   if (error) throw new Error(error.message);
-  if (!data) return { data: [], count };
+  if (!data) return { data: [], count: count ?? 0 };
 
-  console.log(data);
   return { data, count: count ?? 0 };
 }
 

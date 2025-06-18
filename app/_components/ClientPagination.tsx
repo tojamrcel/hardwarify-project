@@ -2,7 +2,7 @@
 
 import { Pagination } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { PRODUCTS_PER_PAGE } from "../_lib/constants";
 import { gray } from "tailwindcss/colors";
 
@@ -21,6 +21,15 @@ function ClientPagination({ productsCount }: { productsCount: number }) {
     searchParams.set("page", value.toString());
     router.replace(`${pathname}?${searchParams.toString()}`);
   }
+
+  useEffect(() => {
+    if (Number(params?.get("page")) > pageCount) {
+      setCurPage(1);
+      const searchParams = new URLSearchParams(params);
+      searchParams.set("page", String(1));
+      router.replace(`${pathname}?${searchParams.toString()}`);
+    }
+  }, [pageCount, params, router, pathname]);
 
   return (
     <div className="my-2 flex justify-center">

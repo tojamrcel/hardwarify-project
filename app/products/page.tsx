@@ -4,6 +4,8 @@ import ProductsList from "../_components/ProductsList";
 import { getCategories, getProducts } from "../_lib/data_service";
 import SearchField from "../_components/SearchField";
 import ClientPagination from "../_components/ClientPagination";
+import { Suspense } from "react";
+import Loader from "../_components/Loader";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -36,9 +38,13 @@ async function Page({
               <h2 className="text-center text-2xl font-bold text-gray-600 lg:text-left dark:text-gray-200">
                 Filters
               </h2>
-              <Filters categories={categories} />
+              <Suspense fallback={<Loader />}>
+                <Filters categories={categories} />
+              </Suspense>
             </section>
-            <ProductsList products={products} />
+            <Suspense fallback={<Loader />}>
+              <ProductsList products={products} />
+            </Suspense>
           </section>
           <ClientPagination productsCount={count} />
         </>

@@ -30,12 +30,18 @@ function ClientPagination({ productsCount }: { productsCount: number }) {
         onChange={handleChange}
         sx={{
           ".MuiButtonBase-root": {
+            "&": {
+              color: gray[700],
+            },
             ".dark &": {
               color: gray[300],
               ":hover": {
                 bgcolor: gray[800],
               },
             },
+          },
+          ".Mui-selected": {
+            bgcolor: gray[200],
           },
           ".dark & .Mui-selected": {
             bgcolor: gray[800],

@@ -1,22 +1,31 @@
 import { Product, Profile } from "../_types/types";
 import { Order } from "../_types/types";
+import { PRODUCTS_PER_PAGE } from "./constants";
 import { createClient } from "./supabase/server";
 
 export async function getProducts(
   searchValue?: string | undefined,
-): Promise<Product[]> {
+  page?: number,
+): Promise<{ data: Product[]; count: number }> {
   const supabase = await createClient();
 
-  let query = supabase.from("products").select("*");
+  let query = supabase.from("products").select("*", { count: "exact" });
 
   if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
 
-  const { data, error } = await query;
+  if (page) {
+    const from = (page - 1) * PRODUCTS_PER_PAGE;
+    const to = from + PRODUCTS_PER_PAGE - 1;
+
+    query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
 
   if (error) throw new Error(error.message);
-  if (!data) return [];
+  if (!data) return { data: [], count };
 
-  return data;
+  return { data, count: count ?? 0 };
 }
 
 export async function getProductById(id: number): Promise<Product> {

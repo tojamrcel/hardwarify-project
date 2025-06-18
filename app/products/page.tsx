@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Filters from "../_components/Filters";
 import ProductsList from "../_components/ProductsList";
-import { getProducts } from "../_lib/data_service";
+import { getCategories, getProducts } from "../_lib/data_service";
 import SearchField from "../_components/SearchField";
 import ClientPagination from "../_components/ClientPagination";
 
@@ -18,12 +18,13 @@ async function Page({
 }) {
   const params = await searchParams;
   const page = params?.page ?? 1;
+  const filter = params?.filter?.split(",") ?? undefined;
   const { data: products, count } = await getProducts(
     params?.search,
     Number(page),
+    filter,
   );
-  const categories = Array.from(new Set(products.map((prod) => prod.category)));
-  const filter = params?.filter?.split(",") ?? "all";
+  const categories = await getCategories();
 
   return (
     <div className="mx-auto max-w-[1300px] px-4">
@@ -37,7 +38,7 @@ async function Page({
               </h2>
               <Filters categories={categories} />
             </section>
-            <ProductsList products={products} filter={filter} />
+            <ProductsList products={products} />
           </section>
           <ClientPagination productsCount={count} />
         </>

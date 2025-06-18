@@ -6,12 +6,17 @@ import { createClient } from "./supabase/server";
 export async function getProducts(
   searchValue?: string | undefined,
   page?: number,
+  filters?: string[] | undefined,
 ): Promise<{ data: Product[]; count: number }> {
   const supabase = await createClient();
 
   let query = supabase.from("products").select("*", { count: "exact" });
 
   if (searchValue) query = query.ilike("product_name", `%${searchValue}%`);
+
+  if (filters) {
+    query = query.in("category", filters);
+  }
 
   if (page) {
     const from = (page - 1) * PRODUCTS_PER_PAGE;
@@ -25,7 +30,21 @@ export async function getProducts(
   if (error) throw new Error(error.message);
   if (!data) return { data: [], count };
 
+  console.log(data);
   return { data, count: count ?? 0 };
+}
+
+export async function getCategories(): Promise<string[]> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.from("products").select("category");
+
+  if (error) throw new Error(error.message);
+  if (!data) return [];
+
+  const categories = Array.from(new Set(data.map((cat) => cat.category)));
+
+  return categories;
 }
 
 export async function getProductById(id: number): Promise<Product> {

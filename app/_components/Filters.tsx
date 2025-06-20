@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterCategory from "./FilterCategory";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useDebounce } from "../_hooks/useDebounce";
 
 function Filters({ categories }: { categories: string[] }) {
   const searchParams = useSearchParams();
@@ -14,28 +15,30 @@ function Filters({ categories }: { categories: string[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const [filters, setFilters] = useState<string[]>(stateSearchParams);
+  const debouncedFilters = useDebounce(filters, 500);
 
   function handleFilters(cat: string) {
-    const params = new URLSearchParams(searchParams);
-
     if (filters.includes(cat)) {
       setFilters((filters) => {
-        params.set(
-          "filter",
-          [...filters.filter((fil) => fil !== cat)].toString(),
-        );
         return [...filters.filter((fil) => fil !== cat)];
       });
     } else
       setFilters((filters) => {
-        params.set("filter", [...filters, cat].toString());
         return [...filters, cat];
       });
-
-    if (params.get("filter"))
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    else router.replace(`${pathname}`, { scroll: false });
   }
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (debouncedFilters.length > 0) {
+      params.set("filter", [...debouncedFilters].toString());
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    if (debouncedFilters.length === 0) {
+      params.delete("filter");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+  }, [debouncedFilters, searchParams, router, pathname]);
 
   return (
     <form>

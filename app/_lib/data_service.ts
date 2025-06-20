@@ -20,7 +20,7 @@ export async function getProducts(
     countQuery = countQuery.ilike("product_name", `%${searchValue}%`);
   }
 
-  if (filters) {
+  if (filters?.length) {
     query = query.in("category", filters);
     countQuery = countQuery.in("category", filters);
   }

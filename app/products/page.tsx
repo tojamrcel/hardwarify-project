@@ -20,7 +20,7 @@ async function Page({
 }) {
   const params = await searchParams;
   const page = params?.page ?? 1;
-  const filter = params?.filter?.split(",") ?? undefined;
+  const filter = params?.filter ? params?.filter?.split(",") : undefined;
   const { data: products, count } = await getProducts(
     params?.search,
     Number(page),

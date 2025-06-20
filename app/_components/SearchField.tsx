@@ -21,19 +21,19 @@ function SearchField() {
 
   useEffect(() => {
     if (debouncedSearchValue.length > 0) {
-      const searchParams = new URLSearchParams(params);
+      const searchParams = new URLSearchParams(window.location.search);
       searchParams.set("search", debouncedSearchValue);
       router.replace(`${pathname}?${searchParams.toString()}`, {
         scroll: false,
       });
     } else {
-      const searchParams = new URLSearchParams(params);
+      const searchParams = new URLSearchParams(window.location.search);
       searchParams.delete("search");
       router.replace(`${pathname}?${searchParams.toString()}`, {
         scroll: false,
       });
     }
-  }, [debouncedSearchValue, pathname, router, params]);
+  }, [debouncedSearchValue, pathname, router]);
 
   return (
     <div className="mt-8 flex w-full justify-center">

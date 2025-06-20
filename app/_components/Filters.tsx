@@ -29,7 +29,7 @@ function Filters({ categories }: { categories: string[] }) {
   }
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
     if (debouncedFilters.length > 0) {
       params.set("filter", [...debouncedFilters].toString());
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
@@ -38,7 +38,7 @@ function Filters({ categories }: { categories: string[] }) {
       params.delete("filter");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
-  }, [debouncedFilters, searchParams, router, pathname]);
+  }, [debouncedFilters, router, pathname]);
 
   return (
     <form>

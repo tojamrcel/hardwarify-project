@@ -29,9 +29,9 @@ function ProductItem({ product }: { product: Product }) {
           <p className="py-2 font-semibold text-gray-600 md:text-xl dark:text-gray-200">
             {name}
           </p>
-          <ul className="list-disc px-4 text-gray-500">
-            <li>24 months warranty</li>
-            <li>help with setup</li>
+          <ul className="text-gray-500">
+            <li>✅ 24-month warranty</li>
+            <li>🚀 Free express shipping</li>
           </ul>
         </div>
         <div className="absolute bottom-2 right-2 hidden flex-col items-center justify-center gap-2 md:flex">

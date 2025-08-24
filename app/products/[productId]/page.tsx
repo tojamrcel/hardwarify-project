@@ -31,6 +31,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
               alt={product.product_name}
               width={370}
               height={370}
+              quality={50}
               className="rounded-lg shadow-sm md:w-80 xl:w-auto dark:grayscale-[40%]"
             />
           </div>

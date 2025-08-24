@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Product } from "../_types/types";
 import Button from "./Button";
 import Link from "next/link";
+import AddToCartButton from "./AddToCartButton";
 
 function ProductItem({ product }: { product: Product }) {
   const {
@@ -23,6 +24,7 @@ function ProductItem({ product }: { product: Product }) {
             width={176}
             height={176}
             alt={name}
+            quality={10}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -47,7 +49,7 @@ function ProductItem({ product }: { product: Product }) {
               {price}$
             </span>
           )}
-          <Button type="primary">Add to cart</Button>
+          <AddToCartButton product={product} disabled={availability <= 0} />
         </div>
         <div className="absolute bottom-2 right-2 md:hidden">
           <Button type="secondary">Buy now</Button>

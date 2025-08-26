@@ -8,7 +8,6 @@ interface ButtonComponentProps {
   onClick?: () => void;
   children: ReactNode;
   disabled?: boolean;
-  size?: "small" | "medium" | "large";
 }
 
 function Button({

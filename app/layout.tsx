@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { CartProvider } from "./_components/CartContext";
 import Header from "./_components/Header";
 import "./_styles/globals.css";
-import { ThemeProvider } from "./_components/theme-provider";
+import { ThemeProvider } from "./_components/ThemeProvider";
 
 const latoSans = Lato({
   subsets: ["latin"],

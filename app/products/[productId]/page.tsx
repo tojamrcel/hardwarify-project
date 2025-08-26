@@ -25,23 +25,23 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
     <section className="mt-8 flex flex-col items-center gap-24 py-4 md:mt-24 md:gap-32 md:px-4 lg:mt-32 lg:gap-40">
       <section className="mx-auto grid grid-cols-1 gap-16 px-8 md:max-w-[1300px] md:grid-cols-2 lg:gap-32 xl:gap-48">
         <div className="flex flex-col gap-4 justify-self-center">
-          <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[110%] before:w-[110%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 after:absolute after:left-1/2 after:top-1/2 after:-z-20 after:h-[120%] after:w-[120%] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-gray-200 after:opacity-70 xl:before:h-[120%] xl:before:w-[120%] xl:after:h-[140%] xl:after:w-[140%] dark:before:bg-gray-700 dark:after:bg-gray-800">
+          <div className="relative w-fit before:absolute before:left-1/2 before:top-1/2 before:-z-10 before:h-[110%] before:w-[110%] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 after:absolute after:left-1/2 after:top-1/2 after:-z-20 after:h-[120%] after:w-[120%] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-gray-200 after:opacity-70 dark:before:bg-gray-700 dark:after:bg-gray-800 xl:before:h-[120%] xl:before:w-[120%] xl:after:h-[140%] xl:after:w-[140%]">
             <Image
               src={product.image}
               alt={product.product_name}
               width={370}
               height={370}
-              quality={50}
-              className="rounded-lg shadow-sm md:w-80 xl:w-auto dark:grayscale-[40%]"
+              quality={10}
+              className="rounded-lg shadow-sm dark:grayscale-[40%] md:w-80 xl:w-auto"
             />
           </div>
         </div>
         <div className="flex h-full flex-col items-center justify-center gap-4 md:items-start">
-          <h2 className="text-center text-4xl font-semibold text-gray-800 md:text-left md:text-3xl lg:text-4xl dark:text-gray-200">
+          <h2 className="text-center text-4xl font-semibold text-gray-800 dark:text-gray-200 md:text-left md:text-3xl lg:text-4xl">
             {product.product_name}
           </h2>
           <div>
-            <p className="text-center text-lg text-gray-700 md:text-left dark:text-gray-300">
+            <p className="text-center text-lg text-gray-700 dark:text-gray-300 md:text-left">
               {product.description.split(".")[0]}.
             </p>
           </div>
@@ -70,7 +70,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
               </p>
             )}
             {product.availability === 0 && (
-              <p className="mb-1 text-center text-red-600 md:text-left dark:text-red-700">
+              <p className="mb-1 text-center text-red-600 dark:text-red-700 md:text-left">
                 Unavailable
               </p>
             )}
@@ -101,7 +101,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
             <h3 className="text-center text-4xl font-semibold text-gray-700 dark:text-gray-300">
               Warranty
             </h3>
-            <p className="text-center text-lg leading-6 text-gray-600 lg:text-base dark:text-gray-400">
+            <p className="text-center text-lg leading-6 text-gray-600 dark:text-gray-400 lg:text-base">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
               ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
               assumenda esse perspiciatis tempora voluptates rerum facere
@@ -118,7 +118,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
             <h3 className="text-center text-4xl font-semibold text-gray-700 dark:text-gray-300">
               Satisfaction
             </h3>
-            <p className="text-center text-lg leading-6 text-gray-600 lg:text-base dark:text-gray-400">
+            <p className="text-center text-lg leading-6 text-gray-600 dark:text-gray-400 lg:text-base">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
               ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
               assumenda esse perspiciatis tempora voluptates rerum facere
@@ -132,7 +132,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
             <h3 className="text-center text-4xl font-semibold text-gray-700 dark:text-gray-300">
               Security
             </h3>
-            <p className="text-center text-lg leading-6 text-gray-600 lg:text-base dark:text-gray-400">
+            <p className="text-center text-lg leading-6 text-gray-600 dark:text-gray-400 lg:text-base">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
               ipsa, eligendi harum amet, nesciunt, nobis corporis fuga debitis
               assumenda esse perspiciatis tempora voluptates rerum facere

@@ -5,6 +5,21 @@ import { Product } from "../_types/types";
 import AddToCartButton from "./AddToCartButton";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+import { features } from "process";
+
+const productFeatures = [
+  {
+    category: "gaming",
+    features: ["🎮 Next-gen experience", "⚡ Ultra-fast SSD loading times"],
+  },
+  {
+    category: "mobile device",
+    features: [
+      "🔋 Long-lasting battery life",
+      "📱 Compatible with the latest apps",
+    ],
+  },
+];
 
 function ProductItem({ product }: { product: Product }) {
   const {
@@ -14,7 +29,12 @@ function ProductItem({ product }: { product: Product }) {
     availability,
     regular_price: price,
     discount,
+    category,
   } = product;
+
+  const features = productFeatures.find(
+    (feat) => feat.category === category,
+  )?.features;
 
   const router = useRouter();
   const ref = useRef<HTMLButtonElement>(null);
@@ -43,8 +63,14 @@ function ProductItem({ product }: { product: Product }) {
           {name}
         </p>
         <ul className="text-gray-500">
-          <li>✅ 24-month warranty</li>
-          <li>🚀 Express shipping</li>
+          {!features && (
+            <>
+              <li>✅ 24-month warranty</li>
+              <li>🚀 Express shipping</li>
+            </>
+          )}
+          {features &&
+            features.map((feat) => <li key={`${id}_${feat}`}>{feat}</li>)}
         </ul>
       </div>
       <div className="bottom-2 right-2 col-span-2 flex flex-col justify-center gap-2 sm:absolute sm:items-center">

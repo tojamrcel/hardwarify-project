@@ -5,7 +5,6 @@ import { Product } from "../_types/types";
 import AddToCartButton from "./AddToCartButton";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { features } from "process";
 
 const productFeatures = [
   {
@@ -46,7 +45,7 @@ function ProductItem({ product }: { product: Product }) {
 
         router.push(`/products/${id}`);
       }}
-      className="relative grid h-auto cursor-pointer grid-cols-[auto_1fr] grid-rows-[auto_1fr] items-center gap-2 gap-y-2 rounded-md border-2 p-2 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-600 sm:grid-rows-none sm:p-0 md:gap-4 md:gap-y-0"
+      className="relative grid h-auto cursor-pointer grid-cols-[auto_1fr] grid-rows-[auto_1fr] items-center gap-2 gap-y-2 rounded-md border-2 p-2 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-600 dark:shadow-gray-600 sm:grid-rows-none sm:p-0 md:gap-4 md:gap-y-0"
     >
       <div className="p-2">
         <Image

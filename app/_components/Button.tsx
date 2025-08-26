@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 import { Button as ButtonCn } from "@/app/_components/ButtonCn";
 
 interface ButtonComponentProps {
@@ -8,6 +8,7 @@ interface ButtonComponentProps {
   onClick?: () => void;
   children: ReactNode;
   disabled?: boolean;
+  ref?: RefObject<HTMLButtonElement | null>;
 }
 
 function Button({
@@ -16,6 +17,7 @@ function Button({
   onClick,
   children,
   disabled,
+  ref,
 }: ButtonComponentProps) {
   if (type === "primary" && link)
     return (
@@ -26,7 +28,7 @@ function Button({
 
   if (type === "primary" && !link)
     return (
-      <ButtonCn size="lg" onClick={onClick} disabled={disabled}>
+      <ButtonCn size="lg" onClick={onClick} disabled={disabled} ref={ref}>
         {children}
       </ButtonCn>
     );

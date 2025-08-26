@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Product } from "../_types/types";
 import Button from "./Button";
 import { useCart } from "./CartContext";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 function AddToCartButton({
   product,
@@ -52,6 +53,7 @@ function AddToCartButton({
       onClick={handleAddToCart}
       size="large"
     >
+      <MdOutlineAddShoppingCart />
       Add to cart
     </Button>
   );

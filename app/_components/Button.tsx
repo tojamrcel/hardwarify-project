@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { Button as ButtonMUI } from "@mui/material";
-import colors from "tailwindcss/colors";
+import { Button as ButtonCn } from "@/app/_components/ButtonCn";
 
 interface ButtonComponentProps {
   type: "primary" | "secondary";
@@ -18,45 +17,19 @@ function Button({
   onClick,
   children,
   disabled,
-  size,
 }: ButtonComponentProps) {
   if (type === "primary" && link)
     return (
-      <Link href={link}>
-        <ButtonMUI
-          variant="contained"
-          color="primary"
-          size={size}
-          sx={{
-            ":hover": {
-              bgcolor: "primary.dark",
-            },
-          }}
-        >
-          <span className="font-semibold">{children}</span>
-        </ButtonMUI>
-      </Link>
+      <ButtonCn asChild size="lg">
+        <Link href={link}>{children}</Link>
+      </ButtonCn>
     );
+
   if (type === "primary" && !link)
     return (
-      <ButtonMUI
-        variant="contained"
-        color="primary"
-        onClick={onClick}
-        disabled={disabled}
-        type={onClick ? "button" : "submit"}
-        size={size}
-        sx={{
-          ":hover": {
-            bgcolor: "primary.dark",
-          },
-          ".dark &:disabled": {
-            bgcolor: colors.gray[700],
-          },
-        }}
-      >
-        <span className="font-semibold">{children}</span>
-      </ButtonMUI>
+      <ButtonCn size="lg" onClick={onClick} disabled={disabled}>
+        {children}
+      </ButtonCn>
     );
 
   if (type === "secondary" && link)

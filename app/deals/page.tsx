@@ -24,7 +24,7 @@ async function Page() {
 
   return (
     <section className="py-2">
-      <h2 className="mb-2 py-2 text-center text-4xl font-extrabold uppercase tracking-wider text-red-600 underline md:mt-8 md:text-5xl dark:text-red-700">
+      <h2 className="mb-2 py-2 text-center text-4xl font-extrabold uppercase tracking-wider text-red-600 underline dark:text-red-700 md:mt-8 md:text-5xl">
         HOT DEALS
       </h2>
       <section className="flex flex-col items-center rounded-lg bg-gray-200 py-4 dark:bg-gray-800">
@@ -47,7 +47,7 @@ async function Page() {
             {regularPrice - Number(discount)}$
           </span>
         </div>
-        <Button type="primary" link={`/products/${id}`} size="large">
+        <Button type="primary" link={`/products/${id}`}>
           Buy now
         </Button>
       </section>

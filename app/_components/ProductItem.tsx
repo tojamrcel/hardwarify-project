@@ -18,6 +18,13 @@ const productFeatures = [
       "📱 Compatible with the latest apps",
     ],
   },
+  {
+    category: "pc",
+    features: [
+      "⚡ Cutting-edge performance",
+      "🎮 Optimized for gaming and creative work",
+    ],
+  },
 ];
 
 function ProductItem({ product }: { product: Product }) {

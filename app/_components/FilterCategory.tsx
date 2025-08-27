@@ -17,7 +17,7 @@ function FilterCategory({
       key={cat}
     >
       <Checkbox
-        color="primary"
+        color="error"
         value={cat}
         id={cat}
         name="category"

@@ -4,13 +4,17 @@ import toast from "react-hot-toast";
 import { Product } from "../_types/types";
 import Button from "./Button";
 import { useCart } from "./CartContext";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { RefObject } from "react";
 
 function AddToCartButton({
   product,
   disabled,
+  ref,
 }: {
   product: Product;
   disabled: boolean;
+  ref?: RefObject<HTMLButtonElement | null>;
 }) {
   const { setCart } = useCart();
 
@@ -50,8 +54,9 @@ function AddToCartButton({
       disabled={disabled}
       type="primary"
       onClick={handleAddToCart}
-      size="large"
+      ref={ref}
     >
+      <MdOutlineAddShoppingCart />
       Add to cart
     </Button>
   );

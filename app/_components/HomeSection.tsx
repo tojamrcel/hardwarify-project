@@ -22,7 +22,7 @@ function HomeSection({
   const finalPrice = regularPrice - Number(discount);
 
   return (
-    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-gray-200 py-16 shadow-md md:grid-cols-2 md:gap-32 lg:gap-64 dark:bg-gray-800">
+    <section className="grid w-full grid-cols-1 place-items-center justify-center rounded-lg bg-gray-200 py-16 shadow-md dark:bg-gray-800 md:grid-cols-2 md:gap-32 lg:gap-64">
       {textPlace === "left" && (
         <>
           <div className="flex flex-col items-center gap-2 md:justify-self-end">
@@ -33,7 +33,7 @@ function HomeSection({
               ${finalPrice}
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
-            <Button type="primary" link={`/products/${id}`} size="large">
+            <Button type="primary" link={`/products/${id}`}>
               Buy now
             </Button>
           </div>
@@ -44,7 +44,7 @@ function HomeSection({
               height={384}
               quality={100}
               alt={name}
-              className="w-72 rounded-lg shadow-md md:w-auto dark:grayscale-[40%]"
+              className="w-72 rounded-lg shadow-md dark:grayscale-[40%] md:w-auto"
             />
           </div>
         </>
@@ -58,7 +58,7 @@ function HomeSection({
               height={384}
               quality={100}
               alt={name}
-              className="w-72 rounded-lg shadow-md md:w-auto dark:grayscale-[40%]"
+              className="w-72 rounded-lg shadow-md dark:grayscale-[40%] md:w-auto"
             />
           </div>
           <div className="row-start-1 flex flex-col items-center gap-2 md:row-auto md:justify-self-start">
@@ -70,7 +70,7 @@ function HomeSection({
               {discountPercent ? ` — ${discountPercent}% off` : null}
             </span>
 
-            <Button type="primary" link={`/products/${id}`} size="large">
+            <Button type="primary" link={`/products/${id}`}>
               Buy now
             </Button>
           </div>

@@ -1,6 +1,4 @@
-import { Checkbox } from "@mui/material";
-import colors from "tailwindcss/colors";
-import { red } from "@mui/material/colors";
+import { Checkbox } from "./Checkbox";
 
 function FilterCategory({
   cat,
@@ -13,22 +11,14 @@ function FilterCategory({
 }) {
   return (
     <div
-      className="grid w-full grid-cols-[auto_1fr] items-center gap-2"
+      className="grid w-full grid-cols-[auto_1fr] items-center gap-4"
       key={cat}
     >
       <Checkbox
-        color="error"
-        value={cat}
         id={cat}
         name="category"
         checked={filters.includes(cat)}
-        onChange={() => handleFilters(cat)}
-        sx={{
-          ".dark &": { color: colors.gray["600"] },
-          ".dark &.Mui-checked": {
-            color: red[700],
-          },
-        }}
+        onCheckedChange={() => handleFilters(cat)}
       />
       <label
         htmlFor={cat}

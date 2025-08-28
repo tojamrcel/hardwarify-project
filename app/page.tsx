@@ -49,9 +49,67 @@ export default async function Page() {
             </div>
           </div>
         </section>
-        <div className="mx-auto max-w-[1600px] px-8">
+        <div className="mx-auto mt-16 max-w-[1600px] px-8">
           <RecommendedProducts products={sortedBestsellers.slice(0, 4)} />
         </div>
+      </section>
+      <section className="mb-16">
+        <section className="mx-auto grid max-w-[1800px] grid-cols-2 place-items-center gap-8 px-4">
+          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm">
+            <Image
+              src={sortedGaming[0].image}
+              width={350}
+              height={350}
+              alt={sortedGaming[0].product_name}
+              className="rounded-md shadow-sm"
+            />
+            <div className="flex flex-col gap-1">
+              <h3 className="text-center text-3xl font-bold text-gray-700">
+                {sortedGaming[0].product_name}
+              </h3>
+              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-200">
+                $
+                {sortedGaming[0].regular_price -
+                  Number(sortedGaming[0].discount)}
+                {sortedGaming[0].discountPercent
+                  ? ` — ${sortedGaming[0].discountPercent}% off`
+                  : null}
+              </span>
+              <div className="flex justify-center">
+                <Button type="primary" link={`/products/${sortedGaming[0].id}`}>
+                  Buy now
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm">
+            <Image
+              src={sortedMobile[0].image}
+              width={350}
+              height={350}
+              alt={sortedMobile[0].product_name}
+              className="rounded-md shadow-sm"
+            />
+            <div className="flex flex-col gap-1">
+              <h3 className="text-center text-3xl font-bold text-gray-700">
+                {sortedMobile[0].product_name}
+              </h3>
+              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-200">
+                $
+                {sortedMobile[0].regular_price -
+                  Number(sortedMobile[0].discount)}
+                {sortedMobile[0].discountPercent
+                  ? ` — ${sortedMobile[0].discountPercent}% off`
+                  : null}
+              </span>
+              <div className="flex justify-center">
+                <Button type="primary" link={`/products/${sortedMobile[0].id}`}>
+                  Buy now
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </>
   );

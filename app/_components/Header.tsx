@@ -85,7 +85,7 @@ function Header() {
               <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300">
                 <div className="relative">
                   <Badge
-                    className={`absolute -right-2 -top-2 h-5 min-w-5 scale-0 rounded-full bg-red-700 ${cart.length > 0 ? "scale-100" : "scale-0"}`}
+                    className={`absolute -right-2 -top-2 h-5 min-w-5 scale-0 rounded-full bg-red-600 dark:bg-red-700 ${cart.length > 0 ? "scale-100" : "scale-0"}`}
                   >
                     {cart.length}
                   </Badge>

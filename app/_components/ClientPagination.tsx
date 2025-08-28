@@ -1,10 +1,15 @@
 "use client";
 
-import { Pagination } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { PRODUCTS_PER_PAGE } from "../_lib/constants";
-import { gray } from "tailwindcss/colors";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "./Pagination";
 
 function ClientPagination({ productsCount }: { productsCount: number }) {
   const params = useSearchParams();
@@ -33,30 +38,37 @@ function ClientPagination({ productsCount }: { productsCount: number }) {
 
   return (
     <div className="my-2 flex justify-center">
-      <Pagination
-        count={pageCount}
-        page={curPage}
-        onChange={handleChange}
-        sx={{
-          ".MuiButtonBase-root": {
-            "&": {
-              color: gray[700],
-            },
-            ".dark &": {
-              color: gray[300],
-              ":hover": {
-                bgcolor: gray[800],
-              },
-            },
-          },
-          ".Mui-selected": {
-            bgcolor: gray[200],
-          },
-          ".dark & .Mui-selected": {
-            bgcolor: gray[800],
-          },
-        }}
-      />
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <button
+              onClick={(e) => {
+                handleChange(e, curPage - 1);
+              }}
+              className="disabled:opacity-50"
+              disabled={curPage === 1}
+            >
+              <PaginationPrevious className="text-gray-800 dark:text-gray-300 dark:hover:bg-gray-800" />
+            </button>
+          </PaginationItem>
+          <PaginationItem>
+            <span className="flex h-8 w-8 cursor-default items-center justify-center rounded-full bg-gray-200/90 p-1 text-sm text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+              {curPage}
+            </span>
+          </PaginationItem>
+          <PaginationItem className="text-gray-800 dark:text-gray-300">
+            <button
+              onClick={(e) => {
+                handleChange(e, curPage + 1);
+              }}
+              className="disabled:opacity-50"
+              disabled={curPage === pageCount}
+            >
+              <PaginationNext className="text-gray-800 dark:text-gray-300 dark:hover:bg-gray-800" />
+            </button>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 }

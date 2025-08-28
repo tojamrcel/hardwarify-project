@@ -53,7 +53,7 @@ async function Page({
           )}
         </Suspense>
       </section>
-      {/* {products.length > 0 && <ClientPagination productsCount={count} />} */}
+      {products.length > 0 && <ClientPagination productsCount={count} />}
     </div>
   );
 }

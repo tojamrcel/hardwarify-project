@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${latoSans.className} bg-gray-50 antialiased dark:bg-gray-900`}
+        className={`${latoSans.className} bg-gray-50 antialiased dark:bg-[#0e131f]`}
       >
         <ThemeProvider
           attribute="class"

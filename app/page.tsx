@@ -25,9 +25,9 @@ export default async function Page() {
     <>
       <section className="mb-16">
         <section className="flex justify-center bg-gray-200/90 dark:bg-gray-800">
-          <div className="grid w-full max-w-[1600px] grid-cols-1 place-items-center justify-center bg-gray-200/90 py-16 md:grid-cols-[1fr_1fr] md:gap-32">
+          <div className="grid w-full max-w-[1600px] grid-cols-1 place-items-center justify-center py-16 md:grid-cols-[1fr_1fr] md:gap-32">
             <div className="flex flex-col items-center gap-2 md:justify-self-end">
-              <h2 className="px-2 text-center text-7xl font-bold text-gray-700 dark:text-gray-200">
+              <h2 className="px-2 text-center text-7xl font-bold text-gray-700 dark:text-gray-300">
                 SAVE UP TO 50%
               </h2>
               <span className="w-full text-center text-2xl text-gray-600 dark:text-gray-300">
@@ -44,7 +44,7 @@ export default async function Page() {
                 height={400}
                 placeholder="blur"
                 alt="nintendo console"
-                className="rounded-lg shadow-md dark:grayscale-[40%] md:w-auto"
+                className="rounded-lg shadow-md dark:grayscale-[10%] md:w-auto"
               />
             </div>
           </div>
@@ -55,7 +55,7 @@ export default async function Page() {
       </section>
       <section className="mb-16">
         <section className="mx-auto grid max-w-[1800px] grid-cols-2 place-items-center gap-8 px-4">
-          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm">
+          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm dark:bg-gray-800">
             <Image
               src={sortedGaming[0].image}
               width={350}
@@ -64,10 +64,10 @@ export default async function Page() {
               className="rounded-md shadow-sm"
             />
             <div className="flex flex-col gap-1">
-              <h3 className="text-center text-3xl font-bold text-gray-700">
+              <h3 className="text-center text-3xl font-bold text-gray-700 dark:text-gray-300">
                 {sortedGaming[0].product_name}
               </h3>
-              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-200">
+              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-300">
                 $
                 {sortedGaming[0].regular_price -
                   Number(sortedGaming[0].discount)}
@@ -82,7 +82,7 @@ export default async function Page() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm">
+          <div className="grid grid-cols-2 place-items-center justify-items-center gap-8 rounded-md bg-gray-200/90 px-16 py-4 shadow-sm dark:bg-gray-800">
             <Image
               src={sortedMobile[0].image}
               width={350}
@@ -91,10 +91,10 @@ export default async function Page() {
               className="rounded-md shadow-sm"
             />
             <div className="flex flex-col gap-1">
-              <h3 className="text-center text-3xl font-bold text-gray-700">
+              <h3 className="text-center text-3xl font-bold text-gray-700 dark:text-gray-300">
                 {sortedMobile[0].product_name}
               </h3>
-              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-200">
+              <span className="w-full text-center text-xl font-semibold text-gray-600 dark:text-gray-300">
                 $
                 {sortedMobile[0].regular_price -
                   Number(sortedMobile[0].discount)}

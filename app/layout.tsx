@@ -1,4 +1,3 @@
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import { Toaster } from "react-hot-toast";
@@ -36,23 +35,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppRouterCacheProvider>
-            <CartProvider>
-              <Header />
-              <main className="mx-auto pt-[70px]">{children}</main>
-              <Toaster
-                position="top-center"
-                toastOptions={{
-                  style: {
-                    marginTop: "64px",
-                    padding: "16px 32px",
-                    fontWeight: "700",
-                  },
-                  duration: 2000,
-                }}
-              />
-            </CartProvider>
-          </AppRouterCacheProvider>
+          <CartProvider>
+            <Header />
+            <main className="mx-auto pt-[70px]">{children}</main>
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                style: {
+                  marginTop: "64px",
+                  padding: "16px 32px",
+                  fontWeight: "700",
+                },
+                duration: 2000,
+              }}
+            />
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

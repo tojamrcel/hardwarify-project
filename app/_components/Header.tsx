@@ -4,9 +4,9 @@ import Link from "next/link";
 import { IoCartOutline, IoMenuOutline, IoPersonOutline } from "react-icons/io5";
 import { useCart } from "./CartContext";
 import { useEffect, useRef, useState } from "react";
-import { Badge } from "@mui/material";
 import { usePathname } from "next/navigation";
 import ToggleDarkMode from "./ToggleDarkMode";
+import { Badge } from "./Badge";
 
 function Header() {
   const pathname = usePathname();
@@ -85,14 +85,13 @@ function Header() {
               <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300">
                 <div className="relative">
                   <Badge
-                    color="error"
-                    badgeContent={cart.length}
-                    overlap="circular"
+                    className={`absolute -right-2 -top-2 h-5 min-w-5 scale-0 rounded-full bg-red-700 ${cart.length > 0 ? "scale-100" : "scale-0"}`}
                   >
-                    <Link href="/cart" className="text-4xl">
-                      <IoCartOutline />
-                    </Link>
+                    {cart.length}
                   </Badge>
+                  <Link href="/cart" className="text-4xl">
+                    <IoCartOutline />
+                  </Link>
                 </div>
               </li>
               <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300">

@@ -68,7 +68,7 @@ function ProductItem({ product }: { product: Product }) {
         <p className="py-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
           {name}
         </p>
-        <ul className="text-gray-500">
+        <ul className="flex w-64 flex-col gap-2 text-gray-500 lg:w-full">
           {!features && (
             <>
               <li>✅ 24-month warranty</li>
@@ -76,7 +76,11 @@ function ProductItem({ product }: { product: Product }) {
             </>
           )}
           {features &&
-            features.map((feat) => <li key={`${id}_${feat}`}>{feat}</li>)}
+            features.map((feat) => (
+              <li className="leading-[0.98]" key={`${id}_${feat}`}>
+                {feat}
+              </li>
+            ))}
         </ul>
       </div>
       <div className="bottom-2 right-2 col-span-2 flex flex-col justify-center gap-2 sm:absolute sm:items-center">

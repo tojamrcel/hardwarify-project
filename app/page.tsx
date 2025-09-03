@@ -25,7 +25,7 @@ export default async function Page() {
     <>
       <section className="mb-12">
         <section className="flex justify-center bg-gray-200/90 dark:bg-gray-800">
-          <div className="mx-4 grid w-full max-w-[1200px] grid-cols-1 place-items-center justify-center justify-items-center py-8 md:grid-cols-[1fr_1fr] md:gap-16 md:py-16">
+          <div className="mx-4 grid w-full max-w-[1200px] grid-cols-1 place-items-center justify-center justify-items-center py-12 md:grid-cols-[1fr_1fr] md:gap-16 md:py-16">
             <div className="flex flex-col items-center gap-2">
               <h2 className="px-2 text-center text-6xl font-bold text-gray-700 dark:text-gray-300 lg:text-7xl">
                 SAVE UP TO 50%

@@ -49,9 +49,9 @@ export default async function Page() {
             </div>
           </div>
         </section>
-        <div className="mx-auto mt-8 max-w-[600px] md:max-w-[800px] lg:max-w-[1600px]">
-          <RecommendedProducts products={sortedBestsellers.slice(0, 4)} />
-        </div>
+      </section>
+      <section className="mx-auto mb-12 max-w-[600px] md:max-w-[800px] lg:max-w-[1600px]">
+        <RecommendedProducts products={sortedBestsellers.slice(0, 4)} />
       </section>
       <section className="mb-12">
         <section className="mx-auto grid max-w-[1800px] place-items-center gap-8 px-4 lg:grid-cols-2">

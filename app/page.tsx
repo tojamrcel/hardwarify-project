@@ -25,7 +25,7 @@ export default async function Page() {
     <>
       <section className="mb-16">
         <section className="flex justify-center bg-gray-200/90 dark:bg-gray-800">
-          <div className="grid w-full max-w-[1200px] grid-cols-1 place-items-center justify-center justify-items-center py-16 md:grid-cols-[1fr_1fr] md:gap-16">
+          <div className="mx-4 grid w-full max-w-[1200px] grid-cols-1 place-items-center justify-center justify-items-center py-16 md:grid-cols-[1fr_1fr] md:gap-16">
             <div className="flex flex-col items-center gap-2">
               <h2 className="px-2 text-center text-7xl font-bold text-gray-700 dark:text-gray-300">
                 SAVE UP TO 50%
@@ -49,7 +49,7 @@ export default async function Page() {
             </div>
           </div>
         </section>
-        <div className="mx-auto mt-16 max-w-[1600px] px-8">
+        <div className="mx-auto mt-14 max-w-[900px] lg:max-w-[1600px]">
           <RecommendedProducts products={sortedBestsellers.slice(0, 4)} />
         </div>
       </section>

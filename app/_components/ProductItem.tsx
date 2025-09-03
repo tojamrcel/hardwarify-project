@@ -68,7 +68,7 @@ function ProductItem({ product }: { product: Product }) {
         <p className="py-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
           {name}
         </p>
-        <ul className="text-gray-500">
+        <ul className="font-[600] text-gray-500">
           {!features && (
             <>
               <li>✅ 24-month warranty</li>

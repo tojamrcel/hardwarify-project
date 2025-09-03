@@ -23,7 +23,7 @@ function RecommendedItem({ product }: { product: Product }) {
             alt={name}
             width={192}
             height={192}
-            className="w-1/2 rounded-md shadow-md"
+            className="w-1/2 rounded-md shadow-md dark:grayscale-[10%]"
           />
         </div>
         <div className="flex flex-col items-center justify-center">

@@ -28,11 +28,11 @@ export default async function Page() {
           <div className="mx-4 grid w-full max-w-[1200px] grid-cols-1 place-items-center justify-center justify-items-center py-12 md:grid-cols-[1fr_1fr] md:gap-16 md:py-16">
             <div className="flex flex-col items-center gap-2">
               <h2 className="px-2 text-center text-6xl font-bold text-gray-700 dark:text-gray-300 lg:text-7xl">
-                SAVE UP TO 50%
+                <span className="text-nowrap">SAVE UP TO</span> 50%
               </h2>
-              <span className="w-full text-center text-xl font-[600] text-gray-600 dark:text-gray-300 lg:text-2xl lg:font-normal">
+              <p className="w-full text-nowrap text-center text-xl font-[600] text-gray-600 dark:text-gray-300 lg:text-2xl lg:font-normal">
                 Limited time offers on best-selling items
-              </span>
+              </p>
               <Button type="primary" link="/products">
                 SEE OFFER
               </Button>
@@ -61,7 +61,7 @@ export default async function Page() {
               width={350}
               height={350}
               alt={sortedGaming[0].product_name}
-              className="rounded-md shadow-sm"
+              className="rounded-md shadow-sm dark:grayscale-[10%]"
             />
             <div className="flex flex-col gap-1">
               <h3 className="text-center text-2xl font-bold text-gray-700 dark:text-gray-300 xl:text-3xl">
@@ -88,7 +88,7 @@ export default async function Page() {
               width={350}
               height={350}
               alt={sortedMobile[0].product_name}
-              className="rounded-md shadow-sm"
+              className="rounded-md shadow-sm dark:grayscale-[10%]"
             />
             <div className="flex flex-col gap-1">
               <h3 className="text-center text-2xl font-bold text-gray-700 dark:text-gray-300 xl:text-3xl">

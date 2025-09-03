@@ -14,9 +14,9 @@ function RecommendedItem({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${id}`}
-      className="h-full w-full md:h-64 md:w-80 lg:h-full lg:w-full lg:p-2 xl:p-4"
+      className="w-96 lg:h-full lg:w-full lg:p-2 xl:p-4"
     >
-      <div className="flex cursor-pointer flex-col gap-4 rounded-md bg-gray-200/90 py-4 shadow-sm transition-all duration-200 will-change-transform hover:scale-[1.02] dark:bg-gray-800">
+      <div className="flex cursor-pointer flex-col gap-4 rounded-md bg-gray-200/90 py-4 shadow-sm transition-all duration-200 will-change-transform hover:scale-[1.02] dark:border-gray-600 dark:bg-gray-800">
         <div className="flex w-full items-center justify-center">
           <Image
             src={image}

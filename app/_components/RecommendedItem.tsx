@@ -32,7 +32,7 @@ function RecommendedItem({ product }: { product: Product }) {
           </h3>
           {discount ? (
             <>
-              <div className="flex gap-2 font-semibold xl:text-2xl 2xl:gap-3">
+              <div className="flex gap-2 font-semibold xl:text-xl 2xl:gap-3">
                 <span className="italic text-gray-600 line-through">
                   ${regularPrice}
                 </span>

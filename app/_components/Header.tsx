@@ -33,7 +33,7 @@ function Header() {
             className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200 dark:text-gray-200"
             href="/"
           >
-            hardwarify
+            hardwar<span className="text-red-700 dark:text-red-600">i</span>fy
           </Link>
         </div>
         <button

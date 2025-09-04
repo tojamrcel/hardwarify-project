@@ -6,9 +6,9 @@ import {
   CarouselPrevious,
 } from "@/app/_components/Carousel";
 import { Product } from "../_types/types";
-import RecommendedItem from "./RecommendedItem";
+import BestsellerItem from "./BestsellerItem";
 
-function RecommendedProducts({ products }: { products: Product[] }) {
+function Bestsellers({ products }: { products: Product[] }) {
   return (
     <Carousel opts={{ loop: true, align: "center" }} className="mx-16">
       <CarouselContent>
@@ -17,7 +17,7 @@ function RecommendedProducts({ products }: { products: Product[] }) {
             key={product.id}
             className="my-4 flex justify-center md:basis-1/2 lg:basis-1/4"
           >
-            <RecommendedItem product={product} />
+            <BestsellerItem product={product} />
           </CarouselItem>
         ))}
       </CarouselContent>
@@ -27,4 +27,4 @@ function RecommendedProducts({ products }: { products: Product[] }) {
   );
 }
 
-export default RecommendedProducts;
+export default Bestsellers;

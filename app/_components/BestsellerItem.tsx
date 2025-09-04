@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "../_types/types";
 
-function RecommendedItem({ product }: { product: Product }) {
+function BestsellerItem({ product }: { product: Product }) {
   const {
     id,
     product_name: name,
@@ -52,4 +52,4 @@ function RecommendedItem({ product }: { product: Product }) {
   );
 }
 
-export default RecommendedItem;
+export default BestsellerItem;

@@ -1,9 +1,9 @@
 import Button from "./_components/Button";
-import RecommendedProducts from "./_components/RecommendedProducts";
 import { getBestsellers, getProductsByCategory } from "./_lib/data_service";
 import { sortByDiscount, removeRepeatingProducts } from "./_lib/helpers";
 import Image from "next/image";
 import Hero from "./_components/Hero";
+import Bestsellers from "./_components/Bestsellers";
 
 export default async function Page() {
   const bestsellers = await getBestsellers();
@@ -27,7 +27,7 @@ export default async function Page() {
         <Hero />
       </section>
       <section className="mx-auto mb-12 max-w-[600px] md:max-w-[800px] lg:max-w-[1600px]">
-        <RecommendedProducts products={sortedBestsellers.slice(0, 4)} />
+        <Bestsellers products={sortedBestsellers.slice(0, 4)} />
       </section>
       <section className="mb-12">
         <section className="mx-auto grid max-w-[1800px] place-items-center gap-8 px-4 lg:grid-cols-2">

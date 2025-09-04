@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "../_types/types";
 
-function BestsellerItem({ product }: { product: Product }) {
+interface BestsellerItemProps {
+  product: Product;
+}
+
+function BestsellerItem({ product }: BestsellerItemProps) {
   const {
     id,
     product_name: name,

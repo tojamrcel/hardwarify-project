@@ -8,7 +8,11 @@ import {
 import { Product } from "../_types/types";
 import BestsellerItem from "./BestsellerItem";
 
-function Bestsellers({ products }: { products: Product[] }) {
+interface BestsellerProps {
+  products: Product[];
+}
+
+function Bestsellers({ products }: BestsellerProps) {
   return (
     <Carousel opts={{ loop: true, align: "center" }} className="mx-16">
       <CarouselContent>

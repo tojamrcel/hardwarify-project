@@ -68,7 +68,7 @@ function ProductItem({ product }: { product: Product }) {
         <p className="py-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
           {name}
         </p>
-        <ul className="flex w-64 flex-col gap-2 text-gray-500 lg:w-full">
+        <ul className="flex flex-col gap-2 text-gray-500 sm:w-64 lg:w-full">
           {!features && (
             <>
               <li>✅ 24-month warranty</li>

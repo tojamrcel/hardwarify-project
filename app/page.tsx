@@ -1,7 +1,8 @@
-import HomeSection from "./_components/HomeSection";
-import RecommendedProducts from "./_components/RecommendedProducts";
 import { getBestsellers, getProductsByCategory } from "./_lib/data_service";
 import { sortByDiscount, removeRepeatingProducts } from "./_lib/helpers";
+import Hero from "./_components/Hero";
+import Bestsellers from "./_components/Bestsellers";
+import FeaturedCategoryProduct from "./_components/FeaturedCategoryProduct";
 
 export default async function Page() {
   const bestsellers = await getBestsellers();
@@ -18,33 +19,20 @@ export default async function Page() {
     sortByDiscount(mobile),
     sortedBestsellers,
   );
+
   return (
     <>
-      <section className="mb-16">
-        <HomeSection product={sortedBestsellers[0]} textPlace="left" />
-        <div className="px-2">
-          <RecommendedProducts products={sortedBestsellers.slice(1, 4)} />
-        </div>
+      <section className="mb-4 2xl:mb-8">
+        <Hero />
       </section>
-
-      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl dark:text-gray-200">
-        Gaming
-      </h2>
-      <section className="mb-16">
-        <HomeSection product={sortedGaming[0]} textPlace="right" />
-        <div className="px-2">
-          <RecommendedProducts products={sortedGaming.slice(1, 4)} />
-        </div>
+      <section className="mx-auto mb-4 max-w-[600px] md:max-w-[800px] lg:max-w-[1600px] 2xl:mb-8">
+        <Bestsellers products={sortedBestsellers.slice(0, 4)} />
       </section>
-
-      <h2 className="py-2 text-center text-4xl font-extrabold uppercase text-gray-700 md:font-bold lg:text-5xl dark:text-gray-200">
-        Mobile devices
-      </h2>
-      <section className="mb-16">
-        <HomeSection product={sortedMobile[0]} textPlace="left" />
-        <div className="px-2">
-          <RecommendedProducts products={sortedMobile.slice(1, 4)} />
-        </div>
+      <section className="mb-4 2xl:mb-8">
+        <section className="mx-auto grid max-w-[1800px] place-items-center gap-8 px-4 lg:grid-cols-2">
+          <FeaturedCategoryProduct product={sortedGaming[0]} />
+          <FeaturedCategoryProduct product={sortedMobile[0]} />
+        </section>
       </section>
     </>
   );

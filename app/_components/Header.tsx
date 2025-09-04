@@ -99,7 +99,7 @@ function Header() {
         <nav
           className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-gray-100 transition-transform dark:bg-gray-900 lg:hidden`}
         >
-          <ul className="daqrk:border-gray-700 flex w-full flex-col gap-2 py-2 text-gray-700 shadow-md dark:text-gray-300">
+          <ul className="flex w-full flex-col gap-2 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-gray-300">
             <li className="w-full text-xl transition-colors duration-100 hover:text-gray-500 dark:hover:text-gray-300">
               <Link className="block py-2 text-center" href="/">
                 Home

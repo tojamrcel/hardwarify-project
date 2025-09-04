@@ -28,6 +28,7 @@ function BestsellerItem({ product }: BestsellerItemProps) {
             width={192}
             height={192}
             className="w-1/2 rounded-md shadow-md dark:grayscale-[10%]"
+            quality={50}
           />
         </div>
         <div className="flex flex-col items-center justify-center">

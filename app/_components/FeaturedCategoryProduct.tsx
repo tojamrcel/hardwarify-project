@@ -24,6 +24,7 @@ function FeaturedCategoryProduct({ product }: FeaturedCategoryProductProps) {
         height={350}
         alt={name}
         className="rounded-md shadow-sm dark:grayscale-[10%]"
+        quality={60}
       />
       <div className="flex flex-col gap-1">
         <h3 className="text-center text-2xl font-bold text-gray-700 dark:text-gray-300 xl:text-3xl">

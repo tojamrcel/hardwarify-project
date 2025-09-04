@@ -10,7 +10,7 @@ import RecommendedItem from "./RecommendedItem";
 
 function RecommendedProducts({ products }: { products: Product[] }) {
   return (
-    <Carousel opts={{ loop: true, align: "end" }} className="mx-16">
+    <Carousel opts={{ loop: true, align: "center" }} className="mx-16">
       <CarouselContent>
         {products.slice(0, 4).map((product) => (
           <CarouselItem

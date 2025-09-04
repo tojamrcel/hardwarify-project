@@ -63,14 +63,6 @@ function Header() {
               </li>
               <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300 lg:block">
                 <Link
-                  href="/deals"
-                  className={`${pathname === "/deals" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:after:bg-gray-300`}
-                >
-                  Deals
-                </Link>
-              </li>
-              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300 lg:block">
-                <Link
                   href="/about"
                   className={`${pathname === "/about" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:after:bg-gray-300`}
                 >
@@ -116,11 +108,6 @@ function Header() {
             <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
               <Link className="block py-2 text-center" href="/products">
                 Products
-              </Link>
-            </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-              <Link className="block py-2 text-center" href="/deals">
-                Deals
               </Link>
             </li>
             <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">

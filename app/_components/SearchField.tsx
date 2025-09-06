@@ -40,7 +40,7 @@ function SearchField() {
       <div className="relative flex h-10 w-full items-center justify-center">
         <input
           type="text"
-          className="h-10 w-full rounded-md border-2 bg-gray-100 px-4 pl-10 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:shadow-md"
+          className="h-10 w-full rounded-md border-2 bg-gray-100 px-4 pl-10 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
           placeholder="Search for products..."
           onChange={onChange}
           value={searchValue}

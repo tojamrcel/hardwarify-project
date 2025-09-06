@@ -27,10 +27,10 @@ function Header() {
 
   return (
     <>
-      <header className="fixed z-50 flex h-[70px] w-full items-center gap-4 bg-gray-100/90 px-6 font-semibold text-gray-700 shadow-sm backdrop-blur-lg dark:bg-gray-900/90 dark:text-gray-200 sm:gap-10 sm:px-12">
+      <header className="fixed z-50 flex h-[70px] w-full items-center gap-4 bg-gray-100/90 px-6 font-semibold text-gray-700 shadow-sm backdrop-blur-lg dark:bg-gray-900/90 dark:text-gray-300 sm:gap-10 sm:px-12">
         <div className="z-10 lg:w-64">
           <Link
-            className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200 dark:text-gray-200"
+            className="text-2xl font-semibold tracking-tight text-gray-700 transition-all duration-200 dark:text-gray-300"
             href="/"
           >
             hardwar<span className="text-red-700 dark:text-red-600">i</span>fy
@@ -38,14 +38,14 @@ function Header() {
         </div>
         <button
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="transition-color z-10 block text-3xl duration-150 hover:text-gray-500 dark:hover:text-gray-300 lg:hidden"
+          className="transition-color z-10 block text-3xl duration-150 hover:text-gray-500 dark:hover:text-gray-300/90 lg:hidden"
         >
           <IoMenuOutline />
         </button>
         <nav className="z-10 w-full">
           <ul className="flex items-center gap-8 text-lg duration-300">
             <div className="flex w-full justify-center gap-12">
-              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300 lg:block">
+              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <Link
                   href="/"
                   className={`${pathname === "/" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:after:bg-gray-300`}
@@ -53,7 +53,7 @@ function Header() {
                   Home
                 </Link>
               </li>
-              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300 lg:block">
+              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <Link
                   href="/products"
                   className={`${pathname.startsWith("/products") ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:after:bg-gray-300`}
@@ -61,7 +61,7 @@ function Header() {
                   Products
                 </Link>
               </li>
-              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300 lg:block">
+              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <Link
                   href="/about"
                   className={`${pathname === "/about" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:after:bg-gray-300`}
@@ -71,10 +71,10 @@ function Header() {
               </li>
             </div>
             <div className="flex items-center gap-4 sm:w-64 sm:gap-8">
-              <li className="ml-auto transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+              <li className="ml-auto transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
                 <ToggleDarkMode />
               </li>
-              <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+              <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
                 <div className="relative">
                   <Badge
                     className={`absolute -right-2 -top-2 h-5 min-w-5 scale-0 rounded-full bg-red-600 dark:bg-red-700 ${cart.length > 0 ? "scale-100" : "scale-0"}`}
@@ -86,7 +86,7 @@ function Header() {
                   </Link>
                 </div>
               </li>
-              <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+              <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
                 <Link href="/account" className="text-3xl">
                   <IoPersonOutline />
                 </Link>

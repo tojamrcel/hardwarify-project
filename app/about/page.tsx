@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 function Page() {
   return (
-    <section className="m-auto mt-2 flex max-w-5xl flex-col items-center justify-center gap-4 px-2 text-gray-700 md:mt-16 dark:text-gray-200">
-      <h2 className="border-b-[3px] border-gray-700 px-2 py-2 text-center text-3xl font-bold uppercase lg:text-4xl dark:border-gray-200">
+    <section className="m-auto mt-2 flex max-w-5xl flex-col items-center justify-center gap-4 px-2 text-gray-700 dark:text-gray-300 md:mt-16">
+      <h2 className="border-b-[3px] border-gray-700 px-2 py-2 text-center text-3xl font-bold uppercase dark:border-gray-200 lg:text-4xl">
         About us
       </h2>
       <p className="mt-2 text-center text-lg md:text-xl">
@@ -30,17 +30,17 @@ function Page() {
         our customers have access to the tools they need to stay connected,
         productive, and entertained.
       </p>
-      <div className="mt-4 flex items-center justify-center gap-4 text-gray-900 md:gap-8 lg:mt-8 lg:gap-10 dark:text-gray-300">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl dark:bg-gray-700">
+      <div className="mt-4 flex items-center justify-center gap-4 text-gray-900 dark:text-gray-300 md:gap-8 lg:mt-8 lg:gap-10">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl dark:bg-gray-700 sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoPhonePortraitOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl dark:bg-gray-700">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl dark:bg-gray-700 sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoGameControllerOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl dark:bg-gray-700">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl dark:bg-gray-700 sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoLaptopOutline />
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl dark:bg-gray-700">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 text-5xl dark:bg-gray-700 sm:h-24 sm:w-24 md:h-32 md:w-32 md:text-6xl">
           <IoHeadsetOutline />
         </div>
       </div>

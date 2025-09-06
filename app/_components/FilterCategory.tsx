@@ -22,7 +22,7 @@ function FilterCategory({
       />
       <label
         htmlFor={cat}
-        className="cursor-pointer text-left text-lg text-gray-700 dark:text-gray-200"
+        className="cursor-pointer text-left text-lg text-gray-700 dark:text-gray-300"
       >{`${cat.length > 3 ? cat[0].toUpperCase() + cat.slice(1) : cat.toUpperCase()}`}</label>
     </div>
   );

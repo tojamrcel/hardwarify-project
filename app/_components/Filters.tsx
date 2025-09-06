@@ -45,7 +45,7 @@ function Filters({ categories }: { categories: string[] }) {
       <div className="flex items-center gap-2">
         <label
           htmlFor="category"
-          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-200"
+          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
         >
           Category
         </label>

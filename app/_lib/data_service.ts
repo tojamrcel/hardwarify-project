@@ -2,16 +2,18 @@ import { Product, Profile } from "../_types/types";
 import { Order } from "../_types/types";
 import { PRODUCTS_PER_PAGE } from "./constants";
 import { createClient } from "./supabase/server";
+import { createClient as createSupabaseClient } from "./supabase/client";
+
+// Client instance of SUPABASE
+const supabaseClient = createSupabaseClient();
 
 export async function getProducts(
   searchValue?: string | undefined,
   page?: number,
   filters?: string[] | undefined,
 ): Promise<{ data: Product[]; count: number }> {
-  const supabase = await createClient();
-
-  let query = supabase.from("products").select("*");
-  let countQuery = supabase
+  let query = supabaseClient.from("products").select("*");
+  let countQuery = supabaseClient
     .from("products")
     .select("*", { count: "exact", head: true });
 
@@ -44,9 +46,9 @@ export async function getProducts(
 }
 
 export async function getCategories(): Promise<string[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.from("products").select("category");
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("category");
 
   if (error) throw new Error(error.message);
   if (!data) return [];
@@ -57,9 +59,7 @@ export async function getCategories(): Promise<string[]> {
 }
 
 export async function getProductById(id: number): Promise<Product> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from("products")
     .select("*")
     .eq("id", id)
@@ -71,9 +71,7 @@ export async function getProductById(id: number): Promise<Product> {
 }
 
 export async function getProductsByIds(ids: number[]): Promise<Product[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from("products")
     .select("*")
     .in("id", ids);
@@ -83,9 +81,7 @@ export async function getProductsByIds(ids: number[]): Promise<Product[]> {
 }
 
 export async function getBestsellers(): Promise<Product[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from("bestsellers")
     .select(`products(*)`);
 
@@ -98,8 +94,7 @@ export async function getBestsellers(): Promise<Product[]> {
 export async function getProductsByCategory(
   category: string,
 ): Promise<Product[]> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from("products")
     .select("*")
     .eq("category", category);
@@ -110,6 +105,7 @@ export async function getProductsByCategory(
   return data;
 }
 
+// WITH NEED OF AUTHORIZATION
 export async function getProfile(email: string): Promise<Profile> {
   const supabase = await createClient();
   const { data, error } = await supabase

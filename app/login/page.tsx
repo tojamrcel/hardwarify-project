@@ -39,7 +39,7 @@ function Page() {
 
   return (
     <div className="mt-8 flex flex-col items-center gap-8 lg:mt-16">
-      <h2 className="text-3xl font-bold text-gray-700 sm:text-4xl dark:text-gray-300">
+      <h2 className="text-3xl font-bold text-gray-700 dark:text-gray-300 sm:text-4xl">
         Login
       </h2>
       <form

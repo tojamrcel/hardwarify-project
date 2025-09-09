@@ -32,26 +32,16 @@ export async function updateSession(request: NextRequest) {
   );
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session && pathname.startsWith("/account"))
-    return NextResponse.redirect(new URL("/login", request.url));
-
-  if (!session && pathname.startsWith("/cart/checkout"))
-    return NextResponse.redirect(new URL("/login", request.url));
-
-  const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user && pathname.startsWith("/account"))
+  if (
+    (!user && pathname.startsWith("/account")) ||
+    (!user && pathname.startsWith("/cart/checkout"))
+  )
     return NextResponse.redirect(new URL("/login", request.url));
 
-  if (!user && pathname.startsWith("/cart/checkout"))
-    return NextResponse.redirect(new URL("/login", request.url));
-
-  if (user && pathname.startsWith("/login"))
+  if (user && (pathname.startsWith("/login") || pathname.startsWith("/signup")))
     return NextResponse.redirect(new URL("/account", request.url));
 
   return supabaseResponse;

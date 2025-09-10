@@ -1,11 +1,10 @@
 "use client";
 
-// import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import InputRow from "../_components/InputRow";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Button from "../_components/Button";
 import { loginAction } from "../_lib/actions";
 
@@ -22,19 +21,21 @@ function Page() {
   } = useForm<LoginData>({
     defaultValues: { email: "test@test.com", password: "test1234" }, // default values set for users to test app
   });
-
+  const [isPending, startTransition] = useTransition();
   const [error, setError] = useState("");
 
   async function onSubmit(data: LoginData) {
     try {
       const { email, password } = data;
-      await loginAction({ email, password });
+      startTransition(async () => {
+        await loginAction({ email, password });
+        redirect("/account");
+      });
     } catch (err) {
       if (err instanceof Error) {
         setError("Username or password is incorrect.");
       }
     }
-    redirect("/account");
   }
 
   return (
@@ -89,7 +90,9 @@ function Page() {
           >
             I don&apos;t have an account yet
           </Link>
-          <Button type="primary">Login</Button>
+          <Button type="primary" disabled={isPending}>
+            Login
+          </Button>
         </div>
       </form>
     </div>

@@ -65,3 +65,12 @@ export interface Order {
   last_name: string;
   items: OrderItem[];
 }
+
+export interface FiltersType {
+  brand?: string[];
+  category?: string[];
+  price?: {
+    min: number;
+    max: number;
+  };
+}

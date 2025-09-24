@@ -15,27 +15,26 @@ async function Page({
   searchParams,
 }: {
   searchParams: Promise<
-    { filter: string; search: string; page: string } | undefined
+    { category: string; search: string; page: string } | undefined
   >;
 }) {
   const params = await searchParams;
   const page = params?.page ?? 1;
-  const filter = params?.filter ? params?.filter?.split(",") : undefined;
+  const categoryFilter = params?.category
+    ? params?.category?.split(",")
+    : undefined;
   const { data: products, count } = await getProducts(
     params?.search,
     Number(page),
-    filter,
+    categoryFilter,
   );
   const categories = await getCategories();
 
   return (
     <div className="mx-auto max-w-[1300px] px-4">
       <SearchField />
-      <section className="m-auto flex h-auto min-h-[80dvh] max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
+      <section className="m-auto flex h-auto max-w-[1300px] flex-col items-center gap-8 py-8 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
         <section className="flex w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 dark:border-gray-700 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6">
-          <h2 className="text-center text-2xl font-bold text-gray-600 dark:text-gray-300 lg:text-left">
-            Filters
-          </h2>
           <Suspense fallback={<Loader />}>
             <Filters categories={categories} />
           </Suspense>

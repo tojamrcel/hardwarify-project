@@ -1,12 +1,13 @@
 import { Checkbox } from "./Checkbox";
+import { FiltersType } from "../_types/types";
 
-function FilterCategory({
+function FiltersCategoryItem({
   cat,
   filters,
   handleFilters,
 }: {
   cat: string;
-  filters: string[];
+  filters: FiltersType;
   handleFilters: (cat: string) => void;
 }) {
   return (
@@ -17,7 +18,7 @@ function FilterCategory({
       <Checkbox
         id={cat}
         name="category"
-        checked={filters.includes(cat)}
+        checked={filters.category?.includes(cat)}
         onCheckedChange={() => handleFilters(cat)}
       />
       <label
@@ -28,4 +29,4 @@ function FilterCategory({
   );
 }
 
-export default FilterCategory;
+export default FiltersCategoryItem;

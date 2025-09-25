@@ -4,53 +4,105 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebounce } from "../_hooks/useDebounce";
 import { FiltersType } from "../_types/types";
-import FiltersCategoryItem from "./FiltersCategoryItem";
+import FiltersItem from "./FiltersItem";
 
-function Filters({ categories }: { categories: string[] }) {
+interface FiltersProps {
+  filters: FiltersType;
+}
+
+function Filters({ filters }: FiltersProps) {
+  const { brands, categories } = filters;
   const searchParams = useSearchParams();
   const categorySearchParams =
     searchParams
       .get("category")
       ?.split(",")
       .filter((fil) => fil != "") ?? [];
+  const brandSearchParams =
+    searchParams
+      .get("brand")
+      ?.split(",")
+      .filter((fil) => fil != "") ?? [];
 
   const router = useRouter();
   const pathname = usePathname();
-  const [filters, setFilters] = useState<FiltersType>({
-    category: categorySearchParams,
+  const [filtersState, setFilters] = useState<FiltersType>({
+    categories: categorySearchParams,
+    brands: brandSearchParams,
   });
-  const debouncedFilters = useDebounce(filters, 500);
+  const debouncedFilters = useDebounce(filtersState, 500);
 
-  function handleCategoryFilters(cat: string) {
-    if (filters.category?.includes(cat)) {
-      setFilters((filters) => {
-        return {
-          ...filters,
-          category: filters["category"]
-            ? [...filters.category?.filter((fil) => fil !== cat)]
-            : [],
-        };
-      });
-    } else
-      setFilters((filters) => {
-        return {
-          ...filters,
-          category: filters["category"] ? [...filters.category, cat] : [],
-        };
-      });
+  function handleFilters(filterItem: string) {
+    if (brands?.includes(filterItem)) {
+      if (filtersState.brands?.includes(filterItem)) {
+        setFilters((filters) => {
+          return {
+            ...filters,
+            brands: filtersState["brands"]
+              ? [...filtersState.brands?.filter((fil) => fil !== filterItem)]
+              : [],
+          };
+        });
+      } else
+        setFilters((filters) => {
+          return {
+            ...filters,
+            brands: filtersState["brands"]
+              ? [...filtersState.brands, filterItem]
+              : [],
+          };
+        });
+    }
+
+    if (categories?.includes(filterItem)) {
+      if (filtersState.categories?.includes(filterItem)) {
+        setFilters((filters) => {
+          return {
+            ...filters,
+            categories: filtersState["categories"]
+              ? [
+                  ...filtersState.categories?.filter(
+                    (fil) => fil !== filterItem,
+                  ),
+                ]
+              : [],
+          };
+        });
+      } else
+        setFilters((filters) => {
+          return {
+            ...filters,
+            categories: filtersState["categories"]
+              ? [...filtersState.categories, filterItem]
+              : [],
+          };
+        });
+    }
   }
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (debouncedFilters["category"] && debouncedFilters.category.length > 0) {
-      params.set("category", [...debouncedFilters.category].toString());
+    if (
+      debouncedFilters["categories"] &&
+      debouncedFilters.categories.length > 0
+    ) {
+      params.set("category", [...debouncedFilters.categories].toString());
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
     if (
-      !debouncedFilters["category"] ||
-      debouncedFilters.category.length === 0
+      !debouncedFilters["categories"] ||
+      debouncedFilters.categories.length === 0
     ) {
       params.delete("category");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+
+    if (debouncedFilters["brands"] && debouncedFilters.brands.length > 0) {
+      params.set("brand", [...debouncedFilters.brands].toString());
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    if (!debouncedFilters["brands"] || debouncedFilters.brands.length === 0) {
+      params.delete("brand");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
   }, [debouncedFilters, router, pathname]);
@@ -65,12 +117,12 @@ function Filters({ categories }: { categories: string[] }) {
           Brand
         </label>
         <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
-          {categories.map((cat) => (
-            <FiltersCategoryItem
-              cat={cat}
-              key={cat}
-              filters={filters}
-              handleFilters={handleCategoryFilters}
+          {brands?.map((brand) => (
+            <FiltersItem
+              filterItem={brand}
+              key={brand}
+              filters={filtersState}
+              handleFilters={handleFilters}
             />
           ))}
         </div>
@@ -83,12 +135,12 @@ function Filters({ categories }: { categories: string[] }) {
           Category
         </label>
         <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
-          {categories.map((cat) => (
-            <FiltersCategoryItem
-              cat={cat}
+          {categories?.map((cat) => (
+            <FiltersItem
+              filterItem={cat}
               key={cat}
-              filters={filters}
-              handleFilters={handleCategoryFilters}
+              filters={filtersState}
+              handleFilters={handleFilters}
             />
           ))}
         </div>

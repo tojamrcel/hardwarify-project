@@ -1,4 +1,4 @@
-import { Product, Profile } from "../_types/types";
+import { FiltersType, Product, Profile } from "../_types/types";
 import { Order } from "../_types/types";
 import { PRODUCTS_PER_PAGE } from "./constants";
 import { createClient } from "./supabase/server";
@@ -10,7 +10,7 @@ const supabaseClient = createSupabaseClient();
 export async function getProducts(
   searchValue?: string | undefined,
   page?: number,
-  filters?: string[] | undefined,
+  filters?: FiltersType,
 ): Promise<{ data: Product[]; count: number }> {
   let query = supabaseClient.from("products").select("*");
   let countQuery = supabaseClient
@@ -22,9 +22,10 @@ export async function getProducts(
     countQuery = countQuery.ilike("product_name", `%${searchValue}%`);
   }
 
-  if (filters?.length) {
-    query = query.in("category", filters);
-    countQuery = countQuery.in("category", filters);
+  // filtering by category
+  if (filters?.categories?.length) {
+    query = query.in("category", filters?.categories);
+    countQuery = countQuery.in("category", filters?.categories);
   }
 
   const { count } = await countQuery;
@@ -43,6 +44,16 @@ export async function getProducts(
   if (!data) return { data: [], count: count ?? 0 };
 
   return { data, count: count ?? 0 };
+}
+
+export async function getBrands(): Promise<string[]> {
+  const { data, error } = await supabaseClient.from("products").select("brand");
+
+  if (error || !data) throw new Error(error.message);
+
+  const brands = Array.from(new Set(data.map((brand) => brand.brand)));
+
+  return brands;
 }
 
 export async function getCategories(): Promise<string[]> {

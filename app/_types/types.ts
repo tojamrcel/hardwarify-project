@@ -67,8 +67,8 @@ export interface Order {
 }
 
 export interface FiltersType {
-  brand?: string[];
-  category?: string[];
+  brands?: string[];
+  categories?: string[];
   price?: {
     min: number;
     max: number;

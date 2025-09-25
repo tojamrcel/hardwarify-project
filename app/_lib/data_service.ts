@@ -28,6 +28,12 @@ export async function getProducts(
     countQuery = countQuery.in("category", filters?.categories);
   }
 
+  // filtering by brand
+  if (filters?.brands?.length) {
+    query = query.in("brand", filters.brands);
+    countQuery = countQuery.in("brand", filters?.brands);
+  }
+
   const { count } = await countQuery;
 
   if (page) {

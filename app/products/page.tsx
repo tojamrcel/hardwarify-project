@@ -15,7 +15,8 @@ async function Page({
   searchParams,
 }: {
   searchParams: Promise<
-    { category: string; search: string; page: string } | undefined
+    | { category: string; brand: string; search: string; page: string }
+    | undefined
   >;
 }) {
   const params = await searchParams;
@@ -23,10 +24,11 @@ async function Page({
   const categoryFilter = params?.category
     ? params?.category?.split(",")
     : undefined;
+  const brandFilter = params?.brand ? params?.brand?.split(",") : undefined;
   const { data: products, count } = await getProducts(
     params?.search,
     Number(page),
-    { categories: categoryFilter },
+    { categories: categoryFilter, brands: brandFilter },
   );
 
   const [categories, brands] = await Promise.all([

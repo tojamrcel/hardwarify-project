@@ -31,6 +31,7 @@ function ProductItem({ product }: { product: Product }) {
   const {
     id,
     product_name: name,
+    brand,
     image,
     availability,
     regular_price: price,
@@ -66,7 +67,7 @@ function ProductItem({ product }: { product: Product }) {
       </div>
       <div className="flex flex-col gap-2">
         <p className="py-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-          {name}
+          {`${brand} ${name}`}
         </p>
         <ul className="flex flex-col gap-2 font-[600] text-gray-500 sm:w-64 lg:w-full">
           {!features && (

@@ -10,6 +10,7 @@ function BestsellerItem({ product }: BestsellerItemProps) {
   const {
     id,
     product_name: name,
+    brand,
     regular_price: regularPrice,
     discount,
     image,
@@ -33,7 +34,7 @@ function BestsellerItem({ product }: BestsellerItemProps) {
         </div>
         <div className="flex flex-col items-center justify-center">
           <h3 className="text-center font-bold text-gray-700 dark:text-gray-300 md:mt-2 lg:mt-0 2xl:text-xl">
-            {name}
+            {`${brand} ${name}`}
           </h3>
           {discount ? (
             <>

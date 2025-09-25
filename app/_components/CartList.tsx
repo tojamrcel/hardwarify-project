@@ -44,6 +44,7 @@ function CartItem({
   const {
     id,
     product_name: name,
+    brand,
     regular_price: regularPrice,
     discount,
     image,
@@ -75,7 +76,7 @@ function CartItem({
   }
 
   return (
-    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg border-2 px-2 py-2 md:gap-4 md:px-4 lg:h-auto dark:border-gray-600">
+    <div className="relative grid h-auto max-w-5xl grid-cols-[8rem_3fr] items-center justify-center gap-2 rounded-lg border-2 px-2 py-2 dark:border-gray-600 md:gap-4 md:px-4 lg:h-auto">
       <Image
         src={image}
         alt={name}
@@ -84,10 +85,10 @@ function CartItem({
         className="w-20 self-center justify-self-center rounded-md shadow-sm dark:grayscale-[30%]"
       />
       <div>
-        <p className="font-semibold text-gray-700 md:text-lg dark:text-gray-300">
-          {name}
+        <p className="font-semibold text-gray-700 dark:text-gray-300 md:text-lg">
+          {`${brand} ${name}`}
         </p>
-        <div className="flex flex-col gap-2 text-gray-700 sm:flex-row sm:items-center dark:text-gray-600">
+        <div className="flex flex-col gap-2 text-gray-700 dark:text-gray-600 sm:flex-row sm:items-center">
           <div className="flex gap-2">
             <button
               onClick={() => handleDecreaseQuantity()}

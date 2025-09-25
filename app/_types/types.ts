@@ -1,5 +1,6 @@
 export interface Product {
   id: number;
+  brand: string;
   product_name: string;
   regular_price: number;
   discount: number | null;

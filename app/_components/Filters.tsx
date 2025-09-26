@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "../_hooks/useDebounce";
 import { FiltersType } from "../_types/types";
 import FiltersItem from "./FiltersItem";
+import PriceFilter from "./PriceFilter";
 
 interface FiltersProps {
   filters: FiltersType;
@@ -143,6 +144,17 @@ function Filters({ filters }: FiltersProps) {
               handleFilters={handleFilters}
             />
           ))}
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <label
+          htmlFor="price"
+          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
+        >
+          Price
+        </label>
+        <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
+          <PriceFilter />
         </div>
       </div>
     </form>

@@ -24,12 +24,21 @@ function Filters({ filters }: FiltersProps) {
       .get("brand")
       ?.split(",")
       .filter((fil) => fil != "") ?? [];
+  const minPriceSearchParams = Number(searchParams.get("min"));
+  const maxPriceSearchParams =
+    Number(searchParams.get("max")) === 0
+      ? 5000
+      : Number(searchParams.get("max"));
 
   const router = useRouter();
   const pathname = usePathname();
   const [filtersState, setFilters] = useState<FiltersType>({
     categories: categorySearchParams,
     brands: brandSearchParams,
+    price: {
+      min: minPriceSearchParams,
+      max: maxPriceSearchParams,
+    },
   });
   const debouncedFilters = useDebounce(filtersState, 500);
 
@@ -81,6 +90,12 @@ function Filters({ filters }: FiltersProps) {
     }
   }
 
+  function handlePriceFilter(price: { min: number; max: number }) {
+    setFilters((filters) => {
+      return { ...filters, price };
+    });
+  }
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (
@@ -106,6 +121,27 @@ function Filters({ filters }: FiltersProps) {
       params.delete("brand");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
+
+    // min price
+    if (debouncedFilters["price"] && debouncedFilters.price.min !== 0) {
+      params.set("min", debouncedFilters.price.min.toString());
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    if (!debouncedFilters["price"] || debouncedFilters.price.min === 0) {
+      params.delete("min");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+
+    // max price
+    if (debouncedFilters["price"] && debouncedFilters.price.max !== 0) {
+      params.set("max", debouncedFilters.price.max.toString());
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    if (!debouncedFilters["price"] || debouncedFilters.price.max === 0) {
+      params.delete("max");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    console.log(debouncedFilters);
   }, [debouncedFilters, router, pathname]);
 
   return (
@@ -154,7 +190,12 @@ function Filters({ filters }: FiltersProps) {
           Price
         </label>
         <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
-          <PriceFilter />
+          <PriceFilter
+            price={
+              filtersState["price"] ? filtersState.price : { min: 0, max: 5000 }
+            }
+            handleFilters={handlePriceFilter}
+          />
         </div>
       </div>
     </form>

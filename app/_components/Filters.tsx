@@ -6,6 +6,7 @@ import { useDebounce } from "../_hooks/useDebounce";
 import { FiltersType } from "../_types/types";
 import FiltersItem from "./FiltersItem";
 import PriceFilter from "./PriceFilter";
+import { MAX_PRICE } from "../_lib/constants";
 
 interface FiltersProps {
   filters: FiltersType;
@@ -27,7 +28,7 @@ function Filters({ filters }: FiltersProps) {
   const minPriceSearchParams = Number(searchParams.get("min"));
   const maxPriceSearchParams =
     Number(searchParams.get("max")) === 0
-      ? 5000
+      ? MAX_PRICE
       : Number(searchParams.get("max"));
 
   const router = useRouter();
@@ -137,7 +138,10 @@ function Filters({ filters }: FiltersProps) {
       params.set("max", debouncedFilters.price.max.toString());
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
-    if (!debouncedFilters["price"] || debouncedFilters.price.max === 0) {
+    if (
+      !debouncedFilters["price"] ||
+      debouncedFilters.price.max === MAX_PRICE
+    ) {
       params.delete("max");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
@@ -192,7 +196,9 @@ function Filters({ filters }: FiltersProps) {
         <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
           <PriceFilter
             price={
-              filtersState["price"] ? filtersState.price : { min: 0, max: 5000 }
+              filtersState["price"]
+                ? filtersState.price
+                : { min: 0, max: MAX_PRICE }
             }
             handleFilters={handlePriceFilter}
           />

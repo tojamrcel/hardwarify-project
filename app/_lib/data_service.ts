@@ -34,6 +34,14 @@ export async function getProducts(
     countQuery = countQuery.in("brand", filters?.brands);
   }
 
+  console.log(filters?.price);
+
+  // filtering by price
+  if (filters?.price) {
+    query = query.gt("regular_price", filters.price.min);
+    query = query.lt("regular_price", filters.price.max);
+  }
+
   const { count } = await countQuery;
 
   if (page) {

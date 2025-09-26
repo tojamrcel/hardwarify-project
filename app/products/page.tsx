@@ -6,6 +6,7 @@ import SearchField from "../_components/SearchField";
 import ClientPagination from "../_components/ClientPagination";
 import { Suspense } from "react";
 import Loader from "../_components/Loader";
+import { MAX_PRICE } from "../_lib/constants";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -15,7 +16,14 @@ async function Page({
   searchParams,
 }: {
   searchParams: Promise<
-    | { category: string; brand: string; search: string; page: string }
+    | {
+        category: string;
+        brand: string;
+        min: string;
+        max: string;
+        search: string;
+        page: string;
+      }
     | undefined
   >;
 }) {
@@ -25,10 +33,14 @@ async function Page({
     ? params?.category?.split(",")
     : undefined;
   const brandFilter = params?.brand ? params?.brand?.split(",") : undefined;
+  const priceFilter = {
+    min: params?.min ? Number(params.min) : 0,
+    max: params?.max ? Number(params.max) : MAX_PRICE,
+  };
   const { data: products, count } = await getProducts(
     params?.search,
     Number(page),
-    { categories: categoryFilter, brands: brandFilter },
+    { categories: categoryFilter, brands: brandFilter, price: priceFilter },
   );
 
   const [categories, brands] = await Promise.all([

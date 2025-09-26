@@ -1,4 +1,5 @@
 import { Slider } from "@/components/ui/slider";
+import { MAX_PRICE } from "../_lib/constants";
 
 interface PriceFilterProps {
   price: {
@@ -19,7 +20,7 @@ function PriceFilter({ price, handleFilters }: PriceFilterProps) {
         <Slider
           defaultValue={[0]}
           step={50}
-          max={5000}
+          max={MAX_PRICE}
           value={[price.min]}
           onValueChange={(val) => {
             handleFilters({ min: val[0], max: price.max });
@@ -32,14 +33,15 @@ function PriceFilter({ price, handleFilters }: PriceFilterProps) {
         </label>
         <p className="font-semibold text-gray-600">{price.max}$</p>
         <Slider
-          defaultValue={[5000]}
+          defaultValue={[MAX_PRICE]}
           step={50}
           min={10}
-          max={5000}
+          max={MAX_PRICE}
           value={[price.max]}
-          onValueChange={(val) =>
-            handleFilters({ min: price.min, max: val[0] })
-          }
+          onValueChange={(val) => {
+            if (val[0] < price.min) return;
+            handleFilters({ min: price.min, max: val[0] });
+          }}
         />
       </div>
     </div>

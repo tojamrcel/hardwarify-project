@@ -37,8 +37,12 @@ function Filters({ filters }: FiltersProps) {
     categories: categorySearchParams,
     brands: brandSearchParams,
     price: {
-      min: minPriceSearchParams,
-      max: maxPriceSearchParams,
+      min:
+        minPriceSearchParams > maxPriceSearchParams ? 0 : minPriceSearchParams,
+      max:
+        maxPriceSearchParams < minPriceSearchParams
+          ? MAX_PRICE
+          : maxPriceSearchParams,
     },
   });
   const debouncedFilters = useDebounce(filtersState, 500);
@@ -149,15 +153,15 @@ function Filters({ filters }: FiltersProps) {
   }, [debouncedFilters, router, pathname]);
 
   return (
-    <form className="flex flex-col gap-4">
-      <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <label
           htmlFor="brand"
-          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
+          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
         >
           Brand
         </label>
-        <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
           {brands?.map((brand) => (
             <FiltersItem
               filterItem={brand}
@@ -168,14 +172,14 @@ function Filters({ filters }: FiltersProps) {
           ))}
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <label
           htmlFor="category"
-          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
+          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
         >
           Category
         </label>
-        <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
           {categories?.map((cat) => (
             <FiltersItem
               filterItem={cat}
@@ -186,14 +190,14 @@ function Filters({ filters }: FiltersProps) {
           ))}
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <label
           htmlFor="price"
-          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
+          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
         >
           Price
         </label>
-        <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
           <PriceFilter
             price={
               filtersState["price"]
@@ -204,7 +208,7 @@ function Filters({ filters }: FiltersProps) {
           />
         </div>
       </div>
-    </form>
+    </div>
   );
 }
 

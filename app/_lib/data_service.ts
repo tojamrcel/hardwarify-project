@@ -34,8 +34,6 @@ export async function getProducts(
     countQuery = countQuery.in("brand", filters?.brands);
   }
 
-  console.log(filters?.price);
-
   // filtering by price
   if (filters?.price) {
     query = query.gt("regular_price", filters.price.min);

@@ -7,6 +7,8 @@ import { FiltersType } from "../_types/types";
 import FiltersItem from "./FiltersItem";
 import PriceFilter from "./PriceFilter";
 import { MAX_PRICE } from "../_lib/constants";
+import Button from "./Button";
+import { FiFilter } from "react-icons/fi";
 
 interface FiltersProps {
   filters: FiltersType;
@@ -46,6 +48,8 @@ function Filters({ filters }: FiltersProps) {
     },
   });
   const debouncedFilters = useDebounce(filtersState, 500);
+
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
   function handleFilters(filterItem: string) {
     if (brands?.includes(filterItem)) {
@@ -153,62 +157,82 @@ function Filters({ filters }: FiltersProps) {
   }, [debouncedFilters, router, pathname]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-2">
-        <label
-          htmlFor="brand"
-          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
+    <>
+      <div className="flex w-full lg:hidden">
+        <Button
+          type="primary"
+          onClick={() => setIsMobileFiltersOpen((isOpen) => !isOpen)}
         >
-          Brand
-        </label>
-        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
-          {brands?.map((brand) => (
-            <FiltersItem
-              filterItem={brand}
-              key={brand}
-              filters={filtersState}
-              handleFilters={handleFilters}
-            />
-          ))}
-        </div>
+          <FiFilter />
+          Filters
+        </Button>
       </div>
-      <div className="flex flex-col gap-2">
-        <label
-          htmlFor="category"
-          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
-        >
-          Category
-        </label>
-        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
-          {categories?.map((cat) => (
-            <FiltersItem
-              filterItem={cat}
-              key={cat}
-              filters={filtersState}
-              handleFilters={handleFilters}
-            />
-          ))}
+      {/* MOBILE */}
+      {isMobileFiltersOpen && (
+        <section className="absolute left-0 top-0 z-50 h-screen w-3/4 bg-gray-50 shadow-md backdrop-blur-lg md:w-1/2">
+          test
+        </section>
+      )}
+      {/* DESKTOP */}
+      <section className="hidden w-full flex-col items-center justify-self-stretch rounded-md border-2 p-2 px-6 dark:border-gray-700 md:w-3/4 lg:block lg:w-2/6 lg:self-stretch lg:p-6">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="brand"
+              className="text-xl font-semibold text-gray-600 dark:text-gray-300"
+            >
+              Brand
+            </label>
+            <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+              {brands?.map((brand) => (
+                <FiltersItem
+                  filterItem={brand}
+                  key={brand}
+                  filters={filtersState}
+                  handleFilters={handleFilters}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="category"
+              className="text-xl font-semibold text-gray-600 dark:text-gray-300"
+            >
+              Category
+            </label>
+            <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+              {categories?.map((cat) => (
+                <FiltersItem
+                  filterItem={cat}
+                  key={cat}
+                  filters={filtersState}
+                  handleFilters={handleFilters}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="price"
+              className="text-xl font-semibold text-gray-600 dark:text-gray-300"
+            >
+              Price
+            </label>
+            <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+              <PriceFilter
+                price={
+                  filtersState["price"]
+                    ? filtersState.price
+                    : { min: 0, max: MAX_PRICE }
+                }
+                handleFilters={handlePriceFilter}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <label
-          htmlFor="price"
-          className="text-xl font-semibold text-gray-600 dark:text-gray-300"
-        >
-          Price
-        </label>
-        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
-          <PriceFilter
-            price={
-              filtersState["price"]
-                ? filtersState.price
-                : { min: 0, max: MAX_PRICE }
-            }
-            handleFilters={handlePriceFilter}
-          />
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
 

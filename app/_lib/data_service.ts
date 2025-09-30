@@ -40,6 +40,8 @@ export async function getProducts(
   if (filters?.price) {
     query = query.gt("regular_price", filters.price.min);
     query = query.lt("regular_price", filters.price.max);
+    countQuery = countQuery.gt("regular_price", filters.price.min);
+    countQuery = countQuery.lt("regular_price", filters.price.max);
   }
 
   const { count } = await countQuery;

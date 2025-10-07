@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ClientPagination from "../_components/ClientPagination";
-import Filters from "../_components/Filters";
+import Filters from "../_components/FiltersSection";
 import Loader from "../_components/Loader";
 import ProductsList from "../_components/ProductsList";
 import SearchField from "../_components/SearchField";

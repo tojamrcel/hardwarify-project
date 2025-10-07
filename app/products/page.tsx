@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ClientPagination from "../_components/ClientPagination";
-import Filters from "../_components/FiltersSection";
+import FiltersSection from "../_components/FiltersSection";
 import Loader from "../_components/Loader";
 import ProductsList from "../_components/ProductsList";
 import SearchField from "../_components/SearchField";
@@ -53,7 +53,7 @@ async function Page({
       <SearchField />
       <section className="m-auto flex h-auto max-w-[1300px] flex-col items-center gap-8 py-8 pt-4 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
         <Suspense fallback={<Loader />}>
-          <Filters filters={{ categories, brands }} />
+          <FiltersSection filters={{ categories, brands }} />
         </Suspense>
         <Suspense fallback={<Loader />}>
           {products.length > 0 ? (

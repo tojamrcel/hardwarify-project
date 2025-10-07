@@ -18,8 +18,12 @@ export async function getProducts(
     .select("*", { count: "exact", head: true });
 
   if (searchValue) {
-    query = query.ilike("product_name", `%${searchValue}%`);
-    countQuery = countQuery.ilike("product_name", `%${searchValue}%`);
+    query = query.or(
+      `brand.ilike.%${searchValue}%,product_name.ilike.%${searchValue}%`,
+    );
+    countQuery = countQuery.or(
+      `brand.ilike.%${searchValue}%,product_name.ilike.%${searchValue}%`,
+    );
   }
 
   // filtering by category

@@ -2,13 +2,12 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FiFilter } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useDebounce } from "../_hooks/useDebounce";
 import { MAX_PRICE } from "../_lib/constants";
 import { FiltersType } from "../_types/types";
-import Button from "./Button";
 import Filters from "./Filters";
+import { useFilterMenu } from "./FiltersContext";
 
 interface FiltersProps {
   filters: FiltersType;
@@ -49,7 +48,7 @@ function FiltersSection({ filters }: FiltersProps) {
   });
   const debouncedFilters = useDebounce(filtersState, 500);
 
-  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+  const { isOpen: isMobileFiltersOpen, close } = useFilterMenu();
 
   function handleFilters(filterItem: string) {
     if (brands?.includes(filterItem)) {
@@ -158,15 +157,6 @@ function FiltersSection({ filters }: FiltersProps) {
 
   return (
     <>
-      <div className="flex w-full lg:hidden">
-        <Button
-          type="primary"
-          onClick={() => setIsMobileFiltersOpen((isOpen) => !isOpen)}
-        >
-          <FiFilter />
-          Filters
-        </Button>
-      </div>
       {/* MOBILE */}
       <section
         className={`fixed p-8 lg:hidden ${isMobileFiltersOpen ? "translate-x-0" : "-translate-x-[999px]"} left-0 top-0 z-[51] h-dvh w-3/4 -translate-x-[999px] bg-gray-50 shadow-md backdrop-blur-lg transition-all duration-150 dark:bg-[#0e131f] md:w-1/2`}
@@ -177,7 +167,7 @@ function FiltersSection({ filters }: FiltersProps) {
           </h2>
           <button
             className="flex items-center justify-center text-3xl text-gray-700 dark:text-gray-300"
-            onClick={() => setIsMobileFiltersOpen(false)}
+            onClick={close}
           >
             <IoClose />
           </button>

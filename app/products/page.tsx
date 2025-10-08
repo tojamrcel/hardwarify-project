@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ClientPagination from "../_components/ClientPagination";
+import FilterButton from "../_components/FilterButton";
 import FiltersSection from "../_components/FiltersSection";
 import Loader from "../_components/Loader";
 import ProductsList from "../_components/ProductsList";
@@ -51,6 +52,14 @@ async function Page({
   return (
     <div className="mx-auto max-w-[1300px] px-4">
       <SearchField />
+      <div className="mt-4 flex w-full justify-between lg:justify-end">
+        <div className="lg:hidden">
+          <FilterButton />
+        </div>
+        <select name="" id="">
+          <option value="">By price</option>
+        </select>
+      </div>
       <section className="m-auto flex h-auto max-w-[1300px] flex-col items-center gap-8 py-8 pt-4 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
         <Suspense fallback={<Loader />}>
           <FiltersSection filters={{ categories, brands }} />

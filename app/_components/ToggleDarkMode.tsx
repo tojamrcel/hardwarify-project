@@ -5,7 +5,6 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 function ToggleDarkMode() {
   const { setTheme, theme } = useTheme();
-  console.log(theme);
 
   return (
     <>

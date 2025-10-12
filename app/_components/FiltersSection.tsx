@@ -152,7 +152,6 @@ function FiltersSection({ filters }: FiltersProps) {
       params.delete("max");
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     }
-    console.log(debouncedFilters);
   }, [debouncedFilters, router, pathname]);
 
   return (

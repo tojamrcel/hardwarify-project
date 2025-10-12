@@ -18,7 +18,7 @@ function ProductOverview({ item }: { item: CartProduct }) {
         <div className="flex flex-col justify-center text-center font-semibold">
           <p className="text-red-600 dark:text-red-700">{item.quantity}x</p>
           <p className="text-gray-600 dark:text-gray-500">
-            {(item.regular_price - Number(item.discount)) * item.quantity}$
+            {item.final_price * item.quantity}$
           </p>
         </div>
       </div>

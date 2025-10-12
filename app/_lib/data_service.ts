@@ -11,6 +11,7 @@ export async function getProducts(
   searchValue?: string | undefined,
   page?: number,
   filters?: FiltersType,
+  sort?: "relevant" | "highest" | "lowest",
 ): Promise<{ data: Product[]; count: number }> {
   let query = supabaseClient.from("products").select("*");
   let countQuery = supabaseClient
@@ -40,10 +41,22 @@ export async function getProducts(
 
   // filtering by price
   if (filters?.price) {
-    query = query.gt("regular_price", filters.price.min);
-    query = query.lt("regular_price", filters.price.max);
-    countQuery = countQuery.gt("regular_price", filters.price.min);
-    countQuery = countQuery.lt("regular_price", filters.price.max);
+    query = query.gt("final_price", filters.price.min);
+    query = query.lt("final_price", filters.price.max);
+    countQuery = countQuery.gt("final_price", filters.price.min);
+    countQuery = countQuery.lt("final_price", filters.price.max);
+  }
+
+  // sorting
+  if (sort) {
+    switch (sort) {
+      case "highest":
+        query.order("final_price", { ascending: false });
+        break;
+      case "lowest":
+        query.order("final_price", { ascending: true });
+        break;
+    }
   }
 
   const { count } = await countQuery;

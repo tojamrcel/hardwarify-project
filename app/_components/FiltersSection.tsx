@@ -159,7 +159,7 @@ function FiltersSection({ filters }: FiltersProps) {
     <>
       {/* MOBILE */}
       <section
-        className={`fixed p-8 lg:hidden ${isMobileFiltersOpen ? "translate-x-0" : "-translate-x-[999px]"} left-0 top-0 z-[51] h-dvh w-3/4 -translate-x-[999px] bg-gray-50 shadow-md backdrop-blur-lg transition-all duration-150 dark:bg-[#0e131f] md:w-1/2`}
+        className={`fixed p-8 lg:hidden ${isMobileFiltersOpen ? "translate-x-0" : "-translate-x-[999px]"} left-0 top-0 z-[51] h-screen w-3/4 -translate-x-[999px] bg-gray-50 shadow-md backdrop-blur-lg transition-all duration-150 dark:bg-[#0e131f] md:w-1/2`}
       >
         <div className="mb-4 flex justify-between">
           <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">

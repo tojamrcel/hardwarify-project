@@ -4,7 +4,7 @@ import Button from "./Button";
 import { FiFilter } from "react-icons/fi";
 import { useFilterMenu } from "./FiltersContext";
 
-function FilterButton() {
+function FiltersButton() {
   const { open } = useFilterMenu();
 
   return (
@@ -15,4 +15,4 @@ function FilterButton() {
   );
 }
 
-export default FilterButton;
+export default FiltersButton;

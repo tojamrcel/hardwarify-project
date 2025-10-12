@@ -46,6 +46,7 @@ function CartItem({
     product_name: name,
     brand,
     regular_price: regularPrice,
+    final_price: finalPrice,
     discount,
     image,
     quantity,
@@ -116,7 +117,7 @@ function CartItem({
                   ${regularPrice * quantity}
                 </p>
                 <span className="text-red-600 dark:text-red-700">
-                  ${(regularPrice - Number(discount)) * quantity}
+                  ${finalPrice * quantity}
                 </span>
               </div>
             </>

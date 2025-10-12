@@ -8,6 +8,7 @@ export interface Product {
   category: string;
   image: string;
   availability: number;
+  final_price: number;
 }
 
 export interface ProductWithDiscount extends Product {

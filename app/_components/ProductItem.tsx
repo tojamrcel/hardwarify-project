@@ -35,6 +35,7 @@ function ProductItem({ product }: { product: Product }) {
     image,
     availability,
     regular_price: price,
+    final_price: finalPrice,
     discount,
     category,
   } = product;
@@ -89,7 +90,7 @@ function ProductItem({ product }: { product: Product }) {
           <div className="flex w-full justify-center gap-2 text-xl font-semibold text-gray-500 dark:text-gray-600 sm:mr-4 sm:justify-end">
             <p className="italic line-through">${price}</p>
             <span className="text-red-600 dark:text-red-700">
-              ${price - Number(discount)}
+              ${finalPrice}
             </span>
           </div>
         ) : (

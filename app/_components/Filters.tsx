@@ -19,7 +19,7 @@ function Filters({
   const { categories, brands } = filters;
 
   return (
-    <div className="flex h-full flex-col gap-4 overflow-auto lg:overflow-visible">
+    <div className="flex h-full flex-col gap-4 overflow-auto pb-8 lg:overflow-visible">
       <div className="flex flex-col gap-2">
         <label
           htmlFor="brand"

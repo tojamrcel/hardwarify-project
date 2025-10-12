@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ClientPagination from "../_components/ClientPagination";
-import FilterButton from "../_components/FilterButton";
+import FiltersButton from "../_components/FiltersButton";
 import FiltersSection from "../_components/FiltersSection";
 import Loader from "../_components/Loader";
 import ProductsList from "../_components/ProductsList";
 import SearchField from "../_components/SearchField";
 import { MAX_PRICE } from "../_lib/constants";
 import { getBrands, getCategories, getProducts } from "../_lib/data_service";
+import Sort from "../_components/Sort";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -24,6 +25,7 @@ async function Page({
         max: string;
         search: string;
         page: string;
+        sort: "highest" | "lowest" | "relevant";
       }
     | undefined
   >;
@@ -42,6 +44,7 @@ async function Page({
     params?.search,
     Number(page),
     { categories: categoryFilter, brands: brandFilter, price: priceFilter },
+    params?.sort,
   );
 
   const [categories, brands] = await Promise.all([
@@ -52,13 +55,11 @@ async function Page({
   return (
     <div className="mx-auto max-w-[1300px] px-4">
       <SearchField />
-      <div className="mt-4 flex w-full justify-between lg:justify-end">
+      <div className="mt-4 flex w-full items-end justify-between lg:justify-end">
         <div className="lg:hidden">
-          <FilterButton />
+          <FiltersButton />
         </div>
-        <select name="" id="">
-          <option value="">By price</option>
-        </select>
+        <Sort />
       </div>
       <section className="m-auto flex h-auto max-w-[1300px] flex-col items-center gap-8 py-8 pt-4 lg:flex-row lg:items-start lg:gap-8 xl:gap-16">
         <Suspense fallback={<Loader />}>

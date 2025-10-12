@@ -31,9 +31,11 @@ function ProductItem({ product }: { product: Product }) {
   const {
     id,
     product_name: name,
+    brand,
     image,
     availability,
     regular_price: price,
+    final_price: finalPrice,
     discount,
     category,
   } = product;
@@ -66,7 +68,7 @@ function ProductItem({ product }: { product: Product }) {
       </div>
       <div className="flex flex-col gap-2">
         <p className="py-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-          {name}
+          {`${brand} ${name}`}
         </p>
         <ul className="flex flex-col gap-2 font-[600] text-gray-500 sm:w-64 lg:w-full">
           {!features && (
@@ -88,7 +90,7 @@ function ProductItem({ product }: { product: Product }) {
           <div className="flex w-full justify-center gap-2 text-xl font-semibold text-gray-500 dark:text-gray-600 sm:mr-4 sm:justify-end">
             <p className="italic line-through">${price}</p>
             <span className="text-red-600 dark:text-red-700">
-              ${price - Number(discount)}
+              ${finalPrice}
             </span>
           </div>
         ) : (

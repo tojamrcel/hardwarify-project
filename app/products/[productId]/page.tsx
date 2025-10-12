@@ -38,7 +38,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
         </div>
         <div className="flex h-full flex-col items-center justify-center gap-4 md:items-start">
           <h2 className="text-center text-4xl font-semibold text-gray-800 dark:text-gray-200 md:text-left md:text-3xl lg:text-4xl">
-            {product.product_name}
+            {`${product.brand} ${product.product_name}`}
           </h2>
           <div>
             <p className="text-center text-lg text-gray-700 dark:text-gray-300 md:text-left">

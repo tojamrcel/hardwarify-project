@@ -1,4 +1,4 @@
-import { Product, Profile } from "../_types/types";
+import { FiltersType, Product, Profile } from "../_types/types";
 import { Order } from "../_types/types";
 import { PRODUCTS_PER_PAGE } from "./constants";
 import { createClient } from "./supabase/server";
@@ -10,7 +10,8 @@ const supabaseClient = createSupabaseClient();
 export async function getProducts(
   searchValue?: string | undefined,
   page?: number,
-  filters?: string[] | undefined,
+  filters?: FiltersType,
+  sort?: "relevant" | "highest" | "lowest",
 ): Promise<{ data: Product[]; count: number }> {
   let query = supabaseClient.from("products").select("*");
   let countQuery = supabaseClient
@@ -18,13 +19,44 @@ export async function getProducts(
     .select("*", { count: "exact", head: true });
 
   if (searchValue) {
-    query = query.ilike("product_name", `%${searchValue}%`);
-    countQuery = countQuery.ilike("product_name", `%${searchValue}%`);
+    query = query.or(
+      `brand.ilike.%${searchValue}%,product_name.ilike.%${searchValue}%`,
+    );
+    countQuery = countQuery.or(
+      `brand.ilike.%${searchValue}%,product_name.ilike.%${searchValue}%`,
+    );
   }
 
-  if (filters?.length) {
-    query = query.in("category", filters);
-    countQuery = countQuery.in("category", filters);
+  // filtering by category
+  if (filters?.categories?.length) {
+    query = query.in("category", filters?.categories);
+    countQuery = countQuery.in("category", filters?.categories);
+  }
+
+  // filtering by brand
+  if (filters?.brands?.length) {
+    query = query.in("brand", filters.brands);
+    countQuery = countQuery.in("brand", filters?.brands);
+  }
+
+  // filtering by price
+  if (filters?.price) {
+    query = query.gt("final_price", filters.price.min);
+    query = query.lt("final_price", filters.price.max);
+    countQuery = countQuery.gt("final_price", filters.price.min);
+    countQuery = countQuery.lt("final_price", filters.price.max);
+  }
+
+  // sorting
+  if (sort) {
+    switch (sort) {
+      case "highest":
+        query.order("final_price", { ascending: false });
+        break;
+      case "lowest":
+        query.order("final_price", { ascending: true });
+        break;
+    }
   }
 
   const { count } = await countQuery;
@@ -43,6 +75,16 @@ export async function getProducts(
   if (!data) return { data: [], count: count ?? 0 };
 
   return { data, count: count ?? 0 };
+}
+
+export async function getBrands(): Promise<string[]> {
+  const { data, error } = await supabaseClient.from("products").select("brand");
+
+  if (error || !data) throw new Error(error.message);
+
+  const brands = Array.from(new Set(data.map((brand) => brand.brand)));
+
+  return brands;
 }
 
 export async function getCategories(): Promise<string[]> {

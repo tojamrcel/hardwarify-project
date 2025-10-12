@@ -1,66 +1,80 @@
-"use client";
+import { MAX_PRICE } from "../_lib/constants";
+import { FiltersType } from "../_types/types";
+import FiltersItem from "./FiltersItem";
+import PriceFilter from "./PriceFilter";
 
-import { useEffect, useState } from "react";
-import FilterCategory from "./FilterCategory";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useDebounce } from "../_hooks/useDebounce";
+interface FiltersProps {
+  filtersState: FiltersType;
+  filters: FiltersType;
+  handleFilters: (filterItem: string) => void;
+  handlePriceFilter: (price: { min: number; max: number }) => void;
+}
 
-function Filters({ categories }: { categories: string[] }) {
-  const searchParams = useSearchParams();
-  const stateSearchParams =
-    searchParams
-      .get("filter")
-      ?.split(",")
-      .filter((fil) => fil != "") ?? [];
-  const router = useRouter();
-  const pathname = usePathname();
-  const [filters, setFilters] = useState<string[]>(stateSearchParams);
-  const debouncedFilters = useDebounce(filters, 500);
-
-  function handleFilters(cat: string) {
-    if (filters.includes(cat)) {
-      setFilters((filters) => {
-        return [...filters.filter((fil) => fil !== cat)];
-      });
-    } else
-      setFilters((filters) => {
-        return [...filters, cat];
-      });
-  }
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (debouncedFilters.length > 0) {
-      params.set("filter", [...debouncedFilters].toString());
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    }
-    if (debouncedFilters.length === 0) {
-      params.delete("filter");
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    }
-  }, [debouncedFilters, router, pathname]);
+function Filters({
+  filtersState,
+  filters,
+  handleFilters,
+  handlePriceFilter,
+}: FiltersProps) {
+  const { categories, brands } = filters;
 
   return (
-    <form>
-      <div className="flex items-center gap-2">
+    <div className="flex h-full flex-col gap-4 overflow-auto pb-8 lg:overflow-visible">
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="brand"
+          className="text-lg font-semibold text-gray-600 dark:text-gray-300"
+        >
+          Brand
+        </label>
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+          {brands?.map((brand) => (
+            <FiltersItem
+              filterItem={brand}
+              key={brand}
+              filters={filtersState}
+              handleFilters={handleFilters}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
         <label
           htmlFor="category"
-          className="ml-2 mt-2 text-xl font-semibold text-gray-600 dark:text-gray-300"
+          className="text-lg font-semibold text-gray-600 dark:text-gray-300"
         >
           Category
         </label>
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+          {categories?.map((cat) => (
+            <FiltersItem
+              filterItem={cat}
+              key={cat}
+              filters={filtersState}
+              handleFilters={handleFilters}
+            />
+          ))}
+        </div>
       </div>
-      <div className="ml-3 mt-2 flex w-full flex-col items-center gap-1 lg:items-start">
-        {categories.map((cat) => (
-          <FilterCategory
-            cat={cat}
-            key={cat}
-            filters={filters}
-            handleFilters={handleFilters}
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="price"
+          className="text-lg font-semibold text-gray-600 dark:text-gray-300"
+        >
+          Price
+        </label>
+        <div className="flex w-full flex-col items-center gap-1 px-2 lg:items-start">
+          <PriceFilter
+            price={
+              filtersState["price"]
+                ? filtersState.price
+                : { min: 0, max: MAX_PRICE }
+            }
+            handleFilters={handlePriceFilter}
           />
-        ))}
+        </div>
       </div>
-    </form>
+    </div>
   );
 }
 

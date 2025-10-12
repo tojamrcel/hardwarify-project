@@ -1,5 +1,6 @@
 export interface Product {
   id: number;
+  brand: string;
   product_name: string;
   regular_price: number;
   discount: number | null;
@@ -7,6 +8,7 @@ export interface Product {
   category: string;
   image: string;
   availability: number;
+  final_price: number;
 }
 
 export interface ProductWithDiscount extends Product {
@@ -64,4 +66,13 @@ export interface Order {
   first_name: string;
   last_name: string;
   items: OrderItem[];
+}
+
+export interface FiltersType {
+  brands?: string[];
+  categories?: string[];
+  price?: {
+    min: number;
+    max: number;
+  };
 }

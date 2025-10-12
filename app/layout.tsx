@@ -5,6 +5,7 @@ import { CartProvider } from "./_components/CartContext";
 import Header from "./_components/Header";
 import "./_styles/globals.css";
 import { ThemeProvider } from "./_components/ThemeProvider";
+import { FiltersMenuProvider } from "./_components/FiltersContext";
 
 const latoSans = Lato({
   subsets: ["latin"],
@@ -36,19 +37,21 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartProvider>
-            <Header />
-            <main className="mx-auto pt-[70px]">{children}</main>
-            <Toaster
-              position="top-center"
-              toastOptions={{
-                style: {
-                  marginTop: "64px",
-                  padding: "16px 32px",
-                  fontWeight: "700",
-                },
-                duration: 2000,
-              }}
-            />
+            <FiltersMenuProvider>
+              <Header />
+              <main className="mx-auto pt-[70px]">{children}</main>
+              <Toaster
+                position="top-center"
+                toastOptions={{
+                  style: {
+                    marginTop: "64px",
+                    padding: "16px 32px",
+                    fontWeight: "700",
+                  },
+                  duration: 2000,
+                }}
+              />
+            </FiltersMenuProvider>
           </CartProvider>
         </ThemeProvider>
       </body>

@@ -30,9 +30,9 @@ function Sort() {
 
   return (
     <div>
-      <p className="text-gray-700 dark:text-gray-300">Sort by</p>
+      <p className="font-semibold text-gray-700 dark:text-gray-300">Sort by</p>
       <select
-        className="border p-2 text-gray-700 transition-all duration-150 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+        className="rounded-md border-2 p-2 text-gray-700 transition-all duration-150 focus:border-red-700 focus:outline-0 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-red-800"
         value={sortBy}
         onChange={(e) => {
           if (

@@ -37,11 +37,11 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
           </div>
         </div>
         <div className="flex h-full flex-col items-center justify-center gap-4 md:items-start">
-          <h2 className="text-center text-4xl font-semibold text-gray-800 dark:text-gray-200 md:text-left md:text-3xl lg:text-4xl">
+          <h2 className="text-center text-4xl font-semibold text-gray-800 dark:text-gray-300 md:text-left md:text-3xl lg:text-4xl">
             {`${product.brand} ${product.product_name}`}
           </h2>
           <div>
-            <p className="text-center text-lg text-gray-700 dark:text-gray-300 md:text-left">
+            <p className="text-center text-lg text-gray-700 dark:text-gray-400 md:text-left">
               {product.description.split(".")[0]}.
             </p>
           </div>
@@ -53,13 +53,13 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
                     {product.regular_price}$
                   </span>
                   <span className="text-3xl text-red-600 dark:text-red-700">
-                    {product.regular_price - Number(product.discount)}$
+                    {product.final_price}$
                   </span>
                 </div>
               </>
             ) : (
-              <span className="text-3xl font-bold text-gray-700">
-                {product.regular_price - Number(product.discount)}$
+              <span className="text-3xl font-bold text-gray-300">
+                {product.regular_price}$
               </span>
             )}
           </div>

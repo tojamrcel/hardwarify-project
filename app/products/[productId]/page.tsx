@@ -1,8 +1,10 @@
 import AddToCartButton from "@/app/_components/AddToCartButton";
-import { getProductById } from "@/app/_lib/data_service";
+import { getProductById, getProducts } from "@/app/_lib/data_service";
 import Image from "next/image";
 import { FaLock, FaSmile } from "react-icons/fa";
 import { FaHandshake } from "react-icons/fa6";
+
+export const revalidate = 300; // revalidation every 5 minutes
 
 export async function generateMetadata({
   params,
@@ -15,6 +17,15 @@ export async function generateMetadata({
   return {
     title: `${name}`,
   };
+}
+
+export async function generateStaticParams() {
+  const { data: products } = await getProducts();
+  const ids = products.map((prod) => ({
+    productId: prod.id + "",
+  }));
+
+  return ids;
 }
 
 async function Page({ params }: { params: Promise<{ productId: string }> }) {

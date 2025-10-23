@@ -27,7 +27,7 @@ function Page() {
   }
 
   return (
-    <div className="mt-8 flex flex-col items-center gap-4 md:mt-32 md:gap-8 lg:mt-64">
+    <div className="l mt-8 flex flex-col items-center gap-4 md:mt-32 md:gap-8">
       <div className="flex flex-col gap-6 rounded-md border bg-gray-100 p-16 dark:border-gray-700 dark:bg-gray-900/90">
         <h2 className="text-3xl font-bold text-gray-700 dark:text-gray-300 sm:text-4xl">
           Create new account

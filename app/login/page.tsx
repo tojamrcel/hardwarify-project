@@ -40,7 +40,7 @@ function Page() {
 
   return (
     <div className="mt-8 flex flex-col items-center gap-8 md:mt-32">
-      <div className="flex h-96 w-96 flex-col items-center justify-center gap-4 rounded-md p-8 dark:border-gray-700 dark:bg-gray-900/90 md:border md:bg-gray-100">
+      <div className="flex h-96 w-96 flex-col items-center justify-center gap-4 rounded-md p-8 dark:border-gray-700 md:border md:bg-gray-100 md:dark:bg-gray-900/90">
         <h2 className="text-center text-3xl font-bold text-gray-700 dark:text-gray-300 sm:text-4xl">
           Login
         </h2>

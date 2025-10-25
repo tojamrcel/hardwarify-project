@@ -102,7 +102,7 @@ function Header() {
 
         {/* MOBILE */}
         <nav
-          className={`absolute left-0 top-0 h-screen w-3/4 ${isMenuOpen ? "translate-x-0" : "-translate-x-[150%]"} z-50 transform bg-gray-100 shadow-md transition-transform dark:bg-gray-900 md:w-1/2 lg:hidden`}
+          className={`absolute left-0 top-0 h-screen w-3/4 ${isMenuOpen ? "translate-x-0" : "-translate-x-[150%]"} z-50 transform bg-gray-50 shadow-md transition-transform dark:bg-gray-900 md:w-1/2 lg:hidden`}
         >
           <div className="absolute left-0 flex h-[70px] w-full items-center justify-between px-8">
             <ToggleDarkMode />

@@ -75,7 +75,7 @@ function Header() {
                 </Link>
               </li>
             </div>
-            <div className="flex items-center gap-4 sm:w-64 sm:gap-8">
+            <div className="flex items-center gap-4 lg:w-64">
               <li className="ml-auto hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <ToggleDarkMode />
               </li>

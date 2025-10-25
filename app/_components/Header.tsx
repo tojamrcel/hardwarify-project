@@ -1,7 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { IoCartOutline, IoMenuOutline, IoPersonOutline } from "react-icons/io5";
+import {
+  IoCartOutline,
+  IoClose,
+  IoMenuOutline,
+  IoPersonOutline,
+} from "react-icons/io5";
 import { useCart } from "./CartContext";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -37,7 +42,7 @@ function Header() {
           </Link>
         </div>
         <button
-          onClick={() => setIsMenuOpen((open) => !open)}
+          onClick={() => setIsMenuOpen(true)}
           className="transition-color z-10 block text-3xl duration-150 hover:text-gray-500 dark:hover:text-gray-300/90 lg:hidden"
         >
           <IoMenuOutline />
@@ -71,7 +76,7 @@ function Header() {
               </li>
             </div>
             <div className="flex items-center gap-4 sm:w-64 sm:gap-8">
-              <li className="ml-auto transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
+              <li className="ml-auto hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <ToggleDarkMode />
               </li>
               <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
@@ -86,7 +91,7 @@ function Header() {
                   </Link>
                 </div>
               </li>
-              <li className="transition-colors hover:text-gray-600 dark:hover:text-gray-300/90">
+              <li className="hidden transition-colors hover:text-gray-600 dark:hover:text-gray-300/90 lg:block">
                 <Link href="/account" className="text-3xl">
                   <IoPersonOutline />
                 </Link>
@@ -97,25 +102,41 @@ function Header() {
 
         {/* MOBILE */}
         <nav
-          className={`absolute left-0 top-[70px] w-full ${isMenuOpen ? "translate-y-0" : "-translate-y-[150%]"} z-[5] transform bg-gray-100 transition-transform dark:bg-gray-900 lg:hidden`}
+          className={`absolute left-0 top-0 h-screen w-3/4 ${isMenuOpen ? "translate-x-0" : "-translate-x-[150%]"} z-50 transform bg-gray-100 shadow-md transition-transform dark:bg-gray-900 md:w-1/2 lg:hidden`}
         >
-          <ul className="flex w-full flex-col gap-2 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-gray-300">
-            <li className="w-full text-xl transition-colors duration-100 hover:text-gray-500 dark:hover:text-gray-300">
-              <Link className="block py-2 text-center" href="/">
-                Home
-              </Link>
-            </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-              <Link className="block py-2 text-center" href="/products">
-                Products
-              </Link>
-            </li>
-            <li className="w-full border-t-2 text-xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-              <Link className="block py-2 text-center" href="/about">
-                About
-              </Link>
-            </li>
-          </ul>
+          <div className="absolute left-0 flex h-[70px] w-full items-center justify-between px-8">
+            <ToggleDarkMode />
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center justify-center text-3xl text-gray-700 dark:text-gray-300"
+            >
+              <IoClose />
+            </button>
+          </div>
+          <div className="flex h-full w-full items-center justify-center">
+            <ul className="flex w-full flex-col gap-12 py-2 text-gray-700 dark:border-gray-700 dark:text-gray-300">
+              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:hover:text-gray-300">
+                <Link className="block py-2 text-center" href="/">
+                  Home
+                </Link>
+              </li>
+              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link className="block py-2 text-center" href="/products">
+                  Products
+                </Link>
+              </li>
+              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link className="block py-2 text-center" href="/about">
+                  About
+                </Link>
+              </li>
+              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link className="block py-2 text-center" href="/account">
+                  Account
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
       {isMenuOpen && (

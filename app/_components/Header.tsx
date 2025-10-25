@@ -115,23 +115,35 @@ function Header() {
           </div>
           <div className="flex h-full w-full items-center justify-center">
             <ul className="flex w-full flex-col gap-12 py-2 text-gray-700 dark:border-gray-700 dark:text-gray-300">
-              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:hover:text-gray-300">
-                <Link className="block py-2 text-center" href="/">
+              <li className="flex w-full justify-center text-2xl transition-colors duration-100 hover:text-gray-500 dark:hover:text-gray-300">
+                <Link
+                  className={`${pathname === "/" ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] dark:after:bg-gray-300`}
+                  href="/"
+                >
                   Home
                 </Link>
               </li>
-              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-                <Link className="block py-2 text-center" href="/products">
+              <li className="flex w-full justify-center text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link
+                  className={`${pathname.startsWith("/products") ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] dark:after:bg-gray-300`}
+                  href="/products"
+                >
                   Products
                 </Link>
               </li>
-              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-                <Link className="block py-2 text-center" href="/about">
+              <li className="flex w-full justify-center text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link
+                  className={`${pathname.startsWith("/about") ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] dark:after:bg-gray-300`}
+                  href="/about"
+                >
                   About
                 </Link>
               </li>
-              <li className="w-full text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
-                <Link className="block py-2 text-center" href="/account">
+              <li className="flex w-full justify-center text-2xl transition-colors duration-100 hover:text-gray-500 dark:border-gray-800 dark:hover:text-gray-300">
+                <Link
+                  className={`${pathname.startsWith("/account") || pathname.startsWith("/login") || pathname.startsWith("/signup") ? "after:scale-x-100" : ""} relative block after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-700 after:transition after:duration-300 after:content-[''] dark:after:bg-gray-300`}
+                  href="/account"
+                >
                   Account
                 </Link>
               </li>

@@ -39,7 +39,7 @@ export default function RootLayout({
           <CartProvider>
             <FiltersMenuProvider>
               <Header />
-              <main className="mx-auto mb-4 pt-[70px]">{children}</main>
+              <main className="mx-auto pt-[70px]">{children}</main>
               <Toaster
                 position="top-center"
                 toastOptions={{

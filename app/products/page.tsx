@@ -53,7 +53,7 @@ async function Page({
   ]);
 
   return (
-    <div className="mx-auto max-w-[1300px] px-4">
+    <div className="mx-auto mb-4 max-w-[1300px] px-4">
       <SearchField />
       <div className="mt-4 flex w-full items-end justify-between lg:justify-end">
         <div className="lg:hidden">

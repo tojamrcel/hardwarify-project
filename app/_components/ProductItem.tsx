@@ -54,7 +54,7 @@ function ProductItem({ product }: { product: Product }) {
 
         router.push(`/products/${id}`);
       }}
-      className="relative grid h-auto cursor-pointer grid-cols-[auto_1fr] grid-rows-[auto_1fr] items-center gap-2 gap-y-2 rounded-md border-2 p-2 transition-all duration-150 hover:border-gray-300 dark:border-gray-600 dark:hover:border-gray-500 sm:grid-rows-none sm:p-0 md:gap-4 md:gap-y-0"
+      className="relative grid h-auto cursor-pointer grid-cols-[auto_1fr] grid-rows-[auto_1fr] items-center gap-2 gap-y-2 rounded-md border-2 p-2 transition-all duration-150 hover:border-gray-400/75 dark:border-gray-600 dark:hover:border-gray-500 sm:grid-rows-none sm:p-0 md:gap-4 md:gap-y-0"
     >
       <div className="p-2">
         <Image

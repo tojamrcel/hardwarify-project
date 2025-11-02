@@ -1,7 +1,6 @@
-import UploadImage from "@/app/_components/UploadImage";
+import Button from "@/app/_components/Button";
 import { getProfile } from "@/app/_lib/data_service";
 import { createClient } from "@/app/_lib/supabase/server";
-import Image from "next/image";
 
 async function Page() {
   const supabase = await createClient();
@@ -13,24 +12,31 @@ async function Page() {
   const { firstName, lastName, image } = await getProfile(user.email);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center py-8 lg:mt-8 lg:w-auto lg:items-start lg:justify-start">
-      <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-[auto_1fr]">
-        <Image
-          src={image ? image : "/noimage.jpg"}
-          width={196}
-          height={196}
-          className="w-36 rounded-full"
-          alt="Profile image"
-        />
-        <div className="flex flex-col justify-center gap-2 text-gray-600 dark:text-gray-300">
-          <h2 className="text-center text-3xl font-semibold md:text-left">
-            {firstName} {lastName}
-          </h2>
-          <div className="flex justify-center">
-            <UploadImage />
-          </div>
+    <div className="flex flex-col gap-8">
+      <h2 className="text-3xl font-semibold text-gray-700 dark:text-gray-300">
+        Settings
+      </h2>
+      <form className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <label className="text-lg font-semibold text-gray-700">E-mail</label>
+          <input className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800" />
         </div>
-      </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-lg font-semibold text-gray-700">
+            First name
+          </label>
+          <input className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-lg font-semibold text-gray-700">
+            Last name
+          </label>
+          <input className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800" />
+        </div>
+        <div className="flex w-full justify-end">
+          <Button type="primary">Save</Button>
+        </div>
+      </form>
     </div>
   );
 }

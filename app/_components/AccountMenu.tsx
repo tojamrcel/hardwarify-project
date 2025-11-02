@@ -30,10 +30,10 @@ function AccountMenu() {
           <li className={`mt-2 rounded-lg lg:mt-0`}>
             <Link
               href="/account/orders"
-              className={`group flex h-full items-center gap-3 rounded-sm px-4 py-3 transition-all duration-150 hover:bg-gray-200 dark:hover:bg-gray-800 ${"/account/orders" === pathname ? "bg-gray-200 font-semibold dark:bg-gray-800" : ""}`}
+              className={`group flex h-full items-center gap-3 rounded-sm px-4 py-3 transition-all duration-150 hover:bg-gray-200 dark:hover:bg-gray-800 ${pathname.startsWith("/account/orders") ? "bg-gray-200 font-semibold dark:bg-gray-800" : ""}`}
             >
               <span
-                className={`text-2xl ${"/account/orders" === pathname ? "text-red-700" : ""} transition-all duration-150 group-hover:text-red-700`}
+                className={`text-2xl ${pathname.startsWith("/account/orders") ? "text-red-700" : ""} transition-all duration-150 group-hover:text-red-700`}
               >
                 <FaBox />
               </span>

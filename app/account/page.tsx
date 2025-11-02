@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { getProfile } from "../_lib/data_service";
+import { getLastUserOrder, getProfile } from "../_lib/data_service";
 import { createClient } from "../_lib/supabase/server";
 import Button from "../_components/Button";
+import OrderItem from "../_components/OrderItem";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -16,6 +17,7 @@ async function Page() {
 
   if (!user || !user.email) throw new Error("There is no user logged in.");
   const { firstName, lastName } = await getProfile(user.email);
+  const lastOrder = await getLastUserOrder();
 
   return (
     <div className="flex flex-col gap-8">
@@ -26,7 +28,7 @@ async function Page() {
         <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Your last order
         </h2>
-        <div className="rounded-sm border-2 p-8 py-16"></div>
+        <OrderItem orderItem={lastOrder} />
         <div>
           <Button type="secondary" link="/account/orders">
             See all orders.

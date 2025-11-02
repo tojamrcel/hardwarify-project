@@ -3,6 +3,7 @@ import { getLastUserOrder, getProfile } from "../_lib/data_service";
 import { createClient } from "../_lib/supabase/server";
 import Button from "../_components/Button";
 import OrderItem from "../_components/OrderItem";
+import CartOverview from "../_components/CartOverview";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -28,7 +29,9 @@ async function Page() {
         <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Your last order
         </h2>
-        <OrderItem orderItem={lastOrder} />
+        <ul>
+          <OrderItem orderItem={lastOrder} />
+        </ul>
         <div>
           <Button type="secondary" link="/account/orders">
             See all orders.
@@ -39,7 +42,7 @@ async function Page() {
         <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Your cart
         </h2>
-        <div className="rounded-sm border-2 p-8 py-16"></div>
+        <CartOverview />
       </div>
     </div>
   );

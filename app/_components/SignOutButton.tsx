@@ -11,7 +11,7 @@ function SignOutButton() {
 
   return (
     <form onSubmit={handleSignOut}>
-      <button className="flex w-full items-center justify-center gap-2 rounded-lg p-2 text-center text-red-600 hover:bg-gray-200 md:justify-start md:text-left dark:hover:bg-gray-700">
+      <button className="flex w-full items-center justify-center gap-2 rounded-lg p-2 text-center text-red-600 hover:bg-gray-200 dark:hover:bg-gray-700 md:justify-start md:text-left">
         <IoLogOutOutline />
         <span>Sign out</span>
       </button>

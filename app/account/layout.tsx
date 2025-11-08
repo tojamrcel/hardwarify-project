@@ -7,7 +7,7 @@ function Layout({
 }>) {
   return (
     <div className="h-[calc(100vh-70px)]">
-      <section className="grid h-full overflow-clip md:grid-cols-[360px_1fr]">
+      <section className="grid h-full grid-cols-[auto_1fr] overflow-clip md:grid-cols-[260px_1fr] lg:grid-cols-[360px_1fr]">
         <div className="flex h-full justify-center bg-gray-100/90 dark:bg-gray-900/90">
           <AccountMenu />
         </div>

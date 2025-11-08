@@ -15,7 +15,7 @@ function CartOverview() {
       ) : (
         <Link href="/cart">
           <div className="rounded-sm border-2 p-6 transition-all duration-150 hover:border-gray-400/75 dark:border-gray-600 dark:hover:border-gray-500">
-            <h3 className="text-xl font-semibold text-gray-700">
+            <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
               Total cart value:{" "}
               <span>
                 {cart.reduce(

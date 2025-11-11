@@ -37,7 +37,7 @@ function Button({
     return (
       <Link
         href={link}
-        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-400 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100"
+        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:text-gray-400"
       >
         {children}
       </Link>
@@ -47,7 +47,7 @@ function Button({
       <button
         onClick={onClick}
         disabled={disabled}
-        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-400 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100"
+        className="relative px-0.5 pb-[0.1rem] pt-1 font-semibold text-gray-500 transition-colors duration-100 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-gray-500 after:transition after:duration-300 after:content-[''] after:hover:scale-x-100 dark:text-gray-400"
       >
         {children}
       </button>

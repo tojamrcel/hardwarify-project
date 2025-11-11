@@ -22,7 +22,9 @@ function SettingsForm({ profile }: { profile: Profile }) {
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <InputRow>
-        <label className="text-lg font-semibold text-gray-700">E-mail</label>
+        <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          E-mail
+        </label>
         <input
           disabled
           defaultValue={email}
@@ -30,7 +32,7 @@ function SettingsForm({ profile }: { profile: Profile }) {
         />
       </InputRow>
       <InputRow>
-        <label className="text-lg font-semibold text-gray-700">
+        <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
           First name
         </label>
         <input
@@ -42,7 +44,9 @@ function SettingsForm({ profile }: { profile: Profile }) {
         />
       </InputRow>
       <InputRow>
-        <label className="text-lg font-semibold text-gray-700">Last name</label>
+        <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          Last name
+        </label>
         <input
           className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
           {...register("last_name", {

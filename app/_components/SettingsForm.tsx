@@ -4,6 +4,8 @@ import InputRow from "./InputRow";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import { Profile } from "../_types/types";
+import { useState, useTransition } from "react";
+import { updateProfileAction } from "../_lib/actions";
 
 function SettingsForm({ profile }: { profile: Profile }) {
   const { email, firstName, lastName } = profile;
@@ -11,12 +13,24 @@ function SettingsForm({ profile }: { profile: Profile }) {
     first_name: string | undefined;
     last_name: string | undefined;
   }>();
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(data: {
     first_name: string | undefined;
     last_name: string | undefined;
   }) {
-    console.log(data);
+    const { first_name, last_name } = data;
+
+    if (typeof first_name === "string" && typeof last_name === "string")
+      startTransition(async () => {
+        try {
+          await updateProfileAction({ first_name, last_name });
+        } catch (err) {
+          if (err instanceof Error && err.message)
+            setError("Profile could not be updated. Try again later.");
+        }
+      });
   }
 
   return (
@@ -55,8 +69,15 @@ function SettingsForm({ profile }: { profile: Profile }) {
           defaultValue={lastName}
         />
       </InputRow>
-      <div className="flex w-full justify-end">
-        <Button type="primary">Save</Button>
+      <div className="flex w-full items-center justify-end gap-4">
+        {error && (
+          <span className="text-red-600 dark:text-red-700">
+            Profile could not be updated
+          </span>
+        )}
+        <Button type="primary" disabled={isPending}>
+          Save
+        </Button>
       </div>
     </form>
   );

@@ -152,7 +152,7 @@ export async function getProfile(email: string): Promise<Profile> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("profiles")
-    .select("email, image, firstName, lastName")
+    .select("email, firstName, lastName")
     .eq("email", email)
     .single();
 

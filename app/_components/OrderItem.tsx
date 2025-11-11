@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProductsByIds } from "../_lib/data_service";
 import { Order } from "../_types/types";
+import OrderStatusBadge from "./OrderStatusBadge";
 
 async function OrderItem({ orderItem }: { orderItem: Order }) {
   const productsIds = orderItem.items.map((item) => item.product_id);
@@ -14,21 +15,9 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
           <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
             Order #{orderItem.id}
           </h3>
-          {orderItem.status === "pending" && (
-            <span className="text-md absolute right-6 top-6 flex w-20 justify-center rounded-md bg-green-500 p-0.5 font-semibold uppercase tracking-tight text-stone-100 dark:bg-green-600">
-              pending
-            </span>
-          )}
-          {orderItem.status === "sent" && (
-            <span className="text-md absolute right-6 top-6 flex w-20 justify-center rounded-md bg-yellow-500 p-0.5 font-semibold uppercase tracking-tight text-stone-100 dark:bg-yellow-600">
-              sent
-            </span>
-          )}
-          {orderItem.status === "delivered" && (
-            <span className="text-md absolute right-6 top-6 flex w-24 justify-center rounded-md bg-red-600 p-0.5 font-semibold uppercase tracking-tight text-stone-100 dark:bg-red-700">
-              delivered
-            </span>
-          )}
+          <div className="absolute right-6 top-6">
+            <OrderStatusBadge status={orderItem.status} />
+          </div>
         </div>
         <div className="mt-4 flex w-2/3 gap-3 overflow-clip">
           {orderItem.items.map((item) => {

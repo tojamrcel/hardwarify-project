@@ -12,7 +12,7 @@ function ProductOverview({ item }: { item: CartProduct }) {
         className="dark:grayscale-[30%]"
       />
       <div className="flex h-full w-full items-center justify-between pr-4">
-        <p className="font-semibold uppercase tracking-tighter text-gray-600 dark:text-gray-300">
+        <p className="font-semibold uppercase tracking-normal text-gray-600 dark:text-gray-300">
           {`${item.brand} ${item.product_name}`}
         </p>
         <div className="flex flex-col justify-center text-center font-semibold">

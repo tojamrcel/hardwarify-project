@@ -23,7 +23,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Order #{orderId}
         </h1>
@@ -41,14 +41,14 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <h2 className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
             Order info
           </h2>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Products:{" "}
             <span className="font-normal">{totalPrice - SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Shipping cost: <span className="font-normal">{SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
           {status === "pending" && (

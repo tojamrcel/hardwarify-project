@@ -35,7 +35,6 @@ export async function signUpAction(data: SignUpFormValues) {
     firstName,
     lastName,
     email,
-    image: "",
     user_id: userData.user?.id,
   };
 
@@ -45,21 +44,21 @@ export async function signUpAction(data: SignUpFormValues) {
 }
 
 export async function updateProfileAction(data: {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
 }) {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { firstName, lastName } = data;
+  const { first_name, last_name } = data;
 
   if (!user || !user.email) throw new Error("There is no user logged in.");
 
   const { error } = await supabase
     .from("profiles")
-    .update({ first_name: firstName, last_name: lastName })
+    .update({ first_name, last_name })
     .eq("email", user.email);
 
   if (error) throw new Error("Profile could not be updated.");

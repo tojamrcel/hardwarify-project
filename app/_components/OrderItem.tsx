@@ -27,7 +27,7 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
                 }
                 width={80}
                 height={80}
-                className={`rounded-md dark:grayscale-[30%]`}
+                className={`rounded-sm dark:grayscale-[30%]`}
                 key={item.product_id}
               />
             );

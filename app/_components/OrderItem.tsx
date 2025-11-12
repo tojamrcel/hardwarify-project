@@ -10,9 +10,9 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
 
   return (
     <Link href={`/account/orders/${orderItem.id}`}>
-      <li className="relative cursor-pointer rounded-sm border-2 p-6 transition-all duration-150 hover:border-gray-400/75 dark:border-gray-600 dark:hover:border-gray-500">
-        <div className="flex items-center gap-4">
-          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+      <li className="relative cursor-pointer rounded-sm border-2 p-4 transition-all duration-150 hover:border-gray-400/75 dark:border-gray-600 dark:hover:border-gray-500 md:p-6">
+        <div className="flex flex-col-reverse gap-2 md:flex-row md:items-center">
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 md:text-xl">
             Order #{orderItem.id}
           </h3>
           <OrderStatusBadge status={orderItem.status} />

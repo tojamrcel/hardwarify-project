@@ -23,14 +23,14 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col-reverse gap-2 md:flex-row md:items-center md:gap-4">
         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Order #{orderId}
         </h1>
         <OrderStatusBadge status={status} />
       </div>
       <div className="grid w-full items-center gap-4 lg:grid-cols-[3fr_2fr] lg:gap-8 xl:lg:grid-cols-[1fr_400px]">
-        <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
+        <ul className="flex max-h-96 flex-col gap-2 overflow-auto md:px-2">
           {productItems.map((item) => (
             <li key={item.id}>
               <ProductOverview item={item} />

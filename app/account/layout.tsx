@@ -11,7 +11,7 @@ function Layout({
         <div className="flex justify-center bg-gray-100/90 dark:bg-gray-900/90">
           <AccountMenu />
         </div>
-        <div className="overflow-auto p-8">{children}</div>
+        <div className="overflow-auto p-4 md:p-8">{children}</div>
       </section>
     </div>
   );

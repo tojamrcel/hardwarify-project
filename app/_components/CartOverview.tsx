@@ -11,7 +11,9 @@ function CartOverview() {
   return (
     <>
       {cart.length === 0 ? (
-        <span className="text-xl text-gray-700">Your cart is empty.</span>
+        <span className="text-xl text-gray-700 dark:text-gray-400">
+          Your cart is empty.
+        </span>
       ) : (
         <Link href="/cart">
           <div className="rounded-sm border-2 p-6 transition-all duration-150 hover:border-gray-400/75 dark:border-gray-600 dark:hover:border-gray-500">

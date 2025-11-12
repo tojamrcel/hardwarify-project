@@ -3,6 +3,7 @@
 import { FormEvent, useState, useTransition } from "react";
 import { cancelOrderAction } from "../_lib/actions";
 import Button from "./Button";
+import { ImCancelCircle } from "react-icons/im";
 
 function CancelOrderBtn({ orderId }: { orderId: string }) {
   const [error, setError] = useState<string | null>(null);
@@ -24,6 +25,9 @@ function CancelOrderBtn({ orderId }: { orderId: string }) {
   return (
     <form onSubmit={handleCancelOrder}>
       <Button type="primary" disabled={isPending}>
+        <span className="text-5xl">
+          <ImCancelCircle />
+        </span>
         Cancel order
       </Button>
       {error && <p className="text-sm text-red-600">{error}</p>}

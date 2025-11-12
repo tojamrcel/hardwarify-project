@@ -44,7 +44,6 @@ export default function RootLayout({
                 position="top-center"
                 toastOptions={{
                   style: {
-                    marginTop: "64px",
                     padding: "16px 32px",
                     fontWeight: "700",
                   },

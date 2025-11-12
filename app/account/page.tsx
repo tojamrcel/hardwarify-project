@@ -34,7 +34,7 @@ async function Page() {
         </ul>
         <div>
           <Button type="secondary" link="/account/orders">
-            See all orders.
+            See all orders
           </Button>
         </div>
       </div>

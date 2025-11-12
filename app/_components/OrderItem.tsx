@@ -15,9 +15,7 @@ async function OrderItem({ orderItem }: { orderItem: Order }) {
           <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
             Order #{orderItem.id}
           </h3>
-          <div className="absolute right-6 top-6">
-            <OrderStatusBadge status={orderItem.status} />
-          </div>
+          <OrderStatusBadge status={orderItem.status} />
         </div>
         <div className="mt-4 flex w-2/3 gap-3 overflow-clip">
           {orderItem.items.map((item) => {

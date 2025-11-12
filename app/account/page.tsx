@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { getProfile } from "../_lib/data_service";
-import Image from "next/image";
+import { getLastUserOrder, getProfile } from "../_lib/data_service";
 import { createClient } from "../_lib/supabase/server";
+import Button from "../_components/Button";
+import OrderItem from "../_components/OrderItem";
+import CartOverview from "../_components/CartOverview";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -15,26 +17,32 @@ async function Page() {
   } = await supabase.auth.getUser();
 
   if (!user || !user.email) throw new Error("There is no user logged in.");
-  const { email, firstName, image } = await getProfile(user.email);
+  const { firstName, lastName } = await getProfile(user.email);
+  const lastOrder = await getLastUserOrder();
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center py-8 md:mt-8 md:items-start md:justify-start lg:w-auto">
-      <div className="grid gap-8 md:grid-cols-[auto_1fr]">
-        <Image
-          src={image ? image : "/noimage.jpg"}
-          width={196}
-          height={196}
-          alt="Profile image"
-          className="rounded-full"
-        />
-        <div className="flex flex-col justify-center gap-2 text-gray-600 dark:text-gray-300">
-          <h2 className="text-center text-4xl font-semibold md:text-left">
-            Hello {firstName}!
-          </h2>
-          <div className="flex flex-col text-xl">
-            <p className="text-center md:text-left">{email}</p>
-          </div>
+    <div className="flex flex-col gap-8">
+      <h1 className="text-4xl font-semibold text-gray-700 dark:text-gray-300">
+        Hello {firstName} {lastName}!
+      </h1>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
+          Your last order
+        </h2>
+        <ul>
+          <OrderItem orderItem={lastOrder} />
+        </ul>
+        <div>
+          <Button type="secondary" link="/account/orders">
+            See all orders
+          </Button>
         </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
+          Your cart
+        </h2>
+        <CartOverview />
       </div>
     </div>
   );

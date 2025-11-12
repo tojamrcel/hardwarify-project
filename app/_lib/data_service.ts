@@ -152,7 +152,7 @@ export async function getProfile(email: string): Promise<Profile> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("profiles")
-    .select("email, image, firstName, lastName")
+    .select("email, firstName, lastName")
     .eq("email", email)
     .single();
 
@@ -173,7 +173,8 @@ export async function getUserOrders(): Promise<Order[]> {
   const { data: ordersData, error: orderError } = await supabase
     .from("orders")
     .select("id, total_price, status, address, first_name, last_name")
-    .eq("user_id", user.id);
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
 
   if (orderError) throw new Error("No orders found.");
 
@@ -199,6 +200,47 @@ export async function getUserOrders(): Promise<Order[]> {
   if (finalOrders.length === 0) throw new Error("No orders found.");
 
   return finalOrders;
+}
+
+export async function getLastUserOrder(): Promise<Order> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error("There is no user logged in.");
+
+  const { data: ordersData, error: orderError } = await supabase
+    .from("orders")
+    .select("id, total_price, status, address, first_name, last_name")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (orderError) throw new Error("No orders found.");
+
+  const orderIds = ordersData.map((order) => order.id);
+
+  const { data: orderItemsData, error: itemsError } = await supabase
+    .from("order_items")
+    .select("product_id, quantity, order_id")
+    .in("order_id", orderIds);
+
+  if (itemsError) throw new Error("No orders found.");
+
+  const finalOrders = ordersData.map((o) => {
+    const items = orderItemsData
+      .filter((item) => item.order_id === o.id)
+      .map((item) => {
+        return { product_id: item.product_id, quantity: item.quantity };
+      });
+
+    return { ...o, items };
+  });
+
+  if (finalOrders.length === 0) throw new Error("No orders found.");
+
+  return finalOrders[0];
 }
 
 export async function getOrderDetails(id: string): Promise<Order> {

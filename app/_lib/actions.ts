@@ -1,14 +1,9 @@
 "use server";
-import { redirect } from "next/navigation";
-import {
-  OrderForm,
-  SignUpFormValues,
-  UploadImage,
-  LoginFormValues,
-} from "../_types/types";
-import { createProfile } from "./data_service";
 import { revalidatePath } from "next/cache";
-import { SHIPPING_COST, SUPABASE_URL } from "./constants";
+import { redirect } from "next/navigation";
+import { LoginFormValues, OrderForm, SignUpFormValues } from "../_types/types";
+import { SHIPPING_COST } from "./constants";
+import { createProfile } from "./data_service";
 import { createClient } from "./supabase/server";
 
 export async function loginAction(data: LoginFormValues) {
@@ -40,7 +35,6 @@ export async function signUpAction(data: SignUpFormValues) {
     firstName,
     lastName,
     email,
-    image: "",
     user_id: userData.user?.id,
   };
 
@@ -49,41 +43,25 @@ export async function signUpAction(data: SignUpFormValues) {
   redirect("/login");
 }
 
-export async function updateProfileImageAction(data: UploadImage) {
+export async function updateProfileAction(data: {
+  first_name: string;
+  last_name: string;
+}) {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { image } = data;
-  const img = Array.isArray(image) ? image.at(0) : image;
+  const { first_name, last_name } = data;
 
   if (!user || !user.email) throw new Error("There is no user logged in.");
 
-  const imageName = `${Math.random()}-${user.email}-${img.name}`;
-  const imagePath = `${SUPABASE_URL}/storage/v1/object/public/profile_images/${imageName}`;
-
   const { error } = await supabase
     .from("profiles")
-    .update({ image: imagePath })
+    .update({ first_name, last_name })
     .eq("email", user.email);
 
-  if (error) throw new Error("Image could not be uploaded.");
-
-  const { error: storageErr } = await supabase.storage
-    .from("profile_images")
-    .upload(imageName, img, {
-      cacheControl: "3600",
-      upsert: false,
-    });
-
-  if (storageErr) {
-    await supabase
-      .from("profiles")
-      .update({ image: "" })
-      .eq("email", user.email);
-    throw new Error("Image could not be uploaded.");
-  }
+  if (error) throw new Error("Profile could not be updated.");
 
   revalidatePath("/account/*");
 }

@@ -12,12 +12,12 @@ function ProductOverview({ item }: { item: CartProduct }) {
         className="dark:grayscale-[30%]"
       />
       <div className="flex h-full w-full items-center justify-between pr-4">
-        <p className="font-semibold uppercase tracking-tighter text-gray-600 dark:text-gray-300">
+        <p className="font-semibold uppercase tracking-normal text-gray-600 dark:text-gray-300">
           {`${item.brand} ${item.product_name}`}
         </p>
         <div className="flex flex-col justify-center text-center font-semibold">
           <p className="text-red-600 dark:text-red-700">{item.quantity}x</p>
-          <p className="text-gray-600 dark:text-gray-500">
+          <p className="text-gray-600 dark:text-gray-400">
             {item.final_price * item.quantity}$
           </p>
         </div>

@@ -6,15 +6,12 @@ function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="mx-auto mt-8 max-w-[1600px] px-4 md:mt-16 lg:px-8">
-      <h2 className="text-center text-4xl font-bold text-gray-700 md:text-left dark:text-gray-200">
-        Account
-      </h2>
-      <section className="grid h-full gap-4 py-4 md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_2.5fr] lg:gap-16">
-        <div className="flex h-full flex-col">
+    <div className="h-[calc(100dvh-70px)]">
+      <section className="grid h-full grid-cols-[auto_1fr] overflow-clip md:grid-cols-[260px_1fr] lg:grid-cols-[360px_1fr]">
+        <div className="flex justify-center bg-gray-100/90 dark:bg-gray-900/90">
           <AccountMenu />
         </div>
-        <div className="mt-2">{children}</div>
+        <div className="overflow-auto p-4 md:p-8">{children}</div>
       </section>
     </div>
   );

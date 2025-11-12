@@ -23,14 +23,14 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col-reverse gap-2 md:flex-row md:items-center md:gap-4">
         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
           Order #{orderId}
         </h1>
         <OrderStatusBadge status={status} />
       </div>
-      <div className="grid w-full items-center gap-4 md:grid-cols-[3fr_2fr] md:gap-0 lg:gap-8">
-        <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
+      <div className="grid w-full items-start gap-4 lg:grid-cols-[3fr_2fr] lg:gap-8 xl:lg:grid-cols-[1fr_400px]">
+        <ul className="flex max-h-96 flex-col gap-2 overflow-auto md:px-2">
           {productItems.map((item) => (
             <li key={item.id}>
               <ProductOverview item={item} />
@@ -41,14 +41,14 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
           <h2 className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
             Order info
           </h2>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Products:{" "}
             <span className="font-normal">{totalPrice - SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Shipping cost: <span className="font-normal">{SHIPPING_COST}$</span>
           </p>
-          <p className="font-semibold text-gray-600 dark:text-gray-500">
+          <p className="font-semibold text-gray-600 dark:text-gray-400">
             Total price: <span className="font-normal">{totalPrice}$</span>
           </p>
           {status === "pending" && (

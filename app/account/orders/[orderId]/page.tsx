@@ -29,7 +29,7 @@ async function Page({ params }: { params: Promise<{ orderId: string }> }) {
         </h1>
         <OrderStatusBadge status={status} />
       </div>
-      <div className="grid w-full items-center gap-4 md:grid-cols-[3fr_2fr] md:gap-0 lg:gap-8">
+      <div className="grid w-full items-center gap-4 lg:grid-cols-[3fr_2fr] lg:gap-8 xl:lg:grid-cols-[1fr_400px]">
         <ul className="flex max-h-96 flex-col gap-2 overflow-auto px-2">
           {productItems.map((item) => (
             <li key={item.id}>

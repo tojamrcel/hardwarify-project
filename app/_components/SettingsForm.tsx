@@ -42,7 +42,7 @@ function SettingsForm({ profile }: { profile: Profile }) {
         <input
           disabled
           defaultValue={email}
-          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800 dark:disabled:opacity-60"
+          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800 dark:disabled:opacity-60"
         />
       </InputRow>
       <InputRow>
@@ -50,7 +50,7 @@ function SettingsForm({ profile }: { profile: Profile }) {
           First name
         </label>
         <input
-          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
           {...register("first_name", {
             required: false,
           })}
@@ -62,7 +62,7 @@ function SettingsForm({ profile }: { profile: Profile }) {
           Last name
         </label>
         <input
-          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-[#0e131f] dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+          className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
           {...register("last_name", {
             required: false,
           })}

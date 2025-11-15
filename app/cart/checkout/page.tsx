@@ -13,6 +13,7 @@ import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import Label from "@/app/_components/Label";
 
 function Page() {
   const [user, setUser] = useState<User | null>(null);
@@ -67,113 +68,98 @@ function Page() {
   }, [router, cart.length, user?.email, setValue]);
 
   return (
-    <>
+    <div className="mx-auto lg:max-w-[1100px]">
       <h2 className="text-3xl font-bold text-gray-700 dark:text-gray-200 md:text-4xl">
         Shipping and payment details
       </h2>
       <div className="mt-4 grid w-full grid-cols-1 gap-4 px-4 md:grid-cols-[2fr_1.5fr] md:gap-0">
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <InputRow>
-            <label
-              htmlFor="first_name"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              First name
-            </label>
-            <input
-              type="text"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              placeholder="Jan"
-              {...register("first_name", {
-                required: "First name is required.",
-                minLength: {
-                  value: 3,
-                  message: "First name should be at least 3 characters.",
-                },
-              })}
-            />
+            <Label htmlFor="first_name">First name</Label>
+            <div className="md:w-2/3">
+              <input
+                type="text"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                placeholder="Jan"
+                {...register("first_name", {
+                  required: "First name is required.",
+                  minLength: {
+                    value: 3,
+                    message: "First name should be at least 3 characters.",
+                  },
+                })}
+              />
+            </div>
             {errors.first_name && (
               <InputErrorMessage>{errors.first_name.message}</InputErrorMessage>
             )}
           </InputRow>
           <InputRow>
-            <label
-              htmlFor="last_name"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              Last name
-            </label>
-            <input
-              type="text"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              placeholder="Kowalski"
-              {...register("last_name", {
-                required: "Last name is required.",
-                minLength: {
-                  value: 3,
-                  message: "Last name should be at least 3 characters.",
-                },
-              })}
-            />
+            <Label htmlFor="last_name">Last name</Label>
+            <div className="md:w-2/3">
+              <input
+                type="text"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                placeholder="Kowalski"
+                {...register("last_name", {
+                  required: "Last name is required.",
+                  minLength: {
+                    value: 3,
+                    message: "Last name should be at least 3 characters.",
+                  },
+                })}
+              />
+            </div>
             {errors.last_name && (
               <InputErrorMessage>{errors.last_name.message}</InputErrorMessage>
             )}
           </InputRow>
           <InputRow>
-            <label
-              htmlFor="email"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              E-mail
-            </label>
-            <input
-              type="email"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-700 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              placeholder="jan@gmail.com"
-              {...register("email", {
-                required: "Email is required.",
-              })}
-            />
+            <Label htmlFor="email">E-mail</Label>
+            <div className="md:w-2/3">
+              <input
+                type="email"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                placeholder="jan@gmail.com"
+                {...register("email", {
+                  required: "Email is required.",
+                })}
+              />
+            </div>
             {errors.email && (
               <InputErrorMessage>{errors.email.message}</InputErrorMessage>
             )}
           </InputRow>
           <InputRow>
-            <label
-              htmlFor="city"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              City
-            </label>
-            <input
-              type="text"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              {...register("city", { required: "City is required." })}
-            />
+            <Label htmlFor="city">City</Label>
+            <div className="md:w-2/3">
+              <input
+                type="text"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                {...register("city", { required: "City is required." })}
+              />
+            </div>
             {errors.city && (
               <InputErrorMessage>{errors.city.message}</InputErrorMessage>
             )}
           </InputRow>
 
           <InputRow>
-            <label
-              htmlFor="postal_code"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              Postal Code
-            </label>
-            <input
-              type="text"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              placeholder="00-000"
-              {...register("postal_code", {
-                required: "Postal code is required.",
-                pattern: {
-                  value: /^\d{2}-\d{3}$/,
-                  message: "Invalid postal code.",
-                },
-              })}
-            />
+            <Label htmlFor="postal-code">Postal code</Label>
+            <div className="md:w-2/3">
+              <input
+                type="text"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                placeholder="00-000"
+                {...register("postal_code", {
+                  required: "Postal code is required.",
+                  pattern: {
+                    value: /^\d{2}-\d{3}$/,
+                    message: "Invalid postal code.",
+                  },
+                })}
+              />
+            </div>
             {errors.postal_code && (
               <InputErrorMessage>
                 {errors.postal_code.message}
@@ -182,17 +168,14 @@ function Page() {
           </InputRow>
 
           <InputRow>
-            <label
-              htmlFor="address"
-              className="text-md block text-center font-semibold text-gray-500 md:text-left"
-            >
-              Address
-            </label>
-            <input
-              type="text"
-              className="text-md h-10 rounded-md border-2 border-transparent p-2 text-gray-800 shadow-sm outline-none transition-all duration-200 focus:border-red-700 focus:shadow-lg dark:bg-gray-700 dark:text-gray-200 md:w-2/3"
-              {...register("address", { required: "Address is required." })}
-            />
+            <Label htmlFor="address">Address</Label>
+            <div className="md:w-2/3">
+              <input
+                type="text"
+                className="h-10 w-full rounded-md border-2 px-4 text-gray-600 transition-colors duration-200 placeholder:italic focus:border-red-700 focus:outline-none dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:shadow-md focus:dark:border-red-800"
+                {...register("address", { required: "Address is required." })}
+              />
+            </div>
             {errors.address && (
               <InputErrorMessage>{errors.address.message}</InputErrorMessage>
             )}
@@ -204,13 +187,12 @@ function Page() {
         </form>
         <div className="row-start-1 md:row-auto">
           <SummaryProducts />
-          <p className="text-center text-lg font-bold text-gray-600 dark:text-gray-500 md:text-left">
-            TOTAL:{" "}
-            <span className="font-semibold">{totalPrice + SHIPPING_COST}$</span>
+          <p className="text-center text-xl font-semibold text-gray-600 dark:text-gray-300 md:text-left">
+            Total: <span>{totalPrice + SHIPPING_COST}$</span>
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

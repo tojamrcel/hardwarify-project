@@ -25,7 +25,7 @@ function CartSummary() {
       <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-300">
         Summary
       </h2>
-      <div className="my-3 flex flex-col gap-2 px-4 text-gray-500 md:my-4">
+      <div className="my-3 flex flex-col gap-2 px-4 text-gray-600 dark:text-gray-400 md:my-4">
         <p>
           <span className="font-semibold">Products:</span>{" "}
           {cart.length ? `$${productsPrice}` : "—"}
@@ -38,8 +38,8 @@ function CartSummary() {
           <span className="font-semibold">Discounts:</span>{" "}
           {cart.length ? `$${discount}` : "—"}
         </p>
-        <p>
-          <span className="font-semibold">Total:</span>{" "}
+        <p className="text-xl">
+          <span className="font-bold">Total:</span>{" "}
           {cart.length ? `$${productsPrice - discount + SHIPPING_COST}` : "—"}
         </p>
         <div className="mt-2 flex justify-center md:justify-normal">

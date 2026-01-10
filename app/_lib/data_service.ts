@@ -104,12 +104,11 @@ export async function getProductById(id: number): Promise<Product> {
   const { data, error } = await supabaseClient
     .from("products")
     .select("*")
-    .eq("id", id)
-    .single();
+    .eq("id", id);
 
   if (error) throw new Error(error.message);
 
-  return data;
+  return data[0];
 }
 
 export async function getProductsByIds(ids: number[]): Promise<Product[]> {

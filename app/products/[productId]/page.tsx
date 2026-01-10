@@ -69,7 +69,7 @@ async function Page({ params }: { params: Promise<{ productId: string }> }) {
                 </div>
               </>
             ) : (
-              <span className="text-3xl font-bold text-gray-300">
+              <span className="text-3xl font-bold text-gray-700 dark:text-gray-300">
                 {product.regular_price}$
               </span>
             )}
